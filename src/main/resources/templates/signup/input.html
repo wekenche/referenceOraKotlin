@@ -1,0 +1,303 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>無料会員登録 アカウント入力画面</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+  <style>
+    .tryer{
+      margin-bottom: 20px;
+      margin-top: 20px;
+      font-size: 60px;
+      font-weight: bold;
+      line-height: 50px;
+      color: rgb(230, 184, 153);
+    }
+    .spanAt {
+      font-size: 60px;
+      font-weight: bold;
+      line-height: 50px;
+    }
+    .customEmail{
+      width: 445px;
+      font-size: 60px;
+      font-weight: bold;
+      line-height: 72px;
+      letter-spacing: 0.12em;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      padding: 32px 0px 32px 61px;
+      border-width: 3px;
+      border-style: solid;
+      border-color: rgb(46, 46, 46);
+      border-image: initial;
+      border-radius: 10px;
+    }
+    .customEmail.domain{
+        width: 400px !important;
+    }
+
+    .note.email{
+        font-weight: bold;
+    }
+
+    /* 各リスト項目のパディング設定 */
+    .ui-menu .ui-menu-item-wrapper {
+        position: relative;
+        padding: 10px 1em 10px .4em;
+    }
+    /* リスト全体の背景 */
+    .ui-widget-content {
+        width: 400px;
+        font-size: 50px;
+        border: 1px solid #c5c5c5;
+        background: #ffffff;
+        color: #333333;
+    }
+    /* リスト hover 時のカラー */
+    .ui-state{
+        background: red;
+    }
+    .ui-state-active {
+        border: 1px solid #003eff;
+        background: #007fff;
+        font-weight: normal;
+        color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="アカウント入力画面" src="./assets/images/header/header_account_input.png" width="754"
+       th:src="@{/images/header/header_account_input.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="member_signup">
+    <div class="inner">
+      <!--/*@thymesVar id="signupForm" type="ora.leadlife.co.jp.form.SignupForm"*/-->
+      <p>
+        <a class="login_link" th:href="@{login/input}">既にアカウントをお持ちの方は<span>こちら</span></a>
+      </p>
+      <form th:action="@{/signup}" method="post" th:object="${signupForm}" name="form">
+        <div class="wrapper_input">
+          <div class="input_box">
+            <h3>
+              ニックネーム
+            </h3>
+            <input placeholder="例) AYA" type="text" th:field="*{name}"/>
+            <ul th:each="error : ${#fields.errors('name')}" class="error">
+              <li th:text="${error}"></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="tryer">
+              メールアドレス
+            </h3>
+            <input type="text" th:field="*{emailName}" id="emailName1" class="emailCheck customEmail"/>
+            <span class="spanAt">@</span>
+            <input type="email" th:field="*{emailHost}" id="emailHost1" class="emailCheck customEmail domain"/>
+            <input type="hidden" th:field="*{email}" id="emailField1"/>
+            <ul th:each="error : ${#fields.errors('email')}" class="error">
+              <li th:text="${error}"></li>
+            </ul>
+          </div>
+          <p class="note email">
+            ※PC・携帯どちらでも可
+          </p>
+          <div>
+            <h3 class="tryer">
+              メールアドレス確認用
+            </h3>
+            <input  type="text" th:field="*{emailConfirmName}" id="emailName2" class="emailCheck customEmail"/>
+            <span class="spanAt">@</span>
+            <input  type="email" th:field="*{emailConfirmHost}" id="emailHost2" class="emailCheck customEmail domain"/>
+              <input type="hidden" th:field="*{emailConfirm}" id="emailField2"/>
+              <ul th:each="error : ${#fields.errors('emailConfirm')}" class="error">
+                  <li th:text="${error}"></li>
+              </ul>
+          </div><p th:if="${#fields.hasErrors('*{equalEmail}')}" th:errors="*{equalEmail}" class="error"></p>
+          <p id="errEmail" class="error">
+            メールアドレスが一致していません
+          </p>
+          <div class="note">
+            <p>なりすましメールやドメイン指定受信などの設定によっては、当サイトからのメールが届かない場合があります。
+              お手数をお掛けいたしますが、下記のメールアドレスを受信するよう設定をお願いいたします。</p>
+
+          </div>
+          <div class="note">
+            <input type="text" value="lead-life.co.jp" style="border-radius: 10px;border: 3px solid #2f2f2f;height: 80px;width: 959px;font-size: 45px;padding-left: 10px;font-weight: bold;" />
+          </div>
+
+          <div class="input_box">
+            <h3>
+              パスワード
+            </h3>
+            <input id="original" placeholder="半角英数８文字以上" type="password" th:field="*{password}"/>
+            <ul th:each="error : ${#fields.errors('password')}" class="error">
+              <li th:text="${error}"></li>
+            </ul>
+
+          </div>
+          <div class="input_box">
+            <h3>
+              パスワード確認用
+            </h3>
+            <input id="secondary" placeholder="確認のため再入力して下さい" type="password" th:field="*{passwordConfirm}"/>
+            <ul th:each="error : ${#fields.errors('passwordConfirm')}" class="error">
+              <li th:text="${error}"></li>
+            </ul>
+          </div><p th:if="${#fields.hasErrors('*{equalPassword}')}" th:errors="*{equalPassword}" class="error"></p>
+          <p id="err" class="error">
+            パスワードとパスワード確認用が間違っています
+          </p>
+            <p class="pass_note">
+                ※パスワードの頭文字が、大文字になっていたり末尾にスペースが入っていたりすることがございますので、ご注意ください。
+            </p>
+          <div class="input_box">
+            <h3>
+
+            </h3>
+            <a th:href="@{/fingerprintRegistration/before}">
+              <p class="finger_login">
+
+              </p>
+            </a>
+          </div>
+          <div class="input_box">
+            <h3>
+              紹介コード（お持ちの方のみ）
+            </h3>
+            <input type="text" th:field="*{shopCode}"/>
+            <ul th:each="error : ${#fields.errors('shopCode')}" class="error">
+              <li th:text="${error}"></li>
+            </ul>
+
+          </div>
+          <p class="note">
+            パスワード入力か指紋認証かどちらかをお選びください。
+
+          </p>
+          <div class="checkbox">
+            <input id="check01" type="checkbox" th:field="*{authenticationMethodPassword}"/>
+            <label for="check01">パスワード入力</label>
+          </div>
+          <div class="checkbox">
+            <input id="check02" type="checkbox" th:field="*{authenticationMethodFingerprint}"/>
+            <label for="check02">指紋認証</label>
+          </div>
+          <p th:if="${#fields.hasErrors('*{oneCheckedAuthentication}')}" th:errors=" *{oneCheckedAuthentication}"
+             class="error">
+          </p>
+          <div class="checkbox">
+            <input id="check03" type="checkbox" th:field="*{agreementToTerms}"/><label for="check03"><a href="#"
+                                                                                                        id="open2">利用規約</a><span>に同意します</span></label>
+            <ul th:each="error : ${#fields.errors('agreementToTerms')}" class="error">
+              <li th:text="${error}"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="btn">
+          <button type="submit">
+            <img height="147" src="assets/images/button/btn_signup.png" width="1040"
+                 th:src="@{/images/button/btn_signup.png}"/>
+          </button>
+        </div>
+          <div id="bnr_paying_merit">
+              <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png" width="1040"
+                                                   th:src="@{/images/common/banner.png}"/></a>
+          </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+<div layout:fragment="otherScript">
+  <script type="text/javascript">
+      //<![CDATA[
+      var custom_event;
+
+      // 外部サイト側で必要な処理を全て終えたときにcustom_eventにオブジェクトを返す関数を放り込む。
+      // このオブジェクトの内容をTitaniumで受け取れることになる。
+      custom_event = function () {
+          return '{"fingerprint": "' + $('#check02:checked').val() + '"}';
+      };
+      //]]>
+  </script>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    $('#err').hide();
+    $('#errEmail').hide();
+    $(document).on('change' , '#secondary' , function(){
+        if($('#original').val() != $(this).val()) {
+            $('#err').show();
+        } else {
+            $('#err').hide();
+        }
+    });
+    $(document).on('change' , '#original' , function(){
+        if($('#secondary').val() != ""){
+            if($('#secondary').val() != $(this).val()) {
+                $('#err').show();
+            } else {
+                $('#err').hide();
+            }
+        }
+    });
+    $(document).on('change' , '.emailCheck' , function(){
+        var $email1 = $('#emailName1').val().trim(" ") + '@' +$('#emailHost1').val().trim(" ");
+        var $email2 = $('#emailName2').val().trim(" ") + '@' +$('#emailHost2').val().trim(" ");
+        $('#emailField1').val($email1);
+        $('#emailField2').val($email2);
+        if($email1 != $email2) {
+            $('#errEmail').show();
+        } else {
+            $('#errEmail').hide();
+        }
+    });
+</script>
+<script>
+    $( ".domain" ).autocomplete({
+        source: [
+            "yahoo.co.jp",
+            "gmail.com",
+            "icloud.com",
+            "docomo.ne.jp",
+            "ezweb.ne.jp",
+            "softbank.ne.jp",
+            "i.softbank.jp",
+            "d.vodafone.ne.jp",
+            "h.vodafone.ne.jp",
+            "t.vodafone.ne.jp",
+            "c.vodafone.ne.jp",
+            "k.vodafone.ne.jp",
+            "r.vodafone.ne.jp",
+            "n.vodafone.ne.jp",
+            "s.vodafone.ne.jp",
+            "q.vodafone.ne.jp",
+            "disney.ne.jp",
+            "emnet.ne.jp",
+            "wcm.ne.jp",
+            "outlook.jp",
+            "outlook.com",
+            "hotmail.co.jp",
+            "live.jp",
+            "infoseek.jp",
+            "excite.co.jp",
+            "inter7.jp",
+            "smoug.net",
+            "aol.jp",
+            "youngpostman.net",
+            "tora.zzn.com",
+            "zoho.com",
+            "goo.jp",
+            "mail.goo.ne.jp",
+            "auone.jp",
+            "livedoor.com"
+        ]
+    });
+</script>

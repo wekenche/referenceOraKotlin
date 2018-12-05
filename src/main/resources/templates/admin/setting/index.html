@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  layout:decorator="adminLayout">
+<head>
+</head>
+<body>
+<div layout:fragment="main">
+    <div class="card mt-3">
+        <div class="card-header">設定</div>
+        <div class="card-body">
+            <!-- DEV init: load first setting. and save setting data -->
+            <!--/*@thymesVar id="form" type="ora.leadlife.co.jp.form.SettingForm"*/-->
+            <form th:action="@{/admin/setting/confirm}" method="post" th:object="${form}">
+                <input class="form-control" type="text" th:field="*{id}" style="display: none"/>
+                <div class="form-group">
+                    <label>メールアドレス</label>
+                    <input class="form-control" type="text" th:field="*{email}"/>
+                </div>
+                <div class="form-group">
+                    <label>遺品整理士 電話番号</label>
+                    <input class="form-control" type="text" th:field="*{delegate_tel_no}"/>
+                </div>
+                <div class="form-group">
+                    <label>遺品整理士 メールアドレス</label>
+                  <input class="form-control" type="text" th:field="*{organizer_email}"/>
+                </div>
+                <div class="form-group">
+                    <label>弁護士 電話番号</label>
+                  <input class="form-control" type="text" th:field="*{lawyer_tel_no}"/>
+                </div>
+                <div class="form-group">
+                    <label>弁護士 メールアドレス</label>
+                  <input class="form-control" type="text" th:field="*{lawyer_email}"/>
+                </div>
+                <div class="form-group">
+                    <label>通常月額料金</label>
+                    <input class="form-control" type="text" th:field="*{normalFee}"/>
+                </div>
+                <div class="form-group">
+                    <label>割引月額料金</label>
+                    <input class="form-control" type="text" th:field="*{discountedFee}"/>
+                </div>
+                <div class="form-group">
+                    <label>税率</label>
+                    <input class="form-control" type="text" th:field="*{tax}"/>
+                </div>
+                <div class="form-group">
+                    <label>ベリトランス課金グループ</label>
+                    <input class="form-control" type="text" th:field="*{veritransGroupId}"/>
+                </div>
+                <button type="submit" class="btn btn-primary">保存</button>
+              </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

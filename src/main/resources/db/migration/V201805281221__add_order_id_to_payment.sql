@@ -1,0 +1,3 @@
+ALTER TABLE payments ADD COLUMN order_id VARCHAR(254) NULL COMMENT '取引ID';
+ALTER TABLE payments ADD COLUMN mstatus VARCHAR(254) NULL COMMENT '処理結果コード';
+ALTER TABLE payments ADD COLUMN v_result_code VARCHAR(254) NULL COMMENT '詳細結果コード';

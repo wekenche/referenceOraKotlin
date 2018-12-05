@@ -1,0 +1,156 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#fingerprint_registration_index{
+	background: #f2f2f2;
+	img{
+		display: inline-block;
+	}
+	.inner{
+		ul{
+			width: 1048px;
+			margin: 0 auto;
+			margin-top: 75px;
+			margin-bottom: 195px;
+			padding:0 102px;
+			box-sizing: border-box;
+			li{
+				font-size: 50px;
+				font-weight: bold;
+				line-height: 1.5;
+				letter-spacing: 0.05em;
+				&:last-child{
+					margin-top: 80px;
+				}
+			}
+		}
+		.btn{
+			width: 1048px;
+			margin: 0 auto;	
+			a:first-child{
+				margin-right: 50px;
+			}
+			.password_input{
+				padding-bottom: 500px;
+				box-sizing: border-box;
+				text-align: right;
+				margin-top: 28px;
+				a{
+					font-size: 45px;
+					color: #498af2;
+					font-weight: bold;
+					text-decoration: none;
+				}
+			}		
+		}
+	}//inner
+}//#fingerprint_authentication 指紋登録
+
+#fingerprint_registration_before{
+	background: #f2f2f2;
+	img{
+		display: inline-block;
+	}
+	.inner{
+			width: 1096px;
+			margin: 0 auto;
+		ul{
+			margin-top: 86px;
+			padding-left: 102px;
+			box-sizing: border-box;
+			li{
+				font-size: 50px;
+				font-weight: bold;
+				line-height: 1.5;
+			}
+		}
+		figure{
+			text-align: center;
+			padding-top: 18px;
+			box-sizing: border-box;
+		}
+		.btn{
+			text-align: right;
+			padding-bottom: 265px;
+		}
+	}//inner
+}//#fingerprint_registration_before 指紋登録
+
+#fingerprint_registration_start{
+	background: #f2f2f2;
+	img{
+		display: inline-block;
+	}
+	.inner{
+			width: 972px;
+			margin: 0 auto;
+		p{
+			font-size: 50px;
+			line-height: 1.5;
+			letter-spacing: 0.05em;
+			font-weight: bold;
+			margin-top: 74px;
+			margin-bottom: 190px;
+		}
+		figure{
+			text-align: center;
+			padding-top: 18px;
+			box-sizing: border-box;
+		}
+		.message{
+			padding-left: 67px;
+			box-sizing: border-box;
+			p{
+				line-height: 1.6;
+				font-size: 45px;
+				color: #ff8431;
+			}
+		}
+	}//inner
+}//#fingerprint_registration_start 指紋登録 何度か繰り返してください
+
+#fingerprint_registration_finish{
+	background: #f2f2f2;
+	img{
+		display: inline-block;
+	}
+	.inner{
+			width: 972px;
+			margin: 0 auto;
+		p{
+			font-size: 50px;
+			line-height: 1.5;
+			letter-spacing: 0.05em;
+			font-weight: bold;
+			margin-top: 74px;
+			margin-bottom: 220px;
+		}
+		figure{
+			text-align: center;
+			padding-top: 18px;
+			margin-bottom: 205px;
+			box-sizing: border-box;
+		}
+	}//inner
+	.btn{
+		width: 1064px;
+		margin: 0 auto;
+		text-align: center;
+		padding-bottom: 270px;
+		box-sizing: border-box;
+		a{
+			display: block;
+			&:last-child{
+				text-align: right;
+				margin-top: 25px;
+				font-size: 45px;
+				color: #498af2;
+				font-weight: bold;
+				text-decoration: none;
+			}
+		}
+	}
+}//#fingerprint_registration_start 指紋登録 指紋を登録しました

@@ -1,0 +1,47 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "資産について エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_assets
+				.page_label
+					h2 資産について
+				.inner
+					a href="property_about_pastAddress.html"	
+						img src="assets/images/button/button_about_assets01.jpg" width="1140" height="210" alt="過去に住んだことのある住所"
+					a href="property_about_realEstate.html"
+						img src="assets/images/button/button_about_assets02.jpg" width="1140" height="210" alt="不動産" 
+					a href="property_about_savings.html"
+						img src="assets/images/button/button_about_assets03.jpg" width="1140" height="210" alt="預貯金"
+					a href="property_about_securitiesAccount.html"
+						img src="assets/images/button/button_about_assets04.jpg" width="1140" height="210" alt="証券口座"
+					a href="property_about_stock.html"
+						img src="assets/images/button/button_about_assets05.jpg" width="1140" height="210" alt="株式"
+					a href="property_about_securitiesBond.html"
+						img src="assets/images/button/button_about_assets06.jpg" width="1140" height="210" alt="その他金融資産/有価証券"
+					a href="property_about_cash.html"
+						img src="assets/images/button/button_about_assets07.jpg" width="1140" height="210" alt="現金（預貯金以外）"
+					a href="property_about_otherHeritage.html"
+						img src="assets/images/button/button_about_assets08.jpg" width="1140" height="210" alt="その他の遺産"
+					a href="property_about_trunkroom.html"
+						img src="assets/images/button/button_about_assets09.jpg" width="1140" height="210" alt="貸金庫/レンタル倉庫/トランクルーム 等"
+					a href="property_about_moneyLending.html"
+						img src="assets/images/button/button_about_assets10.jpg" width="1140" height="210" alt="貸しているお金"
+					a href="property_about_debt.html"
+						img src="assets/images/button/button_about_assets11.jpg" width="1140" height="210" alt="借金・ローン"
+					a href="property_about_guaranteeObligations.html"
+						img src="assets/images/button/button_about_assets12.jpg" width="1140" height="210" alt="保障債務"
+					a href="property_about_credit.html"
+						img src="assets/images/button/button_about_assets13.jpg" width="1140" height="210" alt="クレジットカード"
+					a href="property_about_electronicMoney.html"
+						img src="assets/images/button/button_about_assets14.jpg" width="1140" height="210" alt="電子マネー" 
+					a href="property_about_pension.html"
+						img src="assets/images/button/button_about_assets15.jpg" width="1140" height="210" alt="年金"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

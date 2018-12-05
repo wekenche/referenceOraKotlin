@@ -1,0 +1,2 @@
+ALTER TABLE accounts
+  ADD name VARCHAR(254) NULL;

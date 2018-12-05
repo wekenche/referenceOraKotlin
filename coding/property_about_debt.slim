@@ -1,0 +1,89 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "資産について 11.借金・ローン エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_debt
+				.page_label
+					h2 資産について
+				.about_debt
+					h2 11.借金・ローン
+					.input__container
+						.input__box
+							.title 借入先
+							input type="text"
+						//借入先
+						.input__box
+							.title 電話番号
+							input type="text"
+						//電話番号
+						.input__box
+							.title 借入先の郵便番号
+							ul
+								li
+									input.post type="text"
+								li
+									p -
+								li
+									input.post type="text"
+						//借入先の郵便番号
+						.input__box
+							.title 借入先の住所
+							input type="text"
+						//借入先の住所
+						.input__box.input_date
+							.title 借入日
+							ul
+								li
+									input.date type="text"
+								li
+									p 年
+								li
+									input.date type="text"
+								li
+									p 月
+								li
+									input.date type="text"
+								li
+									p 日		
+						//借入日
+						.input__box
+							.title 借入額
+							input type="text"
+						//借入額
+						.input__box
+							.title 返済方法
+							textarea
+						//返済方法
+						.list_inner
+							h3 担保について
+							.input__container
+								.input__box
+									.title 担保に取られているもの
+									input type="text"
+									//担保に取られているもの
+								.button_add_item
+									a href="#"
+										img src="./assets/images/button/button_add_taken_list.jpg" width="857" height="131"
+
+						.input__box
+							.title 借入残高（いつの時点でいくらか）
+							input type="text"
+						//借入残高（いつの時点でいくらか）
+						.input__box
+							.title 借入目的
+							textarea
+						//借入目的
+						a.add_list href="#" リストを追加
+
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

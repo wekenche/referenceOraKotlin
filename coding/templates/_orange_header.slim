@@ -1,0 +1,81 @@
+header#header.orange_header.cf role="banner"
+	.inner.cf
+		a.back_button
+			img src="./assets/images/common/arrow_left_white.png"
+	    - if $pageNo == "orange01";
+	        .page_label style="padding-left: 98px; padding-right: 51px;" 【一周忌】 愛する家族へ
+	    - if $pageNo == "orange02";
+	        .page_label style="padding-left: 374px; padding-right: 256px;" タイトル
+	    - if $pageNo == "orange03";
+	        .page_label style="padding-left: 205px; padding-right: 115px;" アカウント３の管理
+	    - if $pageNo == "orange04";
+	        .page_label style="padding-left: 120px; padding-right: 115px;" アカウント３さんの情報
+	//pageNo1 ending note
+	.menu
+		button type="button" class="drawer-toggle drawer-hamburger"
+			img.menu src="./assets/images/common/menu.png"
+		.drawer-nav role="navigation"
+			div.drawer-menu
+				#user_prof.cf
+					#prof_picture.left
+						img src="./assets/images/common/users.png" width="303"
+					.right
+						.btn.cf
+							#login
+								a href="account_login.html" ログイン
+							#tos_btn
+								a#open href="#" 利用規約
+						.capacity
+							p 現在<span id="amount">70</span><span>MB</span>使用中
+							meter value="0" min="0" max="100"
+							p 画像の容量は100MBまでです。
+						.badge
+							a href="/"
+								img src="./assets/images/common/notification.png" witdh="612"
+				#user_name
+					p ゲストユーザー<span>さん</span>
+				ul#menu_list
+					li: a class="drawer-menu-item" href="#" 最新コラム
+					li: a class="drawer-menu-item" href="consultation_index.html" 相談する
+					li: a class="drawer-menu-item" href="bbs_list.html" 掲示板
+				#second_menu.drawer-dropdown
+					a.btn.drawer-menu-item href="#" data-toggle="dropdown"
+						img src="./assets/images/common/btn_paid_member_menu.png" width="896" height="132"
+					ul.drawer-dropdown-menu#menu_list
+						li
+							a class="drawer-dropdown-menu-item" href="message_record_function.html" メッセージ記録機能
+						li
+							a class="drawer-dropdown-menu-item" href="endingnote_index.html" エンディングノート
+						li
+							a class="drawer-dropdown-menu-item" href="sharedaccaunt_list.html" 承認アカウント
+				#second_menu.drawer-dropdown
+					a.btn.drawer-menu-item href="#" data-toggle="dropdown"
+						img src="./assets/images/common/btn_settings.png" width="896" height="132"
+					ul.drawer-dropdown-menu#menu_list
+						li
+							a class="drawer-dropdown-menu-item" href="accout_admin_confirm.html" アカウントの追加・切替・削除
+						li
+							a class="drawer-dropdown-menu-item" href="password_change.htmll" パスワードの変更
+						li
+							a class="drawer-dropdown-menu-item" href="usrpict_add_change.html" 会員名・写真の変更
+						li
+							a class="drawer-dropdown-menu-item" href="free_migration_input.html" 無料会員に登録する
+						li
+							a class="drawer-dropdown-menu-item" href="accout_deactivation_procedure_input.html" 退会する
+
+				#second_menu
+					a.btn href="#a"
+						img src="./assets/images/common/btn_notification.png" width="896" height="132"
+
+			img.closed src="./assets/images/common/menu_close.png"
+	#modal_content_tos
+		/ #terms_of_use
+		header
+			img src="./assets/images/header/header_tos.png" width="592" height="117"
+			button#close
+				img src="./assets/images/common/close.png" width="106" height="106"
+		.inner
+			.desc_box
+				p 
+					|
+						ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。

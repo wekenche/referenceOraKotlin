@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="退会手続き" src="./assets/images/header/header_accout_deactivation_procedure.png" width="712"
+       th:src="@{/images/header/header_accout_deactivation_procedure.png}"
+  />
+</div>
+<div layout:fragment="main">
+  <div id="accout_deactivation_procedure_input">
+    <!--/*@thymesVar id="withdrawalForm" type="ora.leadlife.co.jp.form.WithdrawalForm"*/-->
+    <form th:action="@{/withdrawal}" method="post" th:object="${withdrawalForm}">
+      <div class="inner cf">
+        <div class="input">
+          <div class="mail_input">
+            <span>パスワードを入力して下さい</span>
+            <div class="inputWithIcon">
+              <input type="password" th:field="*{password}" title="パスワード"/>
+              <ul th:each="error : ${#fields.errors('password')}" class="error">
+                <li th:text="${error}"></li>
+              </ul>
+            </div>
+            <span>パスワードを再入力して下さい</span>
+            <div class="inputWithIcon">
+              <input type="password" th:field="*{passwordConfirm}" title="パスワード確認用"/>
+              <ul th:each="error : ${#fields.errors('passwordConfirm')}" class="error">
+                <li th:text="${error}"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="btn">
+          <button type="submit">
+            <img alt="退会する" height="147"
+                 src="./assets/images/button/btn_deactivate_accout2.png"
+                 width="1064"
+                 th:src="@{/images/button/btn_deactivate_accout2.png}"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

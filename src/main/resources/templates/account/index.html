@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="アカウント管理" src="./assets/images/header/header_account_admin.png" width="754"
+       th:src="@{/images/header/header_account_admin.png}"/>
+</div>
+<div layout:fragment="main">
+
+  <div id="account_management_top">
+    <div class="inner">
+      <a href="/account/list"><img alt="アカウント設定" height="338"
+                                   src="assets/images/button/button_account_setting.jpg" width="1140"
+                                   th:src="@{/images/button/button_account_setting.jpg}"/></a><a
+      href="/shareAccount/description"><img alt="共有アカウントとは" height="338"
+                                            src="assets/images/button/button_shared_account.jpg" width="1140"
+                                            th:src="@{/images/button/button_shared_account.jpg}"/></a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

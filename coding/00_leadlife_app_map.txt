@@ -1,0 +1,243 @@
+﻿◆ディレクトリ直下
+1.account1（初回指紋登録）.psd
+member_signup.html
+
+2.00riyoukiyaku-leadlife-ap-20170707.psd
+_header.slim
+
+◆エンディングノート編集
+1.00ending-yuigon2-leadlife-ap-20170707.psd
+endingnote_about_property.html
+
+2.00endingnote2-leadlife-ap-20170707.psd
+endingnote_index.html
+
+(塚本)00ending-yuigon3-leadlife-ap-20171031.psd
+ending-yuigon3.html
+
+(塚本)00ending-yuigon4-leadlife-ap-20171031.psd
+ending-yuigon4.html
+
+(塚本)00ending-yuigon5-leadlife-ap-20171031.psd
+ending-yuigon5.html
+
+◆指紋認証orパスワード
+1.unlock_20170906.psd
+password_input.html
+
+2.account2_20170908.psd
+account_pswd_reset.html
+
+3.onetime2_20170906.psd
+account_login.html
+
+--◆指紋登録初回
+	1.2-finger1-leadlife-ap-20170907.psd
+	fingerprint_registration_index.html
+
+	2.finger2-leadlife-ap-20170907.psd
+	fingerprint_registration_before.html
+
+	3.finger3-2-leadlife-ap-20170907.psd
+	fingerprint_registration_start.html
+
+	4.finger4-leadlife-ap-20170907.psd
+	fingerprint_registration_finish.html
+
+
+--◆指紋登録２回目以降
+	1.next-finger-leadlife-ap-20170907
+	notification_fingerprint_registration.html
+
+◆メッセージ機能
+1.messageleadlife-20170804-1.psd
+message_record_function.html
+
+2.messageleadlife-20170804-2.psd
+message_record_list.html（→message_list.htmlと類似）
+
+3.messageleadlife-20170804-3.psd
+message_record_confirm.html
+
+4.messageleadlife-20170804-4.psd
+message_record_edit.html
+
+5.messageleadlife-20170804-5.psd
+message_record_edit_video.html（→messageleadlife.htmlと類似）
+
+6.messageleadlife-20170804-6.psd
+message_record_select_pdf.html
+
+(塚本)messageleadlife-20170804-4.psd
+messageleadlife.html
+
+◆共有アカウント設定
+1.account3mg20170808.psd
+account_management_top.html
+
+2.sharedaccaunt20170808.psd
+sharedaccaunt_unset.html
+
+3.sharedaccaunt220170808.psd
+sharedaccaunt_list.html
+
+4.sharedaccaunt-setsumei-20170907.psd
+sharedaccaunt_description.html
+
+5.sharedaccaunt-shounin220170808.psd
+sharedaccaunt_approve.html
+
+6.sharedaccountst20170804.psd
+sharedaccaunt_add_setting.html
+
+
+◆死亡後通知
+1.00shigo-2-finish-20170907.psd
+notification_finish.html
+
+2.00shigo-2-leadlife-ap-20170809.psd
+notification_confirm.html
+
+3.00shigo-3-leadlife-ap-20170809.psd
+user_info_menu.html
+
+4.00shigo-leadlife-ap-20170809.psd
+notification_settings.html
+
+5.00shigo-2shimon-leadlife-ap-20170809.psd
+notification_fingerprint_registration.html
+
+6.00shigo-4-leadlife-ap-20170809.psd
+message_list.html
+
+◆設定
+--◆アカウント切り替え他
+	1.password-2_20170911.psd
+	accout_admin_finish.html
+
+	2.selectaccount20170808.psd
+	accout_admin_confirm.html
+
+	3.selectaccount-sakujyo.psd
+	accout_admin_input.html
+
+	4.selectaccount-tsuika.psd
+	accout_admin_input.html
+
+--◆パスワード変更
+	1.password_20170911.psd
+	password_change.html
+
+	2.password-2_20170911.psd
+	password_change_finish.html
+
+--◆退会
+	1.taikai-2-ap-20170728.psd
+	accout_deactivation_procedure_input.html
+
+	2.taikai-3-ap-20170728.psd
+	accout_deactivation_procedure_finish.html
+
+	3.taikai-ap-20170728.psd
+	accout_deactivation_procedure_confirm.html
+
+--◆無料会員へ
+	1.free_2_20170911.psd
+	free_migration_confirm.html
+
+	2.free_3_20170911.psd
+	free_migration_finish.html
+
+	3.free_20170911.psd
+	free_migration_input.html
+
+--◆クレカ登録確認変更
+	1.kessan1_20170808.psd
+	paid_member_registration_top.html
+
+	2.kessan1-a_20170808.psd
+	paid_member_registration_aboutpay.html
+
+	3.kessan2_20170908.psd
+	payment_methods.html
+
+	4.kessan3_20170908.psd
+	creditcard_input.html
+
+	5.kessan3-3_20170908.psd
+	creditcard_confirm.html
+
+	6.kessan3-4_20170908.psd
+	creditcard_changed_menu.html
+
+	7.kessan3-5_20170908.psd
+		kessan3-5-a_20170908
+	creditcard_delete.html
+
+	8.kessan3-6_20170908.psd
+	  kessan3-6-a_20170908.psd
+	creditcard_data_changed.html
+		
+	9.kessan4_20170808.psd
+		kessan4-b_20170808.psd
+	paid_member_registration_fixed.html
+
+	10.kessan520170914.psd
+	paid_member_registration_finish.html
+
+	11.kessankojinjyouhou-leadlife-ap-20170707.psd
+	_footer.slim
+
+
+
+
+	(塚本)kessan2-1_20170908.psd
+	kessan2-1.html
+
+	(塚本)kessan3-3_20170908.psd
+	kessan3-3.html
+
+	
+
+   --◆20170914追加分エラー表示
+		kessan3-2-b_20170908.psd
+		account_input_credit.html
+
+--◆会員名・写真の変更
+	1.usrpict_20170911.psd
+	usrpict_add_change.html
+	
+	(青山_1108修正)usrpict_20170911.psd
+	usrpict.html
+
+◆無料サービス
+1.00keijiban-kanryou-ap-20170728.psd
+bbs_writing_finish.html
+
+2.00keijibanleadlife-ap-20170728.psd
+bbs_list.html
+
+3.00keijibanleadlife-open-ap-20170728.psd
+bbs_detail.html
+
+4.02soudan2-leadlife-ap-20170724.psd
+consultation_index.html
+
+◆認証画面
+1.1-unlock_20170906 のコピー.psd
+password_input.html
+
+2.account2_20170908.psd
+account_pswd_reset.html
+
+3.member20170908.psd
+merit.html
+
+4.onetime2_20170906.psd
+account_login.html
+
+(塚本)accountlogin（二回目以降）.psd
+accountlogin2.html
+
+
+

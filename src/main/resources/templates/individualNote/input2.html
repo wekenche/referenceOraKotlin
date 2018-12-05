@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:float="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="message_record_edit_video">
+            <!--/*@thymesVar id="individualNoteForm" type="ora.leadlife.co.jp.form.IndividualNoteForm"*/-->
+            <form th:action="@{/individualNote/confirm}" method="post" enctype="multipart/form-data" th:object="${individualNoteForm}">
+                <div class="inner">
+                    <div class="inner_video">
+                        <div class="text_box">
+                            <input type="hidden" th:field="*{individualId}" />
+                            <input type="hidden" th:field="*{individualNoteCategory}"/>
+                            <input type="hidden" th:field="*{messageType}" />
+                            <input type="hidden" th:field="*{individualNoteAttachment}" />
+                            <input placeholder="タイトル入力" type="text" th:field="*{individualTitle}"/>
+                        </div>
+                       <!-- <a href="message_record_select_pdf.html">
+                            <img class="select_file" height="147" width="1040"
+                                 src="assets/images/button/button_select_file.jpg"
+                                 th:src="@{/images/button/button_select_file.jpg}"/>
+                        </a>-->
+                        <!--/*@thymesVar id="isPremium" type="java.lang.Boolean"*/-->
+                        <!--/*@thymesVar id="#uploadedImage" type="ora.leadlife.co.jp.helper.UploadedImage"*/-->
+                        <div th:if="${individualNoteForm.messageType != 'NONE'}">
+                            <div th:switch="${isPremium}">
+                                <div th:case="true">
+                                    <label for="file-input">
+                                        <img class="select_file" height="147" width="1040"
+                                             src="assets/images/button/button_select_file.jpg"
+                                             th:src="@{/images/button/button_select_file.jpg}"/>
+                                    </label>
+                                    <input style="display: none" id="file-input" type="file" class="form-control" name="file" onchange="previewFile()"/>
+                                    <!--/*@thymesVar id="filePreview" type="java.lang.String"*/-->
+                                    <br/>
+                                    <div id="message"></div>
+                                    <img id="prevImage" th:src="${individualNoteForm.messageType==T(ora.leadlife.co.jp.config.FileType).PICTURE.name()} ? ${#uploadedImage.build(filePreview)}: '' " width="1040"/>
+                                    <video id="prevVideo" width="0" height="0" th:src="${individualNoteForm.messageType==T(ora.leadlife.co.jp.config.FileType).MOVIE.name()} ? ${#uploadedImage.build(filePreview)}: '' " type="video/*"></video>
+                                    <ul th:each="error : ${#fields.errors('individualNoteAttachment')}" class="error">
+                                        <li th:text="${error}"></li>
+                                    </ul>
+                                </div>
+                                <div th:case="false">
+                                    <a th:href="@{'/others/merit'}">
+                                        <img class="select_file" height="147" width="1040"
+                                             src="assets/images/button/button_select_file.jpg"
+                                             th:src="@{/images/button/button_select_file.jpg}"/>
+                                        <input style="display: none" type="file" class="form-control" name="file"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="comment_box">
+                            <textarea placeholder="コメントxが入ります。コメントが入ります。" th:field="*{individualNoteContents}"></textarea>
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <div class="delete" th:if="*{individualId}" style="float:right">
+                            <a th:href="@{'~/individualNote/delete/'}+*{individualId}">
+                                <img height="147" width="495"
+                                     src="assets/images/button/btn_delete.png"
+                                     th:src="@{/images/button/btn_delete.png}"/>
+                            </a>
+                            <br/>
+                        </div>
+                    </div>
+
+                        <!--<div class="filming">-->
+                            <!--<a href="#">-->
+                                <!--<img height="147" width="495"-->
+                                     <!--src="assets/images/button/button_filming.jpg"-->
+                                     <!--th:src="@{/images/button/button_filming.jpg}"/>-->
+                            <!--</a>-->
+                        <!--</div>-->
+
+
+                    <div class="btn">
+                        <button type="submit" name="action" value="back">
+                            <img height="147" width="1040"
+                                 src="./assets/images/button/btn_back2.png"
+                                 th:src="@{/images/button/btn_back2.png}"/>
+                        </button>
+                    </div>
+                <br/>
+                    <div class="btn">
+                        <button type="submit" name="action" value="confirm">
+                            <img height="147" width="1040"
+                                 src="assets/images/button/btn_decision.png"
+                                 th:src="@{/images/button/btn_decision.png}"/>
+                        </button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "お墓や葬儀 2.葬儀について", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#funeral_about
+				.page_label
+					h2 お墓や葬儀
+				.fueral
+					h2 2.葬儀について
+					h3 葬儀に呼ぶ人リスト
+					.input__container
+						.input__box
+							.title 氏名
+							input type="text"
+						//氏名
+						.input__box
+							.title 郵便番号
+							input.date type="text"
+							span.date -
+							input.date type="text"
+						//郵便番号
+						.input__box
+							.title 住所
+							input type="text"
+						//住所
+						.input__box
+							.title 電話番号
+							input type="text"
+						//電話番号
+						.input__box
+							a.btn href="#"
+								img src="./assets/images/button/btn_add_contact.jpg" width="100%" alt="端末の連絡先から選ぶ"
+						a.add_list href="#" リストを追加
+					h3 葬儀の内容
+					.input__container
+						.input__box
+							.title 準備の有無（予約はしてあるか）
+							input#setup__notice.radio type="radio" name="setup_notice" 
+							label.radio for="setup__notice" 有り
+							input#setup__notice2.radio type="radio" name="setup_notice" 
+							label.radio for="setup__notice2" 無し
+						//準備の有無
+						.input__box
+							.title 葬儀代
+							input.price type="text"
+							span.price 円
+						//葬儀代
+						.input__box
+							.title 予約してある葬儀会社の名称
+							input type="text"
+						//予約してある葬儀会社の名称
+						.input__box
+							.title 連絡先
+							input type="text"
+						//連絡先
+						.input__box
+							.title 宗派
+							input type="text"
+						//宗派
+						.input__box
+							.title 希望する葬儀の具体的内容
+							textarea
+						//希望する葬儀の具体的内容
+
+
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

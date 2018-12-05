@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+  <head>
+    <title>エンディングノート</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+  </head>
+  <body>
+  <div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+  </div>
+
+  <div layout:fragment="main">
+      <div id="endingnote_index_about_me">
+        <div class="inner cf">
+          <ul>
+            <li>
+              <a href="endingnote_about_property.html"><img height="476" src="./assets/images/button/button_about_me.jpg" width="554"
+                                                            th:src="@{/images/button/button_about_me.jpg}"/></a>
+            </li>
+            <li>
+              <img height="476" src="./assets/images/button/button_grave_off.jpg" width="554"
+                   th:src="@{/images/button/button_grave_off.jpg}"/>
+            </li>
+            <li>
+              <img height="476" src="./assets/images/button/button_member_service_off.jpg" width="554"
+                   th:src="@{/images/button/button_member_service_off.jpg}"/>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <img height="476" src="./assets/images/button/button_about_prpperty_off.jpg" width="554"
+                   th:src="@{/images/button/button_about_prpperty_off.jpg}"/>
+            </li>
+            <li>
+              <img height="476" src="./assets/images/button/button_testament_off.jpg" width="554"
+                   th:src="@{/images/button/button_testament_off.jpg}"/>
+            </li>
+            <li>
+              <img height="476" src="./assets/images/button/button_others_off.jpg" width="554"
+                   th:src="@{/images/button/button_others_off.jpg}"/>
+            </li>
+          </ul>
+          <div class="attention">
+            <p>
+              ※承認者にこちらの情報が共有されますので、ご注意ください。
+            </p>
+          </div>
+          <div id="bnr_paying_merit">
+            <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png" width="1040"
+                                             th:src="@{/images/common/banner.png}"/></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

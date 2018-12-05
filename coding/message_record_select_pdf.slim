@@ -1,0 +1,40 @@
+doctype html
+html lang="ja"
+	- $pageNo = "orange01";
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "【一周忌】 愛する家族へ", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_orange_header.slim').render
+		#container
+			#message_record_select_pdf
+				.inner						
+					.input
+						select name="form_select" size="10" style="disply:none"
+							option value="date001" pdfデータ1
+							option value="date002" pdfデータ1
+							option value="date003" pdfデータ1
+							option value="date004" pdfデータ1
+							option value="date005" pdfデータ1
+							option value="date006" pdfデータ1
+							option value="date007" pdfデータ1
+							option value="date008" pdfデータ1
+							option value="date009" pdfデータ1
+							option value="date010" pdfデータ1
+
+					.btn.cf
+						.back
+							a href="#"
+								img src="./assets/images/button/button_select.jpg" width="495" height="147"
+						.check
+							a href="#"
+								img src="./assets/images/button/button_check.jpg" width="495" height="147"
+					
+					== Slim::Template.new('./templates/_banner.slim').render
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render
+		script src="./assets/js/safarimobile-multiline-select.min.js"
+		javascript:
+			$().ready(function () {
+				$("select").fixForSafariMobile(true);
+			})

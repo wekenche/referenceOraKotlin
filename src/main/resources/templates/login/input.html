@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>ログイン画面</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="ログイン" src="./assets/images/header/header_login.png" width="712"
+       th:src="@{/images/header/header_login.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="account_login">
+    <form action="/login" method="post" name="loginForm">
+      <div class="inner cf">
+        <div class="input">
+          <div class="mail_input">
+            <span>メールアドレス</span>
+            <div class="inputWithIcon">
+              <input placeholder="PC・携帯どちらでも可" type="text" name="email" id="email"/>
+            </div>
+            <span>パスワード</span>
+            <div class="inputWithIcon">
+              <input id="password" type="password" name="password"/>
+            </div>
+            <div class="pswd_show">
+              <input id="check" type="checkbox"/><label for="check">パスワードを表示</label>
+              <ul class="error">
+                <!--/*@thymesVar id="isValid" type="java.lang.String"*/-->
+                <li th:text="${isValid}"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="btn">
+          <button type="submit"><img height="147" src="./assets/images/button/button_login.jpg" width="1040"
+                                     th:src="@{/images/button/button_login.jpg}"/>
+          </button>
+          <div class="pswd">
+            <a href="/passwordReminder">パスワードをお忘れの場合</a>
+          </div>
+        </div>
+          <div class="btn_download_box">
+              <div class="inner_btn cf">
+                  <a href="#"><img height="166" src="./assets/images/button/btn_app_store_badge.png" width="454"
+                                   th:src="@{/images/button/btn_app_store_badge.png}"/></a>
+                  <a href="https://play.google.com/store/apps?hl=ja"><img height="168" src="./assets/images/button/btn_google_play_badge.png" width="564" th:src="@{/images/button/btn_google_play_badge.png}"/></a>
+              </div>
+              <p>
+                  appstore 審査中
+              </p>
+          </div>
+          <div class="how_to_add">
+              <h3>
+                  ホーム画面への追加方法（safari）
+              </h3>
+              <ul>
+                  <li>
+                      ・iPhoneの画面下部（iPadの場合は画面上部）メニューから<span><img src="./assets/images/icon/icon_add_safari.png" width="75" th:src="@{/images/icon/icon_add_safari.png}" height="74"/></span>を選択
+                  </li>
+                  <li>
+                      ・「ホーム画面に追加」を選択
+                  </li>
+                  <li>
+                      ・右上の「追加」を選択する
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </form>
+  </div>
+
+  <div layout:fragment="otherScript">
+    <script type="text/javascript">
+        //<![CDATA[
+        var custom_event;
+
+        // 外部サイト側で必要な処理を全て終えたときにcustom_eventにオブジェクトを返す関数を放り込む。
+        // このオブジェクトの内容をTitaniumで受け取れることになる。
+        custom_event = function () {
+            return '{"email": "' + $('#email').val().trim(' ') + '","password": "' + $('#password').val() + '"}';
+        };
+        //]]>
+    </script>
+  </div>
+</div>
+</body>
+</html>

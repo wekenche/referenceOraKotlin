@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body class="drawer drawer--left">
+<div id="container">
+    <div layout:fragment="headerImage">
+        <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+             th:src="@{/images/header/header_endingnote.png}"/>
+    </div>
+    <div layout:fragment="main">
+        <div id="property_about_guaranteeObligations">
+            <div class="page_label">
+                <h2>
+                    資産について
+                </h2>
+            </div>
+            <div class="about_guaranteeObligations">
+                <h2>
+                    12.保証債務
+                </h2>
+                <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                <!--/*@thymesVar id="assuranceForm" type="ora.leadlife.co.jp.form.AssuranceDebtForm"*/-->
+                <form th:action="@{/assuranceDebt/confirm}" th:object="${assuranceForm}" th:method="post">
+                    <div class="input__container">
+                        <div id="formList" th:switch="${#lists.isEmpty(assuranceForm.assuranceDebtWrapper)}">
+                            <div th:case="true" class="formColumn">
+                                <div class="input__box input_date">
+                                    <div class="title">
+                                        保証した日
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <input class="nameYear" type="text" th:name="assuranceDebtWrapper[0].year"/>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                年
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <input class="nameMonth" type="text" th:name="assuranceDebtWrapper[0].month"/>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                月
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <input class="nameDay" type="text" th:name="assuranceDebtWrapper[0].day"/>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                日
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        保証した金額
+                                    </div>
+                                    <input class="namePrice" th:name="assuranceDebtWrapper[0].assurancePrice"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        主債務者（保証した人）
+                                    </div>
+                                    <input class="nameTarget" th:name="assuranceDebtWrapper[0].assuranceTarget"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        主債務者の連絡先
+                                    </div>
+                                    <input class="nameAssuranceContactAddress"
+                                           th:name="assuranceDebtWrapper[0].assuranceTargetContactAddress"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        債権者の氏名・名称
+                                    </div>
+                                    <input class="nameCreditor" th:name="assuranceDebtWrapper[0].creditor"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        債権者の連絡先
+                                    </div>
+                                    <input class="nameCreditorContractAddress"
+                                           th:name="assuranceDebtWrapper[0].creditorContractAddress"/>
+                                </div>
+                                <div class="button_box del_box">
+
+                                </div>
+                                <br/><br/><br/>
+                                <hr/>
+                            </div>
+                            <div th:case="false" class="formColumn">
+                                <div th:each="certificate,is:${assuranceForm.assuranceDebtWrapper}">
+                                    <div class="input__box input_date">
+                                        <div class="title">
+                                            保証した日
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <input class="nameYear" type="text"
+                                                       th:attr="name='assuranceDebtWrapper['+${is.index}+'].year'"
+                                                       th:value="${certificate.assuranceDate!=null} ? ${#dates.format(certificate.assuranceDate,'yyyy')}:''"/>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    年
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <input class="nameMonth" type="text"
+                                                       th:attr="name='assuranceDebtWrapper['+${is.index}+'].month'"
+                                                       th:value="${certificate.assuranceDate!=null} ? ${#dates.format(certificate.assuranceDate,'MM')}:''"/>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    月
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <input class="nameDay" type="text"
+                                                       th:attr="name='assuranceDebtWrapper['+${is.index}+'].day'"
+                                                       th:value="${certificate.assuranceDate!=null} ? ${#dates.format(certificate.assuranceDate,'dd')}:''"/>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    日
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            保証した金額
+                                        </div>
+                                        <input class="namePrice"
+                                               th:attr="name='assuranceDebtWrapper['+${is.index}+'].assurancePrice'"
+                                               th:value="${certificate.assurancePrice}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            主債務者（保証した人）
+                                        </div>
+                                        <input class="nameTarget"
+                                               th:attr="name='assuranceDebtWrapper['+${is.index}+'].assuranceTarget'"
+                                               th:value="${certificate.assuranceTarget}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            主債務者の連絡先
+                                        </div>
+                                        <input class="nameAssuranceContactAddress"
+                                               th:attr="name='assuranceDebtWrapper['+${is.index}+'].assuranceTargetContactAddress'"
+                                               th:value="${certificate.assuranceTargetContactAddress}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            債権者の氏名・名称
+                                        </div>
+                                        <input class="nameCreditor"
+                                               th:attr="name='assuranceDebtWrapper['+${is.index}+'].creditor'"
+                                               th:value="${certificate.creditor}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            債権者の連絡先
+                                        </div>
+                                        <input class="nameCreditorContractAddress"
+                                               th:attr="name='assuranceDebtWrapper['+${is.index}+'].creditorContractAddress'"
+                                               th:value="${certificate.creditorContractAddress}"/>
+                                    </div>
+                                    <div class="button_box del_box" th:if="${aboutMeViewFlag==0}">
+                                        <a th:if="${#lists.size(assuranceForm.assuranceDebtWrapper) > 1}"
+                                           href="javascript:;"
+                                           class="delete_list right"><img height="131"
+                                                                          th:src="@{/images/button/btn_del_column.jpg}"
+                                                                          width="857"/></a>
+                                    </div>
+                                    <br/><br/><br/>
+                                    <hr/>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" href="javascript:;" class="add_list">リストを追加</a>
+                    </div>
+                    <div class="button_box">
+                        <button th:if="${aboutMeViewFlag==0}" type="submit"><img height="147" th:src="@{/images/button/button_save.jpg}"/></button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    /*<![CDATA[*/
+    $(document).on("click", ".add_list", function () {
+        var childIndex = $('.namePrice').length;
+        var newChild = '<div class="formColumn"> <div class="input__box">' +
+            '<div class="input__box input_date"> ' +
+            '<div class="title"> 保証した日 </div> ' +
+            '<ul>' +
+            '<li>' +
+            '<input class="nameYear" type="text" name="assuranceDebtWrapper[' + childIndex + '].year"/>' +
+            '</li>' +
+            '<li>' +
+            ' <p> 年 </p>' +
+            '</li>' +
+            '<li>' +
+            '<input class="nameMonth" type="text" name="assuranceDebtWrapper[' + childIndex + '].month"/>' +
+            '</li>' +
+            '<li>' +
+            '<p> 月 </p>' +
+            '</li>' +
+            '<li>' +
+            '<input class="nameDay" type="text" name="assuranceDebtWrapper[' + childIndex + '].day"/>' +
+            '</li>' +
+            '<li>' +
+            '<p> 日 </p>' +
+            '</li>' +
+            '</ul>' +
+            '</div>' +
+            '<div class="title">保証した金額</div>' +
+            '  <input class="namePrice" type="text" name="assuranceDebtWrapper[' + childIndex + '].assurancePrice"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title"> 主債務者（保証した人）</div>' +
+            '   <input class="nameTarget" type="text" name="assuranceDebtWrapper[' + childIndex + '].assuranceTarget"/>' +
+            '  </div>' +
+            '<div class="input__box">' +
+            '   <div class="title">主債務者の連絡先</div>' +
+            '   <input class="nameAssuranceContactAddress" type="text" name="assuranceDebtWrapper[' + childIndex + '].assuranceTargetContactAddress"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title"> 債権者の氏名・名称</div>' +
+            '   <input class="nameCreditor" type="text" name="assuranceDebtWrapper[' + childIndex + '].creditor"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">  債権者の連絡先</div>' +
+            '   <input class="nameCreditorContractAddress" type="text" name="assuranceDebtWrapper[' + childIndex + '].creditorContractAddress"/>' +
+            '</div>'+
+            ' <div class="button_box del_box"><a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '         <br /><br /><br />\n' +
+            '         <hr /></div></div>';
+
+
+        if ($(".del_box").length == 1) {
+            $(".del_box:first").append('<a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#formList").append(newChild);
+    })
+    ;
+    $(document).on("click", ".delete_list", function () {
+        $(this).parent('div').parent('div').remove();
+        if ($(".del_box").length == 1) {
+            $(".del_box:first").empty();
+        }
+
+        function updateName(className, fieldName) {
+            $(className).each(function (index) {
+                $(this).attr("name", "assuranceDebtWrapper[" + index + "]." + fieldName);
+            });
+        }
+
+        updateName('.nameYear', 'year');
+        updateName('.nameMonth', 'month');
+        updateName('.nameDay', 'day');
+        updateName('.namePrice', 'assurancePrice');
+        updateName('.nameTarget', 'assuranceTarget');
+        updateName('.nameAssuranceContactAddress', 'assuranceTargetContactAddress');
+        updateName('.nameCreditor', 'creditor');
+        updateName('.nameCreditorContractAddress', 'creditorContractAddress');
+    });
+
+    /*]]>*/
+</script>

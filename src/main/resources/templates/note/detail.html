@@ -1,0 +1,52 @@
+<!--endingnote_about_property.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="endingnote_about_property">
+            <div class="page_label">
+                財産について
+            </div>
+            <div class="inner cf">
+                <article>
+                    <div class="article_title">
+                        <span class="data">2017年8月4日</span>
+                        <h2 class="title">
+                            ■■■へ
+                        </h2>
+                    </div>
+                    <div class="article_content">
+                        <p>
+                            ○○銀行と××銀行にそれぞれ△△万円あります。<br/>
+                            そのお金は長男と次男で折半しなさい。<br/>
+                            あと、実はあなたたちのために名古屋の不動産を用意してあります。<br/>
+                            住所は・・・・・・・・・・・・・・・・
+                        </p>
+                    </div>
+                </article>
+                <div class="btn">
+                    <a href="#"><img height="147" src="./assets/images/button/btn_delete.png" width="495"
+                                     th:src="@{/images/button/btn_delete.png}"/></a>
+                    <a href="#"><img height="147" src="./assets/images/button/btn_edit.png" width="495"
+                                     th:src="@{/images/button/btn_edit.png}"/></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+doctype html
+html lang="ja"
+	- $pageNo = 8;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "承認アカウント一覧", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#sharedaccaunt_list
+				.inner
+					ul.accaunt_list
+						li
+							a href="notification_fingerprint_registration.html"
+								.wrapper_list.cf
+									figure
+										img src="assets/images/icon/icon_account_on.png" width="213" height="213"
+									p
+										|
+											Aさん
+										br
+										|
+											(承認済み)
+							.close_mark
+								img src="assets/images/close_mark.png" width="69" height="69"
+						li
+							a href="notification_fingerprint_registration.html"
+								.wrapper_list.cf
+									figure
+										img src="assets/images/icon/icon_account_on.png" width="213" height="213"
+									p 
+										|
+											Bさん
+										br
+										|
+											(承認済み)
+							.close_mark
+								img src="assets/images/close_mark.png" width="69" height="69"
+						li.unapproved
+							a href="notification_fingerprint_registration.html"
+								.wrapper_list.cf
+									figure
+										img src="assets/images/icon/icon_account_off.png" width="213" height="213"
+									p 
+										|
+											Cさん
+										br
+										|
+											(未承認)
+							.close_mark
+								img src="assets/images/close_mark.png" width="69" height="69"
+						li.unapproved
+							a href="notification_fingerprint_registration.html"
+								.wrapper_list.cf
+									figure
+										img src="assets/images/icon/icon_account_off.png" width="213" height="213"
+									p 
+										|
+											Dさん
+										br
+										|
+											(未承認)
+							.close_mark
+								img src="assets/images/close_mark.png" width="69" height="69"
+					.user_add
+						.title アカウントの追加
+					.category_add
+						.label メールアドレス
+						input	type="text" placeholder="メールアドレス"
+					.btn.add_delete.cf
+						a href="#"
+							img src="./assets/images/button/button_add_account2.png" width="495" height="147"
+						a href="#"
+							img src="./assets/images/button/btn_delete.png" width="495" height="147"
+					.btn.decision
+						a href="accout_deactivation_procedure_confirm.html"
+							img src="./assets/images/button/btn_decision.png" width="1060" height="147" alt="決定する"
+					
+					== Slim::Template.new('./templates/_banner.slim').render
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

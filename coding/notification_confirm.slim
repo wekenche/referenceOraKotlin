@@ -1,0 +1,37 @@
+doctype html
+html lang="ja"
+	- $pageNo =22;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "死亡確認通知", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#notification_confirm
+				.inner
+					.notice
+						p
+							|
+								Aさんよりアカウント3さんが<br />
+								亡くなったことを確認する<br />
+								通知がありました。
+						p
+							|
+								アカウント3さんが<br />
+								下記の日付に亡くなったことに<br />
+								間違いはありませんか？
+						.bg_balloon
+							img src="assets/images/bg/balloon_bottom.png" width="111" height="57"
+					.data
+						input type="text" placeholder="亡くなった日付"
+					.btn.cf
+						.approve
+							a href="notification_finish.html"
+								img src="./assets/images/button/btn_yes.png" width="495" height="147" alt="はい"
+						.unapprove
+							a href="notification_settings.html"
+								img src="./assets/images/button/btn_no.png" width="495" height="147" alt="いいえ"
+
+					
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

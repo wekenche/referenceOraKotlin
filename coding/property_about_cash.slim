@@ -1,0 +1,37 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "資産について 7.現金(預貯金以外) エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_cash
+				.page_label
+					h2 資産について
+				.about_cash
+					h2 7.現金(預貯金以外)
+					.input__container
+						.input__box.input_money
+							.title 金額
+							input.money type="text"
+							span 円
+						//金額
+						.input__box
+							.title 保管場所
+							textarea
+						//保管場所
+						.input__box
+							.title 備考
+							textarea
+						//備考
+						a.add_list href="#" リストを追加
+
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

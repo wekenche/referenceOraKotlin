@@ -1,0 +1,63 @@
+<!--ending-yuigon4.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="ending-yuigon4">
+            <div class="page_label">
+                <h2>
+                    お薬のこと
+                </h2>
+            </div>
+            <div class="inner">
+                <div class="text_box">
+                    <img class="button_drug" height="147" src="./assets/images/button/input_text.jpg"
+                         width="1041"
+                         th:src="@{/images/button/input_text.jpg}"/>
+                         <textarea class="input_text" placeholder="本文"></textarea>
+                </div>
+                <div class="payingmember">
+                    <img class="button_drug" height="147" src="./assets/images/button/button_images.jpg"
+                         width="1040"
+                         th:src="@{/images/button/button_images.jpg}"/>
+                    <img class="button_drug" height="147" src="./assets/images/button/button_moving.jpg"
+                         width="1040"
+                         th:src="@{/images/button/button_moving.jpg}"/>
+                    <p>
+                        ※有料会員になるとこんなことができます。
+                    </p>
+                </div>
+                <div class="button_box cf">
+                    <div class="left">
+                        <a href="#"><img height="147" src="./assets/images/button/button_decision.jpg"
+                                         width="495"
+                                         th:src="@{/images/button/button_decision.jpg}"/></a>
+                    </div>
+                    <div class="right">
+                        <a href="#"><img height="147" src="./assets/images/button/button_edit.jpg"
+                                         width="495"
+                                         th:src="@{/images/button/button_edit.jpg}"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

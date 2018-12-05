@@ -1,0 +1,42 @@
+doctype html
+html lang="ja"
+	- $pageNo = 17;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "コラム", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#consultation_column
+				ul#fb-list
+
+
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render
+		javascript:
+			/*2.9 update: 06/13/2017*/
+			$.ajax({
+					type: 'GET',
+					url: 'https://graph.facebook.com/v2.9/1044842715570705/feed?fields=id,message,name,picture,likes,shares,comments&access_token=839034352957394|1ca546d859c0603ae263e85f1accb3c6',
+					dataType: 'json',
+					success: function(json) {
+						var COUNT = 5;
+						for (var i=0; i<=(COUNT-1); i++) {
+							var obj = json.data[i];
+			        var name = obj.name;
+			        var msg = obj.message;
+			        var pic = obj.picture;
+			        // var time = obj.created_time.replace(/[A-Z].*0/g,'').replace(/-/g,'/');
+							$('#fb-list').append('<li>'+name+'</li><li><span><img src="'+pic+'"></span>'+msg+'</li>');
+			        
+						}
+					},
+					error: function() {
+			      //error func
+			      $('#fb-list').append('<li>Facebookのデータが取得できませんでした。<\/li>');
+					}
+				}).done(function(){
+			      $('#fb-list').each(function () {
+			            $(this).html($(this).html().replace(/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a href="$1" target="_blank">チェック</a> '));
+			      });
+			});

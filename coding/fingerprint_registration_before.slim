@@ -1,0 +1,28 @@
+doctype html
+html lang="ja"
+	- $pageNo = 3;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "始める前に", :description => "サイト説明が入ります", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#fingerprint_registration_before
+	  		.page_label 始める前に
+	  		.inner.cf
+	  			ul
+	  				li
+	  					|
+	  						・指とセンサーを拭いて<br />　センサーに触れてください
+	  				li
+	  					|
+	  						・携帯によってセンサーの<br />　位置が異なります
+	  			figure
+	  				img src="./assets/images/finger/finger_fingure.png" width="1096" height="922"
+	  			.btn
+	  				a href="fingerprint_registration_start.html"
+	  					img src="./assets/images/button/btn_next.png" width="495" height="147"
+	  			
+
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

@@ -1,0 +1,180 @@
+<!--account_input_credit.html -->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="" src="./assets/images/header/header_paying_membersunt.png" width="754"
+       th:src="@{/images/header/header_account_input.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="container">
+    <div id="account_input_credit">
+      <div class="page_label">
+        クレジットカード情報を入力
+      </div>
+      <div class="inner cf">
+        <div class="alert" style="display: none" id="alert">
+          <h2>
+            エラー
+          </h2>
+          <ul>
+            <li>入力情報が不正です。</li>
+            <li>入力された情報に誤りがないかご確認ください。</li>
+            <li>システムコード : <!--/*@thymesVar id="error" type="java.lang.String"*/-->
+              <span id="code" th:text="${error}"></span></li>
+          </ul>
+        </div>
+        <h2 class="title">
+          クレジットカード情報を入力
+        </h2>
+        <!--/*@thymesVar id="paidRegistrationForm" type="ora.leadlife.co.jp.form.PaidRegistrationForm"*/-->
+        <form th:action="@{/paidRegistration/confirm}" method="post" th:object="${paidRegistrationForm}" id="form">
+          <div class="credit_info_box">
+            <div class="input_box input_num">
+              <h3>
+                カード番号
+              </h3>
+              <p class="note">
+                【例】1234-5678-9012-3456<br/>
+                1234-567890-12345<br/>カード表記どおりにご入力ください
+              </p>
+              <ul class="num_list cf">
+                <li>
+                  <input type="text" id="card_number1"/>
+                </li>
+                <li>
+                  <p>
+                    -
+                  </p>
+                </li>
+                <li>
+                  <input type="text" id="card_number2"/>
+                </li>
+                <li>
+                  <p>
+                    -
+                  </p>
+                </li>
+                <li>
+                  <input type="text" id="card_number3"/>
+                </li>
+                <li>
+                  <p>
+                    -
+                  </p>
+                </li>
+                <li>
+                  <input type="text" id="card_number4"/>
+                </li>
+              </ul>
+            </div>
+            <div class="input_box input_num">
+              <h3>
+                有効期限
+              </h3>
+              <p class="note">
+                【例】2030年4月の場合、30年04月と入力してください
+              </p>
+              <ul class="date_list cf">
+                <li>
+                  <input type="text" id="year"/>
+                </li>
+                <li>
+                  <p>
+                    年
+                  </p>
+                </li>
+                <li>
+                  <input type="text" id="month"/>
+                </li>
+                <li>
+                  <p>
+                    月
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="input_box">
+              <h3>
+                名義人
+              </h3>
+              <input type="text" id="name"/>
+            </div>
+            <div class="input_box input_num">
+              <h3>
+                セキュリティコード
+              </h3>
+              <input type="text" id="security_code"/>
+              <input type="hidden" th:field="*{token}"/>
+              <input type="hidden" th:field="*{amount}"/>
+            </div>
+
+            <div class="btn">
+              <button type="button" onclick="getToken()"><img height="147"
+                                                              src="./assets/images/button/button_next.jpg"
+                                                              width="1064"
+                                                              th:src="@{/images/button/button_next.jpg}"/>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div layout:fragment="otherScript">
+  <script type="text/javascript">
+      function getToken() {
+          var data = {};
+          data.token_api_key = '87d24051-ec70-4768-8f49-fe76c4986c9f';
+          data.card_number = $('#card_number1').val() + $('#card_number2').val() + $('#card_number3').val() + $('#card_number4').val();
+          data.card_expire = $('#month').val() + "/" + $('#year').val();
+          data.security_code = $('#security_code').val();
+          data.lang = "ja";
+
+          $.ajax('https://api.veritrans.co.jp/4gtoken',
+              {
+                  type: 'post',
+                  dataType: 'json',
+                  data: JSON.stringify(data),
+                  contentType: 'application/json'
+              }
+          )
+              .done(function (data) {
+                  if (data.status == "success") {
+                      $('#token').val(data.token);
+                      $('#form').submit();
+                      return true;
+                  } else {
+                      $('#alert').show();
+                      $('#code').val(data.code);
+                      return false;
+                  }
+              })
+              .error(function (data) {
+                  $('#alert').show();
+                  $('#code').text(data.responseJSON.code);
+                  return false;
+              });
+      }
+
+
+      $(function () {
+          if ($('#code').text() != "") {
+              $('#alert').show()
+          }
+      });
+
+  </script>
+</div>
+</body>
+</html>

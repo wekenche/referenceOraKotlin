@@ -1,0 +1,80 @@
+<!--ending-yuigon3.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+       th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="container">
+    <div id="ending-yuigon3">
+      <div class="page_label">
+        <h2>
+          私のこと
+        </h2>
+      </div>
+      <div class="inner">
+        <!--/*@thymesVar id="viewFlag" type="java.lang.Boolean"*/-->
+        <!--/*@thymesVar id="aboutMeViewAccount" type="java.lang.String"*/-->
+        <div class="button_box">
+          <!--/*@thymesVar id="individualNoteCategoryList" type="java.util.List<ora.leadlife.co.jp.model.IndividualNoteCategory>"*/-->
+          <span th:each="individualNoteCategory:${individualNoteCategoryList}"
+                th:if="${individualNoteCategory.individualNoteCategoryTemplate != null}">
+            <a
+              th:href="${viewFlag} ? @{'/individualNote/list/' + ${individualNoteCategory.id}} + '?aboutMeViewAccount=' + ${aboutMeViewAccount} : @{'/individualNote/list/' + ${individualNoteCategory.id} }">
+              <img th:src="@{${individualNoteCategory.individualNoteCategoryTemplate.bannerUrl}}" width="1118"/>
+            </a>
+          </span>
+          <span th:each="individualNoteCategory:${individualNoteCategoryList}"
+                th:if="${individualNoteCategory.individualNoteCategoryTemplate == null}">
+              <div class="menu">
+            <a class="original"
+               th:href="${viewFlag} ? @{'/individualNote/list/'} + ${individualNoteCategory.id}  + '?aboutMeViewAccount=' + ${aboutMeViewAccount}: @{'/individualNote/list/' + ${individualNoteCategory.id}}">
+              <div class="box">
+                <div class="btn_inner">
+                  <img height="181" src="./assets/images/icon/icon_add_category.png" width="181"
+                       th:src="@{/images/icon/icon_add_category.png}"/>
+                  <div id="original_category">
+                    <span th:text="${individualNoteCategory.name}"></span>
+                  </div>
+                </div>
+              </div>
+            </a><a th:href="@{'/individualNote/delete/category/'} + ${individualNoteCategory.id}" type="button"><img class="delete" height="82" src="./assets/images/icon/icon_delete.png" width="82" th:src="@{/images/icon/icon_delete.png}"/></a>
+              </div>
+          </span>
+        </div>
+        <th:block th:if="${viewFlag}">
+          <h3>
+          カテゴリーを追加
+          </h3>
+          <!--/*@thymesVar id="individualNoteCategoryForm" type="ora.leadlife.co.jp.form.IndividualNoteCategoryForm"*/-->
+          <form th:action="@{/individualNote/addCategory}" method="post" th:object="${individualNoteCategoryForm}">
+            <input placeholder="タイトル入力" type="text" th:field="*{name}" required="required"/>
+
+            <button type="submit">
+              <img class="button_add" height="111" src="./assets/images/button/button_add.jpg"
+                   width="371"
+                   th:src="@{/images/button/button_add.jpg}"/>
+            </button>
+          </form>
+        </th:block>
+          <div id="bnr_paying_merit">
+              <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                   th:src="@{/images/common/banner.png}" width="1040" /></a>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>content1</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+       th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+
+<div layout:fragment="main">
+  <!--/*@thymesVar id="lastUsedAccountId" type="java.lang.Long"*/-->
+  <form id="forApple" name="forApple">
+    <input type="hidden" name="lastUsedAccountId" th:value="${lastUsedAccountId}" id="lastUsedAccountId"/>
+  </form>
+  <div id="endingnote_index_about_me">
+    <!--/*@thymesVar id="isPremium" type="java.lang.Boolean"*/-->
+    <div class="inner cf">
+      <ul>
+        <li>
+          <a th:href="@{/individualNote/}"><img height="476" src="./assets/images/button/button_about_me.jpg"
+                                                width="554" th:src="@{/images/button/button_about_me.jpg}"/></a>
+        </li>
+        <li>
+          <a th:href="${isPremium ? '/aboutMe/funeralAboutTop' : '#'}">
+            <img height="476" src="./assets/images/button/button_grave_off.jpg" width="554"
+                 th:src="@{/images/button/button_grave{imageName}.jpg(imageName=${imageName})}"/>
+          </a>
+        </li>
+        <li>
+          <a th:href="${isPremium ? '/digital' : '#'}">
+            <img height="476" src="./assets/images/button/button_member_service_off.jpg" width="554"
+                 th:src="@{/images/button/button_member_service{imageName}.jpg(imageName=${imageName})}"/>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a th:href="${isPremium ? '/aboutMe/propertyAboutTop' : '#'}">
+            <img height="476" src="./assets/images/button/button_about_prpperty_off.jpg" width="554"
+                 th:src="@{/images/button/button_about_prpperty{imageName}.jpg(imageName=${imageName})}"/>
+          </a>
+        </li>
+        <li>
+          <a th:href="${isPremium ? '/testament/add' : '#'}">
+            <img height="476" src="./assets/images/button/button_testament_off.jpg" width="554"
+                 th:src="@{/images/button/button_testament{imageName}.jpg(imageName=${imageName})}"/>
+          </a>
+        </li>
+        <li>
+          <a th:href="${isPremium ? '/pets/input' : '#'}">
+            <img height="476" src="./assets/images/button/button_others_off.jpg" width="554"
+                 th:src="@{/images/button/button_others{imageName}.jpg(imageName=${imageName})}"/>
+          </a>
+        </li>
+      </ul>
+      <div class="attention">
+        <p>
+          ※承認者にこちらの情報が共有されますので、ご注意ください。
+        </p>
+      </div>
+        <div id="bnr_paying_merit">
+            <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                 th:src="@{/images/common/banner.png}" width="1040" /></a>
+        </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

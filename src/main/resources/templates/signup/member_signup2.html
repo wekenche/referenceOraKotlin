@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+  <head>
+    <title>無料会員登録 アカウント入力画面</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+  </head>
+  <body>
+  <div layout:fragment="headerImage">
+    <img alt="アカウント入力画面" src="./assets/images/header/header_account_input.png" width="754"
+         th:src="@{/images/header/header_account_input.png}"/>
+  </div>
+  <div layout:fragment="main">
+      <div id="member_signup">
+        <div class="inner">
+          <div class="wrapper_input">
+            <div class="input_box">
+              <h3>
+                ニックネーム
+              </h3>
+              <input placeholder="例) AYA" type="text" />
+              <div class="error">ニックネームはn文字以上で登録して下さい。</div>
+            </div>
+            <div class="input_box">
+              <h3>
+                メールアドレス
+              </h3>
+              <input placeholder="pc・携帯どちらでも可" type="text" />
+              <div class="error">メールアドレスを正しく入力して下さい。</div>
+            </div>
+            <div class="input_box">
+              <h3>
+                パスワード
+              </h3>
+              <input placeholder="半角英数８文字以上" type="password" />
+              <div class="error">パスワードはn文字以上の英数字で<br />入力して下さい。</div>
+            </div>
+            <div class="input_box">
+              <h3>
+                指紋
+              </h3>
+              <a href="fingerprint_registration_before.html">
+                <p class="finger_login">
+                  指紋を登録する
+                </p>
+              </a>
+            </div>
+            <div class="input_box">
+              <h3>
+                紹介コード（お持ちの方のみ）
+              </h3>
+              <input type="text" />
+            </div>
+            <p class="note">
+              パスワード入力か指紋認証かどちらかをお選びください。
+            </p>
+            <div class="checkbox">
+              <input id="check01" type="checkbox" />
+              <input type="hidden"/>
+              <label for="check01">パスワード入力</label>
+            </div>
+            <div class="checkbox">
+              <input type="hidden"/>
+              <input id="check02" type="checkbox" />
+              <input type="hidden"/>
+              <label for="check02">指紋認証</label>
+            </div>
+            <div class="checkbox">
+              <input id="check03" type="checkbox" />
+              <input type="hidden"/>
+              <label for="check03"><a href="#" id="open2">利用規約</a><span>に同意します</span></label>
+            </div>
+            <div class="error">指紋またはパスワードを選択して下さい。</div>
+          </div>
+          <div class="btn">
+            <a href="#"><img height="147" src="assets/images/button/btn_signup.png" width="1040"
+                             th:src="@{/images/button/btn_signup.png}"/></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

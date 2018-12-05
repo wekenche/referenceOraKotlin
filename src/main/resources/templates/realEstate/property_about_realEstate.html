@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+    <head>
+        <title>資産について 2.不動産 エンディングノート</title>
+        <meta name="keywords" content="content1"/>
+        <meta name="description" content="content1"/>
+    </head>
+    <body class="drawer drawer--left">
+    <div layout:fragment="headerImage">
+        <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+             th:src="@{/images/header/header_endingnote.png}"/>
+    </div>
+        <div  layout:fragment="main">
+            <div id="container">
+                <div id="property_about_realEstate">
+                    <div class="page_label">
+                        <h2>
+                            資産について
+                        </h2>
+                    </div>
+                    <div class="about_realEstate">
+                        <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                        <!--/*@thymesVar id="form" type="ora.leadlife.co.jp.form.RealEstateForm"*/-->
+                        <form th:action="@{/realEstate/confirm}" method="post" th:object="${form}">
+                            <h2>
+                                2.不動産
+                            </h2>
+                            <div class="input__container">
+                                <div id="formList" th:switch="${#lists.isEmpty(form.estateWrapper)}">
+                                    <div th:case="true">
+                                        <div class="input__box">
+                                            <div class="title">
+                                                住所
+                                            </div>
+                                            <input class="nameAddress" type="text" th:field="*{estateWrapper[0].address}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                地番/家屋番号
+                                            </div>
+                                            <input class="nameNumber" type="text" th:field="*{estateWrapper[0].parcelNumber}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                地目/種類・構造
+                                            </div>
+                                            <input class="nameCategory" type="text" th:field="*{estateWrapper[0].landCategory}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                持分
+                                            </div>
+                                            <input class="nameEquity" type="text" th:field="*{estateWrapper[0].equity}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                使用・管理状況等
+                                            </div>
+                                          <textarea class="nameMemo" th:field="*{estateWrapper[0].memo}"></textarea>
+                                        </div>
+                                        <div class="button_box del_box">
+
+                                        </div>
+                                        <br /><br /><br />
+                                        <hr />
+                                    </div>
+                                    <div th:case="false">
+                                        <div th:each="estate,is:${form.estateWrapper}">
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    住所
+                                                </div>
+                                                <input class="nameAddress" type="text" th:attr="name='estateWrapper['+${is.index}+'].address'" th:value="${estate.address}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    地番/家屋番号
+                                                </div>
+                                                <input class="nameNumber" type="text" th:attr="name='estateWrapper['+${is.index}+'].parcelNumber'" th:value="${estate.parcelNumber}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    地目/種類・構造
+                                                </div>
+                                                <input class="nameCategory" type="text" th:attr="name='estateWrapper['+${is.index}+'].landCategory'" th:value="${estate.landCategory}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    持分
+                                                </div>
+                                                <input class="nameEquity" type="text" th:attr="name='estateWrapper['+${is.index}+'].equity'" th:value="${estate.equity}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    使用・管理状況等
+                                                </div>
+                                                <textarea class="nameMemo" th:attr="name='estateWrapper['+${is.index}+'].memo'" th:inline="text">[[${estate.memo}]]</textarea>
+                                            </div>
+                                            <div class="button_box del_box" th:if="${aboutMeViewFlag==0}">
+                                                <a th:if="${#lists.size(form.estateWrapper) > 1}" href="javascript:;" class="delete_list right"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>
+                                            </div>
+                                            <br /><br /><br />
+                                            <hr />
+                                        </div>
+                                    </div>
+                                </div>
+                                <a th:if="${aboutMeViewFlag==0}" href="javascript:;" class="add_list">リストを追加</a>
+                            </div>
+                            <div class="button_box">
+                                <button th:if="${aboutMeViewFlag==0}" type="submit"><img height="147" width="1040" th:src="@{/images/button/button_save.jpg}" /></button>
+                            </div>
+                        </form>
+                        <div id="bnr_paying_merit">
+                            <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                                 th:src="@{/images/common/banner.png}" width="1040" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    $(document).on("click",".add_list",function () {
+        var childIndex = $('.nameAddress').length;
+        var newChild = '<div><div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            住所\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameAddress" type="text" name="estateWrapper['+childIndex+'].address"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            地番/家屋番号\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameNumber" type="text" name="estateWrapper['+childIndex+'].parcelNumber"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            地目/種類・構造\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameCategory" type="text" name="estateWrapper['+childIndex+'].landCategory"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            持分\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameEquity" type="text" name="estateWrapper['+childIndex+'].equity"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            使用・管理状況等\n' +
+            '                                        </div>\n' +
+            '                                      <textarea class="nameMemo" name="estateWrapper['+childIndex+'].memo"></textarea>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="button_box del_box"><a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '                                            <br /><br /><br />\n' +
+            '                                            <hr /></div>';
+        if($(".del_box").length == 1) {
+            $(".del_box:first").append('<a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#formList").append(newChild);
+    });
+    $(document).on("click", ".delete_list" ,function () {
+        $(this).parent('div').parent('div').remove();
+        if($(".del_box").length == 1) {
+            $(".del_box:first").empty();
+        }
+        function updateName(className , fieldName) {
+            $(className).each(function(index) {
+                $(this).attr("name","estateWrapper["+index+"]."+fieldName);
+            });
+        }
+        updateName('.nameAddress','address');
+        updateName('.nameNumber','parcelNumber');
+        updateName('.nameCategory','landCategory');
+        updateName('.nameEquity','equity');
+        updateName('.nameMemo','memo');
+    });
+</script>

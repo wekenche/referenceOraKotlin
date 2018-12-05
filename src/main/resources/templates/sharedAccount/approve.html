@@ -1,0 +1,58 @@
+<!-- sharedaccaunt_approve.html -->
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="被共有アカウント管理" src="./assets/images/header/header_account_list.png" width="754"
+       th:src="@{/images/header/header_account_list.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="container">
+    <div id="sharedaccaunt_approve">
+      <div class="inner">
+        <div class="notice">
+          <p>
+            <!--/*@thymesVar id="bereave" type="ora.leadlife.co.jp.model.Bereave"*/-->
+            <span th:text="${bereave.account.user.name}"></span> さんより<br/>
+            <span th:text="${bereave.account.user.name}"></span>さんの<br/>エンディングノートを<br/>閲覧していただきたいと<br/>指定がありました。
+          </p>
+          <p>
+            承認しますか？
+          </p>
+          <div class="bg_balloon">
+            <img height="57" src="assets/images/bg/balloon_bottom.png" width="111"
+                 th:src="@{/images/bg/balloon_bottom.png}"/>
+          </div>
+        </div>
+        <div class="btn cf">
+          <div class="approve">
+            <!--/*@thymesVar id="approveForm" type="ora.leadlife.co.jp.form.ApproveForm"*/-->
+            <form th:action="@{/sharedAccount/approve}" method="post" th:object="${approveForm}">
+              <input type="hidden" th:name="id" th:value="${approveForm.id}"/>
+              <button type="submit"><img height="147" src="./assets/images/button/button_approve.jpg"
+                                         width="495" th:src="@{/images/button/button_approve.jpg}"/></button>
+            </form>
+          </div>
+          <div class="unapprove">
+            <a onclick="confirmDialog('show_dialog','キャンセルをしても宜しいでしょうか。','/')"><img height="147"
+                                                                                    src="./assets/images/button/button_unapprove.jpg"
+                                                                                    th:src="@{/images/button/button_unapprove.jpg}"
+                                                                                    width="495"/></a>
+          </div>
+          <div id="show_dialog" title="ダイアログのタイトル"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

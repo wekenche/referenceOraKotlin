@@ -1,0 +1,139 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "お薬のこと エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#ending-yuigon4
+				.page_label
+					h2 お薬のこと
+				.inner
+					//.text_box
+						img.button_drug src="./assets/images/button/input_text.jpg" width="1041" height="147"
+						textarea.input_text placeholder="本文"
+					.payingmember
+						.button_drug 
+							a href="#"
+								img src="./assets/images/button/button_images_on.jpg" width="1040" height="147"
+							p.summary ※画像をタップすると削除できます。
+						.button_drug
+							a href="#"
+								img src="./assets/images/button/button_moving_on.jpg" width="1040" height="147"
+							p.summary ※動画をタップすると削除できます。
+
+				.about_helth
+					h2 1.健康等について
+					.input__container
+						.input__box
+							.title アレルギー
+							textarea
+						//アレルギー
+						.input__box
+							.title 血液
+							input.blood type="text"
+						//血液
+						.input__box
+							.title 病歴・持病
+							textarea
+						//病歴・持病
+						.input__box
+							.inner__container
+								h3 服用中のお薬（お薬手帳）
+								.inner__box
+									.title 薬の商品名
+									input type="text"
+								//薬の商品名
+								.inner__box
+									.title 処方した日
+									.date
+										input type="text"
+										span 年
+										input type="text"
+										span 月
+										input type="text"
+										span 日
+								//処方した日
+								.inner__box
+									.title 処方病院
+									input type="text"
+								//処方病院
+								.inner__box
+									.title 医師名
+									input type="text"
+								//医師名
+								.inner__box
+									.title 薬の量
+									input type="text"
+								//薬の量
+								.inner__box
+									.title 薬の飲み方と回数
+									textarea
+								//薬の飲み方と回数
+								.inner__box
+									.title 処方日数
+									input type="text"
+								//処方日数
+								.btn
+									a#add__column	href="#"
+										img src="./assets/images/button/btn_add_column.jpg" width="857" height="131"
+								.btn.delete
+									a#delete__column	href="#"
+										img src="./assets/images/button/btn_del_column.jpg" width="857" height="131"
+						//服用中のお薬（お薬手帳）
+						.input__box
+							.title アレルギーのある薬
+							textarea
+						//アレルギーのある薬
+						.input__box
+							.title かかりつけの病院
+							textarea
+						//かかりつけの病院
+						.input__box
+							.title 重大な病気の告知をして欲しいか否か
+							input#sick__notice.radio type="radio" name="sick_notice" 
+							label.radio for="sick__notice" 希望する
+							input#sick__notice2.radio type="radio" name="sick_notice" 
+							label.radio for="sick__notice2" 希望しない
+						//重大な病気の告知をして欲しいか否か
+						.input__box
+							.title 延命治療を希望するかどうか
+							input#longevity__notice.radio type="radio" name="longevity_notice" 
+							label.radio for="longevity__notice" 希望する
+							input#longevity__notice2.radio type="radio" name="longevity_notice" 
+							label.radio for="longevity__notice2" 希望しない
+						//延命治療を希望するかどうか
+						h3.sub 臓器提供
+						.input__box
+							.title 臓器提供を希望するか
+							input#organ_donation__notice.radio type="radio" name="organ_donation_notice" 
+							label.radio for="organ_donation__notice" 希望する
+							input#organ_donation__notice2.radio type="radio" name="organ_donation_notice" 
+							label.radio for="organ_donation__notice2" 希望しない
+						//臓器提供を希望するか
+						.input__box
+							.title ドナーカードの有無
+							input#donor__notice.radio type="radio" name="donor_notice" 
+							label.radio for="donor__notice" 有り
+							input#donor__notice2.radio type="radio" name="donor_notice" 
+							label.radio for="donor__notice2" 無し
+						//延命治療を希望するかどうか
+						.input__box
+							.have__case 【ドナーカードを持っている場合】
+							.title ドナーカードの場所
+							input type="text"
+						//ドナーカードの場所
+					.button_box.cf
+						.left
+							a href="#"
+								img src="./assets/images/button/button_decision.jpg" width="495" height="147"
+						.right
+							a href="#"
+								img src="./assets/images/button/button_edit.jpg" width="495" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

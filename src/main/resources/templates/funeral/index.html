@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>お墓や葬儀 2.葬儀について</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="エンディングノート" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="funeral_about">
+        <div class="page_label">
+            お墓や葬儀
+        </div>
+        <div class="fueral">
+        </div>
+    </div>
+</div>
+</body>
+</html>

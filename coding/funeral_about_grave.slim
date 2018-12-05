@@ -1,0 +1,88 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "お墓や葬儀 1.お墓について", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#funeral_about
+				.page_label
+					h2 お墓や葬儀
+				.grave
+					h2 1.お墓について
+					h3 お墓の準備
+					.input__container
+						.input__box
+							.title 準備の有無
+							input#setup__notice.radio type="radio" name="setup_notice" 
+							label.radio for="setup__notice" 有り
+							input#setup__notice2.radio type="radio" name="setup_notice" 
+							label.radio for="setup__notice2" 無し
+						//準備の有無
+						.input__box
+							.title 墓を継承してほしい人
+							input type="text"
+						//墓を継承してほしい人
+						.input__box
+							.have__case 【準備／有　の方】
+							.title 名称
+							input type="text"
+						//名称
+						.input__box
+							.title お墓の場所：郵便番号
+							input.date type="text"
+							span.date -
+							input.date type="text"
+						//お墓の場所：郵便番号
+						.input__box
+							.title お墓の場所：住所
+							input type="text"
+						//お墓の場所：住所
+						.input__box
+							.title 連絡先
+							input type="text"
+						//連絡先
+						.input__box
+							.title 墓地使用権者
+							input type="text"
+						//墓地使用権者
+						.input__box
+							.title 購入店名
+							input type="text"
+						//購入店名
+						.input__box
+							.title 契約日
+							input.date type="text"
+							span.date 年
+							input.date type="text"
+							span.date 月
+							input.date type="text"
+							span.date 日
+						//契約日
+						.input__box
+							.title 宗派
+							input type="text"
+						//宗派
+						.input__box
+							.title 管理状況
+							textarea
+						//管理状況
+						.input__box
+							.title 備考（気になる点・心配事等）
+							textarea
+						//備考（気になる点・心配事等）
+						.input__box
+							.have__case 【準備／無　の方】
+							.title 納骨方法の要望
+							textarea
+						//納骨方法の要望
+
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+							
+					== Slim::Template.new('./templates/_banner.slim').render
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

@@ -1,0 +1,73 @@
+<!--paid_member_registration_fixed.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="" src="./assets/images/header/header_paying_membersunt.png" width="712"
+       th:src="@{/images/header/header_paying_membersunt.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="container">
+    <!--/*@thymesVar id="paidRegistrationForm" type="ora.leadlife.co.jp.form.PaidRegistrationForm"*/-->
+    <form th:action="@{/paidRegistration/done}" method="post" th:object="${paidRegistrationForm}" id="form">
+      <input type="hidden" th:field="*{token}"/>
+      <input type="hidden" th:field="*{amount}"/>
+      <div id="paid_member_registration_fixed">
+        <div class="page_label">
+          ご登録の確定
+        </div>
+        <div class="inner">
+          <div class="title">
+            ご登録内容
+          </div>
+          <dl>
+            <dt>
+              有料会員料金
+            </dt>
+            <dd>
+              月額価格<span th:text="${paidRegistrationForm.amount + '円'}">756円</span>(税込)
+            </dd>
+            <dd>
+              <div class="method">
+                お支払い方法
+              </div>
+              <div class="detail">
+                クレジットカード決済
+              </div>
+            </dd>
+          </dl>
+          <div class="input_box">
+            <h3>
+              パスワード
+            </h3>
+            <input placeholder="半角英数８文字以上" type="password" th:field="*{password}"/>
+          </div>
+          <div class="checkbox">
+            <input id="check03" type="checkbox"/><label for="check03"><a href="#" id="open2">利用規約</a><span>に同意します</span></label>
+          </div>
+          <div class="btn">
+            <button type="submit">
+              <img height="147"
+                   src="assets/images/button/btn_paidmember_fixed.png"
+                   width="1064"
+                   th:src="@{/images/button/btn_paidmember_fixed.png}"/>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!--usrpict.html-->
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_userpass.png" width="712"
+         th:src="@{/images/header/header_userpass.png}"/>
+</div>
+<div layout:fragment="main">
+
+    <!-- DEV change header image to header_userpass.png -->
+    <div id="container">
+        <div id="usrpict">
+            <div class="inner">
+                <!--/*@thymesVar id="userForm" type="ora.leadlife.co.jp.form.UserForm"*/-->
+                <form th:action="@{/user/done}" th:object="${userForm}" th:method="post" id="form" name="form">
+                    <div class="input_box">
+                        <h3 id="username_title">
+                            ユーザー名の変更
+                        </h3>
+                        <!-- DEV user#name -->
+                        <input placeholder="ゲストユーザーさん" type="text" th:field="*{username}"/>
+                        <ul th:each="error : ${#fields.errors('username')}" class="error">
+                            <li th:text="${error}"></li>
+                        </ul>
+                    </div>
+                    <div class="input_box">
+                        <h3>
+                            メールアドレスの変更
+                        </h3>
+                        <!-- DEV user#name -->
+                        <input placeholder="メールアドレスの変更" type="text" th:field="*{email}"/>
+                        <ul th:each="error : ${#fields.errors('email')}" class="error">
+                            <li th:text="${error}"></li>
+                        </ul>
+                    </div>
+                    <div class="input_box">
+                        <h3>
+                            ログイン方法の変更
+                        </h3>
+                        <!-- DEV user#authentication_method -->
+                        <div class="checkbox">
+                            <input id="check01" type="checkbox"
+                                   th:field="*{authenticationMethodPassword}"
+                                   th:value="*{authenticationMethodPassword}"
+                            />
+                            <input type="hidden" />
+                            <label for="check01">パスワード入力</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="hidden" />
+                            <input id="check02" type="checkbox"
+                                   th:field="*{authenticationMethodFingerprint}"
+                                   th:value="*{authenticationMethodFingerprint}"
+                            />
+                            <input type="hidden" />
+                            <label for="check02">指紋認証</label>
+                        </div>
+                        <div class="error">
+                            指紋またはパスワードを選択して下さい。
+                        </div>
+                    </div>
+                    <!-- DEV confirm users#encrypted_password is matched by UserService#match -->
+
+                    <div class="input_box">
+                        <h3>
+                            現在のパスワード
+                        </h3>
+                        <input type="password" th:field="*{oldPassword}"/>
+                        <ul th:each="error : ${#fields.errors('oldPassword')}" class="error">
+                            <li th:text="${error}"></li>
+                        </ul>
+                    </div>
+                    <div class="input_box pass">
+                        <h3>
+                            パスワードの変更（新しいパスワード）
+                        </h3>
+                        <!-- DEV save user#encrypted_password by UserService#passwordEncoder() -->
+                        <input placeholder="半角英数8文字以上" type="password" th:field="*{newPassword}"/>
+                        <ul th:each="error : ${#fields.errors('newPassword')}" class="error">
+                            <li th:text="${error}"></li>
+                        </ul>
+                        <!-- DEV confirm password is matched -->
+                        <input placeholder="確認のため再入力して下さい" type="password" th:field="*{newPasswordConfirm}"/>
+                        <ul th:each="error : ${#fields.errors('newPasswordConfirm')}" class="error">
+                            <li th:text="${error}"></li>
+                        </ul>
+                    </div>
+                    <!-- DEV link to done and save -->
+                    <button type="submit">
+                        <img height="147" width="1064"
+                             src="assets/images/button/button_change.jpg"
+                             th:src="@{/images/button/button_change.jpg}"/>
+                    </button>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div layout:fragment="otherScript">
+    <script type="text/javascript">
+
+        //<![CDATA[
+        var custom_event, wait_send;
+
+        // setIntervalを使う方法
+        function sleep(waitSec, callbackFunc) {
+
+            // 経過時間（秒）
+            var spanedSec = 0;
+
+            // 1秒間隔で無名関数を実行
+            var id = setInterval(function () {
+
+                spanedSec++;
+
+                // 経過時間 >= 待機時間の場合、待機終了。
+                if (spanedSec >= waitSec) {
+
+                    // タイマー停止
+                    clearInterval(id);
+
+                    // 完了時、コールバック関数を実行
+                    if (callbackFunc) {
+                        callbackFunc();
+                    }
+                }
+            }, 1000);
+        }
+
+        // 外部サイト側で必要な処理を全て終えたときにcustom_eventにオブジェクトを返す関数を放り込む。
+        // このオブジェクトの内容をTitaniumで受け取れることになる。
+        custom_event = function () {
+            $('#username_title').text("custom_event");
+            return '{"password": "' + $('#newPassword').val() + '","fingerprint": "' + $('#check02:checked').val() + '"}';
+        };
+
+        var native_ok = false;
+        var submited = false;
+        var set_native_ok = function () {
+            $('#username_title').text("set_native_ok");
+            native_ok = true
+        };
+        var get_submited = function () {
+            $('#username_title').text("get_submited");
+            return submited;
+        };
+        wait_send = function () {
+            $('#username_title').text("wait_send");
+            $('#form').submit(function () {
+                submited = true;
+                while (!native_ok) {
+                    sleep(1, function () {
+                        $('#username_title').text("wait");
+
+                    })
+                }
+                return true;
+            })
+        }
+
+        //]]>
+    </script>
+</div>
+</body>
+</html>

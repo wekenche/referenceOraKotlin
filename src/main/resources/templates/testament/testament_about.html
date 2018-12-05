@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+    <head>
+        <title>遺言書 遺言書について</title>
+        <meta name="keywords" content="content1"/>
+        <meta name="description" content="content1"/>
+    </head>
+    <body class="drawer drawer--left">
+    <div layout:fragment="headerImage">
+        <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+             th:src="@{/images/header/header_endingnote.png}"/>
+    </div>
+        <div  layout:fragment="main">
+            <div id="container">
+                <div id="testament_about">
+                    <div class="page_label">
+                        <h2>
+                            遺言書
+                        </h2>
+                    </div>
+                    <div class="testament">
+                        <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                        <!--/*@thymesVar id="form" type="ora.leadlife.co.jp.form.TestamentForm"*/-->
+                        <form th:action="@{/testament/confirm}" method="post" th:object="${form}">
+                            <input placeholder="" type="text" th:field="*{testId}" style="display: none"/>
+                            <h2>
+                                遺言書について
+                            </h2>
+                            <div class="input__container">
+                                <div class="input__box">
+                                    <div class="title">
+                                        遺言書の有無
+                                    </div>
+                                    <input class="radio" id="testament__setup__notice" th:field="*{existsTestament}" th:value="1" type="radio" /><label class="radio" for="testament__setup__notice">有り</label><input class="radio" id="testament__setup__notice2" th:field="*{existsTestament}" th:value="0" type="radio" /><label class="radio" for="testament__setup__notice2">無し</label>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        遺言書の種類
+                                    </div>
+                                    <input class="radio" id="testament__type__notice" th:field="*{testamentType}" th:value="autograph" type="radio" /><label class="radio" for="testament__type__notice">自筆</label><input class="radio" id="testament__type__notice2" th:field="*{testamentType}" th:value="notarial" type="radio" /><label class="radio" for="testament__type__notice2">公正証書</label>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        保管場所
+                                    </div>
+                                    <input placeholder="" type="text" th:field="*{storingPlace}"/>
+                                </div>
+                            </div>
+                            <h3>
+                                相談・依頼した専門家について
+                            </h3>
+                            <div class="input__container">
+                                <div id="formList" th:switch="${#lists.isEmpty(form.tsWrapper)}">
+                                    <!--COMMENTED FOR LATER VALIDATION OF FORM-->
+                                    <div th:case="true">
+                                        <div class="input__box">
+                                            <div class="title">
+                                                氏名
+                                            </div>
+                                            <input placeholder="" class="nameName post" type="text" th:field="*{tsWrapper[0].name}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                名称
+                                            </div>
+                                            <input placeholder="" class="nameName2 post" type="text" th:field="*{tsWrapper[0].name2}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                郵便番号
+                                            </div>
+                                            <input placeholder="" class="namePostCode1" type="text" th:field="*{tsWrapper[0].postCode1}"/><span class="date">-</span>
+                                            <input placeholder="" class="namePostCode2" type="text" th:field="*{tsWrapper[0].postCode2}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                住所
+                                            </div>
+                                            <input placeholder="" class="nameStreetAddress" type="text" th:field="*{tsWrapper[0].streetAddress}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                電話番号
+                                            </div>
+                                            <input placeholder="" class="nameNumber" type="text" th:field="*{tsWrapper[0].number}"/>
+                                        </div>
+                                        <div class="button_box del_box">
+
+                                        </div>
+                                        <br /><br /><br />
+                                        <hr />
+                                    </div>
+                                    <div th:case="false">
+                                        <div th:each="specialist,is:${form.tsWrapper}">
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    氏名
+                                                </div>
+                                                <input class="nameName" type="text" th:attr="name='tsWrapper['+${is.index}+'].name'" th:value="${specialist.name}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    名称
+                                                </div>
+                                                <input class="nameName2 post" type="text" th:attr="name='tsWrapper['+${is.index}+'].name2'" th:value="${specialist.name2}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    郵便番号
+                                                </div>
+                                                <input class="namePostCode1" type="text" th:attr="name='tsWrapper['+${is.index}+'].postCode1'" th:value="${specialist.postCode1}"/><span class="date">-</span>
+                                                <input class="namePostCode2" type="text" th:attr="name='tsWrapper['+${is.index}+'].postCode2'" th:value="${specialist.postCode2}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    住所
+                                                </div>
+                                                <input class="nameStreetAddress" type="text" th:attr="name='tsWrapper['+${is.index}+'].streetAddress'" th:value="${specialist.streetAddress}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    電話番号
+                                                </div>
+                                                <input class="nameNumber" type="text" th:attr="name='tsWrapper['+${is.index}+'].number'" th:value="${specialist.number}"/>
+                                            </div>
+                                            <div class="button_box del_box" th:if="${aboutMeViewFlag==0}">
+                                                <a th:if="${#lists.size(form.tsWrapper) > 1}" href="javascript:;" class="delete_list right"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>
+                                            </div>
+                                            <br /><br /><br />
+                                            <hr />
+                                        </div>
+                                    </div>
+                                </div>
+                                <a th:if="${aboutMeViewFlag==0}" href="javascript:;" class="add_list">リストを追加</a>
+                            </div>
+                            <div class="button_box">
+                                <button th:if="${aboutMeViewFlag==0}" type="submit"><img height="147" width="1040" th:src="@{/images/button/button_save.jpg}" /></button>
+                            </div>
+                            <div id="bnr_paying_merit">
+                                <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                                     th:src="@{/images/common/banner.png}" width="1040" /></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    $(document).on("click",".add_list",function () {
+        var childIndex = $('.nameName').length;
+        var newChild = '<div><div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            氏名\n' +
+            '                                        </div>\n' +
+            '                                        <input placeholder="" class="nameName post" type="text" name="tsWrapper['+childIndex+'].name"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            名称\n' +
+            '                                        </div>\n' +
+            '                                      <input placeholder="" class="nameName2" type="text" name="tsWrapper['+childIndex+'].name2"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            郵便番号\n' +
+            '                                        </div>\n' +
+            '                                      <input class="namePostCode1" type="text" name="tsWrapper['+childIndex+'].postCode1"/><span class="date">-</span><input class="namePostCode2" type="text" name="tsWrapper['+childIndex+'].postCode2"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            住所\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameStreetAddress" type="text" name="tsWrapper['+childIndex+'].streetAddress"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            電話番号\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameNumber" type="text" name="tsWrapper['+childIndex+'].number"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="button_box del_box"><a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '                                            <br /><br /><br />\n' +
+            '                                            <hr /></div>';
+        if($(".del_box").length == 1) {
+            $(".del_box:first").append('<a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#formList").append(newChild);
+    });
+    $(document).on("click", ".delete_list" ,function () {
+        $(this).parent('div').parent('div').remove();
+        if($(".del_box").length == 1) {
+            $(".del_box:first").empty();
+        }
+        function updateName(className , fieldName) {
+            $(className).each(function(index) {
+                $(this).attr("name","tsWrapper["+index+"]."+fieldName);
+            });
+        }
+        updateName('.nameName','name');
+        updateName('.nameName2','name2');
+        updateName('.namePostCode1','postCode1');
+        updateName('.namePostCode2','postCode2');
+        updateName('.nameStreetAddress','streetAddress');
+        updateName('.nameNumber','number');
+    });
+</script>

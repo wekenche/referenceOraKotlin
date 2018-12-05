@@ -1,0 +1,48 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "財産について 3.仮想通貨について エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_virtual_money
+				.page_label
+					h2 財産について
+				.about_virtual_money
+					h2 3.仮想通貨について
+					.input__container
+						.input__box
+							.title 取引所・ウォレット
+							input type="text"
+						//取引所・ウォレット
+						.input__box
+							.title 保有仮想通貨の種類
+							input type="text"
+						//保有仮想通貨の種類
+						.input__box
+							.title 保有仮想通貨の額
+							input type="text"
+						//保有仮想通貨の額
+						.input__box
+							.title ID
+							input type="text"
+						//ID
+						.input__box
+							.title パスワード
+							input type="text"
+						//パスワード
+						.input__box
+							.title 備考
+							textarea
+						//備考
+						a.add_list href="#" リストを追加
+
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

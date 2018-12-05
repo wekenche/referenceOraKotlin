@@ -1,0 +1,513 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+.cf:before,
+	.cf:after {
+	    content: " ";
+	    display: table;
+	}
+
+	.cf:after {
+	    clear: both;
+	}
+
+	.cf {
+	    *zoom: 1;
+	}
+img{
+	display: block;
+	bottom: 0; 
+}
+#paid_member_registration_top{
+	background: #f2f2f2;
+	.inner{
+		width: 1064px;
+		margin: 0 auto;
+		padding: 134px 0 383px;
+		box-sizing: border-box;
+		a{
+		text-decoration: none;
+		}
+		dl{
+			border: 5px solid #ff8431;
+			box-sizing: border-box;
+			background: #fff;
+			dt{
+				font-size: 48px;
+				line-height: 72px;
+				letter-spacing: 0.12em;
+				text-align: center;
+				background: #ff8431;
+				color: #fff;
+				padding: 36px 0;
+			}//dt
+			dd{
+				font-size: 45px;
+		    margin-left: 40px;
+		    margin-right: 32px;
+		    padding: 82px 0;
+		    padding-left: 40px;
+		    box-sizing: border-box;
+		    line-height: 1.1;
+				span{
+					font-size: 72px;
+					color: #ff2a1a;
+					font-weight: bold;
+				}
+			}//dd
+		}//dl
+		.input_box{
+			margin-bottom: 66px;
+			margin-top: 42px;
+			p{
+				margin-bottom: 35px;
+				padding-left: 65px;
+				font-size: 60px;
+				font-weight: bold;
+				line-height: 50px;
+				color: #498af2;
+			}
+			h3{
+				margin-bottom: 35px;
+				font-size: 48px;
+				font-weight: bold;
+				line-height: 50px;
+				color: #ff8431;
+			}
+			input[type=text]{
+				width: 1050px;
+				margin:0 auto;
+				padding: 45px 0 32px 61px;
+				border: 5px solid #ff8431;
+				border-radius: 10px;
+				font-size: 48px;
+				font-weight: bold;
+				line-height: 50px;
+				letter-spacing: 0.12em;
+				box-sizing: border-box;
+			}
+		}//input_box
+		.note{
+			p{
+				font-size: 45px;
+				line-height: 55px;
+				letter-spacing: 0.1em;
+				span{
+					color: #ff2a1a;
+					font-weight: bold;
+				}
+			}
+		}
+		a{
+			display: block;
+			text-align: right;
+			margin-top: 57px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 55px;
+			color: #ff2a1a;
+		}
+		.btn{
+			margin-top: 93px;
+		}
+		.checkbox{
+			margin-bottom: 23px;
+			font-size: 50px;
+			font-weight: bold;
+		  position: relative;
+		  input#check01,input#check02,input#check03{
+		    position: absolute;
+		    top: 0;
+		    opacity: 0;
+		    // width: 100%;  
+		    // height: 100%;
+				&[type="checkbox"] + label {
+			    display: block;
+			    background-image: url(../images/icon/checkbox_off.png);
+			    background-size: 55px;
+			    background-position: left center;
+			    background-repeat: no-repeat;
+			    padding: 59px 0 0 88px;
+			    font-weight: bold;
+			    a,span{
+			    	font-weight: bold;
+			    }
+			    a{
+			    	color: #ff0000;
+			    }
+				}
+				&[type="checkbox"] + label :checked{
+			    background-image: url(../images/icon/checkbox_on.png);
+				}
+		  }
+		}//checkbox
+	}//inner	
+}//#paid_member_registration_top 有料会員登録をする 有料会員登録
+
+
+#paid_member_registration_aboutpay_iOS{
+	background: #f2f2f2;
+	margin-top: 57px;
+	.inner_iOS{
+		width: 1183px;
+		margin: 0 auto;
+		padding: 134px 0 383px;
+		box-sizing: border-box;
+		p,h3{
+			line-height: 1.0;
+		}
+		p{
+			width: 1048px;
+		}
+		.title{
+			padding: 40px 0;
+			text-align: center;
+			font-size: 55px;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			font-weight: bold;
+			color: #fff;
+			background-color: #ff8431;
+		}
+		.wrapper{
+			width: 1097px;
+			padding: 78px 45px 91px;
+			background-color: #fff;
+			.desc{
+				margin-bottom: 57px;
+				font-size: 45px;
+				line-height: 72px;
+				letter-spacing: 0.12em;
+			}
+			.appleID{
+				margin-top: 101px;
+				h3{
+					padding-bottom: 17px;
+					margin-bottom: 52px;
+					font-size: 45px;
+					line-height: 50px;
+					font-weight: bold;
+					color: #ff0000;
+					border-bottom: 2px solid #ff0000;
+				}
+				p{
+					font-size: 45px;
+					&:first-of-type{
+						margin-bottom: 55px;
+					}
+					&:last-of-type{
+						line-height: 66px;
+					}
+				}
+			}//appleID
+			.about_admission{
+				margin-top: 89px;
+				h3{
+					display: inline-block;
+					padding: 21px 26px;
+					margin-bottom: 25px;
+					font-size: 45px;
+					color: #ff0000;
+					border: 1px solid #ff0000;
+				}
+				p{
+					margin-bottom: 65px;
+					font-size: 45px;
+					line-height: 66px;
+				}
+			}//about_admission
+			.about_update{
+				margin-top: 89px;
+				h3{
+					display: inline-block;
+					padding: 21px 26px;
+					margin-bottom: 25px;
+					font-size: 45px;
+					color: #ff0000;
+					border: 1px solid #ff0000;
+				}
+				p{
+					margin-bottom: 65px;
+					font-size: 45px;
+					line-height: 66px;
+				}
+			}//about_update
+
+			.about_cancel{
+				margin-top: 89px;
+				h3{
+					display: inline-block;
+					padding: 21px 26px;
+					margin-bottom: 25px;
+					font-size: 45px;
+					color: #fff;
+					background: #ff0000;
+				}
+				a{
+					font-size: 43px;
+					color: #000;
+					line-height: 66px;
+					text-align: left;
+				}
+				p{
+					margin-bottom: 65px;
+					font-size: 45px;
+					line-height: 66px;
+				}
+			}//about_update
+			.btn{
+				margin-top: 85px;
+				img{
+					margin: 0 auto;
+				}
+			}
+		}//wrapper
+	}//inner	
+}//paid_member_registration_aboutpay_iOS 有料会員登録
+
+#paid_member_registration_aboutpay{
+	background: #f2f2f2;
+	.inner{
+		width: 1183px;
+		margin: 0 auto;
+		padding: 134px 0 383px;
+		box-sizing: border-box;
+		p,h3{
+			line-height: 1.0;
+		}
+		p{
+			width: 1048px;
+		}
+		.title{
+			padding: 40px 0;
+			text-align: center;
+			font-size: 55px;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			font-weight: bold;
+			color: #fff;
+			background-color: #ff8431;
+		}
+		.wrapper{
+			width: 1097px;
+			padding: 78px 45px 91px;
+			background-color: #fff;
+			.desc{
+				margin-bottom: 65px;
+				font-size: 45px;
+				line-height: 72px;
+				letter-spacing: 0.12em;
+				font-weight: bold;
+			}
+			.credit{
+				h3{
+					padding-bottom: 17px;
+					margin-bottom: 52px;
+					font-size: 48px;
+					line-height: 50px;
+					font-weight: bold;
+					color: #ff0000;
+					border-bottom: 2px solid #ff0000;
+				}
+				p{
+					font-size: 45px;
+					&:first-of-type{
+						margin-bottom: 55px;
+					}
+					&:last-of-type{
+						line-height: 66px;
+					}
+				}
+				img{
+					margin: 31px 0;
+				}
+			}//credit
+			.about_security{
+				margin-top: 89px;
+				h3{
+					display: inline-block;
+					padding: 21px 26px;
+					margin-bottom: 25px;
+					font-size: 45px;
+					color: #ff0000;
+					border: 1px solid #ff0000;
+				}
+				p{
+					margin-bottom: 65px;
+					font-size: 45px;
+					line-height: 66px;
+					&:nth-of-type(2), &:last-of-type{
+						margin-bottom: 0;
+					}
+				}
+			}//about_security
+			.carrier{
+				margin-top: 101px;
+				h3{
+					padding-bottom: 17px;
+					margin-bottom: 52px;
+					font-size: 48px;
+					line-height: 50px;
+					font-weight: bold;
+					color: #ff0000;
+					border-bottom: 2px solid #ff0000;
+				}
+				p{
+					font-size: 45px;
+					&:first-of-type{
+						margin-bottom: 55px;
+					}
+					&:last-of-type{
+						line-height: 66px;
+					}
+				}
+				img{
+					margin: 65px 0 73px;
+				}
+			}//carrier
+			.btn{
+				margin-top: 85px;
+				img{
+					margin: 0 auto;
+				}
+			}
+		}//wrapper
+	}//inner	
+}//paid_member_registration_aboutpay 有料会員登録
+
+#paid_member_creditinfo{
+	background: #f2f2f2;
+	.inner{
+		width: 1183px;
+		margin: 0 auto;
+		padding-top: 80px;
+		padding-bottom: 122px;
+		box-sizing: border-box;
+		.wrapper{
+			margin-bottom: 72px;
+			.title_label{
+				background-color: #ff0000;
+				padding: 30px 27px 30px 57px; 
+				box-sizing: border-box;
+				h3{
+					float: left;
+					padding: 25px 0;
+					font-size: 50px; 
+					line-height: 1.0em;
+					font-weight: bold;
+					color: #fff;
+					box-sizing: border-box;
+				}
+				.button{
+					float: right;
+				}
+			}
+			.card_info{
+				padding: 46px 60px 23px;
+				border: 3px solid #000;
+				background-color: #fff;
+				box-sizing: border-box;
+				.input_box{
+					margin-bottom: 34px;
+					h3{
+						margin-bottom: 29px;
+						font-size: 48px;
+						line-height: 1.0em;
+					}
+					input[type=text]{
+						width: 1054px;
+						height: 140px;
+						font-size: 72px;
+						line-height: 50px;
+						border: 3px solid #2f2f2f;
+						border-radius: 10px;
+						box-sizing: border-box;
+					}
+					p{
+						font-size: 48px;
+						line-height: 1.0em;
+					}
+					.num_list{
+						li{
+							float: left;
+							p{
+								margin: 46px 12px 0;
+							}
+						}
+					}
+					.date_list{
+						li{
+							float: left;
+							p{
+								margin: 52px 41px 0;
+							}
+						}
+					}
+				}//input_box
+				.input_num{
+					input[type=text]{
+						width: 234px;
+						height: 140px;
+					}
+				}//input_num
+			}//card_info
+			.desc{
+				margin: 46px 0 46px 60px;
+				font-size: 40px;
+				line-height: 52px;
+				box-sizing: border-box;
+				span{
+					font-weight: bold;
+				}
+			}
+			.change_box{
+				width: 1183px;
+				padding: 42px 28px 40px 60px;
+				margin-bottom: 36px;
+				background-color: #ff8431;
+				box-sizing: border-box;
+				p{
+					float: left;
+					font-size: 47px;
+					line-height: 60px;
+					color: #fff;
+					span{
+						color: #f20000;
+					}
+				}
+				img{
+					float: right;
+				}
+			}
+			.delete_box{
+				width: 1183px;
+				padding: 30px 28px 30px 60px;
+				background-color: #ff8431;
+				box-sizing: border-box;
+				p{
+					float: left;
+					margin-top: 21px;
+					font-size: 47px;
+					line-height: 60px;
+					color: #fff;
+				}
+				img{
+					float: right;
+					margin-top: 6px;
+				}
+			}
+		}//wrapper
+		.top_back{
+			p{
+				text-align: center;
+				font-size: 45px;
+				color: #498af2;
+			}
+		}
+	}//inner
+}//paid_member_creditinfo 有料会員登録　クレジットカード情報の確認　変更・削除
+
+

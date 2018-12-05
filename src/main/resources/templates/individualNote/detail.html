@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <!--/*@thymesVar id="individualNote" type="ora.leadlife.co.jp.model.IndividualNote"*/-->
+        <div id="endingnote_about_property" th:object="${individualNote}">
+            <div class="page_label" th:text="*{individualNoteCategory.name}">
+            </div>
+            <div class="inner cf">
+                <article>
+                    <div class="article_title">
+                        <span class="data" th:text="*{updatedAt}"></span>
+                        <h2 class="title" th:text="*{title}">
+                        </h2>
+                    </div>
+                    <div class="article_content">
+                        <p th:utext="${#strings.replace( #strings.escapeXml(individualNote.contents),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
+                        </p>
+                    </div>
+                    <!--/*@thymesVar id="viewFlag" type="java.lang.Boolean"*/-->
+                    <div th:each="attachment : ${individualNoteAttachments}">
+                        <div th:switch="${viewFlag}">
+                            <div th:case="true">
+                                <div class="video"  th:if="${attachment.fileType ==T(ora.leadlife.co.jp.config.FileType).MOVIE.name()}">
+                                    <video th:src="${#uploadedImage.build(attachment.filePath)}" width="100%"/>
+
+                                </div>
+                                <div class="video"  th:if="${attachment.fileType ==T(ora.leadlife.co.jp.config.FileType).PICTURE.name()}">
+                                    <img th:src="${#uploadedImage.build(attachment.filePath)}"
+                                         class="attachment" width="100%"/>
+                                </div>
+                            </div>
+                            <div th:case="*">
+                                <div class="video"  th:if="${attachment.fileType ==T(ora.leadlife.co.jp.config.FileType).MOVIE.name()}">
+                                    <video th:src="${#uploadedImage.build(attachment.filePath)}" controls="true" autoplay= "true" width="100%" />
+                                </div>
+                                <div class="video"  th:if="${attachment.fileType ==T(ora.leadlife.co.jp.config.FileType).PICTURE.name()}">
+                                    <img th:src="${#uploadedImage.build(attachment.filePath)}"
+                                         th:attr="onclick='confirmDeleteImage(\'/individualNote/attachment/delete/' + ${attachment.id} + '\')'"
+                                         class="attachment" width="100%" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <!--/*@thymesVar id="viewFlag" type="java.lang.Boolean"*/-->
+                <div class="btn" th:unless="${viewFlag}">
+                    <a th:href="@{'/individualNote/delete/'+*{id}}"><img height="147" src="./assets/images/button/btn_delete.png" width="495"
+                                     th:src="@{/images/button/btn_delete.png}"/></a>
+                    <a th:href="@{'/individualNote/update/'+*{id}}"><img height="147" src="./assets/images/button/btn_edit.png" width="495"
+                                     th:src="@{/images/button/btn_edit.png}"/></a>
+                </div>
+                <div id="bnr_paying_merit">
+                    <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                         th:src="@{/images/common/banner.png}" width="1040" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

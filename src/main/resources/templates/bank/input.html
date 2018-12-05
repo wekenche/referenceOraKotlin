@@ -1,0 +1,380 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>資産について 3.預貯金 エンディングノート</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="property_about_savings">
+            <div class="page_label">
+                <h2>
+                    資産について
+                </h2>
+            </div>
+            <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+            <!--/*@thymesVar id="bankForm" type="ora.leadlife.co.jp.form.BankForm"*/-->
+            <form th:action="@{/bank/bankSave}" th:object="${bankForm}" th:method="post">
+                <div class="about_savings">
+                    <h2>
+                        3.預貯金
+                    </h2>
+                    <div class="input__container">
+                        <div id="formList">
+                            <div class="formColumn" th:if="${not #lists.isEmpty(bankForm.bankFormWrapper)}" th:each="bankList,bankStat:${bankForm.bankFormWrapper}">
+                                <div class="input__box">
+                                    <div class="title">
+                                        金融機関名
+                                    </div>
+                                    <input class="bankName" type="text" th:attr="name='bankFormWrapper['+${bankStat.index}+'].name'" th:value="${bankList.name}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        支店名
+                                    </div>
+                                    <input class="branchName" type="text" th:attr="name='bankFormWrapper['+${bankStat.index}+'].branchName'" th:value="${bankList.branchName}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        預貯金の種類
+                                    </div>
+                                    <input class="depositType" type="text" th:attr="name='bankFormWrapper['+${bankStat.index}+'].depositType'" th:value="${bankList.depositType}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        口座番号/記号番号
+                                    </div>
+                                    <input class="bankAccountNumber" type="text" th:attr="name='bankFormWrapper['+${bankStat.index}+'].bankAccountNumber'" th:value="${bankList.bankAccountNumber}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        名義人
+                                    </div>
+                                    <input class="holder" type="text" th:attr="name='bankFormWrapper['+${bankStat.index}+'].holder'" th:value="${bankList.holder}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        （ネットバンク用）ウェブ用ID
+                                    </div>
+                                    <input class="webId" type="text" th:attr="name='bankFormWrapper['+${bankStat.index}+'].webId'" th:value="${bankList.webId}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        口座の使用用途
+                                    </div>
+                                    <textarea class="bankUsage" th:attr="name='bankFormWrapper['+${bankStat.index}+'].bankUsage'" th:inline="text">[[${bankList.bankUsage}]]</textarea>
+                                </div>
+                                <div class="list_inner">
+                                    <h3>
+                                        その口座から自動引き落としにされているもの
+                                    </h3>
+                                    <div class="input__container">
+                                        <div class="auto_withrawn_list">
+                                            <div class="columnList" th:attr="data-bank='bankFormWrapper['+${bankStat.index}+']',data-columnid=${awStat.index}" th:if="${not #lists.isEmpty(bankList.automaticWithdrawalsWrapper)}" th:each="awList,awStat:${bankList.automaticWithdrawalsWrapper}">
+                                                <div class="input__box">
+                                                    <div class="title">
+                                                        費目
+                                                    </div>
+                                                    <input type="text" class="expenseItem"
+                                                           th:attr="name='bankFormWrapper['+${bankStat.index}+'].automaticWithdrawalsWrapper['+${awStat.index}+'].expenseItem'" th:value="${awList.expenseItem}"/>
+                                                </div>
+                                                <div class="input__box">
+                                                    <div class="title">
+                                                        引き落とし日
+                                                    </div>
+                                                    <input type="text" class="withdrawalDate"
+                                                           th:attr="name='bankFormWrapper['+${bankStat.index}+'].automaticWithdrawalsWrapper['+${awStat.index}+'].withdrawalDate'" th:value="${awList.withdrawalDate}"/>
+                                                </div>
+                                                <div class="input__box">
+                                                    <div class="title">
+                                                        備考
+                                                    </div>
+                                                    <textarea class="memo" th:attr="name='bankFormWrapper['+${bankStat.index}+'].automaticWithdrawalsWrapper['+${awStat.index}+'].memo'" th:inline="text">[[${awList.memo}]]</textarea>
+                                                </div>
+                                                <div class="button_add_item " th:if="${#lists.size(bankList.automaticWithdrawalsWrapper) > 1}">
+                                                    <a id="delete__column" class="delete_awColumn" href="javascript:;"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>
+                                                </div>
+                                                <hr/>
+                                            </div>
+                                        </div>
+                                        <div class="button_add_item">
+                                            <a th:if="${aboutMeViewFlag==0}" class="addColumn" th:attr="data-parentid=${bankStat.index}" href="javascript:;">
+                                                <img height="131" th:src="@{/images/button/btn_add_column.jpg}" width="857"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button_box" th:if="${#lists.size(bankForm.bankFormWrapper)>1}">
+                                    <a th:if="${aboutMeViewFlag==0}" id="delete__column" class="delete_list" href="javascript:;"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>
+                                </div>
+                                <hr/>
+                            </div>
+                            <div class="formColumn" th:if="${#lists.isEmpty(bankForm.bankFormWrapper)}">
+                                <div class="input__box">
+                                    <div class="title">
+                                        金融機関名
+                                    </div>
+                                    <input class="bankName" type="text" th:field="*{bankFormWrapper[0].name}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        支店名
+                                    </div>
+                                    <input class="branchName" type="text" th:field="*{bankFormWrapper[0].branchName}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        預貯金の種類
+                                    </div>
+                                    <input class="depositType" type="text" th:field="*{bankFormWrapper[0].depositType}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        口座番号/記号番号
+                                    </div>
+                                    <input class="bankAccountNumber" type="text" th:field="*{bankFormWrapper[0].bankAccountNumber}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        名義人
+                                    </div>
+                                    <input class="holder" type="text" th:field="*{bankFormWrapper[0].holder}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        （ネットバンク用）ウェブ用ID
+                                    </div>
+                                    <input class="webId" type="text" th:field="*{bankFormWrapper[0].webId}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        口座の使用用途
+                                    </div>
+                                    <textarea class="bankUsage" th:field="*{bankFormWrapper[0].bankUsage}"></textarea>
+                                </div>
+                                <div class="list_inner">
+                                    <h3>
+                                        その口座から自動引き落としにされているもの
+                                    </h3>
+                                    <div class="input__container">
+                                        <div class="auto_withrawn_list">
+                                            <div class="columnList" data-bank="bankFormWrapper[0]" data-columnid="0">
+                                                <div class="input__box">
+                                                    <div class="title">
+                                                        費目
+                                                    </div>
+                                                    <input type="text" class="expenseItem"
+                                                           th:field="*{bankFormWrapper[0].automaticWithdrawalsWrapper[0].expenseItem}"/>
+                                                </div>
+                                                <div class="input__box">
+                                                    <div class="title">
+                                                        引き落とし日
+                                                    </div>
+                                                    <input type="text" class="withdrawalDate"
+                                                           th:field="*{bankFormWrapper[0].automaticWithdrawalsWrapper[0].withdrawalDate}"/>
+                                                </div>
+                                                <div class="input__box">
+                                                    <div class="title">
+                                                        備考
+                                                    </div>
+                                                    <textarea class="memo" th:field="*{bankFormWrapper[0].automaticWithdrawalsWrapper[0].memo}"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="button_add_item">
+                                            <a th:if="${aboutMeViewFlag==0}" class="addColumn" data-parentid="0" href="javascript:;">
+                                                <img height="131" th:src="@{/images/button/btn_add_column.jpg}" width="857"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" class="add_list" th:onclick="'addList()'" href="javascript:;">リストを追加</a>
+                    </div>
+                    <div class="button_box">
+                        <button th:if="${aboutMeViewFlag==0}"><img height="147" th:src="@{/images/button/button_save.jpg}" width="1040"/></button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    /*<![CDATA[*/
+
+
+    function addList() {
+        var formIndex = $("#formList>.formColumn").length;
+        var parent = document.getElementById("formList");
+        if(formIndex==1) {
+            $(".formColumn:first").append('<div class="button_box">\n' +
+                '  <a id="delete__column" class="delete_list" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>\n' +
+                '  </div><hr/>');
+        }
+        var newChild = '<div class="formColumn"><div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    金融機関名\n' +
+            '                                </div>\n' +
+            '                                <input class="bankName" type="text" name="bankFormWrapper[' + formIndex + '].name"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    支店名\n' +
+            '                                </div>\n' +
+            '                                <input class="branchName" type="text" name="bankFormWrapper[' + formIndex + '].branchName"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    預貯金の種類\n' +
+            '                                </div>\n' +
+            '                                <input class="depositType" type="text" name="bankFormWrapper[' + formIndex + '].depositType"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    口座番号/記号番号\n' +
+            '                                </div>\n' +
+            '                                <input class="bankAccountNumber" type="text" name="bankFormWrapper[' + formIndex + '].bankAccountNumber"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    名義人\n' +
+            '                                </div>\n' +
+            '                                <input class="holder" type="text" name="bankFormWrapper[' + formIndex + '].holder"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    （ネットバンク用）ウェブ用ID\n' +
+            '                                </div>\n' +
+            '                                <input class="webId" type="text" name="bankFormWrapper[' + formIndex + '].webId"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    口座の使用用途\n' +
+            '                                </div>\n' +
+            '                                <textarea class="bankUsage" name="bankFormWrapper[' + formIndex + '].bankUsage"></textarea>\n' +
+            '                            </div>\n' +
+            '                            <div class="list_inner">\n' +
+            '                                <h3>\n' +
+            '                                    その口座から自動引き落としにされているもの\n' +
+            '                                </h3>\n' +
+            '                                <div class="input__container">\n' +
+            '                                    <div class="auto_withrawn_list">\n' +
+            '                                        <div class="columnList" data-bank="bankFormWrapper['+formIndex+']" data-columnid="0">' +
+            '                                        <div class="input__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                費目\n' +
+            '                                            </div>\n' +
+            '                                            <input class="expenseItem" type="text" name="bankFormWrapper[' + formIndex + '].automaticWithdrawalsWrapper[0].expenseItem"/>\n' +
+            '                                        </div>\n' +
+            '                                        <div class="input__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                引き落とし日\n' +
+            '                                            </div>\n' +
+            '                                            <input class="withdrawalDate" type="text" name="bankFormWrapper[' + formIndex + '].automaticWithdrawalsWrapper[0].withdrawalDate"/>\n' +
+            '                                        </div>\n' +
+            '                                        <div class="input__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                備考\n' +
+            '                                            </div>\n' +
+            '                                            <textarea class="memo" name="bankFormWrapper[' + formIndex + '].automaticWithdrawalsWrapper[0].memo"></textarea>\n' +
+            '                                        </div>\n' +
+            '                                      </div>' +
+            '                                    </div>\n' +
+            '                                    <div class="button_add_item">\n' +
+            '                                        <a class="addColumn" data-parentid="' + formIndex + '" href="javascript:;"><img height="131" src="/images/button/btn_add_column.jpg" width="857"/></a>\n' +
+            '                                    </div>\n' +
+            '                                </div>\n' +
+            '                            </div>' +
+            '                       <div class="button_box">' +
+            '                           <a id="delete__column" class="delete_list" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>' +
+            '                       </div><hr/></div>'
+        parent.insertAdjacentHTML('beforeend', newChild);
+        formIndex++;
+    }
+
+    $(document).on('click', '.addColumn', function () {
+        var bankParentIndex = $(this).parent().parent().find('.columnList').data('bank');
+        var withdrawalIndex = $(this).parent().parent().find('.columnList').length;
+        if(withdrawalIndex==1) {
+            $(this).parent().parent().find('.columnList:first').append('<div class="button_add_item">\n' +
+                '  <a id="delete__column" class="delete_awColumn" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>\n' +
+                '  </div><hr/>');
+        }
+        var parent = $(this).parent().parent().find('.auto_withrawn_list');
+        var newChild = '<div class="columnList" data-bank="'+bankParentIndex+'" data-columnid="' + withdrawalIndex + '">' +
+            '                                     <div class="input__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                費目\n' +
+            '                                            </div>\n' +
+            '                                            <input class="expenseItem" type="text" name="'+bankParentIndex+'.automaticWithdrawalsWrapper[' + withdrawalIndex + '].expenseItem"/>\n' +
+            '                                        </div>\n' +
+            '                                        <div class="input__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                引き落とし日\n' +
+            '                                            </div>\n' +
+            '                                            <input class="withdrawalDate" type="text" name="'+bankParentIndex+'.automaticWithdrawalsWrapper[' + withdrawalIndex + '].withdrawalDate"/>\n' +
+            '                                        </div>\n' +
+            '                                        <div class="input__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                備考\n' +
+            '                                            </div>\n' +
+            '                                            <textarea class="memo" name="'+bankParentIndex+'.automaticWithdrawalsWrapper[' + withdrawalIndex + '].memo"></textarea>\n' +
+            '                                       </div>' +
+            '                                   <div class="button_add_item">' +
+            '                                       <a id="delete__column" class="delete_awColumn" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>\n' +
+            '                                   </div><hr/>' +
+            '</div>';
+        parent.append(newChild);
+    });
+    /*]]>*/
+    $(document).on("click",".delete_list",function () {
+        $(this).closest(".formColumn").remove();
+        if($(".formColumn").length==1){
+            $(".delete_list:first").parent().remove();
+        }
+        $(".formColumn").each(function (index) {
+            var columnParent = $(this);
+            $(this).find(".bankName").attr("name","bankFormWrapper["+index+"].name");
+            $(this).find(".branchName").attr("name","bankFormWrapper["+index+"].branchName");
+            $(this).find(".depositType").attr("name","bankFormWrapper["+index+"].depositType");
+            $(this).find(".bankAccountNumber").attr("name","bankFormWrapper["+index+"].bankAccountNumber");
+            $(this).find(".holder").attr("name","bankFormWrapper["+index+"].holder");
+            $(this).find(".webId").attr("name","bankFormWrapper["+index+"].webId");
+            $(this).find(".bankUsage").attr("name","bankFormWrapper["+index+"].bankUsage");
+            loopColumn('bankFormWrapper['+index+']',columnParent);
+        });
+    });
+    $(document).on("click",".delete_awColumn",function () {
+        var columnParent = $(this).parent().parent().parent();
+        var columnChild = $(this).closest(".columnList");
+        var bankIndex = columnChild.data("bank");
+        columnChild.remove();
+        if(columnParent.find(".columnList").length==1){
+            $(".delete_awColumn:first").parent().remove();
+        }
+        loopColumn(bankIndex,columnParent);
+    });
+    function loopColumn(bankIndex,columnParent) {
+        columnParent.find(".columnList").each(function (index) {
+            $(this).find(".expenseItem").attr("name",bankIndex+".automaticWithdrawalsWrapper["+index+"].expenseItem");
+            $(this).find(".withdrawalDate").attr("name",bankIndex+".automaticWithdrawalsWrapper["+index+"].withdrawalDate");
+            $(this).find(".memo").attr("name",bankIndex+".automaticWithdrawalsWrapper["+index+"].memo");
+        });
+    }
+</script>

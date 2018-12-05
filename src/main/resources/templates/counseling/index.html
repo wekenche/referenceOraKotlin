@@ -1,0 +1,58 @@
+<!--consultation_index.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+
+    <div id="container">
+        <div id="consultation_index">
+            <div class="main">
+                <img src="./assets/images/main_consultation.png" width="100%"/>
+            </div>
+            <div class="inner cf">
+                <div class="box">
+                    <div class="title">
+                        遺品整理士に質問する
+                    </div>
+                    <div class="btn cf">
+                        <a href="#"><img height="326" src="./assets/images/button/button_consultation_mail.png"
+                                         width="518"
+                                         th:src="@{/images/button/button_consultation_mail.png}"/></a>
+                        <a href="#"><img height="326" src="./assets/images/button/button_consultation_tel.png"
+                                         width="518"
+                                         th:src="@{/images/button/button_consultation_tel.png}"/></a>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="title">
+                        弁護士に質問する
+                    </div>
+                    <div class="btn cf">
+                        <a href="#"><img height="326" src="./assets/images/button/button_consultation_mail.png"
+                                         width="518"
+                                         th:src="@{/images/button/button_consultation_mail.png}"/></a>
+                        <a href="#"><img height="326" src="./assets/images/button/button_consultation_tel.png"
+                                         width="518"
+                                         th:src="@{/images/button/button_consultation_tel.png}"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>

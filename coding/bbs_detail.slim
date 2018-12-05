@@ -1,0 +1,99 @@
+doctype html
+html lang="ja"
+	- $pageNo = 19;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "終活全般 なんでも掲示板", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#bbs_detail
+				.page_label 終活全般
+				.inner.cf
+					#post_box
+						#post_info
+							#post_info_top.cf
+								#post_num: img src="./assets/images/icon/bbs_num_002.png" width="132" height="130"
+								#post_title みなさんの遺言書の書き方について教えてください
+							#post_content
+								p 
+									|
+										テキストが入りますテキストが入りますテキストが入りますテキストが入ります
+										テキストが入りますテキストが入りますテキストが入りますテキストが入ります
+										テキストが入りますテキストが入りますテキストが入りますテキストが入ります
+										テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります
+							#post_info_bottom.cf
+								#prof.cf
+									img src="./assets/images/common/users.png" width="194" height="194"
+									#user_info.cf
+										#user_name 山田 <span>さん</span>
+								#article_delete 
+									a href="#" 削除する
+								#post_count 143
+								#post_data 2017.12.5
+						#content.cf
+							#prof.cf
+								img src="./assets/images/common/users.png" width="194" height="194"
+								#user_info.cf
+									#user_name な〜が <span>さん</span>
+									#post_data 2017.12.2
+							p
+								|
+									私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・
+						#content.cf
+							#prof.cf
+								img src="./assets/images/common/users.png" width="194" height="194"
+								#user_info.cf
+									#user_name な〜が <span>さん</span>
+									#post_data 2017.12.2
+							p
+								|
+									私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・
+						#content.cf
+							#prof.cf
+								img src="./assets/images/common/users.png" width="194" height="194"
+								#user_info.cf
+									#user_name な〜が <span>さん</span>
+									#post_data 2017.12.2
+							p
+								|
+									私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・
+						#content.cf
+							#prof.cf
+								img src="./assets/images/common/users.png" width="194" height="194"
+								#user_info.cf
+									#user_name な〜が <span>さん</span>
+									#post_data 2017.12.2
+							p
+								|
+									私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・
+				== Slim::Template.new('./templates/_banner.slim').render
+		
+				//inner
+				#post_btn
+					a href="#"
+						img src="./assets/images/button/btn_post2.png" width="1029" height="126"
+				//.post_input
+					.inner
+						.title スレッドを投稿する
+						.post_detail
+							.name
+								span 名前
+								input type="text"
+							.subject
+								span 題名
+								input type="text"
+							.text
+								textarea
+						.btn
+							a href="#"
+								img src="./assets/images/button/btn_post.png" width="1040" height="147" alt="投稿する"
+					.search.cf
+						.home
+							a href="#"
+								img src="./assets/images/icon/icon_home.png" width="70" height="66"
+						.box
+							input type="text" size="30"
+							input type="submit" value="検索"
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+  <head>
+    <title>財産について エンディングノート</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+  </head>
+  <body>
+    <div layout:fragment="headerImage">
+      <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+           th:src="@{/images/header/header_endingnote.png}"/>
+    </div>
+    <div layout:fragment="main">
+      <div id="container">
+        <div id="property_about_top">
+          <div class="page_label">
+            <h2>
+              財産について
+            </h2>
+          </div>
+          <div class="inner">
+            <a href="property_about_assets.html"><img alt="資産について" height="338" th:src="@{/images/button/button_about_assets.jpg}" width="1140" /></a><a href="property_about_collection.html"><img alt="宝物やコレクションについて" height="338" th:src="@{/images/button/button_about_collection.jpg}" width="1140" /></a><a href="property_about_virtual_money.html"><img alt="仮想通貨について" height="338" th:src="@{/images/button/button_about_virtual_money.jpg}" width="1140" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

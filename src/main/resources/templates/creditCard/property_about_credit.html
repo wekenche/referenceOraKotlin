@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+    <head>
+        <title>資産について 13.クレジットカード</title>
+        <meta name="keywords" content="content1"/>
+        <meta name="description" content="content1"/>
+    </head>
+<body class="drawer drawer--left">
+    <div layout:fragment="headerImage">
+        <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+            th:src="@{/images/header/header_endingnote.png}"/>
+    </div>
+    <div  layout:fragment="main">
+        <div id="container">
+            <div id="property_about_credit">
+                <div class="page_label">
+                  <h2>
+                    資産について
+                  </h2>
+                </div>
+                <div class="about_credit">
+                    <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                    <!--/*@thymesVar id="form" type="ora.leadlife.co.jp.form.CreditCardForm"*/-->
+                    <form th:action="@{/creditCard/confirm}" method="post" th:object="${form}">
+                        <h2>
+                            13.クレジットカード
+                        </h2>
+                        <div class="input__container">
+                            <div id="formList" th:switch="${#lists.isEmpty(form.creditCardWrapper)}">
+                                <div th:case="true">
+                                    <div class="input__box">
+                                        <div class="title">
+                                            カードの名称
+                                        </div>
+                                        <input class="nameName" type="text" th:field="*{creditCardWrapper[0].creditCardName}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            クレジットブランド
+                                        </div>
+                                        <input class="nameBrand" type="text" th:field="*{creditCardWrapper[0].creditCardBrand}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            カード番号
+                                        </div>
+                                        <input class="nameNumber" type="text" th:field="*{creditCardWrapper[0].creditCardNumber}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            紛失時の連絡先
+                                        </div>
+                                        <input class="nameInfo" type="text" th:field="*{creditCardWrapper[0].contactInfo}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            ウェブ用ID
+                                        </div>
+                                        <input class="nameWeb" type="text" th:field="*{creditCardWrapper[0].web}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            備考
+                                        </div>
+                                        <div class="comment_box">
+                                            <textarea class="nameRemarks" th:field="*{creditCardWrapper[0].remarks}"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="button_box del_box">
+
+                                    </div>
+                                    <br /><br /><br />
+                                    <hr />
+                                </div>
+                                <div th:case="false">
+                                    <div th:each="cc,is:${form.creditCardWrapper}">
+                                        <div class="input__box">
+                                            <div class="title">
+                                                カードの名称
+                                            </div>
+                                            <input class="nameName" type="text" th:attr="name='creditCardWrapper['+${is.index}+'].creditCardName'" th:value="${cc.creditCardName}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                クレジットブランド
+                                            </div>
+                                            <input class="nameBrand" type="text" th:attr="name='creditCardWrapper['+${is.index}+'].creditCardBrand'" th:value="${cc.creditCardBrand}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                カード番号
+                                            </div>
+                                            <input class="nameNumber" type="text" th:attr="name='creditCardWrapper['+${is.index}+'].creditCardNumber'" th:value="${cc.creditCardNumber}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                紛失時の連絡先
+                                            </div>
+                                            <input class="nameInfo" type="text" th:attr="name='creditCardWrapper['+${is.index}+'].contactInfo'" th:value="${cc.contactInfo}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                ウェブ用ID
+                                            </div>
+                                            <input class="nameWeb" type="text" th:attr="name='creditCardWrapper['+${is.index}+'].web'" th:value="${cc.web}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                備考
+                                            </div>
+                                            <div class="comment_box">
+                                                <textarea class="nameRemarks" type="text" th:attr="name='creditCardWrapper['+${is.index}+'].remarks'" th:inline="text">[[${cc.remarks}]]</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="button_box del_box" th:if="${aboutMeViewFlag==0}">
+                                            <a th:if="${#lists.size(form.creditCardWrapper) > 1}" href="javascript:;" class="delete_list right"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>
+                                        </div>
+                                        <br /><br /><br />
+                                        <hr />
+                                    </div>
+                                </div>
+                            </div>
+                            <a th:if="${aboutMeViewFlag==0}" href="javascript:;" class="add_list">リストを追加</a>
+                        </div>
+                        <div class="button_box">
+                            <button th:if="${aboutMeViewFlag==0}" type="submit"><img height="147" width="1040" src="./assets/images/button/button_save.jpg" th:src="@{/images/button/button_save.jpg}" /></button>
+                        </div>
+                        <div id="bnr_paying_merit">
+                            <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                                 th:src="@{/images/common/banner.png}" width="1040" /></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(document).on("click",".add_list",function () {
+        var childIndex = $('.nameName').length;
+        var newChild = '<div><div class="input__box">'
+            + '<div class="title">'
+            + '     カードの名称'
+            + ' </div>'
+            + ' <input class="nameName" type="text" name="creditCardWrapper['+childIndex+'].creditCardName"/>'
+            + '</div>'
+            + '   <div class="input__box">'
+            + '  <div class="title">'
+            + ' クレジットブランド'
+            + ' </div>'
+            + '<input class="nameBrand" type="text" name="creditCardWrapper['+childIndex+'].creditCardBrand"/>'
+            + '</div>'
+            + '<div class="input__box">'
+            + '  <div class="title">'
+            + '     カード番号'
+            + ' </div>'
+            + ' <input class="nameNumber" type="text" name="creditCardWrapper['+childIndex+'].creditCardNumber"/>'
+            + '</div>'
+            + '<div class="input__box">'
+            + ' <div class="title">'
+            + ' 紛失時の連絡先'
+            + ' </div>'
+            + '<input class="nameInfo" type="text" name="creditCardWrapper['+childIndex+'].contactInfo"/>'
+            + '</div>'
+            + '<div class="input__box">'
+            + ' <div class="title">'
+            + '     ウェブ用ID'
+            + ' </div>'
+            + ' <input class="nameWeb" type="text" name="creditCardWrapper['+childIndex+'].web"/>'
+            + '</div>'
+            + '<div class="input__box">'
+            + '  <div class="title">'
+            + ' 備考'
+            + ' </div>'
+            + '<div class="comment_box">'
+            + ' <textarea class="nameRemarks" name="creditCardWrapper['+childIndex+'].remarks"></textarea>'
+            + '</div>'
+            + '</div>' +
+            '  <div class="button_box del_box"><a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '  <br /><br /><br />\n' +
+            '  <hr /></div>';
+
+        if($(".del_box").length == 1) {
+            $(".del_box:first").append('<a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#formList").append(newChild);
+    });
+    $(document).on("click", ".delete_list" ,function () {
+        $(this).parent('div').parent('div').remove();
+        if($(".del_box").length == 1) {
+            $(".del_box:first").empty();
+        }
+        function updateName(className , fieldName) {
+            $(className).each(function(index) {
+                $(this).attr("name","creditCardWrapper["+index+"]."+fieldName);
+            });
+        }
+        updateName('.nameName','creditCardName');
+        updateName('.nameBrand','creditCardBrand');
+        updateName('.nameNumber','creditCardNumber')
+        updateName('.nameInfo','contactInfo');
+        updateName('.nameWeb','web');
+        updateName('.nameRemarks','remarks');
+    });
+</script>

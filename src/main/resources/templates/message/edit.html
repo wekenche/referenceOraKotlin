@@ -1,0 +1,75 @@
+<!--message_record_edit.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_message.png" width="712"
+         th:src="@{/images/header/header_message.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="message_record_edit">
+            <div class="inner">
+                <div class="select_box">
+                    <img class="button_drug" height="147" src="./assets/images/button/select_category.jpg" width="1041"
+                         th:src="@{/images/button/select_category.jpg}"/> <select name="category" size="3"
+                                                                                  style="display: none;">
+                    <option value="1">
+                        一周忌
+                    </option>
+                    <option value="2">
+                        三周忌
+                    </option>
+                    <option value="3">
+                        思い出
+                    </option>
+                </select>
+                </div>
+                <div class="select_box">
+                    <img class="button_drug" height="147" src="./assets/images/button/select_record.jpg" width="1041"
+                         th:src="@{/images/button/select_record.jpg}"/><select name="record" size="4"
+                                                                               style="display: none;">
+                    <option value="1">
+                        写真
+                    </option>
+                    <option value="2">
+                        ビデオ
+                    </option>
+                    <option value="3">
+                        データ（PDF）
+                    </option>
+                    <option value="4">
+                        テキストのみ
+                    </option>
+                </select>
+                </div>
+                <div class="btn cf">
+                    <div class="back">
+                        <a href="message_record_function.html"><img height="147"
+                                                                    src="./assets/images/button/btn_back.jpg"
+                                                                    width="495"
+                                                                    th:src="@{/images/button/btn_back.jpg}"/></a>
+                    </div>
+                    <div class="check">
+                        <a href="message_record_edit_video.html"><img height="147"
+                                                                      src="./assets/images/button/button_check.jpg"
+                                                                      width="495"
+                                                                      th:src="@{/images/button/button_check.jpg}"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

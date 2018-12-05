@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns="http://www.w3.org/1999/xhtml"
+        layout:decorator="adminLayout">
+<head>
+</head>
+<body>
+<div layout:fragment="main">
+  <div class="card">
+    <div class="card-header">
+      検索
+    </div>
+    <div class="card-body">
+      <form th:action="@{/admin/shop/search}">
+        <div class="form-group">
+          <!-- DEV search name-->
+          <label>名前</label>
+          <!--/*@thymesVar id="search_name" type="java.lang.String"*/-->
+          <input class="form-control" type="text" th:value="${search_name}" name="name"/>
+        </div>
+        <div class="form-group">
+          <!-- DEV search code -->
+          <label>コード</label>
+          <!--/*@thymesVar id="search_code" type="java.lang.String"*/-->
+          <input class="form-control" type="text" th:value="${search_code}" name="code"/>
+        </div>
+        <div class="form-group">
+          <!-- DEV search back_percent(please add column to shop table) -->
+          <label>バック%</label>
+          <!--/*@thymesVar id="search_back_percent" type="java.lang.String"*/-->
+          <input class="form-control text-right" type="text" th:value="${search_back_percent}" name="back_percent"/>
+        </div>
+        <div class="form-group">
+          <!-- DEV search back_parent_percent(please add column to shop table) -->
+          <label>バック親%</label>
+          <!--/*@thymesVar id="search_back_parent_percent" type="java.lang.String"*/-->
+          <input class="form-control text-right" type="text" th:value="${search_back_parent_percent}" name="back_parent_percent"/>
+        </div>
+        <div class="form-group">
+          <!-- DEV do search -->
+          <button type="submit" class="btn btn-primary">検索</button>
+        </div>
+      </form>
+      <div class="form-group">
+        <a class="btn btn-primary" data-toggle="collapse" href="#new" role="button" aria-expanded="false"
+           aria-controls="collapseExample">
+          新規追加
+        </a>
+        <div class="collapse" id="new">
+          <div class="card card-body">
+            <!-- DEV save new record -->
+            <!--/*@thymesVar id="shops" type="ArrayList<ora.leadlife.co.jp.form.ShopForm>"*/-->
+            <!--/*@thymesVar id="shopsDropDown" type="List<ora.leadlife.co.jp.model.Shop>"*/-->
+            <!--/*@thymesVar id="shopForm" type="ora.leadlife.co.jp.form.ShopForm"*/-->
+            <form th:action="@{/admin/shop/add}" th:object="${shopForm}" method="post">
+              <div class="form-group">
+                <!-- DEV save name-->
+                <label>名前</label>
+                <input class="form-control"
+                       type="text"
+                       th:field="*{shopName}"/>
+              </div>
+              <div class="form-group">
+                <!-- DEV save code -->
+                <label>コード</label>
+                <input class="form-control"
+                       type="text"
+                       th:field="*{shopCode}"/>
+              </div>
+              <div class="form-group">
+                <!-- DEV save parent from shop#code -->
+                <label>親コード</label>
+                <!--<input class="form-control"-->
+                       <!--type="text"-->
+                       <!--th:field="*{shopParent}"-->
+                       <!--name="shop_add_parent_code"/>-->
+                <select class="form-control" th:field="*{shopParentId}">
+                  <!--/*@thymesVar id="sdd" type="ora.leadlife.co.jp.form.ShopForm"*/-->
+                  <option value="0">親なし</option>
+                  <option th:each="sdd : ${shopsDropDown}" th:value="${sdd.id}"
+                          th:text="${sdd.code}" th:selected="${sdd.id == shopForm.shopParentId}">
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <!-- DEV save back_percent -->
+                <label>バック%</label>
+                <input class="form-control text-right"
+                       type="number"
+                       th:field="*{shopBackPercent}"/>
+              </div>
+              <div class="form-group">
+                <!-- DEV save back_parent_percent -->
+                <label>バック親%</label>
+                <input class="form-control text-right"
+                       type="number"
+                       th:field="*{shopBackParentPercent}"/>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">登録</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card mt-3">
+    <div class="card-header">一覧</div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <tr>
+          <th>ID</th>
+          <th><!-- DEV name -->名前</th>
+          <th><!-- DEV code -->コード</th>
+          <th><!-- DEV parent#code -->親コード</th>
+          <th><!-- DEV back_percent -->バック%</th>
+          <th><!-- DEV back_parent_percent -->バック親%</th>
+          <th>未払い額</th>
+          <th><!-- DEV created_at-->作成日</th>
+          <th><!-- DEV updated_at-->更新日</th>
+          <th>&nbsp;</th>
+        </tr>
+
+        <!--/*@thymesVar id="shopForm" type="ora.leadlife.co.jp.form.ShopForm"*/-->
+        <tr th:each="shopForm : ${shops}">
+          <td th:text="${shopForm.shopId}"></td>
+          <td th:text="${shopForm.shopName}"></td>
+          <td th:text="${shopForm.shopCode}"></td>
+          <td th:text="${shopForm.shopParent}"></td>
+          <td th:text="${shopForm.shopBackPercent}" class="text-right"></td>
+          <td th:text="${shopForm.shopBackParentPercent}" class="text-right"></td>
+          <td th:if="${shopForm.unpaid !=null }"  class="text-right">
+            <a th:href="'/admin/shop/pay/'+${shopForm.unpaid.id}">
+              <span th:text="${shopForm.unpaid.planedAmount}"></span>
+            </a>
+          </td>
+          <td th:if="${shopForm.unpaid ==null }" th:text="0" class="text-right"></td>
+          <td th:text="${#dates.format(shopForm.created, 'yyyy/MM/dd')}"></td>
+          <td th:text="${#dates.format(shopForm.updated, 'yyyy/MM/dd')}"></td>
+          <td>
+            <!-- DEV delete the shop -->
+            <!--/*@thymesVar id="id" type="ora."*/-->
+            <a href="javascript:;"
+               th:attr="onclick='confirmDialog(\'削除してもよろしいでしょうか？\',\'/admin/shop/delete/' + ${shopForm.shopId} + '\')'">
+              削除
+            </a>
+            <!-- DEV edit the record -->
+            <a data-toggle="collapse" th:href="'#edit_'+${shopForm.shopId}" role="button" aria-expanded="false"
+               aria-controls="collapseExample">
+              編集
+            </a>
+            <div class="collapse" th:id="'edit_'+${shopForm.shopId}">
+              <div class="card card-body">
+                <!-- DEV save new record -->
+                <form th:action="@{/admin/shop/edit}" th:method="post">
+                  <input type="hidden" name="shopId" th:value="${shopForm.shopId}"/>
+                  <div class="form-group">
+                    <!-- DEV save name-->
+                    <label>名前</label>
+                    <input class="form-control" type="text" name="shopName" th:value="${shopForm.shopName}"/>
+                  </div>
+                  <div class="form-group">
+                    <!-- DEV save code -->
+                    <label>コード</label>
+                    <input class="form-control" type="text" name="shopCode" th:value="${shopForm.shopCode}"/>
+                  </div>
+                  <div class="form-group">
+                    <!-- DEV save parent from shop#code -->
+                    <label>親コード</label>
+                    <!--<input class="form-control" type="text" name="shopParent" th:value="${shopForm.shopParent}"/>-->
+                    <select class="form-control" name="shopParentId" th:value="${shopForm.shopParentId}">
+                      <option value="0">親なし</option>
+                      <!--/*@thymesVar id="sdd" type="ora.leadlife.co.jp.form.ShopForm"*/-->
+                      <option th:each="sdd : ${shopsDropDown}" th:value="${sdd.id}"
+                              th:text="${sdd.code}" th:selected="${sdd.id == shopForm.shopParentId}">
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <!-- DEV save back_percent -->
+                    <label>バック%</label>
+                    <input class="form-control text-right" type="number" name="shopBackPercent" th:value="${shopForm.shopBackPercent}"/>
+                  </div>
+                  <div class="form-group">
+                    <!-- DEV save back_parent_percent -->
+                    <label>バック親%</label>
+                    <input class="form-control text-right" type="number" name="shopBackParentPercent" th:value="${shopForm.shopBackParentPercent}"/>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary">登録</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- DEV paging -->
+  <div class="mt-3">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" th:if="${not page.hasPreviousPage}">
+          <a class="page-link"
+             href="javascript:;"
+             style="color: currentColor; cursor: not-allowed; opacity: 0.7; text-decoration: none;">
+            &laquo;
+          </a>
+        </li>
+        <li class="page-item" th:if="${page.hasPreviousPage}">
+          <a class="page-link"
+             th:href="@{${page.url}(page=${page.number - 2},size=${page.size})}">
+            &laquo;
+          </a>
+        </li>
+        <li th:each="item : ${page.items}" th:class="${item.current}? 'page-item active' : ''">
+          <a id="active"
+             th:if="${item.current}"
+             th:href="@{${page.url}(page=${item.number - 1},size=${page.size})}"
+             class="page-link">
+            <span th:text="${item.number}"></span>
+          </a>
+          <a th:if="${not item.current}"
+             th:href="@{${page.url}(page=${item.number - 1},size=${page.size})}"
+             class="page-link">
+            <span th:text="${item.number}"></span>
+          </a>
+        </li>
+        <li class="page-item" th:if="${not page.hasNextPage}">
+          <a class="page-link"
+             href="javascript:;"
+             style="color: currentColor; cursor: not-allowed; opacity: 0.7; text-decoration: none;">
+            &laquo;
+          </a>
+        </li>
+        <li class="page-item" th:if="${page.hasNextPage}">
+          <a class="page-link"
+             href="#"
+             th:href="@{${page.url}(page=${page.number},size=${page.size})}">
+            &raquo;
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+</body>
+</html>
+
+<script>
+    /*<![CDATA[*/
+    function confirmDialog(title, url) {
+        $("#confirmDialog").dialog({
+            modal: true,
+            title: title,
+            buttons: {
+                "OK": function () {
+                    $.ajax({
+                        type : "DELETE",
+                        url : url,
+                        success: function (result) {
+                            $("#confirmDialog").dialog("close");
+                            location.reload();
+                        },
+                        error: function (e) {
+                            console.log(e);
+                            location.reload();
+                        }
+                    });
+                },
+                "キャンセル": function () {
+                    $(this).dialog("close");
+                }
+            },
+        });
+    }
+    /*]]>*/
+</script>

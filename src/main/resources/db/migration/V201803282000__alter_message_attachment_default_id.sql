@@ -1,0 +1,2 @@
+ALTER TABLE `message_attachments`
+	CHANGE COLUMN `id` `id` BIGINT(20) NOT NULL AUTO_INCREMENT FIRST;

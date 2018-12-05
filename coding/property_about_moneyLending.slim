@@ -1,0 +1,86 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "資産について 10.貸しているお金 エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_moneyLending
+				.page_label
+					h2 資産について
+				.about_moneyLending
+					h2 10.貸しているお金
+					.input__container
+						.input__box
+							.title 貸した相手
+							input type="text"
+						//貸した相手
+						.input__box
+							.title 電話番号
+							input type="text"
+						//電話番号
+						.input__box
+							.title 貸した相手の郵便番号
+							ul
+								li
+									input.post type="text"
+								li
+									p -
+								li
+									input.post type="text"
+						//貸した相手の郵便番号
+						.input__box
+							.title 貸した相手の住所
+							input type="text"
+						//貸した相手の住所
+						.input__box.input_date
+							.title 貸した日
+							ul
+								li
+									input.date type="text"
+								li
+									p 年
+								li
+									input.date type="text"
+								li
+									p 月
+								li
+									input.date type="text"
+								li
+									p 日
+								
+						//貸した日
+						.input__box
+							.title 金額
+							input type="text"
+						//金額
+						.input__box
+							.title 証書の有無
+							input name="decision" type="radio" value="1"
+							span.thereOrNone 有り
+							input name="decision" type="radio" value="1"
+							span.thereOrNone 無し
+						//証書の有無
+						.input__box
+							.title 保管場所
+							input type="text"
+						//保管場所
+						.input__box
+							.title 残額（いつの時点でいくらか）
+							input type="text"
+						//残額（いつの時点でいくらか）
+						.input__box
+							.title 備考
+							textarea
+						//備考
+						a.add_list href="#" リストを追加
+
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

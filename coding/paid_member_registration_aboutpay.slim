@@ -1,0 +1,41 @@
+doctype html
+html lang="ja"
+	- $pageNo = 5;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "お支払いについて 有料会員登録", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#paid_member_registration_aboutpay
+				.page_label 有料会員登録
+				.inner
+					.title お支払いについて
+					.wrapper
+						p.desc
+							|
+								有料会員登録には「クレジットカード決済」</br>「キャリア決済」をご利用いただけます。
+						.credit
+							h3 クレジットカード
+							p 有料会員月額 ： 972円（税込）
+							p ▼利用可能なクレジットカード種類
+							img src="assets/images/creditcard.png" width="621" height="120"
+							p お支払方法 ： 決済方法入力画面にて、クレジットカード情報をご入力ください。
+						.about_security
+							h3 セキュリティコードについて
+							p セキュリティーコードとは、クレジットカードの不正使用防止のために利用される特殊なコードのことです。各クレジットカードの記載部分については以下を確認ください。
+							p ●VISA,MasterCard,テキストテキストは、クレジットカードの背面に記載されている3桁の番号（メインカード番号のすぐ右側にあります）
+							p ●テキストテキストはテキストテキスト、クレジットカードの背面に記載されている3桁の番号（メインカード番号のすぐ右側にあります）
+							p セキュリティーコードが分からない場合や判断できない場合は、カードに記載されている銀行またはクレジットカード会社へお問い合わせください。
+						.carrier
+							h3 キャリア決済
+							p 有料会員月額 ： 972円（税込）
+							p ▼利用可能なキャリア決済種類
+							img src="assets/images/carrier_billing.png" width="572" height="43"
+							p お支払方法 ： キャリア決済入力画面にて、キャリア決済情報をご入力ください。
+
+						.btn
+							a href="paid_member_registration_top.html"
+								img src="assets/images/button/button_paid_back.jpg" width="1064" height="147"
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

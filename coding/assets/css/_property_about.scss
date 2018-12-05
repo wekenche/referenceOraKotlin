@@ -1,0 +1,1972 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#property_about_top{
+	background: #f2f2f2;
+	.inner{
+		width: 1140px;
+		margin: 0 auto;
+		padding: 160px 0 400px;
+		box-sizing: border-box;
+		a{
+			display: block;
+			margin-bottom: 75px;
+			&:last-child{
+				margin-bottom: 0;
+			}
+		}
+	}
+}//property_about_top 財産について トップ
+
+#property_about_assets{
+	background: #f2f2f2;
+	.inner{
+		width: 1140px;
+		margin: 0 auto;
+		padding: 100px 0 155px;
+		box-sizing: border-box;
+		a{
+			display: block;
+			margin-bottom: 50px;
+			&:last-child{
+				margin-bottom: 0;
+			}
+		}
+	}
+}//property_about_assets 資産について トップ
+
+
+
+#property_about_collection{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_collection{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 105px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+			}//input__box
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 43px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png) no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_collection	
+}//#property_about_collection 2.宝物やコレクション
+
+
+#property_about_virtual_money{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_virtual_money{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 105px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+			}//input__box
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 45px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_virtual_money
+}//#property_about_virtual_currency 3.仮想通貨について
+
+
+
+#property_about_pastAddress{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_pastAddress{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 888px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				ul{
+					display: table;
+					li{
+						display: table-cell;
+    				vertical-align: middle;
+						.post{
+							width: 230px;
+						}
+						p{
+							font-size: 45px;
+							padding: 0 9px;
+						}
+					}
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+			}//input__box
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 43px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_pastAddress	
+}//#property_about_pastAddress 1.過去に住んでいた住所
+
+
+
+#property_about_realEstate{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_realEstate{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 125px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+			}//input__box
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 45px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_realEstate
+}//#property_about_realEstate 2.不動産
+
+
+#property_about_savings{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_savings{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 125px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+			}//input__box
+			.list_inner{
+				width: 1040px;
+				margin: 0 auto;
+				margin-top: 60px;
+				background-color: #f2f2f2;
+				box-sizing: border-box;
+				h3{
+					padding: 35px 0 35px 44px;
+					font-size: 45px;
+					font-weight: bold;
+					border: 2px solid #000;
+					background-color: #d5d5d5;
+					box-sizing: border-box;
+				}
+				.input__container{
+					background-color: #f2f2f2;
+					border-top: none;
+					.input__box{
+						width: 950px;
+					}
+					.button_add_item{
+						margin: 40px 0 70px;
+						img{
+							margin: 0 auto;
+						}
+					}
+				}
+			}//list_inner
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 45px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+		}
+	}//about_realEstate
+}//#property_about_savings 3.預貯金
+
+
+#property_about_securitiesAccount{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_securitiesAccount{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 130px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+			}//input__box
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 45px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_securitiesAccount
+}//#property_about_securitiesAccount 4.証券口座
+
+
+#property_about_stock{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_stock{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 125px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+					&.amount{
+						width: 750px;
+					}
+				}
+				input[type="radio"]{
+					width: 60px;
+					height: 60px;
+				}
+				span{
+					margin-left: 28px;
+					font-size: 48px;
+					&.thereOrNone{
+						margin: 0 125px 0 50px;
+						font-weight: bold;
+					}
+					&.amount_stock{
+						position: absolute;
+						bottom: 0;
+					}
+				}
+			}//input__box
+			.input_amount{
+				position: relative;
+			}
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 45px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_stock
+}//#property_about_stock 5.株式
+
+
+#property_about_securitiesBond{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_securitiesBond{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 130px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+			}//input__box
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 45px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_securitiesBond
+}//#property_about_securitiesBond 6.その他金融資産/有価証券
+
+
+
+#property_about_cash{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_cash{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 130px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+			}//input__box
+			.input_money{
+				position: relative;
+				input{
+					width: 730px;
+				}
+				span{
+					position: absolute;
+					bottom: 0;
+					margin-left: 28px;
+					font-size: 48px;
+				}
+			}
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 45px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_cash
+}//#property_about_cash 7.現金(預貯金以外)
+
+
+
+#property_about_otherHeritage{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_otherHeritage{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 135px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+			}//input__box
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 45px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_otherHeritage	
+}//#property_about_otherHeritage 8.その他の遺産
+
+
+
+#property_about_trunkroom{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_trunkroom{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 135px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+				ul{
+					display: table;
+					li{
+						display: table-cell;
+    				vertical-align: middle;
+						.post{
+							width: 230px;
+						}
+						p{
+							font-size: 45px;
+							padding: 0 9px;
+						}
+					}
+				}
+			}//input__box
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 43px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_trunkroom	
+}//#property_about_trunkroom 9.貸金庫／レンタル倉庫／トランクルーム等
+
+
+
+#property_about_moneyLending{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_moneyLending{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 135px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+				input[type="radio"]{
+					width: 60px;
+					height: 60px;
+				}
+				span{
+					margin-left: 28px;
+					font-size: 48px;
+					&.thereOrNone{
+						margin: 0 125px 0 50px;
+						font-weight: bold;
+					}
+					&.amount_stock{
+						position: absolute;
+						bottom: 0;
+					}
+				}
+				ul{
+					display: table;
+					li{
+						display: table-cell;
+    				vertical-align: middle;
+						.post, .date{
+							width: 230px;
+						}
+						p{
+							font-size: 40px;
+							padding: 0 9px;
+						}
+					}
+				}
+			}//input__box
+			.input_date{
+				ul{
+					li{
+						p{
+							padding: 0 30px;
+						}
+					}
+				}
+			}
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 45px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_moneyLending	
+}//#property_about_moneyLending 10.貸しているお金
+
+
+#property_about_debt{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_debt{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 140px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+				ul{
+					display: table;
+					li{
+						display: table-cell;
+    				vertical-align: middle;
+						.post, .date{
+							width: 230px;
+						}
+						p{
+							font-size: 45px;
+							padding: 0 9px;
+						}
+					}
+				}
+			}//input__box
+			.input_date{
+				ul{
+					li{
+						p{
+							padding: 0 30px;
+						}
+					}
+				}
+			}
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 43px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+			.list_inner{
+				width: 1040px;
+				margin: 0 auto;
+				margin-top: 60px;
+				background-color: #f2f2f2;
+				box-sizing: border-box;
+				h3{
+					padding: 35px 0 35px 44px;
+					font-size: 45px;
+					font-weight: bold;
+					border: 2px solid #000;
+					background-color: #d5d5d5;
+					box-sizing: border-box;
+				}
+				.input__container{
+					background-color: #f2f2f2;
+					border-top: none;
+					.input__box{
+						width: 950px;
+					}
+					.button_add_item{
+						margin: 40px 0 70px;
+						img{
+							margin: 0 auto;
+						}
+					}
+				}
+			}//list_inner
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_debt	
+}//#property_about_debt 11.借金・ローン
+
+
+#property_about_guaranteeObligations{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_guaranteeObligations{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 145px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+				ul{
+					display: table;
+					li{
+						display: table-cell;
+    				vertical-align: middle;
+						.post, .date{
+							width: 230px;
+						}
+						p{
+							font-size: 45px;
+							padding: 0 9px;
+						}
+					}
+				}
+			}//input__box
+			.input_date{
+				ul{
+					li{
+						p{
+							padding: 0 30px;
+						}
+					}
+				}
+			}
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 43px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_guaranteeObligations	
+}//#property_about_guaranteeObligations 12.保証債務
+
+
+#property_about_credit{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_credit{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 135px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+				ul{
+					display: table;
+					li{
+						display: table-cell;
+    				vertical-align: middle;
+						.post, .date{
+							width: 230px;
+						}
+						p{
+							font-size: 45px;
+							padding: 0 9px;
+						}
+					}
+				}
+			}//input__box
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 45px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_credit	
+}//#property_about_credit 13.クレジットカード
+
+
+#property_about_electronicMoney{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_electronicMoney{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 150px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+				ul{
+					display: table;
+					li{
+						display: table-cell;
+    				vertical-align: middle;
+						.post, .date{
+							width: 230px;
+						}
+						p{
+							font-size: 45px;
+							padding: 0 9px;
+						}
+					}
+				}
+			}//input__box
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 45px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_electronicMoney	
+}//#property_about_electronicMoney 14.電子マネー
+
+
+#property_about_pension{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.text_box{
+		.input_text{
+			width: 1040px;
+			height: 396px;
+			padding: 18px 0 0 32px;
+			border: 7px solid #ff8431;
+			border-top: 0;
+			border-radius: 0 0 10px 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+			color: #b0b0b0;
+		}
+		&::-webkit-scrollbar{
+			all: unset;
+			width:8px;
+		}
+		&::-webkit-scrollbar-thumb{
+			all: unset;
+			width: 8px;
+			border-radius: 10px;
+			background: #a6a6a6;
+		}
+
+		}
+	}
+	.about_pension{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 140px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+				ul{
+					display: table;
+					li{
+						display: table-cell;
+    				vertical-align: middle;
+						.post, .date{
+							width: 230px;
+						}
+						p{
+							font-size: 45px;
+							padding: 0 9px;
+						}
+					}
+				}
+			}//input__box
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 60px 770px;
+				color: #000;
+				font-size: 45px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_pension	
+}//#property_about_pension 15.年金

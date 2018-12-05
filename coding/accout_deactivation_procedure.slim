@@ -1,0 +1,59 @@
+doctype html
+html lang="ja"
+	- $pageNo = 26;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "退会手続き手順", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#accout_deactivation_procedure
+				.inner
+					.title Apple ID決済の自動更新登録をオフにする
+					.text__area
+						p 
+							|
+								iPhoneアプリよりApple ID決済をご利用のお客様は、下記の手順で自動継続決済の解約（自動更新登録のオフ）ができます。
+						p 
+							|
+								Apple IDの仕様により「登録の終了日の0:00」の24時間以上前に自動更新をオフにしなければ、継続決済は自動的に更新されます。
+						p 更新タイミング・下記手順の詳細についてはAppleへお問い合わせください。
+					//column1
+					.title 会員情報更新タイミング
+					.text__area
+						p 
+							|
+								Apple ID決済の自動更新登録情報を解約しても、次回更新日までは有料会員プランをご利用になれます。<br />
+								また、更新日が経過しても、Apple社からの決済情報の反映が遅延した場合、更新日が過ぎても、会員情報更新のために最大4日お時間を要する場合がございます。
+						p 
+							|
+								この期間中は会員ステータスが変わらず、猶予期間終了後に自動的に会員ステータスが変更されます。
+					//column2
+					.title iPhoneからの手順 概要
+					.text__area
+						ul
+							li
+								.procedure 1.iPhoneで「設定」をタップ
+							li
+								.procedure 2.iTunes StoreとApp Store」をタップ
+							li
+								.procedure 3.「Apple ID」をタップ
+							li
+								.procedure 4.ポップアップ画面で「Apple IDを表示」をタップ
+							li
+								.procedure 5.「登録」をタップ 
+								p
+									|
+										※「登録」メニューが表示されない場合は、Apple ID決済にて自動更新の有料会員への登録はされていません。
+							li
+								.procedure 6.「生前整理アプリ」をタップ
+								p ※他に登録しているアプリがない場合は直接7へ移動します。 
+								p ※生前整理アプリの有効な登録がない場合、生前整理アプリの自動更新登録（継続的なご請求）は行われておりません。
+								p ※登録内容が表示されないのに決済が発生している場合は、Apple IDを複数お持ちでないかご確認のうえ、決済時にご利用されたApple IDにサインインしているかご確認ください。
+							li
+								.procedure 7.「登録をキャンセルする」をタップ、次に「確認」をタップ
+								p.red 詳細情報は<a href="https://support.apple.com/ja-jp/HT202039" target="_blank">こちら</a>をご確認ください。
+								p ※こちらの手続きを行わない限り、自動決済は停止されません。
+								p ※こちらの対応を踏んでいない場合、意図せず自動決済が行われても弊社では一切の責任を負いません事をご了承願います。
+					//column3
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

@@ -1,0 +1,36 @@
+doctype html
+html lang="ja"
+	- $pageNo = 18;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "有料会員になるメリット", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#merit
+	  		.inner
+	  			article
+		  			.title 有料会員（プレミアム）
+		  			p
+		  				|
+		  					ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+		  					ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+		  					ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+		  					ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+		  					ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+		  					ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+		  			p
+		  				|
+		  					ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+		  					ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+		  					ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+		  					ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+		  					ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+		  					ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。	  
+		  		.btn
+		  			a href="paid_member_registration_top.html"
+		  				img src="./assets/images/button/btn_registration_accout.png" width="1040" height="147"			
+
+		  			== Slim::Template.new('./templates/_banner.slim').render
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

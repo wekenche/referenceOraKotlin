@@ -1,0 +1,59 @@
+<!--free_migration_input.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_free_migration.png" width="712"
+         th:src="@{/images/header/header_free_migration.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="free_migration_input">
+            <form th:action="@{/freeMigration/confirm}" method="post" th:object="${passwordForm}">
+                <div class="inner cf">
+                    <div class="balloon">
+                        <div class="box">
+                            <p>
+                                あなたのアカウントを確認します。<br/>
+                                パスワードを入力して下さい。
+                            </p>
+                            <p>
+                                ID: <span th:text="${user.email}"></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <div class="mail_input">
+                            <span>パスワード</span>
+                            <div class="inputWithIcon">
+                                <input id="password" type="password" name="password" th:field="*{password}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <button type="submit">
+                            <img alt="次へ" height="147" width="1064"
+                                 th:src="@{/images/button/btn_next2.png}"/>
+                        </button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

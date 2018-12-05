@@ -1,0 +1,37 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#endingnote_index_about_me
+	  		.inner.cf
+		  		ul
+		  			li
+		  				a href="endingnote_about_property.html"
+		  					img src="./assets/images/button/button_about_me.jpg" width="554" height="476"
+		  			li
+		  				/ a href="endingnote_about_property.html"
+		  				img src="./assets/images/button/button_grave_off.jpg" width="554" height="476"
+		  			li
+		  				/ a href="endingnote_about_property.html"
+		  				img src="./assets/images/button/button_member_service_off.jpg" width="554" height="476"
+		  		ul
+		  			li
+		  				/ a href="endingnote_about_property.html"
+		  				img src="./assets/images/button/button_about_prpperty_off.jpg" width="554" height="476"
+		  			li
+		  				/ a href="endingnote_about_property.html"
+		  				img src="./assets/images/button/button_testament_off.jpg" width="554" height="476"
+		  			li
+		  				/ a href="endingnote_about_property.html"
+		  				img src="./assets/images/button/button_others_off.jpg" width="554" height="476"
+		  		.attention
+		  			p ※承認者にこちらの情報が共有されますので、ご注意ください。
+
+		  		== Slim::Template.new('./templates/_banner.slim').render
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

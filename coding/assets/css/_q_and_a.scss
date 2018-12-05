@@ -1,0 +1,31 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#q_and_a{
+	width: 1188px;
+	margin: 0 auto;
+	padding-top: 150px;
+	box-sizing: border-box;
+	.qa_box{
+		.question{
+			font-size: 45px;
+			font-weight: bold;
+			color: #ff8431;
+			padding-left: 20px;
+			box-sizing: border-box;
+			margin-bottom: 36px;
+		}
+		.answer{
+			font-size: 40px;
+			background: #fff;
+			border: 2px solid #a0a0a0;
+			padding: 50px 40px;
+			box-sizing: border-box;
+			margin-bottom: 100px;
+			letter-spacing: 0.05em;
+		}
+	}
+}//usrpict 会員名・写真の変更　ユーザー名・パスワードの変更

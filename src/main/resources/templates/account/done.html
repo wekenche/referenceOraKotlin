@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="アカウント管理" src="./assets/images/header/header_account_admin.png" width="754"
+       th:src="@{/images/header/header_account_admin.png}"/>
+</div>
+<div layout:fragment="main">
+
+  <div id="change_complete">
+    <div class="inner cf">
+      <div class="message">
+        <div class="status">
+          完了しました
+        </div>
+        <div class="icon">
+          <img height="212" src="./assets/images/icon/icon_checkbox.png" width="212"
+               th:src="@{/images/icon/icon_checkbox.png}"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>資産について 8.その他の遺産 エンディングノート</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="property_about_otherHeritage">
+            <div class="page_label">
+                <h2>
+                    資産について
+                </h2>
+            </div>
+            <div class="about_otherHeritage">
+                <h2>
+                    8.その他の遺産
+                </h2>
+                <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                <!--/*@thymesVar id="depositForm" type="ora.leadlife.co.jp.form.DepositForm"*/-->
+                <form th:action="@{/deposit/depositSave}" th:object="${depositForm}" th:method="post">
+                    <div class="input__container">
+                        <div id="formList">
+                            <div th:if="${not #lists.isEmpty(depositForm.depositWrapper)}" th:each="depositList,varStatus:${depositForm.depositWrapper}" class="formColumn">
+                                <div class="input__box">
+                                    <div class="title">
+                                        種類・保険会社
+                                    </div>
+                                    <input type="text" class="insuranceCompany"  th:attr="name='depositWrapper['+${varStatus.index}+'].insuranceCompany'" th:value="${depositList.insuranceCompany}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        保険証書記号番号等
+                                    </div>
+                                    <input type="text" class="symbolNo" th:attr="name='depositWrapper['+${varStatus.index}+'].symbolNo'" th:value="${depositList.symbolNo}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        証券番号等
+                                    </div>
+                                    <input type="text" class="securityNo" th:attr="name='depositWrapper['+${varStatus.index}+'].securityNo'" th:value="${depositList.securityNo}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        使用・管理状況等
+                                    </div>
+                                    <textarea class="memo" th:attr="name='depositWrapper['+${varStatus.index}+'].memo'" th:inline="text">[[${depositList.memo}]]</textarea>
+                                </div>
+                                <div class="button_box " th:if="${#lists.size(depositForm.depositWrapper) > 1}">
+                                    <a th:if="${aboutMeViewFlag==0}" id="delete__column" class="delete_list" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>
+                                </div>
+                                <hr/>
+                            </div>
+                            <div th:if="${#lists.isEmpty(depositForm.depositWrapper)}" class="formColumn">
+                                <div class="input__box">
+                                    <div class="title">
+                                        種類・保険会社
+                                    </div>
+                                    <input type="text" th:field="*{depositWrapper[0].insuranceCompany}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        保険証書記号番号等
+                                    </div>
+                                    <input type="text" th:field="*{depositWrapper[0].symbolNo}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        証券番号等
+                                    </div>
+                                    <input type="text" th:field="*{depositWrapper[0].securityNo}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        使用・管理状況等
+                                    </div>
+                                    <textarea th:field="*{depositWrapper[0].memo}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" href="javascript:;" th:onclick="'addList()'" class="add_list">リストを追加</a>
+                    </div>
+                    <div class="button_box">
+                        <button th:if="${aboutMeViewFlag==0}"><img height="147" th:src="@{/images/button/button_save.jpg}" width="1040"/></button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    /*<![CDATA[*/
+    function addList() {
+        var childIndex = $("#formList>.formColumn").length
+        if(childIndex==1) {
+            $(".formColumn:first").append('<div class="button_box">\n' +
+                '  <a id="delete__column" class="delete_list" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>\n' +
+                '  </div>');
+        }
+        var parent = document.getElementById("formList");
+        var newChild = '<div class="formColumn"><div class="input__box">' +
+            '<div class="title">種類・保険会社</div>' +
+            '   <input class="insuranceCompany" type="text" name="depositWrapper[' + childIndex + '].insuranceCompany"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">保険証書記号番号等</div>' +
+            '   <input class="symbolNo" type="text" name="depositWrapper[' + childIndex + '].symbolNo"/>' +
+            '  </div>' +
+            '<div class="input__box">' +
+            '   <div class="title">証券番号等</div>' +
+            '   <input class="securityNo" type="text" name="depositWrapper[' + childIndex + '].securityNo"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">使用・管理状況等</div>' +
+            '   <textarea class="memo" name="depositWrapper[' + childIndex + '].memo"></textarea>' +
+            '</div>' +
+            '<div class="button_box"> ' +
+            '                 <a id="delete__column" class="delete_list" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a> ' +
+            '     </div><hr/></div>';
+        parent.insertAdjacentHTML('beforeend', newChild);
+    }
+    /*]]>*/
+    $(document).on("click",".delete_list",function () {
+        $(this).closest(".formColumn").remove();
+        if($(".formColumn").length==1){
+            $(".delete_list:first").parent().remove();
+        }
+        $(".formColumn").each(function (index) {
+            $(this).find(".insuranceCompany").attr("name","depositWrapper["+index+"].insuranceCompany");
+            $(this).find(".symbolNo").attr("name","depositWrapper["+index+"].symbolNo");
+            $(this).find(".securityNo").attr("name","depositWrapper["+index+"].securityNo");
+            $(this).find(".memo").attr("name","depositWrapper["+index+"].memo");
+        });
+    });
+</script>

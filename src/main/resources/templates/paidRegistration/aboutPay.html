@@ -1,0 +1,96 @@
+<!--paid_member_registration_aboutpay.html-->
+
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_paying_membersunt.png" width="712"
+         th:src="@{/images/header/header_paying_membersunt.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="paid_member_registration_aboutpay">
+            <div class="page_label">
+                有料会員登録
+            </div>
+            <div class="inner">
+                <div class="title">
+                    お支払いについて
+                </div>
+                <div class="wrapper">
+                    <p class="desc">
+                        有料会員登録には「クレジットカード決済」をご利用いただけます。
+                    </p>
+                    <div class="credit">
+                        <h3>
+                            クレジットカード
+                        </h3>
+                        <p th:inline="text">
+                            有料会員月額 ： [[${settingTax}]]円（税込）
+                        </p>
+                        <p>
+                            ▼利用可能なクレジットカード種類
+                        </p>
+                        <img height="120" src="assets/images/creditcard.png" width="621"
+                             th:src="@{/images/creditcard.png}"/>
+                        <p>
+                            お支払方法 ： 決済方法入力画面にて、クレジットカード情報をご入力ください。
+                        </p>
+                    </div>
+                    <div class="about_security">
+                        <h3>
+                            セキュリティコードについて
+                        </h3>
+                        <p>
+                            セキュリティーコードとは、クレジットカードの不正使用防止のために利用される特殊なコードのことです。各クレジットカードの記載部分については以下を確認ください。
+                        </p>
+                        <p>
+                            ●VISA,MasterCardは、クレジットカードの背面に記載されている3桁の番号（メインカード番号のすぐ右側にあります）
+                        </p>
+                        <p>
+                            ●アメリカン・エキスプレス・カードはカード表面、主にアメックスのブランドロゴの上（15桁のカード番号の右側）に4桁の数字があるので、それがセキュリティコードです。
+                        </p>
+                        <p>
+                            セキュリティーコードが分からない場合や判断できない場合は、カードに記載されている銀行またはクレジットカード会社へお問い合わせください。
+                        </p>
+                    </div>
+                    <!--<div class="carrier">-->
+                        <!--<h3>-->
+                            <!--キャリア決済-->
+                        <!--</h3>-->
+                        <!--<p>-->
+                            <!--有料会員月額 ： 756円（税込）-->
+                        <!--</p>-->
+                        <!--<p>-->
+                            <!--▼利用可能なキャリア決済種類-->
+                        <!--</p>-->
+                        <!--<img height="43" src="assets/images/carrier_billing.png" width="572"-->
+                             <!--th:src="@{/images/carrier_billing.png}"/>-->
+                        <!--<p>-->
+                            <!--お支払方法 ： キャリア決済入力画面にて、キャリア決済情報をご入力ください。-->
+                        <!--</p>-->
+                    <!--</div>-->
+                    <div class="btn">
+                        <a href="/paidRegistration"><img height="147"
+                                                                         src="assets/images/button/button_paid_back.jpg"
+                                                                         width="1064"
+                                                                         th:src="@{/images/button/button_paid_back.jpg}"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

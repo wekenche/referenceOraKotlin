@@ -1,0 +1,23 @@
+doctype html
+html lang="ja"
+	- $pageNo = 2;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "指紋認証", :description => "サイト説明が入ります", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#fingerprint_authentication
+	  		.page_label 財産について
+	  		.inner.cf
+	  			ul
+	  				li
+	  					|
+	  						・指とセンサーを拭いて<br />　センサーに触れてください
+	  				li
+	  					|
+	  						・携帯によってセンサーの<br />　位置が異なります
+	  			figure
+	  				img src="./assets/images/finger/finger_fingure.png" width="1096" height="922"
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

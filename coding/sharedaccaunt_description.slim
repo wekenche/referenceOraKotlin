@@ -1,0 +1,35 @@
+doctype html
+html lang="ja"
+	- $pageNo = 21;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "承認アカウントとは", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#sharedaccaunt_description
+				.inner
+					.desc_box
+						p 
+							|
+								承認アカウントとは、<span class="yellow">利用者</span>と<span class="orange">承認者</span>とに分別されます。
+								例えば、母親と息子と娘がいたと想定します。母親が財産情報や遺言情報を記録し、母親が死亡した際に、息子と娘が財産情報や遺言情報を閲覧できるように設定するとします。
+						p
+							|
+								この場合、<span class="yellow">利用者</span>が母親、<span class="orange">承認者</span>が息子と娘になります。
+								<span class="yellow">利用者</span>は有料会員になることにより、自身の様々な情報を記録することができます。
+								そして、その記録した情報を自身が死亡した際に閲覧できる相手<span class="orange">(承認者)</span>を任意に指定することができます。
+								<span class="orange">承認者</span>は、家族、友人、主治医、弁護士など、どんな方でも指定可能となります。
+						p
+							|
+								また、<span class="yellow">利用者</span>は複数のアカウントを所持することも可能です。（1アカウントごとに有料会員登録が必要となります）
+								複数のアカウントを所持することにより、家族用、会社用、友人用など、それぞれに伝えたい内容だけを記録することが可能となります。
+						p
+							|
+								<span class="yellow">利用者</span>　<span class="orange">承認者</span>の概念につきましては、上記と下記イラストを合わせてご確認ください。
+				.comic
+					img src="./assets/images/merit/merit01.jpg" width="100%"
+
+				== Slim::Template.new('./templates/_banner.slim').render
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

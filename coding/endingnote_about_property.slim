@@ -1,0 +1,42 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "財産について", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#endingnote_about_property
+				.page_label 財産について
+				.inner.cf
+					article
+						.article_title
+							span.data 2017年8月4日
+							h2.title ■■■へ
+						.article_content
+							p
+								|
+									○○銀行と××銀行にそれぞれ△△万円あります。<br />
+									そのお金は長男と次男で折半しなさい。<br />
+									あと、実はあなたたちのために名古屋の不動産を用意してあります。<br />
+									住所は・・・・・・・・・・・・・・・・
+							p
+								|
+									テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります
+									テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります
+									テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります
+					#upload_files
+						.video_content
+							video src="./assets/movie/sample.mp4" controls="controls" poster="./assets/movie/default.png"
+						.image_cintent
+							img src="./assets/images/uploads/user_uploads.jpg" width="1041" height="624"
+					.btn
+						a href="#"
+							img src="./assets/images/button/btn_delete.png" width="495" height="147"
+						a href="#"
+							img src="./assets/images/button/btn_edit.png" width="495" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

@@ -1,0 +1,48 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "資産について 4.証券口座 エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_securitiesAccount
+				.page_label
+					h2 資産について
+				.about_securitiesAccount
+					h2 4.証券口座
+					.input__container
+						.input__box
+							.title 証券会社名
+							input type="text"
+						//証券会社名
+						.input__box
+							.title 口座番号
+							input type="text"
+						//口座番号
+						.input__box
+							.title 名義人
+							input type="text"
+						//名義人
+						.input__box
+							.title ウェブ用ID
+							input type="text"
+						//ウェブ用ID
+						.input__box
+							.title 連絡先
+							input type="text"
+						//連絡先
+						.input__box
+							.title 備考
+							textarea
+						//備考
+						a.add_list href="#" リストを追加
+
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

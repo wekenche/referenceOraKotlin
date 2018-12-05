@@ -1,0 +1,52 @@
+doctype html
+html lang="ja"
+	- $pageNo = 14;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "アカウントの管理", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#accout_admin_confirm
+	  		.inner.cf
+					.input
+						select#account_list name="form_select" size="5" style="display: none;"
+							option value="user001" アカウント1
+							option value="user002" アカウント2
+							option value="user003" アカウント3
+							option value="user004" アカウント4
+							option value="user005" アカウント5
+						//ul#select1_safarimobile.multilineselect
+							li data-value="user001" アカウント1
+							li data-value="user002" アカウント2
+							li data-value="user003" アカウント3
+							li data-value="user004" アカウント4
+							li data-value="user005" アカウント5
+					.user_add
+						.title アカウントの追加
+						.users
+							select name="name"
+								option value="家族用" 家族用
+								option value="カテゴリ1" カテゴリ1
+								option value="カテゴリ2" カテゴリ2
+								option value="カテゴリ3" カテゴリ3
+					.category_add
+						.label 新規カテゴリ
+						input	type="text" placeholder="カテゴリの追加"
+					.btn.add_delete.cf
+						a href="#"
+							img src="./assets/images/button/button_add_account2.png" width="495" height="147"
+						a href="#"
+							img src="./assets/images/button/btn_delete.png" width="495" height="147"
+					.btn.decision
+						a href="accout_deactivation_procedure_confirm.html"
+							img src="./assets/images/button/btn_decision.png" width="1060" height="147" alt="決定"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render
+		script src="./assets/js/safarimobile-multiline-select.min.js"
+		javascript:
+			$().ready(function () {
+				$("select").fixForSafariMobile(true);
+			})

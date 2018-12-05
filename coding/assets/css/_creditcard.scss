@@ -1,0 +1,319 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#creditcard_input,#creditcard_confirm,#creditcard_delete,#creditcard_chanded_menu{
+	background: #f2f2f2;
+	padding-bottom: 192px;
+	box-sizing: border-box;
+	.inner{
+		width: 1132px;
+		margin: 0 auto;
+		border: 2px solid #000;
+		margin-top: 50px;
+		background: #fff;
+		.input_box{
+			width: 1060px;
+			margin: 0 auto;
+			padding-top: 24px;
+			box-sizing: border-box;
+			.title{
+				font-size: 45px;
+				font-weight: bold;
+				margin-bottom: 20px;
+			}
+		}
+		.card{
+			position: relative;
+			select{
+				font-size: 45px;
+				border: 2px solid #000;
+				border-radius: 10px;
+				width: 1060px;
+				padding: 21px;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+				position: relative;
+				background: #fff;
+			}
+			&:after{
+				display: block;
+				content: " ";
+				position: absolute;
+				top: 50%;
+				right: 41px;
+				width: 41px;
+				height: 27px;
+				margin-top: -8px;
+				background: url(../images/icon/icon_pull.png) 0 0 no-repeat;
+				background-size: 41px;
+				pointer-events: none;
+			}
+		}//card
+		.card_info{
+			.num_list{
+				display: table;
+				li{
+					font-size: 45px;
+					// float: left;
+					display: table-cell;
+					vertical-align: middle;
+					input{
+						border: 2px solid #000;
+						border-radius: 15px;
+						padding: 10px;
+						box-sizing: border-box;
+						font-size: 45px;
+						width: 230px;
+						height: 135px;
+					}
+					p{
+						padding: 0 9px;
+						box-sizing: border-box;
+					}
+				}
+			}
+		}//card_info
+		.expiration_date{
+			font-size: 45px;
+			display: inline-block;
+			position: relative;
+			select{
+				width: 230px;
+				height: 135px;
+				font-size: 45px;
+				border: 2px solid #000;
+				border-radius: 15px;
+				padding: 10px;
+				box-sizing: border-box;
+			}
+			&:after{
+				display: block;
+				content: " ";
+				position: absolute;
+				top: 50%;
+				right: 41px;
+				width: 41px;
+				height: 27px;
+				margin-top: -8px;
+				background: url(../images/icon/icon_pull.png) 0 0 no-repeat;
+				background-size: 41px;
+				pointer-events: none;
+			}
+		}//.expiration_date
+		span{
+			font-size: 45px;
+			margin:0 20px;
+		}
+		.holder{
+			input{
+				width: 100%;
+				height: 140px;
+				border: 2px solid #000;
+				border-radius: 15px;
+				font-size: 45px;
+				padding: 10px;
+				box-sizing: border-box;
+			}
+		}//holder
+		.checkbox{
+			position: relative;
+		  input#check{
+		    position: absolute;
+		    top: 0;
+		    opacity: 0;
+		    width: 100%;  
+		    height: 100%;
+				&[type="checkbox"] + label {
+			    display: block;
+			    background-image: url(../images/icon/checkbox_off.png);
+			    background-size: 55px;
+			    background-position: left center;
+			    background-repeat: no-repeat;
+			    padding: 4px 0 0 88px;
+			    box-sizing: border-box;
+				}
+				&[type="checkbox"]:checked + label {
+			    background-image: url(../images/icon/checkbox_on.png);
+				}
+		  }//#check
+		  label{
+		  	font-size: 40px;
+		  }
+		}//checkbox
+		.btn{
+			margin-top: 30px;
+			margin-bottom: 30px;
+			text-align: center;
+			img{
+				display: inline-block;
+			}
+		}
+	}//inner
+}//#creditcard_input
+
+#creditcard_confirm,#creditcard_delete,#creditcard_chanded_menu{
+	.inner{
+		width: 1184px;
+		margin-top: 0;
+		margin-bottom: 56px;
+		.input_box{
+			.holder{
+				padding-bottom: 65px;
+				box-sizing: border-box;
+			}
+		}
+	}
+	.creditcard_info{
+		width: 1132px;
+		margin: 0 auto;
+		margin-top: 60px;
+		font-size: 55px;
+		font-weight: bold;
+		background: url(../images/icon/icon_title_mark.png)no-repeat center left;
+		padding-left: 80px;
+		line-height: 1.6;
+		box-sizing: border-box;
+	}
+	.card_addition{
+		margin-left: 20px;
+		width: 1184px;
+		margin: 0 auto;
+		.title{
+			font-size: 55px;
+			font-weight: bold;
+			background: url(../images/icon/icon_title_mark.png)no-repeat center left;
+			padding-left: 80px;
+			line-height: 1.6;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		}
+	}//.card_addition
+	.addition_btn{
+		width: 100%;
+		background: #ff8431;
+		padding: 24px 24px 24px 56px;
+		box-sizing: border-box;
+		display: table;
+		p{
+			display: inline-block;
+			font-size: 50px;
+			color: #fff;
+			padding-right: 50px;
+			display: table-cell;
+			box-sizing: border-box;
+		}
+		.btn{
+			font-size: 45px;
+			display: table-cell;
+			&.changed{
+				width: 293px;
+			}
+			a{
+				display: inline-block;
+				text-decoration: none;
+				font-weight: bold;
+				color: #000;
+				background: #fff;
+				padding: 25px 34px;
+				box-sizing: border-box;
+			}
+		}
+	}//addition_btn
+	.red{
+		background: #ff0000;
+	}
+	.password_input{
+		margin-left: 20px;
+		width: 1184px;
+		margin: 0 auto;
+		.title{
+			background: red;
+			font-size: 50px;
+			color: #fff;
+			padding: 24px 24px 24px 56px;
+			box-sizing: border-box;
+		}
+	}//.card_addition
+	.back_top{
+		text-align: center;
+		margin-top: 30px;
+		a{
+			color: #498af2;
+			font-size: 45px;
+			text-decoration: none;
+			font-weight: bold;
+		}
+	}
+}//#creditcard_confirm
+
+#creditcard_delete{
+	.creditcard_info_delete{
+		width: 1132px;
+		margin: 0 auto;
+		color: #ff0000;
+		margin-top: 60px;
+		font-size: 55px;
+		font-weight: bold;
+		background: url(../images/icon/icon_hatena.png)no-repeat center left;
+		padding-left: 80px;
+		line-height: 1.6;
+		box-sizing: border-box;		
+	}
+	.delete_btn{
+		width: 1064px;
+		margin: 0 auto;
+		p.summary{
+			font-size: 45px;
+			margin-bottom: 45px;
+			span{
+				font-weight: bold;
+			}
+		}
+	}
+}//#creditcard_delete
+
+#creditcard_chanded_menu{
+	.inner{
+		margin-top: 65px;
+	}
+	.btn_area{
+		width: 1132px;
+		margin: 0 auto;
+		.summary{
+			font-size: 45px;
+			line-height: 1.3;
+			margin-bottom: 45px;
+			p{
+				span{
+					font-weight: bold;
+				}
+			}
+		}
+		.card_changed,.card_deleted{
+			margin-bottom: 45px;
+			.addition_btn{
+				p{
+					a{
+						text-decoration: none;
+						font-weight: bold;
+						color: #ff0000;
+					}
+				}
+				.btn{
+					width: 250px;
+				}
+			}
+		}//.card_addition
+		.card_changed{
+			.addition_btn{
+				.btn{
+					vertical-align: middle;
+				}
+			}
+		}
+	}//btn_area
+}//#creditcard_chanded_menu

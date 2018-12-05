@@ -1,0 +1,96 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "その他 ペットについて", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#others_about
+				.page_label
+					h2 その他
+				.others
+					h2 ペットについて
+					h3 ペットの基本情報
+					.input__container
+						.input__box
+							.title 名前
+							input type="text"
+						//名前
+						.input__box
+							.title 性別
+							input#sex.radio type="radio" name="sex" 
+							label.radio for="sex" オス
+							input#sex2.radio type="radio" name="sex" 
+							label.radio for="sex2" メス
+						//性別
+						.input__box
+							.title エサ
+							input type="text"
+						//エサ
+						.input__box
+							.title 血統書の有無
+							input#pedigree_document.radio type="radio" name="pedigree_document" 
+							label.radio for="pedigree_document" 有り
+							input#pedigree_document2.radio type="radio" name="pedigree_document" 
+							label.radio for="pedigree_document2" 無し
+						//血統書の有無
+						.input__box
+							.have__case 【血統書が有る場合】
+							.title 登録番号
+							input type="text"
+						//登録番号
+						a.add_list href="#" リストを追加
+					h3 病気／病院
+					.input__container	
+						.input__box
+							.title 病名
+							input type="text"
+						//病名
+						.input__box
+							.title かかりつけの動物病院
+							input type="text"
+						//かかりつけの動物病院
+						.input__box
+							.title 連絡先
+							input type="text"
+						//連絡先
+						a.add_list href="#" リストを追加
+					h3 ペット保険
+					.input__container	
+						.input__box
+							.title 保険会社名
+							input type="text"
+						//保険会社名
+						.input__box
+							.title 電話番号
+							input type="text"
+						//電話番号
+						.input__box
+							.title 請求方法
+							input type="text"
+						//請求方法
+						.input__box
+							.title 保険の内容
+							textarea
+						//保険の内容
+						a.add_list href="#" リストを追加
+					h3 行きつけのサロン・トリミング・しつけ教室等
+					.input__container	
+						.input__box
+							.title 名称
+							input type="text"
+						//名称
+						.input__box
+							.title 連絡先
+							input type="text"
+						//連絡先
+						a.add_list href="#" リストを追加
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

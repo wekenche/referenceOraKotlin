@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="message_record_edit">
+            <!--/*@thymesVar id="form" type="ora.leadlife.co.jp.form.IndividualNoteForm"*/-->
+            <form th:action="@{/individualNote/input2}" method="post" th:object="${form}">
+                <div class="inner">
+                    <input type="hidden" th:field="*{individualId}" />
+                    <input type="hidden" th:field="*{individualTitle}" />
+                    <input type="hidden" th:field="*{individualNoteContents}" />
+                    <div class="select_box">
+                        <img class="button_drug" height="147" src="./assets/images/button/select_category.jpg"
+                             width="1041" th:src="@{/images/button/select_category.jpg}"/>
+                        <select name="category" class="form-control" id="dropCategory"
+                                th:size="${#lists.size(categories)}"
+                                th:field="*{individualNoteCategory}">
+                            <!--/*@thymesVar id="categories" type="ora.leadlife.co.jp.model.IndividualNoteCategory"*/-->
+                            <option th:each="category : ${categories}"
+                                    th:value="${category.id}"
+                                    th:text="${category.name} + '('+ ${#lists.size(category.individualNoteList)} + ')' ">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="select_box">
+                        <img class="button_drug" height="147" src="./assets/images/button/select_record.jpg"
+                             width="1041" th:src="@{/images/button/select_record.jpg}"/>
+                        <!--/*@thymesVar id="#diedNotification" type="ora.leadlife.co.jp.helper.DiedNotification"*/-->
+                        <select th:if="${#diedNotification.isPremium(#authentication.getPrincipal()) == true }"
+                                name="record" class="form-control" id="dropRecord" th:size="${#lists.size(fileTypes)}"
+                                th:field="*{messageType}">
+                            <!--/*@thymesVar id="fileType" type="ora.leadlife.co.jp.config.FileType"*/-->
+                            <option th:each="fileType: ${fileTypes}"
+                                    th:selected="${messageType == fileType.name()}"
+                                    th:value="${fileType.name()}"
+                                    th:text="${fileType.value}">
+                            </option>
+                        </select>
+                        <select th:if="${#diedNotification.isPremium(#authentication.getPrincipal()) == false }"
+                                name="record" class="form-control" id="dropRecord" size="1"
+                                th:field="*{messageType}">
+                            <!--/*@thymesVar id="fileType" type="ora.leadlife.co.jp.config.FileType"*/-->
+                            <div><option th:each="fileType: ${fileTypes}"
+                                    th:if="${fileType.name() == 'NONE'}"
+                                    th:selected="${messageType == fileType.name()}"
+                                    th:value="${fileType.name()}"
+                                    th:text="${fileType.value}">
+                            </option></div>
+                        </select>
+                    </div>
+                    <div class="btn cf">
+                        <div class="back">
+                            <a  th:href="@{/individualNote}">
+                                <img height="147" width="495"
+                                     src="./assets/images/button/btn_back.jpg"
+                                     th:src="@{/images/button/btn_back.jpg}"/>
+                            </a>
+                        </div>
+                        <div class="check">
+                            <button type="submit">
+                                <img height="147" width="495"
+                                     src="./assets/images/button/button_check.jpg"
+                                     th:src="@{/images/button/button_check.jpg}"/>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function(){
+        var aa = [[${form.individualNoteCategory}]];
+        $('.multilineselect').find('li[data-value="'+aa+'"]').addClass('selected')
+        $('.multilineselect').find('li[data-value="NONE"]').addClass('selected')
+    });
+    /*]]>*/
+</script>

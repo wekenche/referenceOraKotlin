@@ -1,0 +1,36 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "資産について 14.電子マネー", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_electronicMoney
+				.page_label
+					h2 資産について
+				.about_electronicMoney
+					h2 14.電子マネー
+					.input__container
+						.input__box
+							.title カードの名称
+							input type="text"
+						//カードの名称
+						.input__box
+							.title 番号
+							input type="text"
+						//番号
+						.input__box
+							.title 紛失時の連絡先
+							input type="text"
+						//紛失時の連絡先
+						a.add_list href="#" リストを追加
+
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

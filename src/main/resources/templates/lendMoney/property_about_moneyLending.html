@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+    <head>
+        <title>資産について 10.貸しているお金 エンディングノート</title>
+        <meta name="keywords" content="content1"/>
+        <meta name="description" content="content1"/>
+    </head>
+    <body class="drawer drawer--left">
+    <div layout:fragment="headerImage">
+        <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+             th:src="@{/images/header/header_endingnote.png}"/>
+    </div>
+        <div  layout:fragment="main">
+            <div id="container">
+                <div id="property_about_moneyLending">
+                    <div class="page_label">
+                        <h2>
+                            資産について
+                        </h2>
+                    </div>
+                    <div class="about_moneyLending">
+                        <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                        <!--/*@thymesVar id="form" type="ora.leadlife.co.jp.form.LendMoneyForm"*/-->
+                        <form th:action="@{/lendMoney/confirm}" method="post" th:object="${form}">
+                            <h2>
+                                10.貸しているお金
+                            </h2>
+                            <div class="input__container">
+                                <div id="formList" th:switch="${#lists.isEmpty(form.lmWrapper)}">
+                                    <div th:case="true">
+                                        <div class="input__box">
+                                            <div class="title">
+                                                貸した相手
+                                            </div>
+                                            <input class="nameName" type="text" th:field="*{lmWrapper[0].name}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                電話番号
+                                            </div>
+                                            <input class="nameTel" type="text" th:field="*{lmWrapper[0].tel}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                貸した相手の郵便番号
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    <input class="namePostCode1 post" placeholder="" type="text" th:field="*{lmWrapper[0].postCode1}"/>
+                                                </li>
+                                                <li>
+                                                  <p>-</p>
+                                                </li>
+                                                <li>
+                                                    <input class="namePostCode2 post" placeholder="" type="text" th:field="*{lmWrapper[0].postCode2}"/>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                貸した相手の住所
+                                            </div>
+                                            <input class="nameAddress post" placeholder="" type="text" th:field="*{lmWrapper[0].address}"/>
+                                        </div>
+                                        <div class="input__box input_date">
+                                            <div class="title">
+                                                貸した日
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    <input class="nameYear date" type="text" th:field="*{lmWrapper[0].lendYear}"/>
+                                                </li>
+                                                <li>
+                                                    <p>年</p>
+                                                </li>
+                                                <li>
+                                                    <input class="nameMonth date" type="text" th:field="*{lmWrapper[0].lendMonth}"/>
+                                                </li>
+                                                <li>
+                                                    <p>月</p>
+                                                </li>
+                                                <li>
+                                                    <input class="nameDay date" type="text" th:field="*{lmWrapper[0].lendDay}"/>
+                                                </li>
+                                                <li>
+                                                    <p>日</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                金額
+                                            </div>
+                                            <input class="nameAmount post" placeholder="" type="text" th:field="*{lmWrapper[0].amount}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                証書の有無
+                                            </div>
+                                            <input class="nameExistDeed" type="radio" th:field="*{lmWrapper[0].existDeed}" th:value="1" /><span class="thereOrNone">有り</span>
+                                            <input class="nameExistDeed" type="radio" th:field="*{lmWrapper[0].existDeed}" th:value="0" /><span class="thereOrNone">無し</span>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                保管場所
+                                            </div>
+                                            <input class="nameStoringPlace post" placeholder="" type="text" th:field="*{lmWrapper[0].storingPlace}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                残額（いつの時点でいくらか）
+                                            </div>
+                                            <input class="nameBalance post" placeholder="" type="text" th:field="*{lmWrapper[0].balance}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                備考
+                                            </div>
+                                            <textarea class="nameRemarks" th:field="*{lmWrapper[0].remarks}"></textarea>
+                                        </div>
+                                        <div class="button_box del_box">
+
+                                        </div>
+                                        <br /><br /><br />
+                                        <hr />
+                                    </div>
+                                    <div th:case="false">
+                                        <div th:each="lm,is:${form.lmWrapper}">
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    貸した相手
+                                                </div>
+                                                <input class="nameName" type="text" th:attr="name='lmWrapper['+${is.index}+'].name'" th:value="${lm.name}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    電話番号
+                                                </div>
+                                                <input class="nameTel" type="text" th:attr="name='lmWrapper['+${is.index}+'].tel'" th:value="${lm.tel}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    貸した相手の郵便番号
+                                                </div>
+                                                <ul>
+                                                    <li>
+                                                        <input class="namePostCode1" type="text" th:attr="name='lmWrapper['+${is.index}+'].postCode1'" th:value="${lm.postCode1}"/>
+                                                    </li>
+                                                    <li>
+                                                        <p>-</p>
+                                                    </li>
+                                                    <li>
+                                                        <input class="namePostCode2" type="text" th:attr="name='lmWrapper['+${is.index}+'].postCode2'" th:value="${lm.postCode2}"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    貸した相手の住所
+                                                </div>
+                                                <input class="nameAddress" type="text" th:attr="name='lmWrapper['+${is.index}+'].address'" th:value="${lm.address}"/>
+                                            </div>
+                                            <div class="input__box input_date">
+                                                <div class="title">
+                                                    貸した日
+                                                </div>
+                                                <ul>
+                                                    <li>
+                                                        <input class="nameYear date" type="text" th:attr="name='lmWrapper['+${is.index}+'].lendYear'" th:value="${lm.lendDate!=null} ? ${#dates.format(lm.lendDate,'yyyy')}:''"/>
+                                                    </li>
+                                                    <li>
+                                                        <p>年</p>
+                                                    </li>
+                                                    <li>
+                                                        <input class="nameMonth date" type="text" th:attr="name='lmWrapper['+${is.index}+'].lendMonth'" th:value="${lm.lendDate!=null} ? ${#dates.format(lm.lendDate,'MM')}:''"/>
+                                                    </li>
+                                                    <li>
+                                                        <p>月</p>
+                                                    </li>
+                                                    <li>
+                                                        <input class="nameDay date" type="text" th:attr="name='lmWrapper['+${is.index}+'].lendDay'" th:value="${lm.lendDate!=null} ? ${#dates.format(lm.lendDate,'dd')}:''"/>
+                                                    </li>
+                                                    <li>
+                                                        <p>日</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    金額
+                                                </div>
+                                                <input class="nameAmount" type="text" th:attr="name='lmWrapper['+${is.index}+'].amount'" th:value="${lm.amount}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    証書の有無
+                                                </div>
+                                                <div th:switch="${lm.existDeed}">
+                                                    <div th:case="true">
+                                                        <input class="nameExistDeed" type="radio" th:attr="name='lmWrapper['+${is.index}+'].existDeed'" th:value="true"  th:checked="'checked'"/><span class="thereOrNone">有り</span>
+                                                        <input class="nameExistDeed" type="radio" th:attr="name='lmWrapper['+${is.index}+'].existDeed'" th:value="false" /><span class="thereOrNone">無し</span>
+                                                    </div>
+                                                    <div th:case="false">
+                                                        <input class="nameExistDeed" type="radio" th:attr="name='lmWrapper['+${is.index}+'].existDeed'" th:value="true" /><span class="thereOrNone">有り</span>
+                                                        <input class="nameExistDeed" type="radio" th:attr="name='lmWrapper['+${is.index}+'].existDeed'" th:value="false" th:checked="'checked'" /><span class="thereOrNone">無し</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    保管場所
+                                                </div>
+                                                <input class="nameStoringPlace" type="text" th:attr="name='lmWrapper['+${is.index}+'].storingPlace'" th:value="${lm.storingPlace}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    残額（いつの時点でいくらか）
+                                                </div>
+                                                <input class="nameBalance" type="text" th:attr="name='lmWrapper['+${is.index}+'].balance'" th:value="${lm.balance}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    備考
+                                                </div>
+                                                <textarea class="nameRemarks" th:attr="name='lmWrapper['+${is.index}+'].remarks'" th:inline="text">[[${lm.remarks}]]</textarea>
+                                            </div>
+                                            <div class="button_box del_box"  th:if="${aboutMeViewFlag==0}">
+                                                <a th:if="${#lists.size(form.lmWrapper) > 1}" href="javascript:;" class="delete_list right"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>
+                                            </div>
+                                            <br /><br /><br />
+                                            <hr />
+                                        </div>
+                                    </div>
+                                </div>
+                                <a th:if="${aboutMeViewFlag==0}" href="javascript:;" class="add_list">リストを追加</a>
+                            </div>
+                            <div class="button_box">
+                                <button th:if="${aboutMeViewFlag==0}" type="submit"><img height="147" width="1040" src="./assets/images/button/button_save.jpg" th:src="@{/images/button/button_save.jpg}" /></button>
+                            </div>
+                            <div id="bnr_paying_merit">
+                                <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                                     th:src="@{/images/common/banner.png}" width="1040" /></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    $(document).on("click",".add_list",function () {
+        var childIndex = $('.nameName').length;
+        var newChild = '<div><div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            貸した相手\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameName" type="text" name="lmWrapper['+childIndex+'].name"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            電話番号\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameTel" type="text" name="lmWrapper['+childIndex+'].tel"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            貸した相手の郵便番号\n' +
+            '                                        </div>\n' +
+            '                                        <ul>\n' +
+            '                                            <li>\n' +
+            '                                                <input class="namePostCode1 post" placeholder="" type="text" name="lmWrapper['+childIndex+'].postCode1"/>\n' +
+            '                                            </li>\n' +
+            '                                            <li>\n' +
+            '                                              <p>-</p>\n' +
+            '                                            </li>\n' +
+            '                                            <li>\n' +
+            '                                                <input class="namePostCode2 post" placeholder="" type="text" name="lmWrapper['+childIndex+'].postCode2"/>\n' +
+            '                                            </li>\n' +
+            '                                        </ul>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            貸した相手の住所\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameAddress post" placeholder="" type="text" name="lmWrapper['+childIndex+'].address"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box input_date">\n' +
+            '                                        <div class="title">\n' +
+            '                                            貸した日\n' +
+            '                                        </div>\n' +
+            '                                        <ul>\n' +
+            '                                            <li>\n' +
+            '                                                <input class="nameYear date" name="lmWrapper['+childIndex+'].lendYear" type="text" />\n' +
+            '                                            </li>\n' +
+            '                                            <li>\n' +
+            '                                                <p>年</p>\n' +
+            '                                            </li>\n' +
+            '                                            <li>\n' +
+            '                                                <input class="nameMonth date" name="lmWrapper['+childIndex+'].lendMonth" type="text" />\n' +
+            '                                            </li>\n' +
+            '                                            <li>\n' +
+            '                                                <p>月</p>\n' +
+            '                                            </li>\n' +
+            '                                            <li>\n' +
+            '                                                <input class="nameDay date" name="lmWrapper['+childIndex+'].lendDay" type="text" />\n' +
+            '                                            </li>\n' +
+            '                                            <li>\n' +
+            '                                                <p>日</p>\n' +
+            '                                            </li>\n' +
+            '                                        </ul>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            金額\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameAmount post" placeholder="" type="text" name="lmWrapper['+childIndex+'].amount"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            証書の有無\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameExistDeed radio" type="radio" name="lmWrapper['+childIndex+'].existDeed" value="1" /><span class="thereOrNone">有り</span><input class="nameExistDeed" type="radio" name="lmWrapper['+childIndex+'].existDeed" value="0" /><span class="thereOrNone">無し</span>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            保管場所\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameStoringPlace post" placeholder="" type="text" name="lmWrapper['+childIndex+'].storingPlace"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            残額（いつの時点でいくらか）\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameBalance post" placeholder="" type="text" name="lmWrapper['+childIndex+'].balance"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            備考\n' +
+            '                                        </div>\n' +
+            '                                        <textarea class="nameRemarks" name="lmWrapper['+childIndex+'].remarks"></textarea>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="button_box del_box"><a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '                                            <br /><br /><br />\n' +
+            '                                            <hr /></div>';
+        if($(".del_box").length == 1) {
+            $(".del_box:first").append('<a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#formList").append(newChild);
+    });
+    $(document).on("click", ".delete_list" ,function () {
+        $(this).parent('div').parent('div').remove();
+        if($(".del_box").length == 1) {
+            $(".del_box:first").empty();
+        }
+        function updateName(className , fieldName) {
+            $(className).each(function(index) {
+                $(this).attr("name","lmWrapper["+index+"]."+fieldName);
+            });
+        }
+        updateName('.nameName','name');
+        updateName('.nameTel','tel');
+        updateName('.nameAddress','address');
+        updateName('.namePostCode1','postCode1');
+        updateName('.namePostCode2','postCode2');
+        updateName('.nameYear','lendYear');
+        updateName('.nameMonth','lendMonth');
+        updateName('.nameDay','lendDay');
+        updateName('.nameAmount','amount');
+        updateName('.nameExistDeed','existDeed');
+        updateName('.nameStoringPlace','storingPlace');
+        updateName('.nameBalance','balance');
+        updateName('.nameRemarks','remarks');
+
+    });
+</script>

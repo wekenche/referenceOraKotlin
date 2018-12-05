@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="アカウント管理" src="./assets/images/header/header_account_admin.png" width="754"
+       th:src="@{/images/header/header_account_admin.png}"/>
+</div>
+<div layout:fragment="main">
+
+  <div id="accout_admin_confirm">
+    <div class="inner cf">
+      <div class="input">
+        <select id="account_list" name="form_select" size="5" style="display: none;">
+          <!--/*@thymesVar id="accountList" type="java.util.List<ora.leadlife.co.jp.model.Account>"*/-->
+          <option value="user001" th:each="account : ${accountList}" th:value="${account.id}">
+            <span th:text="${account.name}"></span>
+          </option>
+        </select>
+      </div>
+      <ul class="error">
+        <li id="lastAccountIdError"></li>
+      </ul>
+      <!--/*@thymesVar id="accountForm" type="ora.leadlife.co.jp.form.AccountForm"*/-->
+      <div class="user_add">
+        <div class="title">
+          アカウントの追加
+        </div>
+        <form th:action="@{/account/add}" method="post" th:object="${accountForm}">
+          <div class="label">
+            名前
+          </div>
+          <input placeholder="家族用" type="text" th:name="name"/>
+          <ul th:each="error : ${#fields.errors('name')}" class="error">
+            <li th:text="${error}"></li>
+          </ul>
+
+          <div class="btn add_delete cf">
+            <button type="submit">
+              <img height="147" src="./assets/images/button/button_add_account2.png" width="495"
+                   th:src="@{/images/button/button_add_account2.png}"/>
+            </button>
+            <a href="#">
+              <img height="147" src="./assets/images/button/btn_delete.png" width="495"
+                   th:src="@{/images/button/btn_delete.png}" id="delete_button"/>
+            </a>
+          </div>
+
+          <div class="btn decision">
+            <img alt="決定する" height="147"
+                 src="./assets/images/button/btn_decision.png"
+                 width="1060" th:src="@{/images/button/btn_decision.png}" id="change_button"/>
+          </div>
+            <div id="bnr_paying_merit">
+                <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                     th:src="@{/images/common/banner.png}" width="1040" /></a>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<div layout:fragment="otherScript">
+  <script type="text/javascript">
+      $().ready(function () {
+          $("#delete_button").click(function () {
+              if ($('#account_list').val()) {
+                  $.ajax({
+                      url: "/account/delete/" + $('#account_list').val(),
+                      type: "DELETE",
+                      success: function (e) {
+                          if(e){
+                            $("#lastAccountIdError").text("他のアカウントを選択し、決定をタップを行った後、該当アカウントを削除して下さい")
+                          }else {
+                              location.reload();
+                          }
+                      },
+                      error: function (e) {
+                          console.log(e);
+                          location.reload();
+                      }
+                  })
+              }
+          });
+          $("#change_button").click(function () {
+              if ($('#account_list').val()) {
+                  location.href = "/account/change/" + $('#account_list').val()
+              }
+          });
+      })
+  </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,528 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>その他 ペットについて</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="others_about">
+            <div class="page_label">
+                <h2>
+                    その他
+                </h2>
+            </div>
+            <div class="others">
+                <h2>
+                    ペットについて
+                </h2>
+                <h3>
+                    ペットの基本情報
+                </h3>
+                <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                <!--/*@thymesVar id="petsForm" type="ora.leadlife.co.jp.form.PetsForm"*/-->
+                <form th:action="@{/pets/save}" th:object="${petsForm}" th:method="post">
+                    <div class="input__container">
+                        <div id="form_pet"  th:switch="${#lists.isEmpty(petsForm.petsWrapper)}">
+                            <div th:case="true">
+                                <div class="input__box">
+                                    <div class="title">
+                                        名前
+                                    </div>
+                                    <input class="namePet" type="text" th:field="*{petsWrapper[0].name}"/>
+                                </div>
+                                <div class="input__box pet_sex">
+                                    <div class="title">
+                                        性別
+                                    </div>
+                                    <input class="namePetSex radio" id="sex" th:field="*{petsWrapper[0].isGender}" type="radio" th:value="true"/>
+                                    <label class="radio" for="sex">オス</label>
+                                    <input class="namePetSex radio" id="sex2" th:field="*{petsWrapper[0].isGender}" type="radio" th:value="false"/>
+                                    <label class="radio" for="sex2">メス</label>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        エサ
+                                    </div>
+                                    <input class="namePetFeed" type="text" th:field="*{petsWrapper[0].feed}"/>
+                                </div>
+                                <div class="input__box pet_pedigree">
+                                    <div class="title">
+                                        血統書の有無
+                                    </div>
+                                    <input class="namePetPedigree radio" id="pedigree_document" th:field="*{petsWrapper[0].isExistsPedigreeForm}" type="radio" th:value="true"/>
+                                    <label class="radio" for="pedigree_document">有り</label>
+                                    <input class="namePetPedigree radio" id="pedigree_document2" th:field="*{petsWrapper[0].isExistsPedigreeForm}" type="radio" th:value="false"/>
+                                    <label class="radio" for="pedigree_document2">無し</label>
+                                </div>
+                                <div class="input__box">
+                                    <div class="have__case">
+                                        【血統書が有る場合】
+                                    </div>
+                                    <div class="title">
+                                        登録番号
+                                    </div>
+                                    <input class="namePetDigNo" type="text" th:field="*{petsWrapper[0].pedigreeFormNo}"/>
+                                </div>
+                                <div class="button_box del_pet_box">
+
+                                </div>
+                                <br /><br /><br />
+                                <hr />
+                            </div>
+                            <div th:case="false">
+                                <div th:each="pet,is:${petsForm.petsWrapper}">
+                                    <div class="input__box">
+                                        <div class="title">
+                                            名前
+                                        </div>
+                                        <input class="namePet" type="text" th:attr="name='petsWrapper['+${is.index}+'].name'" th:value="${pet.name}"/>
+                                    </div>
+                                    <div class="input__box pet_sex">
+                                        <div class="title">
+                                            性別
+                                        </div>
+                                        <input class="namePetSex radio" id="sex" th:attr="name='petsWrapper['+${is.index}+'].isGender'"  type="radio" th:value="true" th:checked="${pet.isGender}"/>
+                                        <label class="radio" for="sex">オス</label>
+                                        <input class="namePetSex radio" id="sex2" th:attr="name='petsWrapper['+${is.index}+'].isGender'" type="radio" th:value="false" th:checked="${not pet.isGender}?'true'"/>
+                                        <label class="radio" for="sex2">メス</label>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            エサ
+                                        </div>
+                                        <input class="namePetFeed" type="text" th:attr="name='petsWrapper['+${is.index}+'].feed'" th:value="${pet.feed}"/>
+                                    </div>
+                                    <div class="input__box pet_pedigree">
+                                        <div class="title">
+                                            血統書の有無
+                                        </div>
+                                        <input class="namePetPedigree radio" id="pedigree_document" th:attr="name='petsWrapper['+${is.index}+'].isExistsPedigreeForm'" type="radio" th:value="true" th:checked="${pet.isExistsPedigreeForm}"/>
+                                        <label class="radio" for="pedigree_document">有り</label>
+                                        <input class="namePetPedigree radio" id="pedigree_document2" th:attr="name='petsWrapper['+${is.index}+'].isExistsPedigreeForm'" type="radio" th:value="false" th:checked="${not pet.isExistsPedigreeForm}?'true'"/>
+                                        <label class="radio" for="pedigree_document2">無し</label>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="have__case">
+                                            【血統書が有る場合】
+                                        </div>
+                                        <div class="title">
+                                            登録番号
+                                        </div>
+                                        <input class="namePetDigNo" type="text" th:attr="name='petsWrapper['+${is.index}+'].pedigreeFormNo'" th:value="${pet.pedigreeFormNo}"/>
+                                    </div>
+                                    <div class="button_box del_pet_box" th:if="${aboutMeViewFlag==0}">
+                                        <a th:if="${#lists.size(petsForm.petsWrapper) > 1}" href="javascript:;" class="delete_pet_list right"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>
+                                    </div>
+                                    <br /><br /><br />
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" class="add_list add_pet_list" href="javascript:;">リストを追加</a>
+                    </div>
+                    <h3>
+                        病気／病院
+                    </h3>
+                    <div class="input__container">
+                        <div id="form_hospital" th:switch="${#lists.isEmpty(petsForm.petsHospitalWrapper)}">
+                            <div th:case="true">
+                                <div class="input__box">
+                                    <div class="title">
+                                        病名
+                                    </div>
+                                    <input class="nameDisName" type="text" th:field="*{petsHospitalWrapper[0].diseaseName}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        かかりつけの動物病院
+                                    </div>
+                                    <input class="nameHospital" type="text" th:field="*{petsHospitalWrapper[0].hospital}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        連絡先
+                                    </div>
+                                    <input class="nameHospitalAdd" type="text" th:field="*{petsHospitalWrapper[0].contactAddress}"/>
+                                </div>
+                                <div class="button_box del_hospital_box">
+
+                                </div>
+                                <br /><br /><br />
+                                <hr />
+                            </div>
+                            <div th:case="false">
+                                <div th:each="hostpital,is:${petsForm.petsHospitalWrapper}">
+                                    <div class="input__box">
+                                        <div class="title">
+                                            病名
+                                        </div>
+                                        <input class="nameDisName" type="text" th:attr="name='petsHospitalWrapper['+${is.index}+'].diseaseName'" th:value="${hostpital.diseaseName}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            かかりつけの動物病院
+                                        </div>
+                                        <input class="nameHospital" type="text" th:attr="name='petsHospitalWrapper['+${is.index}+'].hospital'" th:value="${hostpital.hospital}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            連絡先
+                                        </div>
+                                        <input class="nameHospitalAdd" type="text" th:attr="name='petsHospitalWrapper['+${is.index}+'].contactAddress'" th:value="${hostpital.contactAddress}"/>
+                                    </div>
+                                    <div class="button_box del_hospital_box" th:if="${aboutMeViewFlag==0}">
+                                        <a th:if="${#lists.size(petsForm.petsHospitalWrapper) > 1}" href="javascript:;" class="delete_hospital_list right"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>
+                                    </div>
+                                    <br /><br /><br />
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" class="add_list add_hospital_list" href="javascript:;">リストを追加</a>
+                    </div>
+                    <h3>
+                        ペット保険
+                    </h3>
+                    <div class="input__container">
+                        <div id="form_insurance" th:switch="${#lists.isEmpty(petsForm.petsInsuranceWrapper)}">
+                            <div th:case="true">
+                                <div class="input__box">
+                                    <div class="title">
+                                        保険会社名
+                                    </div>
+                                    <input class="nameCompany" type="text" th:field="*{petsInsuranceWrapper[0].company}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        電話番号
+                                    </div>
+                                    <input class="nameTel" type="text" th:field="*{petsInsuranceWrapper[0].tel}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        請求方法
+                                    </div>
+                                    <input class="nameBilling" type="text" th:field="*{petsInsuranceWrapper[0].billingMethod}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        保険の内容
+                                    </div>
+                                    <textarea class="nameRemarks" th:field="*{petsInsuranceWrapper[0].remarks}"></textarea>
+                                </div>
+                                <div class="button_box del_insurance_box">
+
+                                </div>
+                                <br /><br /><br />
+                                <hr />
+                            </div>
+                            <div th:case="false">
+                                <div th:each="insurance,is:${petsForm.petsInsuranceWrapper}">
+                                    <div class="input__box">
+                                        <div class="title">
+                                            保険会社名
+                                        </div>
+                                        <input class="nameCompany" type="text" th:attr="name='petsInsuranceWrapper['+${is.index}+'].company'" th:value="${insurance.company}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            電話番号
+                                        </div>
+                                        <input class="nameTel" type="text" th:attr="name='petsInsuranceWrapper['+${is.index}+'].tel'" th:value="${insurance.tel}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            請求方法
+                                        </div>
+                                        <input class="nameBilling" type="text" th:attr="name='petsInsuranceWrapper['+${is.index}+'].billingMethod'" th:value="${insurance.billingMethod}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            保険の内容
+                                        </div>
+                                        <textarea class="nameRemarks" th:attr="name='petsInsuranceWrapper['+${is.index}+'].remarks'" th:inline="text">[[${insurance.remarks}]]</textarea>
+                                    </div>
+                                    <div class="button_box del_insurance_box" th:if="${aboutMeViewFlag==0}">
+                                        <a th:if="${#lists.size(petsForm.petsInsuranceWrapper) > 1}" href="javascript:;" class="delete_insurance_list right"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>
+                                    </div>
+                                    <br /><br /><br />
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" class="add_list add_insurance_list" href="javascript:;">リストを追加</a>
+                    </div>
+                    <h3>
+                        行きつけのサロン・トリミング・しつけ教室等
+                    </h3>
+                    <div class="input__container">
+                        <div id="form_salon" th:switch="${#lists.isEmpty(petsForm.petsSalonWrapper)}">
+                            <div th:case="true">
+                                <div class="input__box">
+                                    <div class="title">
+                                        名称
+                                    </div>
+                                    <input class="nameSalonName" type="text" th:field="*{petsSalonWrapper[0].name}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        連絡先
+                                    </div>
+                                    <input class="nameSalonAddress" type="text" th:field="*{petsSalonWrapper[0].contactAddress}"/>
+                                </div>
+                                <div class="button_box del_salon_box">
+
+                                </div>
+                                <br /><br /><br />
+                                <hr />
+                            </div>
+                            <div th:case="false">
+                                <div th:each="salon,is:${petsForm.petsSalonWrapper}">
+                                    <div class="input__box">
+                                        <div class="title">
+                                            名称
+                                        </div>
+                                        <input class="nameSalonName" type="text" th:attr="name='petsSalonWrapper['+${is.index}+'].name'" th:value="${salon.name}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            連絡先
+                                        </div>
+                                        <input class="nameSalonAddress" type="text" th:attr="name='petsSalonWrapper['+${is.index}+'].contactAddress'" th:value="${salon.contactAddress}"/>
+                                    </div>
+                                    <div class="button_box del_salon_box" th:if="${aboutMeViewFlag==0}">
+                                        <a th:if="${#lists.size(petsForm.petsSalonWrapper) > 1}" href="javascript:;" class="delete_salon_list right"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>
+                                    </div>
+                                    <br /><br /><br />
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" class="add_list add_salon_list" href="javascript:;">リストを追加</a>
+                    </div>
+                    <div class="button_box">
+                        <button th:if="${aboutMeViewFlag==0}"><img height="147" th:src="@{/images/button/button_save.jpg}" width="1040"/></button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(document).on("click",".add_pet_list",function () {
+        var petIndex = $('.namePet').length;
+        var newChild ='<div><div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    名前\n' +
+            '                                </div>\n' +
+            '                                <input class="namePet" type="text" name="petsWrapper['+petIndex+'].name"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box pet_sex">\n' +
+            '                                <div class="title">\n' +
+            '                                    性別\n' +
+            '                                </div>\n' +
+            '                                <input class="namePetSex radio" id="sex" name="petsWrapper['+petIndex+'].isGender" type="radio" value="true" checked="checked"/>\n' +
+            '                                <label class="radio" for="sex">オス</label>\n' +
+            '                                <input class="namePetSex radio" id="sex2" name="petsWrapper['+petIndex+'].isGender" type="radio" value="false"/>\n' +
+            '                                <label class="radio" for="sex2">メス</label>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    エサ\n' +
+            '                                </div>\n' +
+            '                                <input class="namePetFeed" type="text" name="petsWrapper['+petIndex+'].feed"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box pet_pedigree">\n' +
+            '                                <div class="title">\n' +
+            '                                    血統書の有無\n' +
+            '                                </div>\n' +
+            '                                <input class="namePetPedigree radio" id="pedigree_document" name="petsWrapper['+petIndex+'].isExistsPedigreeForm" type="radio" value="true" checked="checked"/>\n' +
+            '                                <label class="radio" for="pedigree_document">有り</label>\n' +
+            '                                <input class="namePetPedigree radio" id="pedigree_document2" name="petsWrapper['+petIndex+'].isExistsPedigreeForm" type="radio" value="false"/>\n' +
+            '                                <label class="radio" for="pedigree_document2">無し</label>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="have__case">\n' +
+            '                                    【血統書が有る場合】\n' +
+            '                                </div>\n' +
+            '                                <div class="title">\n' +
+            '                                    登録番号\n' +
+            '                                </div>\n' +
+            '                                <input class="namePetDigNo" type="text" name="petsWrapper['+petIndex+'].pedigreeFormNo"/>\n' +
+            '                            </div>\n' +
+            '                                    <div class="button_box del_pet_box"><a href="javascript:;" class="delete_pet_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '                                            <br /><br /><br />\n' +
+            '                                            <hr /></div>';
+        if($(".del_pet_box").length == 1) {
+            $(".del_pet_box:first").append('<a href="javascript:;" class="delete_pet_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#form_pet").append(newChild);
+    });
+    $(document).on("click", ".delete_pet_list" ,function () {
+        $(this).parent('div').parent('div').remove();
+        if($(".del_pet_box").length == 1) {
+            $(".del_pet_box:first").empty();
+        }
+        function updateName(className , fieldName) {
+            $(className).each(function(index) {
+                $(this).attr("name","petsWrapper["+index+"]."+fieldName);
+            });
+        }
+        function updateRadio(divClass,fieldClass , fieldName) {
+            $(divClass).each(function(index) {
+                $(this).find(fieldClass).attr("name","petsWrapper["+index+"]."+fieldName);
+            });
+        }
+        updateName('.namePet','name');
+        updateRadio('.pet_sex','.namePetSex','isGender');
+        updateName('.namePetFeed','feed');
+        updateRadio('.pet_pedigree','.namePetPedigree','isExistsPedigreeForm');
+        updateName('.namePetDigNo','pedigreeFormNo');
+    });
+
+    $(document).on("click",".add_hospital_list",function () {
+        var hospitalIndex = $('.nameDisName').length;
+        var newChild ='<div><div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    病名\n' +
+            '                                </div>\n' +
+            '                                <input class="nameDisName" type="text" name="petsHospitalWrapper['+hospitalIndex+'].diseaseName"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    かかりつけの動物病院\n' +
+            '                                </div>\n' +
+            '                                <input class="nameHospital" type="text" name="petsHospitalWrapper['+hospitalIndex+'].hospital"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    連絡先\n' +
+            '                                </div>\n' +
+            '                                <input class="nameHospitalAdd" type="text" name="petsHospitalWrapper['+hospitalIndex+'].contactAddress"/>\n' +
+            '                            </div>\n' +
+            '                                    <div class="button_box del_hospital_box"><a href="javascript:;" class="delete_hospital_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '                                            <br /><br /><br />\n' +
+            '                                            <hr /></div>';
+        if($(".del_hospital_box").length == 1) {
+            $(".del_hospital_box:first").append('<a href="javascript:;" class="delete_hospital_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#form_hospital").append(newChild);
+    });
+    $(document).on("click", ".delete_hospital_list" ,function () {
+        $(this).parent('div').parent('div').remove();
+        if($(".del_hospital_box").length == 1) {
+            $(".del_hospital_box:first").empty();
+        }
+        function updateName(className , fieldName) {
+            $(className).each(function(index) {
+                $(this).attr("name","petsHospitalWrapper["+index+"]."+fieldName);
+            });
+        }
+        updateName('.nameDisName','diseaseName');
+        updateName('.nameHospital','hospital');
+        updateName('.nameHospitalAdd','contactAddress');
+    });
+
+    $(document).on("click",".add_insurance_list",function () {
+        var insuranceIndex = $('.nameCompany').length;
+        var newChild ='<div><div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    保険会社名\n' +
+            '                                </div>\n' +
+            '                                <input class="nameCompany" type="text" name="petsInsuranceWrapper['+insuranceIndex+'].company"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    電話番号\n' +
+            '                                </div>\n' +
+            '                                <input class="nameTel" type="text" name="petsInsuranceWrapper['+insuranceIndex+'].tel"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    請求方法\n' +
+            '                                </div>\n' +
+            '                                <input class="nameBilling" type="text" name="petsInsuranceWrapper['+insuranceIndex+'].billingMethod"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    保険の内容\n' +
+            '                                </div>\n' +
+            '                                <textarea class="nameRemarks" name="petsInsuranceWrapper['+insuranceIndex+'].remarks"></textarea>\n' +
+            '                            </div>\n' +
+            '                                    <div class="button_box del_insurance_box"><a href="javascript:;" class="delete_insurance_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '                                            <br /><br /><br />\n' +
+            '                                            <hr /></div>';
+        if($(".del_insurance_box").length == 1) {
+            $(".del_insurance_box:first").append('<a href="javascript:;" class="delete_insurance_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#form_insurance").append(newChild);
+    });
+    $(document).on("click", ".delete_insurance_list" ,function () {
+        $(this).parent('div').parent('div').remove();
+        if($(".del_insurance_box").length == 1) {
+            $(".del_insurance_box:first").empty();
+        }
+        function updateName(className , fieldName) {
+            $(className).each(function(index) {
+                $(this).attr("name","petsInsuranceWrapper["+index+"]."+fieldName);
+            });
+        }
+        updateName('.nameCompany','company');
+        updateName('.nameTel','tel');
+        updateName('.nameBilling','billingMethod');
+        updateName('.nameRemarks','remarks');
+    });
+
+    $(document).on("click",".add_salon_list",function () {
+        var salonIndex = $('.nameSalonName').length;
+        var newChild = '<div><div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    名称\n' +
+            '                                </div>\n' +
+            '                                <input class="nameSalonName" type="text" name="petsSalonWrapper['+salonIndex+'].name"/>\n' +
+            '                            </div>\n' +
+            '                            <div class="input__box">\n' +
+            '                                <div class="title">\n' +
+            '                                    連絡先\n' +
+            '                                </div>\n' +
+            '                                <input class="nameSalonAddress" type="text" name="petsSalonWrapper['+salonIndex+'].contactAddress"/>\n' +
+            '                            </div>\n' +
+            '                                    <div class="button_box del_salon_box"><a href="javascript:;" class="delete_salon_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '                                            <br /><br /><br />\n' +
+            '                                            <hr /></div>';
+        if($(".del_salon_box").length == 1) {
+            $(".del_salon_box:first").append('<a href="javascript:;" class="delete_salon_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#form_salon").append(newChild);
+    });
+    $(document).on("click", ".delete_salon_list" ,function () {
+        $(this).parent('div').parent('div').remove();
+        if($(".del_salon_box").length == 1) {
+            $(".del_salon_box:first").empty();
+        }
+        function updateName(className , fieldName) {
+            $(className).each(function(index) {
+                $(this).attr("name","petsSalonWrapper["+index+"]."+fieldName);
+            });
+        }
+        updateName('.nameSalonName','name');
+        updateName('.nameSalonAddress','contactAddress');
+    });
+
+</script>

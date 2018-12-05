@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+    <head>
+        <title>資産について 4.証券口座 エンディングノート</title>
+        <meta name="keywords" content="content1"/>
+        <meta name="description" content="content1"/>
+    </head>
+    <body class="drawer drawer--left">
+        <div layout:fragment="headerImage">
+            <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+                 th:src="@{/images/header/header_endingnote.png}"/>
+        </div>
+        <div  layout:fragment="main">
+            <div id="container">
+                <div id="property_about_securitiesAccount">
+                    <div class="page_label">
+                      <h2>
+                        資産について
+                      </h2>
+                    </div>
+                    <div class="about_securitiesAccount">
+                        <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                        <!--/*@thymesVar id="form" type="ora.leadlife.co.jp.form.CertificateAccountForm"*/-->
+                        <form th:action="@{/certificateAccount/confirm}" method="post" th:object="${form}">
+                            <h2>
+                                4.証券口座
+                            </h2>
+                            <div class="input__container">
+                                <div id="formList" th:switch="${#lists.isEmpty(form.caWrapper)}">
+                                    <div th:case="true">
+                                        <div class="input__box">
+                                            <div class="title">
+                                                証券会社名
+                                            </div>
+                                            <input class="nameName" type="text" th:field="*{caWrapper[0].caName}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                口座番号
+                                            </div>
+                                            <input class="nameBankAccountNumber" type="text" th:field="*{caWrapper[0].bankAccountNumber}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                名義人
+                                            </div>
+                                          <input class="nameHolder" type="text" th:field="*{caWrapper[0].holder}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                ウェブ用ID
+                                            </div>
+                                            <input class="nameWebId" type="text" th:field="*{caWrapper[0].webId}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                連絡先
+                                            </div>
+                                            <input class="nameContactAddress" type="text" th:field="*{caWrapper[0].contactAddress}"/>
+                                        </div>
+                                        <div class="input__box">
+                                            <div class="title">
+                                                備考
+                                            </div>
+                                          <textarea class="nameRemarks" th:field="*{caWrapper[0].remarks}"></textarea>
+                                        </div>
+                                        <div class="button_box del_box">
+
+                                        </div>
+                                        <br /><br /><br />
+                                        <hr />
+                                    </div>
+                                    <div th:case="false">
+                                        <div th:each="certificate,is:${form.caWrapper}">
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    証券会社名
+                                                </div>
+                                                <input class="nameName" type="text" th:attr="name='caWrapper['+${is.index}+'].caName'" th:value="${certificate.caName}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    口座番号
+                                                </div>
+                                                <input class="nameBankAccountNumber" type="text" th:attr="name='caWrapper['+${is.index}+'].bankAccountNumber'" th:value="${certificate.bankAccountNumber}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    名義人
+                                                </div>
+                                                <input class="nameHolder" type="text" th:attr="name='caWrapper['+${is.index}+'].holder'" th:value="${certificate.holder}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    ウェブ用ID
+                                                </div>
+                                                <input class="nameWebId" type="text" th:attr="name='caWrapper['+${is.index}+'].webId'" th:value="${certificate.webId}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    連絡先
+                                                </div>
+                                                <input class="nameContactAddress" type="text" th:attr="name='caWrapper['+${is.index}+'].contactAddress'" th:value="${certificate.contactAddress}"/>
+                                            </div>
+                                            <div class="input__box">
+                                                <div class="title">
+                                                    備考
+                                                </div>
+                                                <textarea class="nameRemarks" type="text" th:attr="name='caWrapper['+${is.index}+'].remarks'" th:inline="text">[[${certificate.remarks}]]</textarea>
+                                            </div>
+                                            <div class="button_box del_box" th:if="${aboutMeViewFlag==0}">
+                                                <a th:if="${#lists.size(form.caWrapper) > 1}" href="javascript:;" class="delete_list right"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>
+                                            </div>
+                                            <br/><br/><br/>
+                                            <hr/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a th:if="${aboutMeViewFlag==0}" href="javascript:;" class="add_list">リストを追加</a>
+                            </div>
+                            <div class="button_box">
+                                <button th:if="${aboutMeViewFlag==0}" type="submit"><img height="147" width="1040" th:src="@{/images/button/button_save.jpg}" /></button>
+                            </div>
+                            <div id="bnr_paying_merit">
+                                <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                                     th:src="@{/images/common/banner.png}" width="1040" /></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    $(document).on("click",".add_list",function () {
+        var childIndex = $('.nameName').length;
+        var newChild = '<div><div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            証券会社名\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameName" type="text" name="caWrapper['+childIndex+'].caName"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            口座番号\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameBankAccountNumber" type="text" name="caWrapper['+childIndex+'].bankAccountNumber"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            名義人\n' +
+            '                                        </div>\n' +
+            '                                      <input class="nameHolder" type="text" name="caWrapper['+childIndex+'].holder"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            ウェブ用ID\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameWebId" type="text" name="caWrapper['+childIndex+'].webId"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            連絡先\n' +
+            '                                        </div>\n' +
+            '                                        <input class="nameContactAddress" type="text" name="caWrapper['+childIndex+'].contactAddress"/>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="input__box">\n' +
+            '                                        <div class="title">\n' +
+            '                                            備考\n' +
+            '                                        </div>\n' +
+            '                                      <textarea class="nameRemarks" name="caWrapper['+childIndex+'].remarks"></textarea>\n' +
+            '                                    </div>\n' +
+            '                                    <div class="button_box del_box"><a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '                                            <br /><br /><br />\n' +
+            '                                            <hr /></div>';
+        if($(".del_box").length == 1) {
+            $(".del_box:first").append('<a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#formList").append(newChild);
+    });
+    $(document).on("click", ".delete_list" ,function () {
+        $(this).parent('div').parent('div').remove();
+        if($(".del_box").length == 1) {
+            $(".del_box:first").empty();
+        }
+        function updateName(className , fieldName) {
+            $(className).each(function(index) {
+                $(this).attr("name","caWrapper["+index+"]."+fieldName);
+            });
+        }
+        updateName('.nameName','caName');
+        updateName('.nameBankAccountNumber','bankAccountNumber');
+        updateName('.nameHolder','holder');
+        updateName('.nameWebId','webId');
+        updateName('.nameContactAddress','contactAddress');
+        updateName('.nameRemarks','remarks');
+    });
+</script>

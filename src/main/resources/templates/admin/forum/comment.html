@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns="http://www.w3.org/1999/xhtml"
+  layout:decorator="adminLayout">
+<head>
+</head>
+<body>
+<div layout:fragment="main">
+  <div class="card">
+    <div class="card-header">一覧</div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <tr>
+          <th>ID</th>
+          <th><!--
+          DEV account#user#name + '(' + account#name + ')'
+          link to /admin/account/{account#id}
+          -->アカウント
+          </th>
+          <th><!-- DEV name -->名前</th>
+          <th><!-- DEV contents -->本文</th>
+          <th><!-- DEV created_at-->作成日</th>
+          <th><!-- DEV updated_at-->更新日</th>
+          <th>&nbsp;</th>
+        </tr>
+        <!--/*@thymesVar id="comments" type="List<ora.leadlife.co.jp.model.ForumComment>"*/-->
+        <!--/*@thymesVar id="comment" type="ora.leadlife.co.jp.model.ForumComment"*/-->
+        <tr th:each="comment : ${comments}">
+          <td th:text="${comment.id}"></td>
+          <td th:text="${comment.account.name}"><a th:href="@{'/admin/account/'+${forum.account.id}}"></a></td>
+          <td th:text="${comment.name}"></td>
+          <td>
+            <a class="btn btn-primary" data-toggle="collapse" th:href="'#contents_'+${comment.id}" role="button" aria-expanded="false"
+               aria-controls="collapseExample">
+              本文を開く
+            </a>
+            <div class="collapse" th:id="'contents_'+${comment.id}">
+              <div class="card card-body">
+                <p  th:text="${comment.contents}"></p>
+              </div>
+            </div>
+          </td>
+          <td th:text="${#dates.format(comment.createdAt, 'yyyy/MM/dd')}"></td>
+          <td th:text="${#dates.format(comment.updatedAt, 'yyyy/MM/dd')}"></td>
+          <!--<td>-->
+            <!--&lt;!&ndash; DEV delete the forum_comment &ndash;&gt;-->
+            <!--<a th:href="@{'/admin/forum/comment/delete/'+${comment.id}}">削除</a>-->
+          <!--</td>-->
+          <td>
+            <!-- DEV delete the forum_comment -->
+            <a href="javascript:;"
+               th:attr="onclick='confirmDialog(\'削除してもよろしいでしょうか？\',\'/admin/forum/comment/delete/'+${comment.id} + '\')'">削除</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
+<script>
+    /*<![CDATA[*/
+    function confirmDialog(title, url) {
+        $("#confirmDialog").dialog({
+            modal: true,
+            title: title,
+            buttons: {
+                "OK": function () {
+                    $.ajax({
+                        type : "DELETE",
+                        url : url,
+                        success: function (result) {
+                            $("#confirmDialog").dialog("close");
+                            window.location.href = result;
+                        },
+                        error: function (e) {
+                            console.log(e);
+                            location.reload();
+                        }
+                    });
+                },
+                "キャンセル": function () {
+                    $(this).dialog("close");
+                }
+            },
+        });
+    }
+    /*]]>*/
+</script>

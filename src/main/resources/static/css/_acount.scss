@@ -1,0 +1,126 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#account_login{
+	background: #f2f2f2;
+	.inner{
+		padding-top: 160px;
+		.input{
+			width: 972px;
+			margin: 0 auto;
+		}
+	}//inner
+	.mail_input{
+		span{
+			font-size: 60px;
+			font-weight: bold;
+			color: #ff8431;
+			line-height: 0.88;
+		}
+	  input[type=text],input[type=password]{
+	    width:100%;
+	    border:3px solid #000;
+	    font-size: 50px;
+	    border-radius:4px;
+	    margin:8px 0;
+	    outline:none;
+	    padding:8px;
+	    height: 140px;
+	    box-sizing:border-box;
+	    transition:.3s;
+	  }
+
+	  .inputWithIcon input[type=text],input[type=password]{
+	    padding-left:23px;
+	  }
+	  
+	  .inputWithIcon:first-of-type{
+	    position:relative;
+	    margin-bottom: 90px;
+	    margin-top: 30px;
+	  }
+	 	  
+
+	  .inputWithIcon.inputIconBg i{
+	    background-color:#aaa;
+	    color:#fff;
+	    padding:9px 4px;
+	    border-radius:4px 0 0 4px;
+	    box-sizing: border-box;
+	  }
+	  .pswd_show{
+	  	margin-top: 25px;
+	  	margin-bottom: 190px;
+	  	//tuika
+	    position: relative;
+	    display: inline-block;
+
+		  input#check{
+		  	font-size: 50px;
+		    position: absolute;
+		    top: 0;
+		    opacity: 0;
+		    width: 100%;  
+		    height: 100%;
+				&[type="checkbox"] + label {
+			    display: block;
+			    background-image: url(../images/icon/checkbox_off.png);
+			    background-size: 55px;
+			    background-position: left center;
+			    background-repeat: no-repeat;
+			    padding: 4px 0 0 88px;
+			    box-sizing: border-box;
+				}
+				&[type="checkbox"]:checked + label {
+			    background-image: url(../images/icon/checkbox_on.png);
+				}
+		  }
+	  	label{
+	  		font-size: 48px;
+	  		font-weight: bold;
+	  	}
+	  }//.pswd_show
+	}//mail_input
+	.btn{
+		width: 1040px;
+		margin: 0 auto;
+		a{
+			display: block;
+		}
+		.pswd{
+			text-align: right;
+			a{
+				text-align: right;
+				display: inline-block;
+				font-size: 45px;
+				color: #498af2;
+				font-weight: bold;
+				text-decoration: none;
+				margin-top: 27px;
+				margin-bottom: 430px;
+				box-sizing: border-box;
+			}
+		}
+	}//.btn
+}//#account_login　アカウントログイン
+
+#account_management_top{
+	background: #f2f2f2;
+	.inner{
+		width: 1140px;
+		margin: 0 auto;
+		padding: 247px 0 896px;
+		box-sizing: border-box;
+		a:first-child{
+			display: block;
+			margin-bottom: 93px;
+		}
+		a:last-child{
+			display: block;
+			margin-top: 93px;
+		}
+	}
+}//account_management_top アカウント3の管理 トップ

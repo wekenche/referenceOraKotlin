@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>財産について 3.仮想通貨について エンディングノート</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="property_about_virtual_money">
+            <div class="page_label">
+                <h2>
+                    財産について
+                </h2>
+            </div>
+            <div class="about_virtual_money">
+                <h2>
+                    3.仮想通貨について
+                </h2>
+                <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                <!--/*@thymesVar id="cryptoCurrenciesForm" type="ora.leadlife.co.jp.form.CryptoCurrenciesForm"*/-->
+                <form th:action="@{/cryptoCurrencies/cryptoCurrencySave}" th:object="${cryptoCurrenciesForm}" th:method="post">
+                    <div class="input__container">
+                        <div  id="formList">
+                            <div class="formColumn" th:if="${not #lists.isEmpty(cryptoCurrenciesForm.cryptoCurrenciesWrapper)}" th:each="cryptoList,varStat:${cryptoCurrenciesForm.cryptoCurrenciesWrapper}">
+                                <div class="input__box">
+                                    <div class="title">
+                                        取引所・ウォレット
+                                    </div>
+                                    <input class="market" type="text" th:attr="name='cryptoCurrenciesWrapper['+${varStat.index}+'].market'" th:value="${cryptoList.market}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        保有仮想通貨の種類
+                                    </div>
+                                    <input class="cryptoCurrencyType" type="text" th:attr="name='cryptoCurrenciesWrapper['+${varStat.index}+'].cryptoCurrencyType'" th:value="${cryptoList.cryptoCurrencyType}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        保有仮想通貨の額
+                                    </div>
+                                    <input class="amount" type="text" th:attr="name='cryptoCurrenciesWrapper['+${varStat.index}+'].amount'" th:value="${cryptoList.amount}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        ID
+                                    </div>
+                                    <input class="cryptoCurrencyId" type="text" th:attr="name='cryptoCurrenciesWrapper['+${varStat.index}+'].cryptoCurrencyId'" th:value="${cryptoList.cryptoCurrencyId}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        パスワード
+                                    </div>
+                                    <input class="password" type="text" th:attr="name='cryptoCurrenciesWrapper['+${varStat.index}+'].password'" th:value="${cryptoList.password}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        備考
+                                    </div>
+                                    <textarea class="remarks" th:attr="name='cryptoCurrenciesWrapper['+${varStat.index}+'].remarks'" th:inline="text">[[${cryptoList.remarks}]]</textarea>
+                                </div>
+                                <div class="button_box " th:if="${#lists.size(cryptoCurrenciesForm.cryptoCurrenciesWrapper) > 1}">
+                                    <a th:if="${aboutMeViewFlag==0}" id="delete__column" class="delete_list" href="javascript:;"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>
+                                </div>
+                                <hr/>
+                            </div>
+                            <div class="formColumn" th:if="${#lists.isEmpty(cryptoCurrenciesForm.cryptoCurrenciesWrapper)}">
+                                <div class="input__box">
+                                    <div class="title">
+                                        取引所・ウォレット
+                                    </div>
+                                    <input class="remarks" type="text" th:field="*{cryptoCurrenciesWrapper[0].market}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        保有仮想通貨の種類
+                                    </div>
+                                    <input class="cryptoCurrencyType" type="text" th:field="*{cryptoCurrenciesWrapper[0].cryptoCurrencyType}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        保有仮想通貨の額
+                                    </div>
+                                    <input class="amount" type="text" th:field="*{cryptoCurrenciesWrapper[0].amount}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        ID
+                                    </div>
+                                    <input class="cryptoCurrencyId" type="text" th:field="*{cryptoCurrenciesWrapper[0].cryptoCurrencyId}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        パスワード
+                                    </div>
+                                    <input class="password" type="text" th:field="*{cryptoCurrenciesWrapper[0].password}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        備考
+                                    </div>
+                                    <textarea class="remarks" th:field="*{cryptoCurrenciesWrapper[0].remarks}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" href="javascript:;" th:onclick="'addList()'" class="add_list">リストを追加</a>
+                    </div>
+                    <div class="button_box">
+                        <button th:if="${aboutMeViewFlag==0}"><img height="147" th:src="@{/images/button/button_save.jpg}" width="1040"/></button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    /*<![CDATA[*/
+    function addList() {
+
+        var childIndex = $("#formList>.formColumn").length;
+        if(childIndex==1) {
+            $(".formColumn:first").append('<div class="button_box">\n' +
+            '  <a id="delete__column" class="delete_list" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>\n' +
+            '  </div>');
+        }
+        var parent = document.getElementById("formList");
+        var newChild = '<div class="formColumn"><div class="input__box">' +
+            '<div class="title">取引所・ウォレット</div>' +
+            '   <input class="market" type="text" name="cryptoCurrenciesWrapper[' + childIndex + '].market"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">保有仮想通貨の種類</div>' +
+            '   <input class="cryptoCurrencyType" type="text" name="cryptoCurrenciesWrapper[' + childIndex + '].cryptoCurrencyType"/>' +
+            '  </div>' +
+            '<div class="input__box">' +
+            '   <div class="title">保有仮想通貨の額</div>' +
+            '   <input class="amount" type="text" name="cryptoCurrenciesWrapper[' + childIndex + '].amount"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">ID</div>' +
+            '   <input class="cryptoCurrencyId" type="text" name="cryptoCurrenciesWrapper[' + childIndex + '].cryptoCurrencyId"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">パスワード</div>' +
+            '   <input class="password" type="text" name="cryptoCurrenciesWrapper[' + childIndex + '].password"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">備考</div>' +
+            '   <textarea class="remarks" name="cryptoCurrenciesWrapper[' + childIndex + '].remarks"></textarea>' +
+            '</div>' +
+            '<div class="button_box">' +
+            '    <a id="delete__column" class="delete_list" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a> ' +
+            '</div><hr/></div>';
+        parent.insertAdjacentHTML('beforeend', newChild);
+    }
+    /*]]>*/
+    $(document).on("click",".delete_list",function () {
+        $(this).closest(".formColumn").remove();
+        if($(".formColumn").length==1){
+            $(".delete_list:first").parent().remove();
+        }
+        $(".formColumn").each(function (index) {
+            $(this).find(".market").attr("name","cryptoCurrenciesWrapper["+index+"].market");
+            $(this).find(".cryptoCurrencyType").attr("name","cryptoCurrenciesWrapper["+index+"].cryptoCurrencyType");
+            $(this).find(".amount").attr("name","cryptoCurrenciesWrapper["+index+"].amount");
+            $(this).find(".cryptoCurrencyId").attr("name","cryptoCurrenciesWrapper["+index+"].cryptoCurrencyId");
+            $(this).find(".password").attr("name","cryptoCurrenciesWrapper["+index+"].password");
+            $(this).find(".remarks").attr("name","cryptoCurrenciesWrapper["+index+"].remarks");
+        });
+    });
+</script>

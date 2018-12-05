@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/ora?useUnicode=yes&characterEncoding=UTF-8
+    username: ora
+    password: secret
+    driverClassName: com.mysql.jdbc.Driver
+  mail:
+    host: localhost
+    port: 25
+    username: user
+    password: pass
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: false
+  data:
+    rest:
+      base-path: api
+spring.thymeleaf.cache: false
+spring.jpa.hibernate.ddl-auto: validate
+spring.mvc.date-format: yyyy/MM/dd
+logging.level.org.hibernate.SQL: debug
+flyway.out-of-order: true
+spring.http.multipart.max-file-size: 90MB
+spring.http.multipart.max-request-size: 90MB
+ora:
+  mailType: http

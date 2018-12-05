@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>無料会員登録 アカウント入力画面</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="退会手続き" src="./assets/images/header/header_accout_deactivation_procedure.png" width="712"
+       th:src="@{/images/header/header_accout_deactivation_procedure.png}"
+  />
+</div>
+<div layout:fragment="main">
+  <div id="accout_deactivation_procedure_confirm">
+    <div class="inner cf">
+      <div class="message">
+        <div class="attention">
+          下記の項目を確認のうえ、<br/>「次に進む」ボタンを押して下さい。
+        </div>
+        <dl>
+          <dt>
+            登録情報に関して
+          </dt>
+          <dd>
+            本サービスの退会をされた場合、現在登録されている会員情報は全て削除されます。<br/>
+            なお、データの復元は出来ません。<br/>
+          </dd>
+          <dt>
+            有料会員の方でAppleの決済をご利用の方へ
+          </dt>
+          <dd>
+            必ず<a th:href="@{/withdrawal/apple}">こちら</a>をご参照頂き、自動決済を解約お願いします。<br />
+            こちらの手続きを行って頂かない限り、自動的に自動決済は停止されません。<br />
+            こちらのご対応を行って頂かなかった場合に、意図せず自動決済が行われても、弊社では一切の責任を負いません事をご了承願います。
+          </dd>
+        </dl>
+      </div>
+      <div class="btn">
+        <a th:href="@{/withdrawal/done}">
+          <img alt="次へ" height="147"
+               src="./assets/images/button/btn_next3.png"
+               width="1064"
+               th:src="@{/images/button/btn_next3.png}"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#merit{
+	background: #f2f2f2;
+	padding-bottom: 105px;
+	.inner{
+		width: 1180px;
+		margin: 0 auto;
+		padding-top: 76px;
+		article{
+			font-size: 48px;
+			line-height: 1.375;
+			border: 2px solid #b1b1b1;
+			background: #fff;
+			padding: 38px 75px 120px 75px;
+			box-sizing: border-box;
+			p:last-child{
+				margin-top: 72px;
+			}
+		}//article
+		.btn{
+			text-align: center;
+			margin-top: 108px;
+			margin-bottom: 282px;
+			img{
+				display: inline-block;
+			}
+		}
+	}//inner
+}//#accout_admin_confirm
+

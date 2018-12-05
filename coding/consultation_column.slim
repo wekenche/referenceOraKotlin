@@ -1,0 +1,32 @@
+doctype html
+html lang="ja"
+	- $pageNo = 17;
+	head
+		meta charset="UTF-8"
+		meta http-equiv="X-UA-Compatible" content="IE=Edge"
+		meta name="viewport" content="width=500,user-scalable=no"
+
+		meta name="description" content="コラム"
+		meta name="keywords" content="コラム"
+		title コラム
+
+		link rel="stylesheet" href="./assets/css/reset.css"
+		link rel="stylesheet" href="./assets/css/drawer.css"
+		link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+		link rel="stylesheet" href="./assets/css/column_style.css"
+		<!--[if lt IE 9]>
+		  script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
+		  script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"
+		<![endif]-->
+
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_column_header.slim').render
+	#container
+		#consultation_column
+			.timeline
+				<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fenmansouzokunotakumi%2F&tabs=timeline&width=450&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=1847049008646930" width="450" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render
+

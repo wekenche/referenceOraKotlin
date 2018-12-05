@@ -1,0 +1,531 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+.cf:before,
+	.cf:after {
+		content: " ";
+		display: table;
+	}
+
+	.cf:after {
+		clear: both;
+	}
+
+	.cf {
+		*zoom: 1;
+	}
+img{
+	display: block;
+	bottom: 0; 
+}
+#messageleadlife{
+	background: #f2f2f2;
+	.inner{
+		width: 1041px;
+		margin: 0 auto;
+		padding: 103px 0 75px;
+		box-sizing: border-box;
+		.select_box{
+			margin-bottom: 54px;	
+			select{
+				width: 1041px;
+				padding: 25px 30px 0;
+				border: 7px solid #ff8431;
+				border-top: none;
+				border-radius: 0 0 10px 10px;
+				box-sizing: border-box;
+				option{
+					padding: 12px 0;
+					font-size: 45px;
+					border-bottom: 1px solid #a4a4a4;
+					letter-spacing: 0.12em;
+					padding-left: 378px;
+				}
+			}
+			ul{
+				width: 1041px;
+				height: auto;
+				margin: 0 auto;
+				padding: 25px 30px 0;
+				border: 7px solid #ff8431;
+				background: #fff;
+				border-top: none;
+				border-radius: 0 0 10px 10px;
+				box-sizing: border-box;
+				li{
+					padding: 12px 0;
+					font-size: 45px;
+					border-bottom: 1px solid #a4a4a4;
+					letter-spacing: 0.12em;
+					padding-left: 378px;
+				}
+			}							
+		}
+		input[type=text]{
+			width: 1041px;
+			margin-bottom: 54px;
+			padding: 18px 0 15px 32px;
+			border: 7px solid #ff8431;
+			border-radius: 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+			box-sizing: border-box;
+		&::-webkit-input-placeholder{
+				color: #b0b0b0;
+			}	
+		}
+		.text_box{
+			.input_text{
+				width: 1041px;
+				height: 396px;
+				padding: 18px 0 0 32px;
+				border: 7px solid #ff8431;
+				border-top: 0;
+				border-radius: 0 0 10px 10px;
+				font-size: 45px;
+				font-weight: bold;
+				line-height: 72px;
+				letter-spacing: 0.12em;
+				box-sizing: border-box;
+			&::-webkit-input-placeholder{
+				color: #b0b0b0;
+			}
+			&::-webkit-scrollbar{
+				all: unset;
+				width:8px;
+			}
+			&::-webkit-scrollbar-thumb{
+				all: unset;
+				width: 8px;
+				border-radius: 10px;
+				background: #a6a6a6;
+			}
+
+			}
+		}
+	}//inner
+	.button_box{
+		width: 1062px;
+		margin: 0 auto;
+		margin-bottom: 93px;
+		.back{
+			float: left;
+		}
+		.check{
+			float: right;
+		}
+	}
+}//#messageleadlife メッセージの記録
+
+
+
+
+#message_record_function{
+	background: #f2f2f2;
+	.inner{
+		width: 1138px;
+		margin: 0 auto;
+		padding: 150px 0 825px;
+		box-sizing: border-box;
+		a:first-child{
+			display: block;
+			margin-bottom: 100px;
+		}
+		#bnr_paying_merit{
+			margin: 100px 0;
+		}
+	}
+}//message_record_function メッセージの記録機能 トップ
+
+
+#message_record_list{
+	background: #f2f2f2;
+	.inner{
+		width: 1184px;
+		margin: 0 auto;
+		padding: 125px 0 276px;
+		box-sizing: border-box;
+		.input{
+			ul.list_box{
+				width: 1184px;
+				margin-bottom: 150px;
+				border: 2px solid #b1b1b1;
+				box-sizing: border-box;
+				li{
+					padding: 56px 0 51px 77px;
+					background-color: #fcfcfd;
+				&:not(:last-child){
+					border-bottom: 2px solid #b1b1b1;
+				}
+					figure{
+						float: left;
+						margin-top: 5px;
+					}
+					.text{
+						float: left;
+						margin-left: 70px;
+						.date{
+							padding-left: 125px;
+							margin-bottom: 28px;
+							font-size: 56px;
+							line-height: 50px;
+							letter-spacing: 0.05em;
+							font-weight: bold;
+							color: #515151;
+							background: url(../../assets/images/icon/icon_new.png) 
+													no-repeat left center;
+						}
+						a{
+							text-decoration: none;
+							color: #000;
+						}
+						.title{
+							font-size: 60px;
+							line-height: 72px;
+							font-weight: bold;
+						}
+					}
+				}
+			}
+		}
+		.btn{
+			width: 1061px;
+			margin: 0 auto;
+			.back{
+				float: left;
+			}
+			.check{
+				float: right;
+			}
+		}
+	}//inner
+}//message_record_list メッセージの記録　一覧
+
+
+#message_record_confirm{
+	background: #f2f2f2;
+	.inner{
+		width: 1180px;
+		margin: 0 auto;
+		padding: 116px 0 322px;
+		box-sizing: border-box;
+		.inner_video{
+			padding: 90px 0 0 0;
+			margin-bottom: 115px;
+			background-color: #fff;
+			.video{
+				width: 1180px;
+				iframe{
+					display: block;
+					margin : 0 auto;
+				}
+			}
+			figure{
+				img{
+					margin: 0 auto;
+				}
+			}
+			.comment_box{
+				padding-top: 21px;
+				box-sizing: border-box;
+				.comment{
+					padding: 61px 70px 53px;
+					p{
+						font-size: 45px;
+						line-height: 72px;
+						letter-spacing: 0.12em;
+					}
+				}
+			}		
+		}
+		.btn{
+			width: 1045px;
+			margin: 0 auto;
+			.delete{
+				float: left;
+			}
+			.edit{
+				float: right;
+			}
+		}
+		.btn.finish{
+			margin-top: 50px;
+		}
+	}//inner
+}//message_record_confirm メッセージの記録の確認画面　【一周忌】愛する家族へ
+
+#message_record_edit{
+	background: #f2f2f2;
+	.inner{
+		width: 1062px;
+		margin: 0 auto;
+		padding: 103px 0 202px;
+		box-sizing: border-box;
+		.select_box{
+			width: 1041px;
+			margin: 0 auto;
+			margin-bottom: 54px;	
+			select{
+				width: 1041px;
+				margin: 0 auto;
+				padding: 25px 30px 0;
+				border: 7px solid #ff8431;
+				border-top: none;
+				border-radius: 0 0 10px 10px;
+				box-sizing: border-box;
+				-webkit-appearance: menulist-button;
+				option{
+					padding: 12px 0;
+					font-size: 45px;
+					border-bottom: 1px solid #a4a4a4;
+					letter-spacing: 0.12em;
+					padding-left: 378px;
+					-webkit-appearance: menulist-button;
+				}
+			}
+			.select{
+				background-color: #eee;
+			}
+			ul{
+				width: 1041px;
+				height: auto;
+				margin: 0 auto;
+				padding: 25px 30px 0;
+				border: 7px solid #ff8431;
+				background: #fff;
+				border-top: none;
+				border-radius: 0 0 10px 10px;
+				box-sizing: border-box;
+				-webkit-appearance: menulist-button;
+				li{
+					padding: 12px 0;
+					font-size: 45px;
+					border-bottom: 1px solid #a4a4a4;
+					letter-spacing: 0.12em;
+					padding-left: 378px;
+					-webkit-appearance: menulist-button;
+				}
+			}			
+		}
+		.text_box{
+			width: 1041px;
+			margin: 0 auto;
+			input[type=text]{
+				width: 1041px;
+				margin: 0 auto;
+				margin-bottom: 54px;
+				padding: 18px 0 15px 32px;
+				border: 7px solid #ff8431;
+				border-radius: 10px;
+				font-size: 45px;
+				font-weight: bold;
+				line-height: 72px;
+				letter-spacing: 0.12em;
+				box-sizing: border-box;
+			&::-webkit-input-placeholder{
+					color: #b0b0b0;
+				}	
+			}
+		}
+		.select_file{
+			margin: 0 auto;
+		}
+		.btn{
+			margin-top: 172px;
+			.back{
+				float: left;
+			}
+			.check{
+				float: right;
+			}
+		}
+	}//inner
+}//#message_record_edit メッセージの記録の編集 ファイルの選択ボタン
+
+#message_record_edit_video{
+	background: #f2f2f2;
+	.inner{
+		width: 1180px;
+		margin: 0 auto;
+		padding: 116px 0 212px;
+		box-sizing: border-box;
+		.text_box{
+			width: 1041px;
+			margin: 0 auto;
+			input[type=text]{
+				width: 1041px;
+				margin: 0 auto;
+				margin-bottom: 54px;
+				padding: 18px 0 15px 32px;
+				border: 7px solid #ff8431;
+				border-radius: 10px;
+				font-size: 45px;
+				font-weight: bold;
+				line-height: 72px;
+				letter-spacing: 0.12em;
+				box-sizing: border-box;
+			&::-webkit-input-placeholder{
+					color: #b0b0b0;
+				}	
+			}
+		}
+		.inner_video{
+			width: 1035px;
+			padding: 90px 70px 65px;
+			margin-bottom: 77px;
+			background-color: #fff;
+			.video{
+				display: none;
+				width: 1035px;
+				margin: 0 auto;
+				margin-top: 66px;
+				iframe{
+					display: block;
+					margin : 0 auto;
+				}
+			}
+			figure{
+				display: none;
+				margin-top: 66px;
+				img{
+					margin: 0 auto;
+				}
+			}
+			.pdf{
+				display: none;
+				margin-top: 66px;
+				padding: 80px 0 93px 103px;
+				border: 7px solid #ff8431;
+				border-radius: 10px;
+				img{
+					float: left;
+					width: 213px;
+					height: auto;
+				}
+				p{
+					float: left;
+					margin: 70px 0 70px 125px;
+					font-size: 72px;
+					line-height: 1em;
+					color: #ff8431;
+				}
+			}
+			.comment_box{
+				padding-top: 66px;
+				box-sizing: border-box;
+				textarea{
+					width: 1035px;
+					height: 515px;
+					padding: 33px 0 0 49px;
+					border: 7px solid #ff8431;
+					border-radius: 10px;
+					font-size: 45px;
+					font-weight: bold;
+					line-height: 72px;
+					letter-spacing: 0.12em;
+					box-sizing: border-box;
+					&::-webkit-input-placeholder{
+						color: #8b8b8b;
+					}
+				}
+			}		
+		}
+		.btn{
+			width: 1045px;
+			margin: 0 auto;
+			.delete{
+				float: left;
+			}
+			.filming{
+				float: right;
+			}
+		}
+		.back{
+			margin: 40px 0;
+			img{
+				margin: 0 auto;
+			}
+		}
+		.confirm{
+			img{
+				margin: 0 auto;
+			}
+		}
+	}//inner
+}//message_record_edit_video メッセージの記録編集　ビデオ
+
+#message_record_select_pdf{
+	background: #f2f2f2;
+	.inner{
+		width: 1060px;
+		margin: 0 auto;
+		padding: 125px 0 381px;
+		box-sizing: border-box;
+		.input{
+			margin: 0 auto;
+			margin-bottom: 145px;
+			select{
+				width: 1040px;
+				margin: 0 auto;
+				padding: 29px 0 35px;
+				border: 7px solid #ff8431;
+				border-radius: 10px;
+				font-size: 45px;
+				line-height: 72px;
+				letter-spacing: 0.12em;
+				font-weight: bold;
+				option{
+					text-align: center;
+					padding: 13px 0;
+					border-bottom: 1px solid #a4a4a4;
+					&:last-child{
+						border-bottom: 0;
+					}
+					&:checked{
+						background: url(../images/icon/checkbox_gray_on.png)
+												no-repeat 213px center;
+					}
+				}
+			}
+			ul{
+				width: 1040px;
+				height: auto;
+				margin: 0 auto;
+				padding: 29px 0 35px;
+				border: 7px solid #ff8431;
+				border-radius: 10px;
+				font-size: 45px;
+				line-height: 72px;
+				letter-spacing: 0.12em;
+				font-weight: bold;
+				background: #fff;
+				li{
+					padding: 12px 0;
+					font-size: 45px;
+					border-bottom: 1px solid #a4a4a4;
+					letter-spacing: 0.12em;
+					padding-left: 378px;
+					&:last-child{
+						border-bottom: 0;
+					}
+					&.selected{
+						background: url(../images/icon/checkbox_gray_on.png)no-repeat 213px center;
+					}
+				}
+			}	
+		}
+		.btn{
+			.back{
+				float: left;
+			}
+			.check{
+				float: right;
+			}
+		}
+	}//inner
+}//message_record_select_pdf メッセージの記録編集　pdfデータの選択

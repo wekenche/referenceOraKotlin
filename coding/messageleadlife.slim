@@ -1,0 +1,47 @@
+doctype html
+html lang="ja"
+	- $pageNo = 6;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "メッセージの記録", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#messageleadlife
+				.inner
+					.select_box
+						img.button_drug src="./assets/images/button/select_category.jpg" width="1041" height="147"
+						select name="category" size="3"
+							option value="1" 一周忌
+							option value="2" 三周忌
+							option value="3" 思い出
+
+					.select_box
+						img.button_drug src="./assets/images/button/select_record.jpg" width="1041" height="147"
+						select name="record" size="3"
+							option value="1" 写真
+							option value="2" ビデオ
+							option value="3" データ（PDF）
+							option value="text" テキストのみ
+
+					/ input type="text" value="" placeholder="タイトル入力"
+					
+					/ .text_box
+					/ 	img.button_drug src="./assets/images/button/input_text.jpg" width="1041" height="147"
+					/ 	textarea.input_text placeholder="本文"
+				.button_box.cf
+					.back
+						a href="#"
+							img src="./assets/images/button/btn_back.jpg" width="495" height="147"
+					.check
+						a href="#"
+							img src="./assets/images/button/button_check.jpg" width="495" height="147"
+					
+				== Slim::Template.new('./templates/_banner.slim').render
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render
+		script src="./assets/js/safarimobile-multiline-select.min.js"
+		javascript:
+			$().ready(function () {
+				$("select").fixForSafariMobile(true);
+			})

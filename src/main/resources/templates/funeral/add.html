@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>お墓や葬儀 2.葬儀について</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="エンディングノート" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="funeral_about">
+        <div class="page_label">
+            お墓や葬儀
+        </div>
+        <div class="fueral">
+            <h2>
+                2.葬儀について
+            </h2>
+            <h3>
+                葬儀に呼ぶ人リスト
+            </h3>
+            <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+            <!--/*@thymesVar id="funeralForm" type="ora.leadlife.co.jp.form.FuneralForm"*/-->
+            <form th:action="@{/funeral/confirm}" method="post" th:object="${funeralForm}">
+                <div class="input__container">
+                    <div id="form_funeralList" th:switch="${#lists.isEmpty(funeralForm.funeralListWrapper)}">
+                        <div th:case="true" class="formColumn">
+                            <div class="funeral_list_form">
+                                <hr/>
+                                <div class="input__box">
+                                    <div class="title">
+                                        氏名
+                                    </div>
+                                    <input type="text" th:field="*{funeralListWrapper[0].funeralListName}" />
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        郵便番号
+                                    </div>
+                                    <input class="date" type="text" th:field="*{funeralListWrapper[0].funeralListPostCode1}"/>
+                                    <span class="date">-</span>
+                                    <input class="date" type="text" th:field="*{funeralListWrapper[0].funeralListPostCode2}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        住所
+                                    </div>
+                                    <input type="text" th:field="*{funeralListWrapper[0].funeralListAddress}" />
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        電話番号
+                                    </div>
+                                    <input type="text" th:field="*{funeralListWrapper[0].funeralListTel}" />
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div th:case="false" class ="formColumn">
+                            <div th:each="funeralList,is:${funeralForm.funeralListWrapper}" th:attr="id='funeralListId_' + ${funeralList.funeralListId}" class="funeral_list_form">
+                                <hr/>
+                                <input type="hidden" th:attr="name='funeralListWrapper['+${is.index}+'].funeralListId'" th:value="${funeralList.funeralListId}"/>
+                                <div class="input__box">
+                                    <div class="title">
+                                        氏名
+                                    </div>
+                                    <input type="text" th:attr="name='funeralListWrapper['+${is.index}+'].funeralListName'" th:value="${funeralList.funeralListName}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        郵便番号
+                                    </div>
+                                    <input class="date" type="text" th:attr="name='funeralListWrapper['+${is.index}+'].funeralListPostCode1'" th:value="${funeralList.funeralListPostCode1}"/>
+                                    <span class="date">-</span>
+                                    <input class="date" type="text" th:attr="name='funeralListWrapper['+${is.index}+'].funeralListPostCode2'" th:value="${funeralList.funeralListPostCode2}"/>
+
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        住所
+                                    </div>
+                                    <input type="text" th:attr="name='funeralListWrapper['+${is.index}+'].funeralListAddress'" th:value="${funeralList.funeralListAddress}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        電話番号
+                                    </div>
+                                    <input type="text" th:attr="name='funeralListWrapper['+${is.index}+'].funeralListTel'" th:value="${funeralList.funeralListTel}"/>
+                                </div>
+                                <div class="button_box del_box">
+                                    <a href="javascript:;" class="delete_list right">
+                                        <img height="131" width="857"
+                                             src="/images/button/btn_del_column.jpg"
+                                             th:attr="onclick='deleteFuneralList('+${funeralList.funeralListId}+')'"/>
+                                    </a>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
+                    <a th:if="${aboutMeViewFlag==0}" href="javascript:;" th:onclick="'addFuneralList()'" class="add_list">
+                        リストを追加
+                    </a>
+                </div>
+            <h3>
+                葬儀の内容
+            </h3>
+                <div class="input__container">
+                    <div class="input__box">
+                        <input th:field="*{funeralId}" type="hidden"/>
+                        <div class="title">
+                            準備の有無（予約はしてあるか）
+                        </div>
+                        <input class="radio" id="setup__notice"
+                               value="1" type="radio"
+                               th:field="*{isReservation}"
+                        />
+                        <label class="radio" for="setup__notice">希望する</label>
+                        <input class="radio" id="setup__notice2"
+                               value="0" type="radio"
+                               th:field="*{isReservation}"
+                        />
+                        <label class="radio" for="setup__notice2">希望しない</label>
+                    </div>
+                    <div class="input__box">
+                        <div class="title">
+                            葬儀代
+                        </div>
+                        <input class="price" type="text" th:field="*{funeralFee}"/>
+                        <span class="price">円</span>
+                    </div>
+                    <div class="input__box">
+                        <div class="title">
+                            予約してある葬儀会社の名称
+                        </div>
+                        <input type="text" th:field="*{funeralCompany}"/>
+                    </div>
+                    <div class="input__box">
+                        <div class="title">
+                            連絡先
+                        </div>
+                        <input type="text" th:field="*{funeralContactAddress}"/>
+                    </div>
+                    <div class="input__box">
+                        <div class="title">
+                            宗派
+                        </div>
+                        <input type="text" th:field="*{funeralReligionType}"/>
+                    </div>
+                    <div class="input__box">
+                        <div class="title">
+                            希望する葬儀の具体的内容
+                        </div>
+                        <textarea th:field="*{memo}"></textarea>
+                    </div>
+                </div>
+                <div class="button_box">
+                    <button th:if="${aboutMeViewFlag==0}" type="submit">
+                        <img height="147" width="1040"
+                             src="./assets/images/button/button_save.jpg"
+                             th:src="@{/images/button/button_save.jpg}"
+                        />
+                    </button>
+                </div>
+                <div id="bnr_paying_merit">
+                    <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                         th:src="@{/images/common/banner.png}" width="1040" /></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    /*<![CDATA[*/
+    var deleted = 0;
+
+    function deleteFuneralList(id,element) {
+        $("#confirmDialog").dialog({
+            modal: true,
+            title: "削除をしても宜しいでしょうか。",
+            buttons: {
+                "OK": function () {
+                    $.ajax({
+                        type : "DELETE",
+                        url : "/funeral/list/delete/"+id,
+                        success: function (result) {
+                            $("#confirmDialog").dialog("close");
+                            $("#funeralListId_"+id).remove();
+                            deleted++;
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                },
+                "キャンセル": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }
+
+    function addFuneralList(){
+        var funeralListIndex = $('.funeral_list_form').length + deleted;
+        var parent = document.getElementById("form_funeralList");
+        var newChild =
+        '                       <div class="funeral_list_form">' +
+        '                       <hr/><div class="input__box">' +
+        '                            <div class="title">' +
+        '                                氏名' +
+        '                            </div>' +
+        '                            <input type="text" name="funeralListWrapper['+funeralListIndex+'].funeralListName" />' +
+        '                        </div>' +
+        '                        <div class="input__box">' +
+        '                            <div class="title">' +
+        '                                郵便番号' +
+        '                            </div>' +
+        '                            <input class="date" type="text" name="funeralListWrapper['+funeralListIndex+'].funeralListPostCode1" />' +
+        '                            <span class="date">-</span>' +
+        '                            <input class="date" type="text" name="funeralListWrapper['+funeralListIndex+'].funeralListPostCode2" />' +
+        '                        </div>' +
+        '                        <div class="input__box">' +
+        '                            <div class="title">' +
+        '                                住所' +
+        '                            </div>' +
+        '                            <input type="text" name="funeralListWrapper['+funeralListIndex+'].funeralListAddress" />' +
+        '                        </div>' +
+        '                        <div class="input__box">' +
+        '                            <div class="title">' +
+        '                                電話番号' +
+        '                            </div>' +
+        '                            <input type="text" name="funeralListWrapper['+funeralListIndex+'].funeralListTel" />' +
+        '                        </div>' +
+        '                        <hr/></div>'
+        ;
+        parent.insertAdjacentHTML('beforeend', newChild);
+    }
+
+    /*]]>*/
+</script>

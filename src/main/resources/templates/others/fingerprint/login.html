@@ -1,0 +1,43 @@
+<!--notification_fingerprint_registration.html-->
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div id="container">
+  <div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_fingerprint_authentication.png" width="712"
+         th:src="@{/images/header/header_fingerprint_authentication.png}"/>
+  </div>
+  <div layout:fragment="main">
+    <div id="fingerprint_registration_before">
+      <div class="page_label">
+        指でタッチしてください
+      </div>
+      <div class="inner cf">
+        <ul>
+          <li>
+            ・指とセンサーを拭いて<br/>　センサーに触れてください
+          </li>
+          <li>
+            ・携帯によってセンサーの<br/>　位置が異なります
+          </li>
+        </ul>
+        <figure style="padding-bottom: 235px;">
+          <img height="922" src="./assets/images/finger/finger_fingure.png" width="1096"
+               th:src="@{/images/finger/finger_fingure.png}"/>
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

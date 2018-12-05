@@ -1,0 +1,35 @@
+doctype html
+html lang="ja"
+	- $pageNo = 12;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "無料会員へ移行", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#free_migration_confirm
+	  		.inner.cf
+	  			.title 登録情報の確認
+	  			.box
+	  				.service サービス：
+	  				.desc 有料会員
+	  			.box
+	  				.service 支払い方法：
+	  				.desc クレジットカード決済
+	  			.box
+	  				.service 次回更新日：
+	  				.desc 2017年12月31日
+					.attention
+						p 
+							|
+								有料会員を退会された場合、現在登録されている有料会員情報は全て削除されます。<br />
+								なお、データの復元は出来ません。<br />
+						p
+							|
+								以上をご了承頂いた上で、下記より<br />退会手続きにお進みください。
+
+					.btn
+						a href="free_migration_finish.html"
+							img src="./assets/images/button/btn_deactivate_accout.png" width="1064" height="147"
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

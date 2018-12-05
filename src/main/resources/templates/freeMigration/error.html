@@ -1,0 +1,33 @@
+<!--free_migration_finish.html-->
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="" src="./assets/images/header/header_free_migration.png" width="712"
+       th:src="@{/images/header/header_free_migration.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="container">
+    <div id="change_complete">
+      <div class="inner cf">
+        <div class="message">
+          <div class="status">
+            シスエラーが発生しました。お手数お掛けしますが、以下のシステムコードにてお問い合わせください。<br/>
+            システムコード : <!--/*@thymesVar id="error" type="java.lang.String"*/-->
+            <span id="code" th:text="${error}"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

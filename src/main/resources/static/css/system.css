@@ -1,0 +1,262 @@
+.ui-dialog{
+    width:500px !important;
+    font-size: 26px !important;
+}
+#consultation_column {
+    background: #f2f2f2;
+    padding-bottom: 105px;
+    padding-top: 55px;
+}
+
+#consultation_column article .user_head .user_pic {
+    float: left;
+}
+
+#consultation_column article .user_head .user_box {
+    float: left;
+}
+
+#consultation_column article .user_head .user_box span, #consultation_column article .user_head .user_box img, #consultation_column article .user_head .user_box .arrow {
+    display: inline-block;
+}
+
+#consultation_container{
+    width:550px !important;
+    height:700px !important;
+    text-align: center;
+    margin: auto;
+    padding-top: 10px;
+}
+
+#consultation_header {
+    max-width: 600px;
+    background: #fff;
+    margin: 0 auto;
+    position: relative;
+}
+
+#consultation_header .back_button, #consultation_header h1, #consultation_header .menu {
+    float: left;
+    box-sizing: border-box;
+}
+
+#consultation_header .back_button {
+    padding-top: 60px;
+    padding-left: 42px;
+    box-sizing: border-box;
+}
+
+#consultation_header h1 {
+    padding-top: 15px;
+}
+
+#consultation_header .menu {
+    position: absolute;
+    right: 15px;
+    top: 36px;
+}
+
+#consultation_header .closed {
+    display: block;
+    position: absolute;
+    right: -150px;
+    top: 36px;
+}
+
+#consultation_header .drawer-nav {
+    overflow: unset;
+    background: #ff8431;
+}
+
+#consultation_header .drawer-nav #modal_content_tos, #consultation_header .drawer-nav #terms_of_use {
+    left: 0 !important;
+    top: 0 !important;
+}
+
+#consultation_header .drawer-nav .drawer-menu {
+    color: #fff;
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof {
+    position: relative;
+    padding-bottom: 75px;
+    box-sizing: border-box;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof #prof_picture {
+    float: left;
+    margin-right: 80px;
+    margin-left: 104px;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof .right {
+    float: left;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof .right .btn #login {
+    float: left;
+    background: #fff;
+    font-size: 36px;
+    margin-right: 20px;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof .right .btn #login a {
+    color: #ff8431;
+    text-decoration: none;
+    padding: 16px 44px;
+    box-sizing: border-box;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof .right .btn #tos_btn {
+    float: left;
+    background: #fff;
+    font-size: 36px;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof .right .btn #tos_btn a {
+    color: #ff8431;
+    text-decoration: none;
+    padding: 16px 44px;
+    box-sizing: border-box;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof .right .capacity {
+    margin-top: 35px;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof .right .capacity p:first-of-type {
+    font-size: 45px;
+    letter-spacing: 0.06em;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof .right .capacity p:first-of-type #amount {
+    font-size: 70px;
+    color: #0b579d;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof .right .capacity p:first-of-type span:last-child {
+    color: #0b579d;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof .right .capacity p:last-of-type {
+    margin-top: 20px;
+    font-size: 35px;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof .right .capacity meter {
+    width: 484px;
+    height: 12px;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_prof .right .badge {
+    position: absolute;
+    bottom: 0;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_name {
+    font-size: 66px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    padding-left: 104px;
+}
+
+#consultation_header .drawer-nav .drawer-menu #user_name span {
+    font-size: 44px;
+}
+
+#consultation_header .drawer-nav .drawer-menu #menu_list li {
+    border-bottom: 2px solid #fff;
+}
+
+#consultation_header .drawer-nav .drawer-menu #menu_list li:first-of-type {
+    border-top: 2px solid #fff;
+}
+
+#consultation_header .drawer-nav .drawer-menu #menu_list li:first-of-type a {
+    background: url(../images/icon/icon_column.png) no-repeat center left;
+}
+
+#consultation_header .drawer-nav .drawer-menu #menu_list li:nth-child(2) a {
+    background: url(../images/icon/icon_counseling.png) no-repeat center left;
+}
+
+#consultation_header .drawer-nav .drawer-menu #menu_list li:nth-child(3) a {
+    background: url(../images/icon/icon_balloon.png) no-repeat center left;
+}
+
+#consultation_header .drawer-nav .drawer-menu #menu_list li:last-of-type a {
+    background: url(../images/icon/icon_q_and_a.png) no-repeat center left;
+}
+
+#consultation_header .drawer-nav .drawer-menu #menu_list li a {
+    margin-left: 124px;
+    padding: 45px 0;
+    padding-left: 125px;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 43px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#consultation_header .drawer-nav .drawer-menu #second_menu {
+    text-align: center;
+    margin-top: 70px;
+}
+
+#consultation_header .drawer-nav .drawer-menu #second_menu img {
+    display: inline-block;
+}
+
+#consultation_header .drawer-nav .drawer-menu #second_menu .drawer-dropdown-menu {
+    width: 896px;
+    margin: 0 auto;
+    margin-top: 70px;
+    background: #ff8431;
+}
+
+#consultation_header .drawer-nav .drawer-menu #second_menu .drawer-dropdown-menu li {
+    text-align: left;
+    border: none;
+}
+
+#consultation_header .drawer-nav .drawer-menu #second_menu .drawer-dropdown-menu li a {
+    margin-left: 75px;
+    padding: 70px 0;
+    padding-left: 100px;
+    box-sizing: border-box;
+    background: url(../images/common/arrow_right.png) no-repeat center left;
+}
+
+#consultation_header.orange_header {
+    width: 100%;
+    background: #ff8431;
+}
+
+#consultation_header.orange_header .inner {
+    width: 1158px;
+    margin: 0 auto;
+}
+
+#consultation_header.orange_header .inner .back_button {
+    float: left;
+}
+
+#consultation_header.orange_header .inner .page_label {
+    float: left;
+    font-size: 66px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    padding: 38px 0;
+    box-sizing: border-box;
+    padding-top: 72px;
+    line-height: 1.0em;
+}
+
+#consultation_header.orange_header .menu {
+    right: 25px;
+}

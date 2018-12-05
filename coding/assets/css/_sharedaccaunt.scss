@@ -1,0 +1,336 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#sharedaccaunt_list{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.inner{
+		width: 1068px;
+		margin: 0 auto;
+		padding: 140px 0 186px;
+		box-sizing: border-box;
+		.accaunt_list{
+			width: 1068px;
+			margin-bottom: 0;
+			border: 7px solid #ff8431;
+			border-radius: 10px;
+			li:not(:last-child){
+				border-bottom: 7px solid #ff8431;
+			}
+			li{
+				width: 1068px;
+				position: relative;
+				background-color: #fff;
+				.wrapper_list{
+					padding: 80px 0 93px 103px;
+					figure{
+						float: left;
+					}
+					p{
+						float: left;
+						margin-left: 125px;
+						font-size: 72px;
+						line-height: 109px; 
+						color: #ff8431;				
+					}
+				}
+				.close_mark{
+					position: absolute; 
+					top: 18px;
+					right: 21px;
+				}
+			}
+			li.unapproved{
+				background-color: #f9f9f9;
+				p{
+					color: #c7c7c7;
+				}
+			}
+
+		}//accaunt_list
+		.btn{
+			width: 1062px;
+			margin: 0 auto;
+			margin-bottom: 93px;
+			.back{
+				float: left;
+			}
+			.add{
+				float: right;
+			}
+		}
+	}//inner
+	.user_add,.category_add{
+		margin: 70px 0;
+		.title,.label{
+			font-size: 45px;
+			font-weight: bold;
+		}
+		.title{
+			text-align: center;
+			margin-bottom: 60px;
+		}
+		input{
+			width: 1040px;
+	    border: 7px solid #ff8431;
+	    border-radius: 10px;
+	    font-size: 45px;
+	    padding: 10px;
+	    box-sizing: border-box;
+		}
+	}
+	.add_delete{
+		margin-top: 100px;
+		a{
+			&:first-of-type{
+				float: left;
+			}
+			&:last-of-type{
+				float: right;
+			}
+		}
+	}//add_delete
+	.btn.decision{
+		margin-top: 40px;
+	}	
+}//#sharedaccaunt_list 共有アカウント一覧
+
+
+#sharedaccaunt_unset{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.inner{
+		width: 1045px;
+		margin: 0 auto;
+		padding: 350px 0 72px;
+		box-sizing: border-box;
+		text-align: center;
+		p{
+			display: inline-block;
+			text-align: left;
+			margin-bottom: 1120px;
+			font-size: 72px;
+			line-height: 110px;
+			color: #ff8431;
+		}
+		.btn{
+			.back{
+				float: left;
+			}
+			.add{
+				float: right;
+			}
+		}
+	}//inner
+}//sharedaccaunt_unset 共有アカウント　未設定画面
+
+#sharedaccaunt_description{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.inner{
+		width: 1184px;
+		margin: 0 auto;
+		padding: 100px 0 67px;
+		box-sizing: border-box;
+		.desc_box{
+			padding: 32px 73px 0;
+			border: 2px solid #b1b1b1;
+			border-radius: 10px;
+			background-color: #fff;
+			overflow: scroll;
+			box-sizing: border-box;
+			p{
+				display: inline-block;
+				vertical-align: 2.54px;
+				font-size: 45px;
+				line-height: 1.7;
+				color: #6d6d6d;
+				padding-bottom: 73px;
+				box-sizing: border-box;
+				.yellow{
+					background: #fcfc3f;
+					font-weight: bold;
+				}
+				.orange{
+					background: #f9cb3f;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	.comic{
+		// padding-bottom: 87px;
+		box-sizing: border-box;
+	}
+}//sharedaccaunt_description 共有アカウントについて説明
+
+#sharedaccaunt_approve{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.inner{
+		width: 1046px;
+		margin: 0 auto;
+		padding: 293px 0 785px;
+		box-sizing: border-box;
+		.notice{
+			position: relative;
+			width: 1030px;
+			margin: 0 auto;
+			margin-bottom: 132px;
+			padding: 77px 0 160px;
+			background-color: #fff;
+			p{
+				text-align: center;
+				font-size: 50px;
+				line-height: 72px;
+				font-weight: bold;
+				&:first-child{
+					margin-bottom: 75px;
+				}
+			}
+			.bg_balloon{
+				position: absolute;
+				bottom: -57px;
+				left: 473px;
+			}
+		}
+		.btn{
+			.approve{
+				float: left;
+			}
+			.unapprove{
+				float: right;
+			}
+		}
+	}//inner
+}//sharedaccaunt_approve アカウントの承認画面
+
+#sharedaccaunt_add_setting{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.inner{
+		width: 1074px;
+		margin: 0 auto;
+		padding: 120px 0 173px;
+		box-sizing: border-box;
+		.input_box{
+			margin-bottom: 38px;
+			h3{
+				margin-bottom: 26px;
+				font-size: 72px;
+				line-height: 50px;
+				font-weight: bold;
+				color: #ff8431;
+			}
+			input[type=text]{
+				width: 1074px;
+				margin:0 auto;
+				padding: 30px 0 30px 51px;
+				border: 3px solid #2f2f2f;
+				border-radius: 10px;
+				font-size: 72px;
+				line-height: 50px;
+				font-weight: bold;
+				box-sizing: border-box;
+			&::-webkit-input-placeholder{
+					color: #dcdcdc;
+					font-weight: bold;
+				}
+			}
+		}//input_box
+		.input_box:nth-of-type(3){
+			margin-bottom: 59px;
+		}
+		.btn{
+			margin-top: 108px;
+			.back{
+				float: left;
+			}
+			.check{
+				float: right;
+			}
+		}
+	}//inner
+}//sharedaccaunt_add_setting 共有アカウントの追加画面
+
+#sharedaccaunt_list2{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.inner{
+		width: 1068px;
+		margin: 0 auto;
+		padding: 140px 0 186px;
+		box-sizing: border-box;
+		.accaunt_list{
+			width: 1068px;
+			margin-bottom: 174px;
+			border: 7px solid #ff8431;
+			border-radius: 10px;
+			li:not(:last-child){
+				border-bottom: 7px solid #ff8431;
+			}
+			li{
+				width: 1068px;
+				position: relative;
+				background-color: #fff;
+				.wrapper_list{
+					// padding: 80px 0 93px 103px;
+					a{
+						display: table;
+						text-decoration: none;
+						display: block;
+						padding: 80px 0 93px 103px;
+						box-sizing: border-box;
+						figure{
+							display: table-cell;
+							vertical-align: middle;
+							padding-right: 115px;
+							box-sizing: border-box;
+						}
+						p{
+							display: table-cell;
+							vertical-align: middle;
+							margin-left: 125px;
+							font-size: 72px;
+							line-height: 109px; 
+							color: #ff8431;				
+						}
+					}
+				}//.wrapper_list
+			}//li
+		}//accaunt_list
+		.btn{
+			width: 1062px;
+			margin: 0 auto;
+			margin-bottom: 93px;
+			.back{
+				float: left;
+			}
+			.add{
+				float: right;
+			}
+		}
+	}//inner
+	
+}//#sharedaccaunt_list 被共有アカウント一覧

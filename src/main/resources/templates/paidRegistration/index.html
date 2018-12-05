@@ -1,0 +1,163 @@
+<!--paid_member_registration_top.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="" src="./assets/images/header/header_paying_membersunt.png" width="712"
+       th:src="@{/images/header/header_paying_membersunt.png}"/>
+</div>
+
+<div layout:fragment="main">
+  <div id="container">
+    <div id="paid_member_registration_top">
+      <div class="page_label">
+        有料会員登録をする
+      </div>
+      <div class="inner">
+        <!--/*@thymesVar id="nullShop" type="java.lang.Boolean"*/-->
+        <!--/*@thymesVar id="nameOfApplePayCounter" type="java.lang.Integer"*/-->
+        <dl>
+          <dt>
+            有料会員料金
+          </dt>
+          <dd th:inline="text" id="dd">
+            有料機能月額費用 アカウント[[${nameOfApplePayCounter}]]つ目
+            <span th:if="${nullShop != true}" th:remove="tag">
+             (紹介コードあり)
+            </span>
+            <br />
+            <span>[[${amount}]]円</span><br/>(月額税込[[${settingTax}]]円)
+          </dd>
+        </dl>
+        <form th:action="@{/paidRegistration/input}">
+          <div th:switch="${nullShop}">
+            <div th:case="true">
+              <div class="input_box">
+                <h3 id="inqCode">
+                  紹介コード（お持ちの方のみ）
+                </h3>
+                    <input name="shopName" id="shopName" type="text"/>
+              </div>
+              <div>
+                <p id="error" class="error">
+                  紹介コードが正しくありません
+                </p>
+              </div>
+              <div class="note">
+                <p th:inline="text">
+                  ※紹介コードを入力されますと月額<span>[[${discountFee}]]円</span><br/>（税込[[${discountFeeTax}]]円）で購入できます。
+                </p>
+              </div>
+            </div>
+            <div th:case="false">
+
+            </div>
+          </div>
+          <!--/*@thymesVar id="os" type="java.lang.Boolean"*/-->
+          <th:block th:switch="${os}">
+            <a th:case="false" href="/paidRegistration/aboutPay">お支払いについて＞</a>
+            <div th:case="true" id="paid_member_registration_aboutpay_iOS">
+              <div class="inner_iOS" style="padding: 134px 0 0 0;">
+                <div class="title">
+                  お支払いについて
+                </div>
+                <div class="wrapper">
+                  <p class="desc">
+                    有料会員登録には「AppleID決済」をご利用いただけます。
+                  </p>
+                  <p class="desc">
+                    必ず以下をご確認の上、お支払いをお手続きください。<a href="#" id="open2">利用規約及びプライバシーポリシー</a>
+
+                  </p>
+                  <div class="appleID">
+                    <h3>
+                      AppleIDでの有料会員サービスの登録について
+                    </h3>
+                    <p>
+                      有料会員月額 ： 972円（税込）
+                    </p>
+                    <p>
+                      iOS版アプリの有料会員登録ページにある「登録する」より、利用規約に同意のうえ、有料会員手続きを進めてください。
+                    </p>
+                  </div>
+                  <div class="about_admission">
+                    <h3>
+                      料金について
+                    </h3>
+                    <p>
+                      有料会員サービスの料金のご請求は、Apple社よりお客さまのApple ID（App Store/iTunesアカウント）に対して行われます。
+                    </p>
+                  </div>
+                  <div class="about_update">
+                    <h3>
+                      更新について
+                    </h3>
+                    <p>
+                      有料会員サービスの登録期間は、開始日から起算して1ヶ月ごとに自動更新いたします。<br/>現在の登録期間が終了する24時間以上前であれば、いつでも自動更新を停止いただけます。
+                    </p>
+                    <p>
+                      なお、定期購読の更新日やお支払い方法の変更、購読の停止などは、App StoreやiPhoneなどの端末の【設定】よりApple ID設定よりご対応ください。
+                    </p>
+                  </div>
+                  <div class="about_cancel">
+                    <h3>
+                      解約方法
+                    </h3>
+                    <p>
+                      下記よりApple社のページをご参照いただき、App Storeより定期購読のご解約を実施してください。<br/><a href="https://support.apple.com/ja-jp/HT202039" target="_blank">>>定期購読内容を表示、変更、または解約する</a>
+                    </p>
+                    <p>
+                      ※なお、生前整理アプリのサービスそのものから退会された場合も、Apple IDでの定期購読は自動で解除されません。<br/>必ずApp Storeより定期購読の解約をお願いいたします。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </th:block>
+          <div class="btn">
+            <button type="submit" class="btn btn-primary">
+              <img height="147" width="1064" src="assets/images/button/button_payment_method.jpg"
+                   th:src="@{/images/button/button_payment_method.jpg}"/></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>
+<script>
+  $(document).ready(function () {
+      $("#error").hide()
+  });
+  $(document).on("change","#shopName",function () {
+      $("#inqCode").hide()
+      $.ajax({
+          type : "GET",
+          url : "/paidRegistration/checkShop/"+$(this).val(),
+          success: function (result) {
+              if(result.flag) {
+                  $("#dd").html("月額価格<span>"+result.amount+"円</span><br/>(月額税込"+result.settingTax+"円)");
+                  $("#error").hide();
+              } else {
+                  $("#dd").html("月額価格<span>"+result.amount+"円</span><br/>(月額税込"+result.settingTax+"円)");
+                  $("#error").show();
+              }
+          },
+          error: function (e) {
+              console.log(e);
+          }
+      });
+  });
+</script>

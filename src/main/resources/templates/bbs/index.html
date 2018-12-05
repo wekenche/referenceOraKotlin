@@ -1,0 +1,172 @@
+<!--bbs_list.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:ex="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div id="container">
+    <div layout:fragment="headerImage">
+        <img alt="" src="./assets/images/header/header_bbs.png" width="712"
+             th:src="@{/images/header/header_bbs.png}"/>
+    </div>
+    <div layout:fragment="main">
+        <div id="bbs_list">
+            <div class="page_label">
+                スレッド一覧
+            </div>
+            <div class="inner cf">
+
+                <div id="post_box" th:inline="text" th:each="forum, stat : ${forums}">
+                    <div id="post_info">
+                        <div class="cf" id="post_info_top">
+                            <div id="post_num" th:if="${page.number == 1 and stat.index &lt; 3}">
+                                <img height="130" src="./assets/images/icon/bbs_num_001.png" width="132"
+                                     th:src="@{/images/icon/bbs_num_00} + ${stat.index + 1} +'.png'"/>
+                            </div>
+                            <div id="post_title">
+                                <a href="bbs_detail.html" th:href="@{/bbs/detail/} + ${forum.id}"
+                                   th:text="${forum.title}">
+                                    みなさんは今現在どんな終活をしていますか？
+                                </a>
+                            </div>
+                        </div>
+                        <div class="cf" id="post_info_bottom">
+                            <div class="cf" id="prof">
+                                <img height="194" src="./assets/images/common/users.png" width="194"
+                                     th:src="@{/images/common/users.png}"/>
+                                <div class="cf" id="user_info">
+                                    <div id="user_name">
+                                        [[${forum.name}]] <span>さん</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="post_count" th:text="${forum.commentCount}">
+                                148
+                            </div>
+                            <div id="post_data" th:text="${#dates.format(forum.createdAt, 'yyyy.MM.dd')}">
+                                2017.12.6
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cf" id="content" th:if="not ${#lists.isEmpty(forum.forumCommentList)}">
+                        <div id="prof_pic">
+                            <img height="194" src="./assets/images/common/users.png" width="194"
+                                 th:src="@{/images/common/users.png}"/>
+                            <div id="box">
+                                <div id="user_name">
+                                    [[${forum.forumCommentList[0].name}]] <span>さん</span>
+                                </div>
+                                <p ex:text="${#strings.abbreviate(forum.forumCommentList[0].contents,100)} ">
+                                    私は現在家族と一緒に身の回りの整理を行って・・・私は現在家族と一緒に身の回りの整理を行って・・・私は現在家族と一緒に身の回りの整理を行って・・・私は現在家族と一緒に身の回りの整理を行って・・・
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="page_num" th:fragment='paginationbar'>
+                    <ul class="cf">
+                        <li th:if="${page.hasPreviousPage}">
+                            <a href="#"
+                               th:href="@{${page.url}(page=${page.number-2},size=${page.size},keyword=${param.keyword != null ? param.keyword[0] : ''})}">
+                                <img alt="前へ" height="45" src="./assets/images/icon/prev_arrow.png" width="27"
+                                     th:src="@{/images/icon/prev_arrow.png}"/>
+                            </a>
+                        </li>
+                        <li th:each="item : ${page.items}" th:class="${item.current}? 'active' : ''"
+                            style="display:inline">
+                            <a id="active" th:if="${item.current}"
+                               th:href="@{${page.url}(page=${item.number-1},size=${page.size},keyword=${param.keyword != null ? param.keyword[0] : ''})}">
+                                <span th:text="${item.number}">1</span>
+                            </a>
+                            <a th:if="${not item.current}"
+                               th:href="@{${page.url}(page=${item.number-1},size=${page.size},keyword=${param.keyword != null ? param.keyword[0] : ''})}">
+                                <span th:text="${item.number}">1</span>
+                            </a>
+                        </li>
+                        <li th:if="${page.hasNextPage}">
+                            <a href="#"
+                               th:href="@{${page.url}(page=${page.number},size=${page.size},keyword=${param.keyword != null ? param.keyword[0] : ''})}">
+                                <img alt="次へ" height="45" src="./assets/images/icon/next_arrow.png" width="27"
+                                     th:src="@{/images/icon/next_arrow.png}"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="post_input">
+                    <!--/*@thymesVar id="forumForm" type="ora.leadlife.co.jp.form.ForumForm"*/-->
+                    <form th:action="@{/bbs/write}" method="post" th:object="${forumForm}">
+                        <div class="inner">
+                            <div class="title">
+                                スレッドを投稿する
+                            </div>
+                            <div class="post_detail">
+                                <div class="name">
+                                    <!-- DEV 201803260607
+                                    default name is user#name
+                                    -->
+                                    <span>名前</span><input type="text" th:field="*{name}"/>
+                                    <ul th:each="error : ${#fields.errors('name')}" class="error">
+                                        <li th:text="${error}"></li>
+                                    </ul>
+                                </div>
+                                <div class="subject">
+                                    <span>題名</span><input type="text" th:field="*{title}"/>
+                                    <ul th:each="error : ${#fields.errors('title')}" class="error">
+                                        <li th:text="${error}"></li>
+                                    </ul>
+                                </div>
+                                <div class="text">
+                                    <textarea th:field="*{contents}"></textarea>
+                                    <ul th:each="error : ${#fields.errors('contents')}" class="error">
+                                        <li th:text="${error}"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="btn">
+                                <button type="submit">
+                                    <img alt="投稿する" height="147" src="./assets/images/button/btn_post.png" width="1040"
+                                         th:src="@{/images/button/btn_post.png}"/>
+                                </button>
+                            </div>
+                        </div>
+                        <input type="hidden" th:name="page" th:value="${page.number-1}"/>
+                        <input type="hidden" th:name="size" th:value="${page.size}"/>
+                        <input type="hidden" th:value="${param.keyword != null ? param.keyword[0] : ''}"/>
+                    </form>
+
+                    <form th:action="@{/bbs}" method="get">
+                        <div class="search cf">
+                            <div class="home">
+                                <a href="#" th:href="@{/}">
+                                    <img height="66" src="./assets/images/icon/icon_home.png" width="70"
+                                         th:src="@{/images/icon/icon_home.png}"/>
+                                </a>
+                            </div>
+                            <div class="box">
+                                <input size="30" type="text" th:name="keyword"
+                                       th:value="${param.keyword != null ? param.keyword[0] : ''}"/>
+                                <input type="submit" value="検索"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="bnr_paying_merit">
+                    <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                         th:src="@{/images/common/banner.png}" width="1040" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!--free_migration_confirm.html-->
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_free_migration.png" width="712"
+         th:src="@{/images/header/header_free_migration.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="free_migration_confirm">
+            <div class="inner cf">
+                <div class="title">
+                    登録情報の確認
+                </div>
+                <div class="box">
+                    <div class="service">
+                        サービス：
+                    </div>
+                    <div class="desc">
+                        有料会員
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="service">
+                        支払い方法：
+                    </div>
+                    <div class="desc">
+                        クレジットカード決済
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="service">
+                        次回更新日：
+                    </div>
+                    <div class="desc" th:text="${#dates.format(nextUpdateDate, 'yyyy年MM月dd日')}">
+                        2017年12月31日
+                    </div>
+                    <div class="attention">
+                        <p>
+                            有料会員を退会された場合、現在登録されている有料会員情報は全て削除されます。<br/>
+                            なお、データの復元は出来ません。<br/>
+                        </p>
+                        <p>
+                            以上をご了承頂いた上で、下記より<br/>退会手続きにお進みください。
+                        </p>
+                    </div>
+                    <div class="btn">
+                        <a th:href="@{'~/freeMigration/input'}">
+                            <img height="147" width="1064"
+                                 th:src="@{/images/button/btn_deactivate_accout.png}"/>
+                        </a>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

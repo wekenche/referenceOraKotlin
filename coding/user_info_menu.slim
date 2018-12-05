@@ -1,0 +1,56 @@
+doctype html
+html lang="ja"
+	- $pageNo = "orange04";
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "アカウント３さんの情報", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_orange_header.slim').render
+		#container
+			#user_info_menu
+				.inner
+					ul
+						li
+							a href="message_list.html"
+								.icon
+									img src="./assets/images/icon/icon_mail.png" width="160"
+								.title メッセージの確認
+						li
+							a href="ending-yuigon3.html"
+								.icon
+									img src="./assets/images/icon/icon_user.png" width="160"
+								.title 私のこと
+						li
+							a href="property_about_top.html"
+								.icon
+									img src="./assets/images/icon/icon_property.png" width="160"
+								.title 財産について
+						li
+							a href="endingnote_about_property.html"
+								.icon
+									img src="./assets/images/icon/icon_grave.png" width="160"
+								.title お墓や葬儀について		
+						li
+							a href="endingnote_about_property.html"
+								.icon
+									img src="./assets/images/icon/icon_testament.png" width="160"
+								.title 遺言内容
+						li
+							a href="endingnote_about_property.html"
+								.icon
+									img src="./assets/images/icon/icon_mobile.png" width="160"
+								.title 携帯電話や会員サービス
+						li
+							a href="endingnote_about_property.html"
+								.icon
+									img src="./assets/images/icon/icon_others.png" width="160"
+								.title その他
+						li
+							a href="sharedaccaunt_list2.html"
+								.icon
+									img src="./assets/images/icon/icon_users.png" width="160"
+								.title 非共有アカウント一覧
+
+					== Slim::Template.new('./templates/_banner.slim').render					
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

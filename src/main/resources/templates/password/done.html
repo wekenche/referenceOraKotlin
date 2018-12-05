@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>変更が完了しました パスワード変更</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="パスワード変更" src="./assets/images/header/header_password_change.png" width="712"
+       th:src="@{/images/header/header_password_change.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="change_complete">
+    <div class="inner cf">
+      <div class="message">
+        <div class="status">
+          変更が完了しました
+        </div>
+        <div class="icon">
+          <img height="212" src="./assets/images/icon/icon_checkbox.png" width="212"
+               th:src="@{/images/icon/icon_checkbox.png}"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

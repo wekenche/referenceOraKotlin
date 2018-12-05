@@ -1,0 +1,163 @@
+<!--message_record_edit_video.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<!--/*@thymesVar id="title" type="java.lang.String"*/-->
+<div th:if="${not #strings.isEmpty(title)}">
+  <div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_message.png" width="712"
+         th:src="@{/images/header/header_message.png}"/>
+  </div>
+</div>
+<div layout:fragment="main">
+  <div id="container">
+    <div id="message_record_edit_video">
+      <!--/*@thymesVar id="messageForm" type="ora.leadlife.co.jp.form.messageForm"*/-->
+      <form th:action="@{/message/confirm}" method="post" th:object="${messageForm}" enctype="multipart/form-data">
+        <div class="inner">
+          <div class="inner_video">
+            <div class="text_box">
+              <input type="hidden" th:field="*{messageId}" th:value="${messageForm.messageId}"/>
+              <input type="hidden" th:field="*{messageCategory}" th:value="${messageForm.messageCategory}"/>
+              <input type="hidden" th:field="*{messageType}" th:value="${messageForm.messageType}"/>
+              <input type="hidden" th:field="*{messageAttachment}" th:value="${messageForm.messageAttachment}"/>
+              <input placeholder="タイトル入力" type="text" th:field="*{messageTitle}"/>
+            </div>
+            <ul th:each="error : ${#fields.errors('messageCategory')}" class="error">
+              <li th:text="${error}"></li>
+            </ul>
+            <ul th:each="error : ${#fields.errors('messageType')}" class="error">
+              <li th:text="${error}"></li>
+            </ul>
+            <ul th:each="error : ${#fields.errors('messageTitle')}" class="error">
+              <li th:text="${error}"></li>
+            </ul>
+            <ul th:each="error : ${#fields.errors('messageComment')}" class="error">
+              <li th:text="${error}"></li>
+            </ul>
+            <div class="image-upload" th:if="${messageForm.messageType != 'NONE'}">
+              <!--/*@thymesVar id="isPremium" type="java.lang.Boolean"*/-->
+              <div th:switch="${isPremium}">
+                <div th:case="true">
+                  <label for="file-input">
+                    <img class="select_file" height="147" width="1040"
+                         src="assets/images/button/button_select_file.jpg"
+                         th:src="@{/images/button/button_select_file.jpg}"/>
+                  </label>
+                  <input style="display: none" id="file-input" type="file" class="form-control" name="file"
+                         onchange="previewFile()"/>
+                  <br/>
+                  <img  th:if="${messageForm.messageId eq 0}" id="prevImage" th:src="${messageForm.messageType==T(ora.leadlife.co.jp.config.FileType).PICTURE.name()} ? ${#uploadedImage.build(messageForm.messageAttachment)}: '' " width="1040"/>
+
+                  <ul th:each="error : ${#fields.errors('messageAttachment')}" class="error">
+                    <li th:text="${error}"></li>
+                  </ul>
+                  <!--/*@thymesVar id="#uploadedImage" type="ora.leadlife.co.jp.helper.UploadedImage"*/-->
+                  <div id="message"></div>
+                  <video id="prevVideo" src="" type="video/*" width="0" height="0"></video>
+                  <!--/*@thymesVar id="messageAttachmentList" type="List<ora.leadlife.co.jp.model.MessageAttachment>"*/-->
+                  <div th:each="messageAttachment : ${messageAttachmentList}">
+                    <a th:onclick="'deleteImage(' + ${messageAttachment.id} + ')'"
+                       th:id="${'image_' + messageAttachment.id}">
+                      <!-- TODO set good path -->
+                      <img id="prevImage" th:src="${messageForm.messageType==T(ora.leadlife.co.jp.config.FileType).PICTURE.name()} ? ${#uploadedImage.build(messageAttachment.filePath)}: '' " width="1040"/>
+                    </a>
+                  </div>
+                </div>
+                <div th:case="false">
+                  <a th:href="@{'/others/merit'}">
+                    <img class="select_file" height="147" width="1040"
+                      src="assets/images/button/button_select_file.jpg"
+                      th:src="@{/images/button/button_select_file.jpg}"/>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!--<div class="video">-->
+            <!--<iframe allow="encrypted-media" frameborder="0" gesture="media" height="624"-->
+            <!--src="https://www.youtube.com/embed/bjmBJ1Fl0cs" width="1041">allowfullscreen-->
+            <!--</iframe>-->
+            <!--</div>-->
+            <figure>
+              <img height="624" width="1041"
+                   src="assets/images/video_thumbnail.jpg"
+                   th:src="@{/images/video_thumbnail.jpg}"/>
+            </figure>
+            <div class="pdf cf">
+              <img height="160" width="160"
+                   src="assets/images/icon/icon_self_history.png"
+                   th:src="@{/images/icon/icon_self_history.png}"/>
+              <p>
+                ファイル名
+              </p>
+            </div>
+            <div class="comment_box">
+              <textarea placeholder="コメントxが入ります。コメントが入ります。" th:field="*{messageComment}"></textarea>
+            </div>
+          </div>
+          <div class="btn cf">
+            <div class="delete" th:if="${messageId}">
+              <a th:href="@{'~/message/detail/'}+${messageId}">
+                <img height="147" width="495"
+                     src="assets/images/button/btn_delete.png"
+                     th:src="@{/images/button/btn_delete.png}"/>
+              </a>
+            </div>
+            <!--<div class="filming" th:if="${#diedNotification.isPremium(#authentication.getPrincipal()) == true }">-->
+              <!--<a href="#" th:if="${messageForm.messageType != 'NONE'}">-->
+                <!--<img height="147" width="495"-->
+                     <!--src="assets/images/button/button_filming.jpg"-->
+                     <!--th:src="@{/images/button/button_filming.jpg}"/>-->
+              <!--</a>-->
+            <!--</div>-->
+          </div>
+          <div class="btn">
+            <button type="submit" name="action" value="back">
+              <img height="147" width="1040"
+                   src="assets/images/button/btn_back2.jpg"
+                   th:src="@{/images/button/btn_back2.png}"/>
+            </button>
+          </div>
+          <br/>
+          <div class="btn">
+            <button type="submit" name="action" value="confirm">
+              <img height="147" width="1040"
+                   src="assets/images/button/btn_decision.png"
+                   th:src="@{/images/button/btn_decision.png}"/>
+            </button>
+          </div>
+            <div id="bnr_paying_merit">
+                <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                     th:src="@{/images/common/banner.png}" width="1040" /></a>
+            </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div layout:fragment="otherScript">
+  <script type="text/javascript">
+      function deleteImage(imageId) {
+          $.ajax('/message/attachment/delete/' + imageId,
+              {
+                  type: 'get',
+                  dataType: 'json'
+              }
+          )
+              .done(function (data) {
+                  $('#image_' + imageId).html("")
+              });
+      }
+  </script>
+</div>
+</body>
+</html>

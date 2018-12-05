@@ -1,0 +1,3 @@
+ALTER TABLE forum_comments
+  ADD name VARCHAR(254) NOT NULL DEFAULT ''
+COMMENT '名前';

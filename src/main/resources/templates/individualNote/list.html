@@ -1,0 +1,70 @@
+<!--message_list.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="message_list">
+            <div class="inner">
+                <div class="input">
+                    <ul class="list_box">
+                        <!--/*@thymesVar id="list" type="java.util.List<ora.leadlife.co.jp.model.IndividualNote>"*/-->
+                        <li class="cf" th:each="i : ${list}">
+                            <!--/*@thymesVar id="id" type="ora.leadlife.co.jp.model.IndividualNote.id"*/-->
+                            <a th:href="@{'/individualNote/individualNoteDetail/'+${i.id} + '?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+                                <figure>
+                                    <th:block th:switch="${i.type}">
+                                        <img th:case="'PICTURE'" height="67" src="assets/images/icon/icon_camera.png" width="87" th:src="@{/images/icon/icon_camera.png}"/>
+                                        <img th:case="'MOVIE'" height="78" src="assets/images/icon/icon_video.png" width="93" th:src="@{/images/icon/icon_video.png}"/>
+                                        <img th:case="'DATA'" height="98" src="assets/images/icon/icon_pdf.png" width="82" th:src="@{/images/icon/icon_pdf.png}"/>
+                                        <img th:case="'NONE'" height="98" src="assets/images/icon/icon_article.png" width="82" th:src="@{/images/icon/icon_article.png}"/>
+                                    </th:block>
+                                </figure>
+                                <div class="text">
+                                    <p class="date" th:text="${#dates.format(i.updatedAt, 'yyyy/MM/dd')}"></p>
+                                    <h2 class="title">
+                                        <p th:text="${i.title}"></p>
+                                    </h2>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="add_delete">
+                    <div class="btn cf">
+                        <div class="back">
+                            <a th:href="@{'/individualNote'}" ><img height="147" src="assets/images/button/btn_back.jpg" width="495" th:src="@{/images/button/btn_back.jpg}"/></a>
+                        </div>
+                        <div class="check">
+                            <!--/*@thymesVar id="individualNoteCategoryId" type="java.lang.Long"*/-->
+                            <!--/*@thymesVar id="viewFlag" type="java.lang.Boolean"*/-->
+                            <a th:if="${viewFlag}" th:href="@{'/individualNote/input1?individualNoteCategory=' + ${individualNoteCategoryId}}">
+                                <img height="147" src="./assets/images/button/button_add_account.jpg" width="495" th:src="@{/images/button/button_add_account.jpg}"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="bnr_paying_merit">
+                    <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                         th:src="@{/images/common/banner.png}" width="1040" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

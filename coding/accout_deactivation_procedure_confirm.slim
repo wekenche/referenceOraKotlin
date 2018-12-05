@@ -1,0 +1,28 @@
+doctype html
+html lang="ja"
+	- $pageNo = 13;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "退会手続き", :description => "サイト説明が入ります", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#accout_deactivation_procedure_confirm
+				.inner.cf
+					.message
+						.attention
+							|下記の項目を確認のうえ、<br />「次に進む」ボタンを押して下さい。
+						dl
+							dt 注意事項あれば
+							dd
+								|
+									ここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入ります
+							dt テキストテキスト
+							dd
+								|
+									ここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入ります
+					.btn
+						a href="accout_deactivation_procedure_finish.html"
+							img src="./assets/images/button/btn_next3.png" width="1064" height="147" alt="次へ"
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

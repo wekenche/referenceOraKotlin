@@ -1,0 +1,43 @@
+doctype html
+html lang="ja"
+	- $pageNo = 25;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "会員名・写真の変更", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#usrpict
+				.inner
+					.input_box
+						h3 ユーザー名の変更
+						input type="text" placeholder="ゲストユーザーさん"
+					.input_box
+						h3 ログイン方法の変更
+						.checkbox
+							input id="check01" type="checkbox"
+							input type="hidden"
+							label for="check01" パスワード入力
+						.checkbox
+							input type="hidden"
+							input id="check02" type="checkbox"
+							input type="hidden"
+							label for="check02" 指紋認証
+						.error 指紋またはパスワードを選択して下さい。
+					.input_box
+						h3 現在のパスワード
+						input type="password" 
+					.input_box.pass
+						h3 パスワードの変更（新しいパスワード）
+						input type="password" placeholder="半角英数8文字以上"
+						input type="password" placeholder="確認のため再入力して下さい"
+						p.pass_note ※パスワードの頭文字が、大文字になっていたり末尾にスペースが入っていたりすることがございますので、ご注意ください。
+					.input_box
+						h3 指紋認証
+						a.finger_print href="fingerprint_registration_index.html" 指紋を登録する
+					a href="usrpict_finish.html"
+						img src="assets/images/button/button_change.jpg" width="1064" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

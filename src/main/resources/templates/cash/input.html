@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body class="drawer drawer--left">
+<div id="container">
+    <div layout:fragment="headerImage">
+        <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+             th:src="@{/images/header/header_endingnote.png}"/>
+    </div>
+    <div layout:fragment="main">
+        <div id="property_about_cash">
+            <div class="page_label">
+                <h2>
+                    資産について
+                </h2>
+            </div>
+            <div class="about_cash">
+                <h2>
+                    7.現金(預貯金以外)
+                </h2>
+                <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                <!--/*@thymesVar id="cashForm" type="ora.leadlife.co.jp.form.CashForm"*/-->
+                <form th:action="@{/cash/confirm}" th:object="${cashForm}" th:method="post">
+                    <div class="input__container">
+                        <div id="formList" th:switch="${#lists.isEmpty(cashForm.cashFormWrapper)}">
+                            <div th:case="true" class="formColumn">
+                                <div class="input__box input_money">
+                                    <div class="title">
+                                        金額
+                                    </div>
+                                    <input class="nameAmount" type="number" th:field="*{cashFormWrapper[0].amount}"/>
+                                    <span>円</span>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        保管場所
+                                    </div>
+                                    <textarea class="nameStorageLocation"
+                                              th:field="*{cashFormWrapper[0].storageLocation}"></textarea>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        備考
+                                    </div>
+                                    <textarea class="nameMessage" th:field="*{cashFormWrapper[0].message}"></textarea>
+                                </div>
+                                <div class="button_box del_box">
+
+                                </div>
+                                <br/><br/><br/>
+                                <hr/>
+                            </div>
+                            <div th:case="false" class="formColumn">
+                                <div th:each="certificate,is:${cashForm.cashFormWrapper}">
+                                    <div class="input__box input_money">
+                                        <div class="title">
+                                            金額
+                                        </div>
+                                        <input class="nameAmount" type="number"
+                                               th:attr="name='cashFormWrapper['+${is.index}+'].amount'"
+                                               th:value="${certificate.amount}"/>
+                                        <span>円</span>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            保管場所
+                                        </div>
+                                        <textarea class="nameStorageLocation"
+                                                  th:attr="name='cashFormWrapper['+${is.index}+'].storageLocation'"
+                                                  th:inline="text">[[${certificate.storageLocation}]]</textarea>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            備考
+                                        </div>
+                                        <textarea class="nameMessage"
+                                                  th:attr="name='cashFormWrapper['+${is.index}+'].message'"
+                                                  th:inline="text">[[${certificate.message}]]</textarea>
+                                    </div>
+                                    <div class="button_box del_box" th:if="${aboutMeViewFlag==0}">
+                                        <a th:if="${#lists.size(cashForm.cashFormWrapper) > 1}"
+                                           href="javascript:;"
+                                           class="delete_list right"><img height="131"
+                                                                          th:src="@{/images/button/btn_del_column.jpg}"
+                                                                          width="857"/></a>
+                                    </div>
+                                    <br/><br/><br/>
+                                    <hr/>
+
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" href="javascript:;" class="add_list">リストを追加</a>
+                    </div>
+                    <div class="button_box">
+                        <button th:if="${aboutMeViewFlag==0}" type="submit"><img height="147" th:src="@{/images/button/button_save.jpg}"/></button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    /*<![CDATA[*/
+    $(document).on("click", ".add_list", function () {
+        var childIndex = $('.nameAmount').length;
+        var newChild = '<div class="formColumn"> <div class="input__box input_money" >' +
+            '<div class="title">金額</div>' +
+            '   <input class="nameAmount" type="number" value="" name="cashFormWrapper[' + childIndex + '].amount"/> <span>円</span>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">保管場所</div>' +
+            '   <textarea class="nameStorageLocation" name="cashFormWrapper[' + childIndex + '].storageLocation"></textarea>' +
+            '  </div>' +
+            '<div class="input__box">' +
+            '   <div class="title">備考</div>' +
+            '   <textarea class="nameMessage" name="cashFormWrapper[' + childIndex + '].message"></textarea>' +
+            '</div>' +
+            ' <div class="button_box del_box"> '+
+            '<a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>'+
+            '</div> ';
+
+        if ($(".del_box").length == 1) {
+            $(".del_box:first").append('<a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#formList").append(newChild);
+    })
+    ;
+    $(document).on("click", ".delete_list", function () {
+        $(this).parent('div').parent('div').remove();
+        if ($(".del_box").length == 1) {
+            $(".del_box:first").empty();
+        }
+
+        function updateName(className, fieldName) {
+            $(className).each(function (index) {
+                $(this).attr("name", "cashFormWrapper[" + index + "]." + fieldName);
+            });
+        }
+
+        updateName('.nameAmount', 'amount');
+        updateName('.nameStorageLocation', 'storageLocation');
+        updateName('.nameMessage', 'message');
+
+    });
+
+    $(document).on("change", ".nameAmount", function () {
+        if($(this).val() === "") {
+            $(this).val(0)
+        }
+    });
+
+    /*]]>*/
+</script>

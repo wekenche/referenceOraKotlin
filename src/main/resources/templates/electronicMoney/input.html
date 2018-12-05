@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+
+</head>
+<body class="drawer drawer--left">
+<div id="container">
+    <div layout:fragment="headerImage">
+        <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+             th:src="@{/images/header/header_endingnote.png}"/>
+    </div>
+    <div layout:fragment="main">
+        <div id="property_about_electronicMoney">
+            <div class="page_label">
+                <h2>
+                    資産について
+                </h2>
+            </div>
+            <div class="about_electronicMoney">
+                <h2>
+                    14.電子マネー
+                </h2>
+                <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                <!--/*@thymesVar id="electForm" type="ora.leadlife.co.jp.form.ElectronicMoneyForm"*/-->
+                <form th:action="@{/electronicMoney/confirm}" th:object="${electForm}" th:method="post">
+                    <div class="input__container">
+                        <div id="formList" th:switch="${#lists.isEmpty(electForm.electronicMoneyWrapper)}">
+                            <div th:case="true" class ="formColumn">
+                                <div class="input__box">
+                                    <div class="title">
+                                        カードの名称
+                                    </div>
+                                    <input class="nameName" th:name="electronicMoneyWrapper[0].name"/>
+                                    <div class="title">
+                                        番号
+                                    </div>
+                                    <input class="nameNo" th:name="electronicMoneyWrapper[0].no"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        紛失時の連絡先
+                                    </div>
+                                    <input class="nameCertCompany"
+                                           th:name="electronicMoneyWrapper[0].certificateCompany"/>
+                                </div>
+                                <div class="button_box del_box">
+
+                                </div>
+                                <br/><br/><br/>
+                                <hr/>
+                            </div>
+                            <div th:case="false" class="formColumn">
+                                <div th:each="certificate,is:${electForm.electronicMoneyWrapper}">
+                                    <div class="input__box">
+                                        <div class="title">
+                                            カードの名称
+                                        </div>
+                                        <input class="nameName" th:attr="name='electronicMoneyWrapper['+${is.index}+'].name'" th:value="${certificate.name}"/>
+                                        <div class="title">
+                                            番号
+                                        </div>
+                                        <input class="nameNo" th:attr="name='electronicMoneyWrapper['+${is.index}+'].no'" th:value="${certificate.no}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            紛失時の連絡先
+                                        </div>
+                                        <input class="nameCertCompany" th:attr="name='electronicMoneyWrapper['+${is.index}+'].certificateCompany'" th:value="${certificate.certificateCompany}"/>
+                                    </div>
+                                    <div class="button_box del_box" th:if="${aboutMeViewFlag==0}">
+                                        <a th:if="${#lists.size(electForm.electronicMoneyWrapper) > 1}" href="javascript:;"
+                                           class="delete_list right"><img height="131"
+                                                                          th:src="@{/images/button/btn_del_column.jpg}"
+                                                                          width="857"/></a>
+                                    </div>
+                                    <br/><br/><br/>
+                                    <hr/>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" href="javascript:;" class="add_list">リストを追加</a>
+                    </div>
+                    <div class="button_box">
+                        <button th:if="${aboutMeViewFlag==0}" type="submit"><img height="147" th:src="@{/images/button/button_save.jpg}"/></button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script>
+    /*<![CDATA[*/
+
+
+    $(document).on("click", ".add_list", function () {
+        var childIndex = $('.nameName').length;
+        var newChild = '<div class="formColumn"> <div class="input__box">' +
+            '<div class="title">カードの名称</div>' +
+            '   <input class = "nameName"type="text" name="electronicMoneyWrapper[' + childIndex + '].name"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">番号</div>' +
+            '   <input class="nameNo" type="text" name="electronicMoneyWrapper[' + childIndex + '].no"/>' +
+            '  </div>' +
+            '<div class="input__box">' +
+            '   <div class="title">紛失時の連絡先</div>' +
+            '   <input class= "nameCertCompany" type="text" name="electronicMoneyWrapper[' + childIndex + '].certificateCompany"/>' +
+            '</div>' +
+            ' <div class="button_box del_box"><a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '         <br /><br /><br />\n' +
+            '         <hr /></div></div>';
+
+
+        if ($(".del_box").length == 1) {
+            $(".del_box:first").append('<a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#formList").append(newChild);
+    })
+    ;
+    $(document).on("click", ".delete_list", function () {
+        $(this).parent('div').parent('div').remove();
+        if ($(".del_box").length == 1) {
+            $(".del_box:first").empty();
+        }
+
+        function updateName(className, fieldName) {
+            $(className).each(function (index) {
+                $(this).attr("name", "electronicMoneyWrapper[" + index + "]." + fieldName);
+            });
+        }
+
+        updateName('.nameName', 'name');
+        updateName('.nameNo', 'no');
+        updateName('.nameCertCompany', 'certificateCompany');
+    });
+    /*]]>*/
+
+</script>

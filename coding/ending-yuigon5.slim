@@ -1,0 +1,33 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "ペットのこと エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#ending-yuigon5
+				.page_label
+					h2 ペットのこと
+				.inner
+					.text_box
+						img.button_drug src="./assets/images/button/input_text.jpg" width="1041" height="147"
+						textarea.input_text placeholder="本文"
+					.payingmember
+						img.button_drug src="./assets/images/button/button_images.jpg" width="1040" height="147"
+						img.button_drug src="./assets/images/button/button_moving.jpg" width="1040" height="147"
+
+				
+					.button_box.cf
+						.left
+							a href="#"
+								img src="./assets/images/button/button_decision.jpg" width="495" height="147"
+						.right
+							a href="#"						
+								img src="./assets/images/button/button_edit.jpg" width="495" height="147"
+								
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

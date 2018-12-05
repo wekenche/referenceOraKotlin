@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>携帯電話や会員サービス デジタル終活</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="digital_about">
+            <div class="page_label">
+                <h2>
+                    携帯電話や会員サービス
+                </h2>
+            </div>
+            <div class="digital">
+                <h2>
+                    デジタル終活
+                </h2>
+                <h3>
+                    携帯電話・スマホ、タブレット、パソコン等の立ち上げ時のパスワード
+                </h3>
+                <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                <!--/*@thymesVar id="digitalForm" type="ora.leadlife.co.jp.form.DigitalForm"*/-->
+                <form  autocomplete="false"  th:action="@{/digital/digitalSave}" th:object="${digitalForm}" th:method="post">
+                    <div class="input__container">
+                        <div id="form_device_list">
+                            <div th:if="${not #lists.isEmpty(digitalForm.devicePasswordFormWrapper)}" th:each="deviceList,varStatus:${digitalForm.devicePasswordFormWrapper}" class="formDeviceColumn">
+                                <div class="input__box">
+                                    <div class="title">
+                                        端末名
+                                    </div>
+                                    <input class="deviceName" type="text" th:attr="name='devicePasswordFormWrapper['+${varStatus.index}+'].name'" th:value="${deviceList.name}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        パスワード
+                                    </div>
+                                    <input class="devicePassword" type="password" th:attr="name='devicePasswordFormWrapper['+${varStatus.index}+'].password'" th:value="${deviceList.password}"/>
+                                </div>
+                                <div class="button_box" th:if="${#lists.size(digitalForm.devicePasswordFormWrapper) > 1}">
+                                    <a th:if="${aboutMeViewFlag==0}" id="delete__column" class="delete_device" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>
+                                </div>
+                                <hr/>
+                            </div>
+                            <div th:if="${#lists.isEmpty(digitalForm.devicePasswordFormWrapper)}" class="formDeviceColumn">
+                                <div class="input__box">
+                                    <div class="title">
+                                        端末名
+                                    </div>
+                                    <input class="deviceName" type="text" th:field="*{devicePasswordFormWrapper[0].name}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        パスワード
+                                    </div>
+                                    <input class="devicePassword" type="password" th:field="*{devicePasswordFormWrapper[0].password}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" class="add_list" th:onclick="'addDeviceList()'" href="javascript:;">リストを追加</a>
+                    </div>
+                    <h3>
+                        携帯電話の契約会社に登録してあるパスワード
+                    </h3>
+                    <div class="input__container">
+                        <div class="input__box no__title">
+                            <input type = "hidden" th:field="*{id}" />
+                            <input type="password" th:field="*{password}"/>
+                        </div>
+                    </div>
+                    <h3>
+                        使用しているメールアドレスとそのパスワード
+                    </h3>
+                    <div class="input__container">
+                        <div id="form_email_list">
+                            <div th:if="${not #lists.isEmpty(digitalForm.emailFormWrapper)}" th:each="emailList,varStatus:${digitalForm.emailFormWrapper}" class="formEmailColumn">
+                                <div class="input__box">
+                                    <div class="title">
+                                        メールアドレス
+                                    </div>
+                                    <input class="email" type="text"  th:attr="name='emailFormWrapper['+${varStatus.index}+'].email'" th:value="${emailList.email}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        パスワード
+                                    </div>
+                                    <input class="emailPassword" type="password"  th:attr="name='emailFormWrapper['+${varStatus.index}+'].password'" th:value="${emailList.password}"/>
+                                </div>
+                                <div class="button_box" th:if="${#lists.size(digitalForm.emailFormWrapper) > 1}">
+                                    <a th:if="${aboutMeViewFlag==0}" id="delete_email" class="delete_email" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>
+                                </div>
+                                <hr/>
+                            </div>
+                            <div th:if="${#lists.isEmpty(digitalForm.emailFormWrapper)}" class="formEmailColumn">
+                                <div class="input__box">
+                                    <div class="title">
+                                        メールアドレス
+                                    </div>
+                                    <input class="email" type="text" th:field="*{emailFormWrapper[0].email}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        パスワード
+                                    </div>
+                                    <input class="emailPassword" type="password" th:field="*{emailFormWrapper[0].password}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" class="add_list" th:onclick="'addEmailList()'" href="javascript:;">リストを追加</a>
+                    </div>
+                    <h3>
+                        　利用ウェブサイト
+                    </h3>
+                    <div class="input__container">
+                        <div id="form_web_list">
+                            <div th:if="${not #lists.isEmpty(digitalForm.websFormWrapper)}" th:each="emailList,varStatus:${digitalForm.websFormWrapper}" class="formWebColumn">
+                                <div class="input__box">
+                                    <div class="title">
+                                        利用サイト名
+                                    </div>
+                                    <input class="webName" type="text" th:attr="name='websFormWrapper['+${varStatus.index}+'].name'" th:value="${emailList.name}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        ID
+                                    </div>
+                                    <input class="webId" type="text" th:attr="name='websFormWrapper['+${varStatus.index}+'].webId'" th:value="${emailList.webId}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        パスワード
+                                    </div>
+                                    <input class="webPassword" type="password" th:attr="name='websFormWrapper['+${varStatus.index}+'].password'" th:value="${emailList.password}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        備考
+                                    </div>
+                                    <textarea class="remarks" th:attr="name='websFormWrapper['+${varStatus.index}+'].remarks'" th:inline="text">[[${emailList.remarks}]]</textarea>
+                                </div>
+                                <div class="button_box" th:if="${#lists.size(digitalForm.websFormWrapper) > 1}">
+                                    <a th:if="${aboutMeViewFlag==0}" id="delete_web" class="delete_web" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>
+                                </div>
+                                <hr/>
+                            </div>
+                            <div class="formWebColumn" th:if="${#lists.isEmpty(digitalForm.websFormWrapper)}">
+                                <div class="input__box">
+                                    <div class="title">
+                                        利用サイト名
+                                    </div>
+                                    <input class="webName" type="text" th:field="*{websFormWrapper[0].name}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        ID
+                                    </div>
+                                    <input class="webId" type="text" th:field="*{websFormWrapper[0].webId}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        パスワード
+                                    </div>
+                                    <input class="webPassword" type="password" th:field="*{websFormWrapper[0].password}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        備考
+                                    </div>
+                                    <textarea class="remarks" th:field="*{websFormWrapper[0].remarks}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" class="add_list" th:onclick="'addWebList()'" href="javascript:;">リストを追加</a>
+                    </div>
+                    <div class="button_box">
+                        <button th:if="${aboutMeViewFlag==0}"><img height="147" th:src="@{/images/button/button_save.jpg}" width="1040"/></button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    /*<![CDATA[*/
+    function addDeviceList() {
+
+        var deviceIndex = $("#form_device_list>.formDeviceColumn").length;
+        var parent = document.getElementById("form_device_list");
+        if(deviceIndex==1) {
+            $(".formDeviceColumn:first").append('<div class="button_box">\n' +
+                '  <a id="delete_device" class="delete_device" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>\n' +
+                '  </div>');
+        }
+        var newChild = '<div class="formDeviceColumn"><div class="input__box">' +
+            '   <div class="title">端末名' +
+            '   <input class="deviceName" type="text" name="devicePasswordFormWrapper[' + deviceIndex + '].name"/>' +
+            '  </div>' +
+            '<div class="input__box">' +
+            '   <div class="title">パスワード</div>' +
+            '   <input class="devicePassword" type="password" name="devicePasswordFormWrapper[' + deviceIndex + '].password"/>' +
+            '</div><div class="button_box">' +
+            '      <a id="delete_device" class="delete_device" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>' +
+            '</div><hr/></div>';
+        parent.insertAdjacentHTML('beforeend', newChild);
+    }
+
+    function addEmailList() {
+        var emailIndex = $("#form_email_list>.formEmailColumn").length;
+        var parent = document.getElementById("form_email_list");
+        if(emailIndex==1) {
+            $(".formEmailColumn:first").append('<div class="button_box">\n' +
+                '  <a id="delete_email" class="delete_email" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>\n' +
+                '  </div>');
+        }
+        var newChild = '<div class="formEmailColumn"><div class="input__box">' +
+            '   <div class="title">メールアドレス</div>' +
+            '   <input class="email" type="text" name="emailFormWrapper[' + emailIndex + '].email"/>' +
+            '  </div>' +
+            '<div class="input__box">' +
+            '   <div class="title">パスワード</div>' +
+            '   <input class="emailPassword" type="password" name="emailFormWrapper[' + emailIndex + '].password"/>' +
+            '</div><div class="button_box">' +
+            '      <a id="delete_email" class="delete_email" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>' +
+            '</div><hr/></div>';
+        parent.insertAdjacentHTML('beforeend', newChild);
+    }
+
+    function addWebList() {
+        var websIndex = $("#form_web_list>.formWebColumn").length;
+        var parent = document.getElementById("form_web_list");
+        if(websIndex==1) {
+            $(".formWebColumn:first").append('<div class="button_box">\n' +
+                '  <a id="delete_web" class="delete_web" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>\n' +
+                '  </div>');
+        }
+        var newChild = '<div class="formWebColumn"><div class="input__box">' +
+            '<div class="title"> 利用サイト名</div>' +
+            '   <input class="webName" type="text" name="websFormWrapper[' + websIndex + '].name"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">ID</div>' +
+            '   <input class="webId" type="text" name="websFormWrapper[' + websIndex + '].webId"/>' +
+            '  </div>' +
+            '<div class="input__box">' +
+            '   <div class="title">パスワード</div>' +
+            '   <input class="webPassword" type="password" name="websFormWrapper[' + websIndex + '].password"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">備考</div>' +
+            '   <textarea class="remarks" name="websFormWrapper[' + websIndex + '].remarks"></textarea>' +
+            '</div><div class="button_box">' +
+            '      <a id="delete_web" class="delete_web" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>' +
+            '</div><hr/></div>';
+        parent.insertAdjacentHTML('beforeend', newChild);
+    }
+    /*]]>*/
+    $(document).on("click",".delete_device",function () {
+        $(this).closest(".formDeviceColumn").remove();
+        if($(".formDeviceColumn").length==1){
+            $(".delete_device:first").parent().remove();
+        }
+        $(".formDeviceColumn").each(function (index) {
+            $(this).find(".deviceName").attr("name","devicePasswordFormWrapper["+index+"].name");
+            $(this).find(".devicePassword").attr("name","devicePasswordFormWrapper["+index+"].password");
+        });
+    });
+    $(document).on("click",".delete_email",function () {
+        $(this).closest(".formEmailColumn").remove();
+        if($(".formEmailColumn").length==1){
+            $(".delete_email:first").parent().remove();
+        }
+        $(".formEmailColumn").each(function (index) {
+            $(this).find(".email").attr("name","emailFormWrapper["+index+"].email");
+            $(this).find(".emailPassword").attr("name","emailFormWrapper["+index+"].password");
+        });
+    });
+    $(document).on("click",".delete_web",function () {
+        $(this).closest(".formWebColumn").remove();
+        if($(".formWebColumn").length==1){
+            $(".delete_web:first").parent().remove();
+        }
+        $(".formWebColumn").each(function (index) {
+            $(this).find(".webName").attr("name","websFormWrapper["+index+"].name");
+            $(this).find(".webId").attr("name","websFormWrapper["+index+"].webId");
+            $(this).find(".webPassword").attr("name","websFormWrapper["+index+"].password");
+            $(this).find(".remarks").attr("name","websFormWrapper["+index+"].remarks");
+        });
+    });
+</script>

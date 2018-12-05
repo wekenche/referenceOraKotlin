@@ -1,0 +1,114 @@
+doctype html
+html lang="ja"
+	- $pageNo = 19;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "スレッド一覧 なんでも掲示板", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#bbs_list
+				.page_label スレッド一覧
+				.inner.cf
+					#post_box
+						#post_info
+							#post_info_top.cf
+								#post_num: img src="./assets/images/icon/bbs_num_001.png" width="132" height="130"
+								#post_title
+									a href="bbs_detail.html" みなさんは今現在どんな終活をしていますか？
+							#post_info_bottom.cf
+								#prof.cf
+									img src="./assets/images/common/users.png" width="194" height="194"
+									#user_info.cf
+										#user_name 山田 <span>さん</span>
+								#post_count 148
+								#post_data 2017.12.6
+						#content.cf
+							#prof_pic
+								img src="./assets/images/common/users.png"  width="194" height="194"
+							#box
+								#user_name RED <span>さん</span>
+								p
+									|
+										私は現在家族と一緒に身の回りの整理を行って・・・私は現在家族と一緒に身の回りの整理を行って・・・私は現在家族と一緒に身の回りの整理を行って・・・私は現在家族と一緒に身の回りの整理を行って・・・
+					#post_box
+						#post_info
+							#post_info_top.cf
+								#post_num: img src="./assets/images/icon/bbs_num_002.png" width="132" height="130"
+								#post_title
+									a href="bbs_detail.html" みなさんの遺言書の書き方について教えてください
+							#post_info_bottom.cf
+								#prof.cf
+									img src="./assets/images/common/users.png" width="194" height="194"
+									#user_info.cf
+										#user_name 田中 <span>さん</span>
+								#post_count 143
+								#post_data 2017.12.5
+						#content.cf
+							#prof_pic
+								img src="./assets/images/common/users.png" width="194" height="194"
+							#box
+								#user_name な〜が <span>さん</span>
+								p
+									|
+										私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・
+					#post_box
+						#post_info
+							#post_info_top.cf
+								#post_num: img src="./assets/images/icon/bbs_num_003.png" width="132" height="130"
+								#post_title
+									a href="bbs_detail.html" みなさんの遺言書の書き方について教えてください
+							#post_info_bottom.cf
+								#prof.cf
+									img src="./assets/images/common/users.png" width="194" height="194"
+									#user_info.cf
+										#user_name 吉田 <span>さん</span>
+								#post_count 123
+								#post_data 2017.12.4
+						#content.cf
+							#prof_pic
+								img src="./assets/images/common/users.png" width="194" height="194"
+							#box
+								#user_name RED <span>さん</span>
+								p
+									|
+										私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・
+					#page_num
+						ul.cf
+							li: a href="#": img src="./assets/images/icon/prev_arrow.png" width="27" height="45" alt="前へ"
+							li: a#active href="#" 1
+							li: a href="#" 2
+							li: a href="#" 3
+							li: a href="#" 4
+							li: a href="#" 5
+							li: a href="#" 6
+							li: a href="#" 7
+							li: a href="#" 8
+							li: a href="#" 9
+							li: a href="#": img src="./assets/images/icon/next_arrow.png" width="27" height="45" alt="次へ"
+				//inner
+				.post_input
+					.inner
+						.title スレッドを投稿する
+						.post_detail
+							.name
+								span 名前
+								input type="text"
+							.subject
+								span 題名
+								input type="text"
+							.text
+								textarea
+						.btn
+							a href="bbs_writing_finish.html"
+								img src="./assets/images/button/btn_post.png" width="1040" height="147" alt="投稿する"
+					.search.cf
+						.home
+							a href="#"
+								img src="./assets/images/icon/icon_home.png" width="70" height="66"
+						.box
+							input type="text" size="30"
+							input type="submit" value="検索"
+			== Slim::Template.new('./templates/_banner.slim').render
+	
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

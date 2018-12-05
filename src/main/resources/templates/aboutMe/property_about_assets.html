@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+       th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+
+<div layout:fragment="main">
+
+  <div id="container">
+    <div id="property_about_assets">
+      <div class="page_label">
+        <h2>
+          資産について
+        </h2>
+      </div>
+      <!--/*@thymesVar id="aboutMeViewAccount" type="java.lang.String"*/-->
+      <div class="inner">
+        <a th:href="@{'/addresses/add?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img alt="過去に住んだことのある住所" height="210" th:src="@{/images/button/button_about_assets01.jpg}"
+               src="assets/images/button/button_about_assets01.jpg"
+               width="1140"/></a>
+        <a th:href="@{'/realEstate/add?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img
+            alt="不動産" height="210" th:src="@{/images/button/button_about_assets02.jpg}"
+            src="assets/images/button/button_about_assets02.jpg" width="1140"/></a>
+        <a
+          th:href="@{'/bank/input?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img alt="預貯金" height="210"
+               th:src="@{/images/button/button_about_assets03.jpg}"
+               src="assets/images/button/button_about_assets03.jpg"
+               width="1140"/></a>
+        <a th:href="@{'/certificateAccount/add?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img
+            th:src="@{/images/button/button_about_assets04.jpg}"
+            alt="証券口座" height="210" src="assets/images/button/button_about_assets04.jpg" width="1140"/></a>
+        <a
+          th:href="@{'/stock/add?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img alt="株式" height="210"
+               th:src="@{/images/button/button_about_assets05.jpg}"
+               src="assets/images/button/button_about_assets05.jpg"
+               width="1140"/></a>
+        <a th:href="@{'/financialAsset?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img
+            alt="その他金融資産/有価証券" height="210" th:src="@{/images/button/button_about_assets06.jpg}"
+            src="assets/images/button/button_about_assets06.jpg" width="1140"/></a>
+        <a
+          th:href="@{'/cash/?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img alt="現金（預貯金以外）" height="210"
+               th:src="@{/images/button/button_about_assets07.jpg}"
+               src="assets/images/button/button_about_assets07.jpg" width="1140"/></a>
+        <a
+          th:href="@{'/deposit?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img alt="その他の遺産" height="210"
+               th:src="@{/images/button/button_about_assets08.jpg}"
+               src="assets/images/button/button_about_assets08.jpg"
+               width="1140"/></a>
+        <a th:href="@{'/store/add?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img
+            alt="貸金庫/レンタル倉庫/トランクルーム 等" height="210" th:src="@{/images/button/button_about_assets09.jpg}"
+            src="assets/images/button/button_about_assets09.jpg"
+            width="1140"/></a>
+        <a th:href="@{'/lendMoney/add?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img alt="貸しているお金" height="210"
+               th:src="@{/images/button/button_about_assets10.jpg}"
+               src="assets/images/button/button_about_assets10.jpg"
+               width="1140"/></a>
+        <a
+          th:href="@{'/property/loans/input?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img alt="借金・ローン" height="210"
+               th:src="@{/images/button/button_about_assets11.jpg}"
+               src="assets/images/button/button_about_assets11.jpg" width="1140"/></a>
+        <a
+          th:href="@{'/assuranceDebt?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img alt="保障債務" height="210"
+               th:src="@{/images/button/button_about_assets12.jpg}"
+               src="assets/images/button/button_about_assets12.jpg"
+               width="1140"/></a>
+        <a th:href="@{'/creditCard/add?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img
+            alt="クレジットカード" height="210"
+            th:src="@{/images/button/button_about_assets13.jpg}" src="assets/images/button/button_about_assets13.jpg"
+            width="1140"/></a>
+        <a
+          th:href="@{'/electronicMoney?aboutMeViewAccount=' + ${aboutMeViewAccount} }">
+          <img alt="電子マネー" height="210"
+               th:src="@{/images/button/button_about_assets14.jpg}"
+               src="assets/images/button/button_about_assets14.jpg"
+               width="1140"/></a>
+        <a th:href="@{'/pensions?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img
+            alt="年金" height="210" th:src="@{/images/button/button_about_assets15.jpg}"
+            src="assets/images/button/button_about_assets15.jpg" width="1140"/></a>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>財産について 2.宝物やコレクションについて エンディングノート</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="property_about_collection">
+            <div class="page_label">
+                <h2>
+                    財産について
+                </h2>
+            </div>
+            <div class="about_collection">
+                <h2>2.宝物やコレクションについて</h2>
+                <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                <!--/*@thymesVar id="treasuresForm" type="ora.leadlife.co.jp.form.TreasuresForm"*/-->
+                <form th:action="@{/treasures/treasuresSave}" th:object="${treasuresForm}" th:method="post">
+                    <div class="input__container">
+                        <div id="formList">
+                            <div th:if="${not #lists.isEmpty(treasuresForm.treasureWrapper)}" th:each="treasureList,status:${treasuresForm.treasureWrapper}" class="formColumn">
+                                <div class="input__box">
+                                    <div class="title">種類名称</div>
+                                    <input class="name" type="text" th:attr="name='treasureWrapper['+${status.index}+'].name'" th:value="${treasureList.name}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">保管場所</div>
+                                    <input class="storingPlace" type="text" th:attr="name='treasureWrapper['+${status.index}+'].storingPlace'" th:value="${treasureList.storingPlace}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">自分の死後の処分の方法</div>
+                                    <input class="processingMethod" type="text" th:attr="name='treasureWrapper['+${status.index}+'].processingMethod'" th:value="${treasureList.processingMethod}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">備考</div>
+                                    <textarea class="remarks" th:attr="name='treasureWrapper['+${status.index}+'].remarks'" th:inline="text" >[[${treasureList.remarks}]]</textarea>
+                                </div>
+                                <div class="button_box" th:if="${#lists.size(treasuresForm.treasureWrapper) > 1}">
+                                    <a th:if="${aboutMeViewFlag==0}" id="delete__column" class="delete_list" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>
+                                </div>
+                                <hr/>
+                            </div>
+                            <div th:if="${#lists.isEmpty(treasuresForm.treasureWrapper)}" class="formColumn">
+                                <div class="input__box">
+                                    <div class="title">種類名称</div>
+                                    <input class="name" type="text" th:field="*{treasureWrapper[0].name}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">保管場所</div>
+                                    <input class="storingPlace" type="text" th:field="*{treasureWrapper[0].storingPlace}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">自分の死後の処分の方法</div>
+                                    <input class="processingMethod" type="text" th:field="*{treasureWrapper[0].processingMethod}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">備考</div>
+                                    <textarea class="remarks" th:field="*{treasureWrapper[0].remarks}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" href="javascript:;" th:onclick="'addList()'" class="add_list">リストを追加</a>
+                    </div>
+                    <div class="button_box">
+                        <button th:if="${aboutMeViewFlag==0}"><img height="147" th:src="@{/images/button/button_save.jpg}" width="1040"/></button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    function addList(){
+        /*<![CDATA[*/ //--> this is necessary if you use pure javascript
+        var childIndex = $("#formList>.formColumn").length
+        var parent = document.getElementById("formList");
+        if(childIndex==1) {
+            $(".formColumn:first").append('<div class="button_box">\n' +
+                '  <a id="delete__column" class="delete_list" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>\n' +
+                '  </div>');
+        }
+        var newChild = '<div class="formColumn"><div class="input__box">' +
+            '<div class="title">種類名称</div>' +
+            '   <input class="name" type="text" name="treasureWrapper['+childIndex+'].name"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">保管場所</div>' +
+            '   <input class="storingPlace" type="text" name="treasureWrapper['+childIndex+'].storingPlace"/>' +
+            '  </div>' +
+            '<div class="input__box">' +
+            '   <div class="title">自分の死後の処分の方法</div>' +
+            '   <input class="processingMethod" type="text" name="treasureWrapper['+childIndex+'].processingMethod"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">備考</div>' +
+            '   <textarea class="remarks" name="treasureWrapper['+childIndex+'].remarks"></textarea>' +
+            '</div><div class="button_box">' +
+            '      <a id="delete__column" class="delete_list" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>' +
+            ' </div><hr/></div>';
+        parent.insertAdjacentHTML('beforeend', newChild);
+    }
+    /*]]>*/
+    $(document).on("click",".delete_list",function () {
+        $(this).closest(".formColumn").remove();
+        if($(".formColumn").length==1){
+            $(".delete_list:first").parent().remove();
+        }
+        $(".formColumn").each(function (index) {
+            $(this).find(".name").attr("name","treasureWrapper["+index+"].name");
+            $(this).find(".storingPlace").attr("name","treasureWrapper["+index+"].storingPlace");
+            $(this).find(".processingMethod").attr("name","treasureWrapper["+index+"].processingMethod");
+            $(this).find(".remarks").attr("name","treasureWrapper["+index+"].remarks");
+        });
+    });
+</script>

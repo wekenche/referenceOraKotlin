@@ -1,0 +1,121 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#free_migration_input{
+	background: #f2f2f2;
+	.inner{
+		padding-top: 160px;
+		.balloon{
+			width: 1040px;
+			margin: 0 auto;
+			margin-bottom: 110px;
+			.box{
+				text-align: center;
+				background: #fff;
+				padding: 80px 95px;
+				box-sizing: border-box;
+			}
+			&:after{
+				content: "";
+				background: url(../images/bg/balloon_bottom.png)no-repeat center bottom;
+				width: 111px;
+				height: 57px;
+				margin: 0 auto;
+				display: block;
+			}
+			p{
+				font-size: 50px;
+				font-weight: bold;
+				&#usermail{
+					margin-top: 50px;
+				}
+			}
+		}//balloon
+		.input{
+			width: 972px;
+			margin: 0 auto;
+		}
+	}//inner
+	.mail_input{
+		span{
+			font-size: 60px;
+			font-weight: bold;
+			color: #ff8431;
+			line-height: 0.88;
+		}
+	  input[type=text],input[type=password]{
+	    width:100%;
+	    border:3px solid #000;
+	    font-size: 50px;
+	    border-radius:4px;
+	    margin:8px 0;
+	    outline:none;
+	    padding:8px;
+	    height: 140px;
+	    box-sizing:border-box;
+	    transition:.3s;
+			margin-top: 50px;
+			margin-bottom: 78px;
+	  }
+
+	  .inputWithIcon input[type=text],input[type=password]{
+	    padding-left:23px;
+	  }
+	 	  
+	}//mail_input
+	.btn{
+		width: 1062px;
+		margin: 0 auto;
+		padding-bottom: 470px;
+		box-sizing: border-box;
+		a{
+			display: block;
+		}
+	}//.btn
+}//##free_migration_input　無料会員へ移行
+
+#free_migration_confirm{
+	background: #f2f2f2;
+	.inner{
+		width: 1064px;
+		margin: 0 auto;
+		padding-top: 110px;
+		box-sizing: border-box;
+		.title{
+			font-size: 60px;
+			font-weight: bold;
+			color: #ff8431;
+			letter-spacing: 0.05em;
+			line-height: 1.25;
+			margin-bottom: 60px;
+		}//title
+		.box{
+			.service,.desc{
+				font-size: 45px;
+				font-weight: bold;
+				line-height: 0.05em;
+				line-height: 2.6;
+				display: inline-block;
+			}
+		}
+		.btn{
+			margin-top: 110px;
+			padding-bottom: 900px;
+			box-sizing: border-box;
+		}
+		.attention{
+			margin-top: 110px;
+			p{
+				font-size: 50px;
+				font-weight: bold;
+				color: red;
+				&:last-child{
+					margin-top: 40px;
+				}
+			}
+		}
+	}//inner
+}//#free_migration_confirm

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>お墓や葬儀 1.お墓について</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body class="drawer drawer--left">
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+    <div  layout:fragment="main">
+        <div id="container">
+            <div id="funeral_about">
+                <div class="page_label">
+                    <h2>
+                        お墓や葬儀
+                    </h2>
+                </div>
+                <div class="grave">
+                    <h2>
+                        1.お墓について
+                    </h2>
+                    <h3>
+                      お墓の準備
+                    </h3>
+                    <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                    <!--/*@thymesVar id="form" type="ora.leadlife.co.jp.form.GraveForm"*/-->
+                    <form th:action="@{/grave/confirm}" method="post" th:object="${form}">
+                        <input placeholder="" type="text" th:field="*{graveId}" style="display:none"/>
+                        <div class="input__container">
+                            <div class="input__box">
+                                <div class="title">
+                                    準備の有無
+                                </div>
+                                <!--<input class="radio" type="radio" th:field="*{stockWrapper[0].isCustomManagement}" th:value="1" /><span class="thereOrNone">有り</span><input type="radio" th:field="*{stockWrapper[0].isCustomManagement}" th:value="0" /><span class="thereOrNone">無し</span>-->
+                                <input class="radio" id="setup__notice" th:field="*{isPrepared}" type="radio" th:value="1" /><label class="radio" for="setup__notice">有り</label><input class="radio" id="setup__notice2" th:field="*{isPrepared}" type="radio" th:value="0" /><label class="radio" for="setup__notice2">無し</label>
+                            </div>
+                            <div class="input__box">
+                                <div class="title">
+                                    墓を継承してほしい人
+                                </div>
+                                <input placeholder="" type="text" th:field="*{personWantInheritance}"/>
+                            </div>
+                            <div class="input__box">
+                                <div class="have__case">
+                                    【準備／有　の方】
+                                </div>
+                                <div class="title">
+                                    名称
+                                </div>
+                                <input placeholder="" type="text" th:field="*{name}"/>
+                            </div>
+                            <div class="input__box">
+                                <div class="title">
+                                お墓の場所：郵便番号
+                                </div>
+                                <input class="date" placeholder="" type="text" th:field="*{postCode1}"/>
+                                <span class="date">-</span>
+                                <input class="date" placeholder="" type="text" th:field="*{postCode2}"/>
+                            </div>
+                            <div class="input__box">
+                                <div class="title">
+                                    お墓の場所：住所
+                                </div>
+                                <input placeholder="" type="text" th:field="*{address}"/>
+                            </div>
+                            <div class="input__box">
+                                <div class="title">
+                                    連絡先
+                                </div>
+                                <input placeholder="" type="text" th:field="*{contactAddress}"/>
+                            </div>
+                            <div class="input__box">
+                                <div class="title">
+                                    墓地使用権者
+                                </div>
+                                <input placeholder="" type="text" th:field="*{graveUser}"/>
+                            </div>
+                            <div class="input__box">
+                                <div class="title">
+                                    購入店名
+                                </div>
+                                <input placeholder="" type="text" th:field="*{purchaseName}"/>
+                            </div>
+                            <div class="input__box">
+                                <div class="title">
+                                    契約日
+                                </div>
+                                <input class="date" type="text" th:attr="name='contractYear'" th:value="${form.contractDate!=null} ? ${#dates.format(form.contractDate,'yyyy')}:''"/><span class="date">年</span>
+                                <input class="date" type="text" th:attr="name='contractMonth'" th:value="${form.contractDate!=null} ? ${#dates.format(form.contractDate,'MM')}:''"/><span class="date">月</span>
+                                <input class="date" type="text" th:attr="name='contractDay'" th:value="${form.contractDate!=null} ? ${#dates.format(form.contractDate,'dd')}:''"/><span class="date">日</span>
+                            </div>
+                            <div class="input__box">
+                                <div class="title">
+                                    宗派
+                                </div>
+                                <input placeholder="" type="text" th:field="*{religion}"/>
+                            </div>
+                            <div class="input__box">
+                                <div class="title">
+                                    管理状況
+                                </div>
+                                <textarea placeholder="" th:field="*{management}"></textarea>
+                            </div>
+                            <div class="input__box">
+                                <div class="title">
+                                    備考（気になる点・心配事等）
+                                </div>
+                                <textarea placeholder="" th:field="*{remarks}"></textarea>
+                            </div>
+                            <div class="input__box">
+                                <div class="have__case">
+                                    【準備／無　の方】
+                                </div>
+                                <div class="title">
+                                    納骨方法の要望
+                                </div>
+                                <textarea placeholder="" th:field="*{cinerationMethod}"></textarea>
+                            </div>
+                        </div>
+                        <div class="button_box">
+                          <button th:if="${aboutMeViewFlag==0}" type="submit"><img height="147" width="1040" src="./assets/images/button/button_save.jpg" th:src="@{/images/button/button_save.jpg}" /></button>
+                        </div>
+                        <div id="bnr_paying_merit">
+                            <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                                 th:src="@{/images/common/banner.png}" width="1040" /></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

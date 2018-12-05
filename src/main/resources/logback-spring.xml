@@ -1,0 +1,53 @@
+<configuration debug="true" scan="true" scanPeriod="10 minutes">
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%date %level [%thread] %logger %msg%n</Pattern>
+        </encoder>
+    </appender>
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>log/ora.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>
+                log/ora.log-%d.%i.log.gz
+            </FileNamePattern>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>10MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>%date %level [%thread] %logger %msg%n</Pattern>
+        </encoder>
+    </appender>
+    <appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <!-- deny all events with a level below ERROR -->
+            <level>ERROR</level>
+        </filter>
+
+        <smtpHost>localhost</smtpHost>
+        <smtpPort>25</smtpPort>
+
+        <to>developer@ajio.co.jp</to>
+        <!-- Multiple to elements are permitted -->
+
+        <from>ora@ajio.co.jp</from>
+        <subject>[ORA] ERROR </subject>
+        <cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
+            <bufferSize>1</bufferSize>
+        </cyclicBufferTracker>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%date %-5level %logger{35} - %message%n</pattern>
+        </layout>
+    </appender>
+    <logger name="javax.net" level="info"/>
+    <logger name="javax.management" level="info"/>
+    <logger name="org.springframework" level="info"/>
+    <logger name="org.compass" level="info"/>
+    <logger name="org.tuckey" level="info"/>
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ROLLING"/>
+        <appender-ref ref="EMAIL"/>
+    </root>
+
+</configuration>

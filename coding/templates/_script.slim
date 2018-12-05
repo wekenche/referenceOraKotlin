@@ -1,0 +1,143 @@
+script src="./assets/js/jquery-1.11.1.min.js"
+script src="./assets/js/iscroll.js"
+script src="./assets/js/drawer.js"
+script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"
+
+//メニューjquery
+javascript:
+	$(document).ready(function() {
+		$('.drawer').drawer();
+			$('.closed').on('click', function() {
+		$('.drawer').drawer('close');
+		});
+	});
+javascript:
+	if(navigator.userAgent.indexOf('Android') > 0){
+		$(function(){
+			var box = $('.drawer-nav')[0];
+			var touchStartPositionX;
+			var touchStartPositionY;
+			var touchMovePositionX;
+			var touchMovePositionY;
+			var moveFarX;
+			var moveFarY;
+			var startScrollX;
+			var startScrollY;
+			var moveScrollX;
+			var moveScrollY;
+
+			box.addEventListener("touchstart",touchHandler,false);
+			box.addEventListener("touchmove",touchHandler,false);
+
+			function touchHandler(e){
+				var touch = e.touches[0];
+				if(e.type == "touchstart"){
+					touchStartPositionX = touch.pageX;
+					touchStartPositionY = touch.pageY;
+					//タッチ前スクロールをとる
+					startScrollX = $('.drawer-nav').scrollLeft();
+					startScrollY = $('.drawer-nav').scrollTop();
+				}
+				if(e.type == "touchmove"){
+					e.preventDefault();
+					//現在の座標を取得
+					touchMovePositionX = touch.pageX;
+					touchMovePositionY = touch.pageY;
+					//差をとる
+					moveFarX = touchStartPositionX - touchMovePositionX;
+					moveFarY = touchStartPositionY - touchMovePositionY;
+					//スクロールを動かす
+					moveScrollX = startScrollX +moveFarX;
+					moveScrollY = startScrollY +moveFarY;
+					$('.drawer-nav').scrollLeft(moveScrollX);
+					$('.drawer-nav').scrollTop(moveScrollY);
+				}
+			}
+		});
+	}
+
+//checkboxのパスワード表示の切り替え
+- if $pageNo == 11;
+	javascript:
+		$(function() {
+		  $('.mail_input').each(function() {
+		    var $pass = $(this).find('#password');
+		    var $input = $(this).find('#check');
+
+		    $input.change(function() {
+		      if ( $(this).prop('checked') ) {
+		        $pass.attr('type','text');
+		      } else {
+		        $pass.attr('type','password');
+		      }
+		    });
+		  });
+		});
+
+//利用規約モーダル
+javascript:
+	$(function() {
+	  $('#open').on('click', function() {
+	    $('#modal_content_tos').fadeIn();
+	    // $('#modal_content_tos, #terms_of_use').fadeIn();
+	    // $('#terms_of_use').css('z-index','999');
+	    $('#modal_content_tos').css('z-index','500');
+	  });
+
+	  $('#open2').on('click', function() {
+	    $('#modal_content_tos').fadeIn();
+	    // $('#terms_of_use').css('z-index','999');
+	    $('#modal_content_tos').css('z-index','500');
+	  });
+	  
+	  $('#close').on('click', function() {
+	    $('#modal_content_tos').fadeOut();
+	    $('#modal_content_tos').css('z-index','0');
+	  });
+	  
+	  locateCenter();
+	  $(window).resize(locateCenter);
+
+	  function locateCenter() {
+	    let w = $(window).width();
+	    let h = $(window).height();
+	    
+	    let cw = $('#modal_content_tos').outerWidth();
+	    let ch = $('#modal_content_tos').outerHeight();
+	   
+	    $('#modal_content_tos').css({
+	      'left': ((w - cw) / 2) + 'px',
+	      'top': ((h - ch) / 2) + 'px'
+	    });
+	  }
+	});
+
+//個人情報
+javascript:
+	$(function() {
+	  $('#open3').on('click', function() {
+	    $('#modal_content_policy').fadeIn();
+	    $('#modal_content_policy').css('z-index','500');
+	  });
+	  
+	  $('#close2').on('click', function() {
+	    $('#modal_content_policy').fadeOut();
+	    $('#modal_content_policy').css('z-index','0');
+	  });
+	  
+	  locateCenter();
+	  $(window).resize(locateCenter);
+
+	  function locateCenter() {
+	    let w = $(window).width();
+	    let h = $(window).height();
+	    
+	    let cw = $('#modal_content_policy').outerWidth();
+	    let ch = $('#modal_content_policy').outerHeight();
+	   
+	    $('#modal_content_policy').css({
+	      'left': ((w - cw) / 2) + 'px',
+	      'top': ((h - ch) / 2) + 'px'
+	    });
+	  }
+	});

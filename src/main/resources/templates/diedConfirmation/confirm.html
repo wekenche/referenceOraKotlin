@@ -1,0 +1,68 @@
+<!--notification_confirm.html-->
+
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="死亡確認通知" src="./assets/images/header/header_notification.png" width="754"
+       th:src="@{/images/header/header_notification.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="container">
+    <div id="notification_confirm">
+      <div class="inner">
+        <!--/*@thymesVar id="diedConfirmationForm" type="ora.leadlife.co.jp.form.DiedConfirmationForm"*/-->
+        <form th:action="@{/diedConfirmation/registerConfirm}" method="post" th:object="${diedConfirmationForm}">
+          <div class="notice">
+            <!--/*@thymesVar id="other" type="ora.leadlife.co.jp.model.Bereave"*/-->
+            <p>
+              <span th:text="${other.account.user.name}"></span> さんより<span th:text="${other.user.name}"></span> さんが<br/>
+              亡くなったことを確認する<br/>
+              通知がありました。
+            </p>
+            <p>
+              <span th:text="${other.account.user.name}"></span> さんが<br/>
+              下記の日付に亡くなったことに<br/>
+              間違いはありませんか？
+            </p>
+            <div class="bg_balloon">
+              <img height="57" src="assets/images/bg/balloon_bottom.png" width="111"
+                   th:src="@{/images/bg/balloon_bottom.png}"/>
+            </div>
+          </div>
+          <div class="data">
+            <input placeholder="亡くなった日付" type="text" th:field="*{date}" readonly="readonly"/>
+            <input type="hidden" th:field="*{id}"/>
+          </div>
+          <div class="btn cf">
+            <div class="approve">
+              <button type="submit"><img alt="はい" height="147"
+                                         src="./assets/images/button/btn_yes.png"
+                                         width="495"
+                                         th:src="@{/images/button/btn_yes.png}"/></button>
+            </div>
+            <div class="unapprove">
+              <!-- TODO いいえの遷移先 -->
+              <a href="notification_settings.html"><img alt="いいえ" height="147"
+                                                        src="./assets/images/button/btn_no.png" width="495"
+                                                        th:src="@{/images/button/btn_no.png}"/></a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

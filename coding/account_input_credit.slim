@@ -1,0 +1,80 @@
+doctype html
+html lang="ja"
+	- $pageNo = 4;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "クレジットカード情報を入力　アカウント入力画面", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#account_input_credit
+	  		.page_label クレジットカード情報を入力
+	  		.inner.cf
+					.alert
+						h2 エラー
+						ul
+							li 「カード会社」を入力して下さい。
+							li 「カード番号」を入力して下さい。
+							li 「有効期限」を入力して下さい。
+							li 「名義人」を入力して下さい。
+					h2.title クレジットカード情報を入力
+					.credit_info_box
+						.input_box
+							h3 カード会社
+							select name="会社名"
+								option value="" 選択してください
+								option value="" カード会社１
+								option value="" カード会社２
+								option value="" カード会社３
+						.input_box.input_num
+							h3 カード番号
+							p.note
+								|
+									【例】1234-5678-9012-3456
+								br
+								|	
+									1234-567890-12345
+								br
+								|
+									カード表記どおりにご入力ください
+							ul.num_list.cf
+									li
+										input type="text"
+									li
+										p -
+									li
+										input type="text"
+									li
+										p -
+									li
+										input type="text"
+									li
+										p -
+									li
+										input type="text"
+						.input_box.input_num	
+							h3 有効期限
+							ul.date_list.cf
+									li
+										input type="text"
+									li
+										p 月
+									li
+										input type="text"
+									li 
+										p 日
+						.input_box
+								h3 名義人
+								input type="text"
+						.check_register
+							input#check type="checkbox"
+							label for="check" 入力したクレジットカードをアプリの情報として登録する
+						.card_list
+							a href="#" ご利用可能なクレジットカード一覧
+						.btn
+							a href="paid_member_registration_fixed.html"
+								img src="./assets/images/button/button_next.jpg" width="1064" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+						
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

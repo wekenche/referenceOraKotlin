@@ -1,0 +1,37 @@
+doctype html
+html lang="ja"
+	- $pageNo = "orange01";
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "【一周忌】 愛する家族へ", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_orange_header.slim').render
+		#container
+			#message_record_confirm
+				.inner
+					.inner_video
+						.video
+							iframe width="1041" height="624" src="https://www.youtube.com/embed/bjmBJ1Fl0cs" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen
+						/ figure
+						/ 	img src="assets/images/video_thumbnail.jpg" width="1041" height="624"
+						/ 画像
+						.comment_box
+							.comment
+								p 
+									|
+										コメントが入ります。コメントが入ります。コメントが入ります。コメントが入ります。コメントが入ります。コメントが入ります。コメントが入ります。コメントが入ります。コメントが入ります。コメントが入ります。コメントが入ります。コメントが入ります。
+					.btn.cf
+						.delete
+							a href="#"
+								img src="assets/images/button/btn_delete.png" width="495" height="147"
+						.edit
+							a href="message_record_edit_video.html"
+								img src="assets/images/button/btn_edit.png" width="495" height="147"
+					.btn.finish
+						a href="message_record_article.html"
+							img src="./assets/images/button/btn_decision.png" width="1045"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+							
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

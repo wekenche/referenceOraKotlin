@@ -1,0 +1,486 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>資産について 11.借金・ローン エンディングノート</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="エンディングノート" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="property_about_debt">
+            <div class="page_label">
+                <h2>
+                    資産について
+                </h2>
+            </div>
+            <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+            <!--/*@thymesVar id="loanForm" type="ora.leadlife.co.jp.form.LoanForm"*/-->
+            <form th:action="@{/property/loans/save}" th:object="${loanForm}" th:method="post">
+                <div class="about_debt">
+                    <h2>
+                        11.借金・ローン
+                    </h2>
+                    <div class="input__container">
+                        <div id="form_loan" th:switch="${#lists.isEmpty(loanForm.loanFormWrapper)}">
+                            <div th:case="true" class="form_loan_column">
+                                <div class="input__box">
+                                    <div class="title">
+                                        借入先
+                                    </div>
+                                    <input class="loanTarget" type="text" th:field="*{loanFormWrapper[0].target}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        電話番号
+                                    </div>
+                                    <input type="text" th:field="*{loanFormWrapper[0].tel}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        借入先の郵便番号
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <input class="post" type="text" th:field="*{loanFormWrapper[0].postCode1}"/>
+                                        </li>
+                                        <li><p>-</p></li>
+                                        <li>
+                                            <input class="post" type="text" th:field="*{loanFormWrapper[0].postCode2}"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        借入先の住所
+                                    </div>
+                                    <input type="text" th:field="*{loanFormWrapper[0].address}"/>
+                                </div>
+                                <div class="input__box input_date">
+                                    <div class="title">
+                                        借入日
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <input type="number" th:field="*{loanFormWrapper[0].dateY}"/>
+                                        </li>
+                                        <li><p>年</p></li>
+                                        <li>
+                                            <input type="number" th:field="*{loanFormWrapper[0].dateM}"/>
+                                        </li>
+                                        <li><p>月</p></li>
+                                        <li>
+                                            <input type="number" th:field="*{loanFormWrapper[0].dateD}"/>
+                                        </li>
+                                        <li><p>日</p></li>
+                                    </ul>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        借入額
+                                    </div>
+                                    <input type="number" th:field="*{loanFormWrapper[0].amount}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        返済方法
+                                    </div>
+                                    <textarea th:field="*{loanFormWrapper[0].refundMethod}"></textarea>
+                                </div>
+                                <div class="list_inner">
+                                    <h3>
+                                        担保について
+                                    </h3>
+                                    <div class="input__container">
+                                        <div class="collateral_list">
+                                            <div class="collateralList" data-loan="0" data-collateralid="0">
+                                                <div class="input__box">
+                                                    <div class="title">
+                                                        担保に取られているもの
+                                                    </div>
+                                                    <input type="text"
+                                                           th:field="*{loanFormWrapper[0].collateraliseFormWrapper[0].name}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="button_add_item">
+                                            <a href="javascript:;" data-loan="0" class="addCollateral">
+                                                <img height="131" width="857"
+                                                     th:src="@{/images/button/button_add_taken_list.jpg}"/>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        借入残高（いつの時点でいくらか）
+                                    </div>
+                                    <input type="text" th:field="*{loanFormWrapper[0].balance}"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        借入目的
+                                    </div>
+                                    <textarea th:field="*{loanFormWrapper[0].purpose}"></textarea>
+                                </div>
+                            </div>
+                            <div class="button_box del_box">
+
+                            </div>
+                            <div th:case="false" class="form_loan_column" th:attr="id='LoanListId_' + ${loanForm.loanId}" >
+                                <div th:each="loan,ln:${loanForm.loanFormWrapper}">
+                                    <input type="hidden"
+                                           th:attr="name='loanFormWrapper['+${ln.index}+'].loanId'"
+                                           th:value="${loan.loanId}"/>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            借入先
+                                        </div>
+                                        <input type="text"
+                                               th:attr="name='loanFormWrapper['+${ln.index}+'].target'"
+                                               th:value="${loan.target}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            電話番号
+                                        </div>
+                                        <input type="text"
+                                               th:attr="name='loanFormWrapper['+${ln.index}+'].tel'"
+                                               th:value="${loan.tel}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            借入先の郵便番号
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <input type="post"
+                                                       th:attr="name='loanFormWrapper['+${ln.index}+'].postCode1'"
+                                                       th:value="${loan.postCode1}"/>
+                                            </li>
+                                            <li><p>-</p></li>
+                                            <li>
+                                                <input type="post"
+                                                       th:attr="name='loanFormWrapper['+${ln.index}+'].postCode2'"
+                                                       th:value="${loan.postCode2}"/>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            借入先の住所
+                                        </div>
+                                        <input type="text"
+                                               th:attr="name='loanFormWrapper['+${ln.index}+'].address'"
+                                               th:value="${loan.address}"/>
+                                    </div>
+                                    <div class="input__box input_date">
+                                        <div class="title">
+                                            借入日
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <input type="number"
+                                                       th:attr="name='loanFormWrapper['+${ln.index}+'].dateY'"
+                                                       th:value="${loan.dateY}"/>
+                                            </li>
+                                            <li><p>年</p></li>
+                                            <li>
+                                                <input type="number"
+                                                       th:attr="name='loanFormWrapper['+${ln.index}+'].dateM'"
+                                                       th:value="${loan.dateM}"/>
+                                            </li>
+                                            <li><p>月</p></li>
+                                            <li>
+                                                <input type="number"
+                                                       th:attr="name='loanFormWrapper['+${ln.index}+'].dateD'"
+                                                       th:value="${loan.dateD}"/>
+                                            </li>
+                                            <li><p>日</p></li>
+                                        </ul>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            借入額
+                                        </div>
+                                        <input type="text"
+                                               th:attr="name='loanFormWrapper['+${ln.index}+'].amount'"
+                                               th:value="${loan.amount}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            返済方法
+                                        </div>
+                                        <textarea th:inline="text"
+                                                  th:attr="name='loanFormWrapper['+${ln.index}+'].refundMethod'">[[${loan.refundMethod}]]</textarea>
+                                    </div>
+                                    <div class="list_inner">
+                                        <h3>
+                                            担保について
+                                        </h3>
+                                        <div class="input__container">
+                                            <div class="collateral_list">
+                                                <div class="collateralList"
+                                                     th:attr="data-loan=${ln.index},data-columnid=${cl.index}"
+                                                     th:if="${not #lists.isEmpty(loan.collateraliseFormWrapper)}"
+                                                     th:each="collateral,cl:${loan.collateraliseFormWrapper}">
+                                                    <div class="input__box">
+                                                        <div class="title">
+                                                            担保に取られているもの
+                                                        </div>
+                                                        <input type="hidden" class="collateralId"
+                                                               th:attr="name='loanFormWrapper['+${ln.index}+'].collateraliseFormWrapper['+${cl.index}+'].collateralId'"
+                                                               th:value="${collateral.collateralId}"/>
+                                                        <input type="text" class="collateralName"
+                                                               th:attr="name='loanFormWrapper['+${ln.index}+'].collateraliseFormWrapper['+${cl.index}+'].name'"
+                                                               th:value="${collateral.name}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="button_add_item">
+                                                <a href="javascript:;"
+                                                   th:attr="data-loan=${ln.index}"
+                                                   class="addCollateral">
+                                                    <img height="131" width="857"
+                                                         th:src="@{/images/button/button_add_taken_list.jpg}"
+                                                    />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            借入残高（いつの時点でいくらか）
+                                        </div>
+                                        <input type="text"
+                                               th:attr="name='loanFormWrapper['+${ln.index}+'].balance'"
+                                               th:value="${loan.balance}"
+                                        />
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            借入目的
+                                        </div>
+                                        <input type="text"
+                                               th:attr="name='loanFormWrapper['+${ln.index}+'].purpose'"
+                                               th:value="${loan.purpose}"
+                                        />
+                                    </div>
+                                    <div class="button_box del_box">
+                                        <a href="javascript:;" class="delete_list right">
+                                            <img height="131" width="857"
+                                                 src="/images/button/btn_del_column.jpg"
+                                                 th:attr="onclick='deleteLoan('+${loan.loanId}+')'"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="javascript:;" class="add_list add_loan_list">リストを追加</a>
+                    </div>
+                    <div class="button_box">
+                        <button type="submit" th:if="${aboutMeViewFlag==0}">
+                            <img height="147" width="1040"
+                                 th:src="@{/images/button/button_save.jpg}"
+                            />
+                        </button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    /*<![CDATA[*/
+
+    $(document).on('click', ".add_loan_list", function () {
+        var loanIndex = $("#form_loan>.form_loan_column").length;
+        var parent = document.getElementById("form_loan");
+        var newLoan =
+            '<div class="form_loan_column">' +
+            '                           <div class="input__box">' +
+            '                                <div class="title">' +
+            '                                    借入先' +
+            '                                </div>' +
+            '                                <input type="text" name="loanFormWrapper[' + loanIndex + '].target"/>' +
+            '                            </div>' +
+            '                            <div class="input__box">' +
+            '                                <div class="title">' +
+            '                                    電話番号' +
+            '                                </div>' +
+            '                                <input type="text" name="loanFormWrapper[' + loanIndex + '].tel"/>' +
+            '                            </div>' +
+            '                            <div class="input__box">' +
+            '                                <div class="title">' +
+            '                                    借入先の郵便番号' +
+            '                                </div>' +
+            '                                <ul>' +
+            '                                    <li>' +
+            '                                        <input class="post" type="text" name="loanFormWrapper[' + loanIndex + '].postCode1"/>' +
+            '                                    </li>' +
+            '                                    <li>' +
+            '                                        <p>' +
+            '                                            -' +
+            '                                        </p>' +
+            '                                    </li>' +
+            '                                    <li>' +
+            '                                        <input class="post" type="text" name="loanFormWrapper[' + loanIndex + '].postCode2"/>' +
+            '                                    </li>' +
+            '                                </ul>' +
+            '                            </div>' +
+            '                            <div class="input__box">' +
+            '                                <div class="title">' +
+            '                                    借入先の住所' +
+            '                                </div>' +
+            '                                <input type="text" name="loanFormWrapper[' + loanIndex + '].address"/>' +
+            '                            </div>' +
+            '                            <div class="input__box input_date">' +
+            '                                <div class="title">' +
+            '                                    借入日' +
+            '                                </div>' +
+            '                                <ul>' +
+            '                                    <li>' +
+            '                                        <input  type="number" name="loanFormWrapper[' + loanIndex + '].dateY"/>' +
+            '                                    </li>' +
+            '                                    <li>' +
+            '                                        <p>' +
+            '                                            年' +
+            '                                        </p>' +
+            '                                    </li>' +
+            '                                    <li>' +
+            '                                        <input  type="number" name="loanFormWrapper[' + loanIndex + '].dateM"/>' +
+            '                                    </li>' +
+            '                                    <li>' +
+            '                                        <p>' +
+            '                                            月' +
+            '                                        </p>' +
+            '                                    </li>' +
+            '                                    <li>' +
+            '                                        <input type="number" name="loanFormWrapper[' + loanIndex + '].dateD"/>' +
+            '                                    </li>' +
+            '                                    <li>' +
+            '                                        <p>' +
+            '                                            日' +
+            '                                        </p>' +
+            '                                    </li>' +
+            '                                </ul>' +
+            '                            </div>' +
+            '                            <div class="input__box">' +
+            '                                <div class="title">' +
+            '                                    借入額' +
+            '                                </div>' +
+            '                                <input type="number" name="loanFormWrapper[' + loanIndex + '].amount"/>' +
+            '                            </div>' +
+            '                            <div class="input__box">' +
+            '                                <div class="title">' +
+            '                                    返済方法' +
+            '                                </div>' +
+            '                                <textarea name="loanFormWrapper[' + loanIndex + '].refundMethod"></textarea>' +
+            '                            </div>' +
+            '                            <div class="list_inner">' +
+            '                                <h3>' +
+            '                                    担保について' +
+            '                                </h3>' +
+            '                                <div class="input__container">' +
+            '                                    <div class="collateral_list">' +
+            '                                        <div class="collateralList" data-loan="' + loanIndex + '" data-collateralid="0">' +
+            '                                            <div class="input__box">' +
+            '                                                <div class="title">' +
+            '                                                    担保に取られているもの' +
+            '                                                </div>' +
+            '                                                <input type="text" name="loanFormWrapper[' + loanIndex + '].collateraliseFormWrapper[0].name"/>' +
+            '                                            </div>' +
+            '                                        </div>' +
+            '                                    </div>' +
+            '                                    <div class="button_add_item">' +
+            '                                        <a href="javascript:;" data-loan="' + loanIndex + '" class="addCollateral">' +
+            '                                            <img height="131" width="857"' +
+            '                                                 src="/images/button/button_add_taken_list.jpg"' +
+            '                                            />' +
+            '                                        </a>' +
+            '                                    </div>' +
+            '                                </div>' +
+            '                            </div>' +
+            '                            <div class="input__box">' +
+            '                                <div class="title">' +
+            '                                    借入残高（いつの時点でいくらか）' +
+            '                                </div>' +
+            '                                <input type="text" name="loanFormWrapper[' + loanIndex + '].balance"/>' +
+            '                            </div>' +
+            '                            <div class="input__box">' +
+            '                                <div class="title">' +
+            '                                    借入目的' +
+            '                                </div>' +
+            '                                <textarea name="loanFormWrapper[' + loanIndex + '].purpose"></textarea>' +
+            '                            </div>' +
+            ' <div class="button_box del_box"><a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '         <br /><br /><br />\n' +
+            '         <hr /></div></div>' +
+        '</div>';
+
+        if ($(".del_box").length == 1) {
+            $(".del_box:first").append('<a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        parent.insertAdjacentHTML('beforeend', newLoan);
+    });
+
+    $(document).on('click', '.addCollateral', function () {
+        var loanParentIndex = $(this).parent().parent().find('.collateralList').data('loan');
+        var collateralIndex = $(this).parent().parent().find('.collateralList').length;
+        var parent = $(this).parent().parent().find('.collateral_list');
+        var newChild =
+            '<div class="collateralList" data-loan="' + loanParentIndex + '" data-collateralid="' + collateralIndex + '">' +
+            '<div class="input__box">' +
+            '<div class="title">' +
+            '担保に取られているもの' +
+            '</div>' +
+            '<input type="text" ' +
+            '               name="loanFormWrapper[' + loanParentIndex + '].collateraliseFormWrapper[' + collateralIndex + '].name"/>' +
+            '</div>' +
+            '</div>';
+        parent.append(newChild);
+    });
+
+    deleted = 0;
+    function deleteLoan(id,element) {
+        $("#confirmDialog").dialog({
+            modal: true,
+            title: "削除をしても宜しいでしょうか。",
+            buttons: {
+                "OK": function () {
+                    $.ajax({
+                        type : "DELETE",
+                        url : "/property/loans/delete/"+id,
+                        success: function (result) {
+                            $("#confirmDialog").dialog("close");
+                            $("#LoanListId_"+id).remove();
+                            location.reload();
+                            deleted++;
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                },
+                "キャンセル": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }
+    /*]]>*/
+</script>

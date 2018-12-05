@@ -1,0 +1,429 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#member_signup,#accountlogin2{
+	background: #f2f2f2;
+	.inner{
+		width: 1040px;
+		margin: 0 auto;
+		padding: 135px 0 356px;
+		box-sizing: border-box;
+		a{
+			text-decoration: none;
+		}
+		.wrapper_input{
+			width:959px;
+			margin:0 auto;
+		}
+		.input_box{
+			margin-bottom: 51px;
+			p{
+				margin-bottom: 35px;
+				padding-left: 65px;
+				font-size: 60px;
+				font-weight: bold;
+				line-height: 50px;
+				color: #498af2;
+			}
+			h3{
+				margin-bottom: 30px;
+				font-size: 60px;
+				font-weight: bold;
+				line-height: 50px;
+				color: #ff8431;
+			}
+			input[type=text], input[type=password]{
+				width: 959px;
+				margin:0 auto;
+				padding: 32px 0 32px 61px;
+				border: 3px solid #2f2f2f;
+				border-radius: 10px;
+				font-size: 60px;
+				font-weight: bold;
+				line-height: 72px;
+				letter-spacing: 0.12em;
+				box-sizing: border-box;
+			&::-webkit-input-placeholder{
+					color: #dcdcdc;
+					font-weight: bold;
+				}	
+			}
+		}//input_box
+		.address_box{
+			width: 959px;
+			margin: 0 auto 51px;
+			padding: 32px 0 32px 61px;
+			background: #fff;
+			border: 3px solid #2f2f2f;
+			border-radius: 10px;
+			box-sizing: border-box;
+			p{
+				font-size: 45px;
+				line-height: 60px;
+				letter-spacing: 0.04em;		
+			}
+		}
+		.note, .pass_note{
+			margin-bottom: 50px;
+			font-size: 45px;
+			font-weight: 60px;
+			letter-spacing: -0.04em;
+			span{
+				font-size: 58px;
+				font-weight: bold;
+			}
+		}
+		.pass_contact{
+			text-align: right;
+			margin-bottom: 40px;
+			font-weight: bold;
+			font-size:45px;
+			color:#498af2;
+		}
+		.login_link{
+			display: block;
+			margin-bottom: 51px;
+			text-align: center;
+			font-size: 61px;
+			font-weight: bold;
+			line-height: 50px;
+			color: #000;
+			padding: 30px 0;
+			box-sizing: border-box;
+			span{
+				color: #ff0000;
+				font-weight: bold;
+			}
+		}
+		.checkbox{
+		margin-bottom: 23px;
+			margin-left: 58px;
+			font-size: 50px;
+			font-weight: bold;
+		  	position: relative;
+		  input#check01,input#check02,input#check03{
+		    position: absolute;
+		    top: 0;
+		    opacity: 0;
+				&[type="checkbox"] ~ label {
+			    display: block;
+			    background-image: url(../images/icon/checkbox_off.png);
+			    background-size: 55px;
+			    background-position: left center;
+			    background-repeat: no-repeat;
+			    padding: 4px 0 0 88px;
+			    font-weight: bold;
+			    a,span{
+			    	font-weight: bold;
+			    }
+			    a{
+			    	color: #ff0000;
+			    }
+				}
+				&[type="checkbox"]:checked ~ label {
+			    background-image: url(../images/icon/checkbox_on.png);
+				}
+		  }
+		  &:last-of-type{
+		  	margin-bottom: 50px;
+		  }
+		}//checkbox
+	}//inner
+}//#accountlogin2
+
+#account_pswd_reset,#deactivation_procedure{
+	.inner{
+		background: #f2f2f2;
+	}
+	.summary{
+		width: 980px;
+		margin: 0 auto;
+		.title{
+			font-size: 60px;
+			font-weight: bold;
+			margin-top: 70px;
+			margin-bottom: 50px;
+			letter-spacing: 0.05em;
+		}//.title
+		.desc{
+			margin-bottom: 80px;
+			p{
+				padding-right: 60px;
+				box-sizing: border-box;
+				font-size: 45px;
+				line-height: 1.6;
+				letter-spacing: 0.05em;
+				font-weight: bold;
+			}
+		}//desc
+		.mail_input{
+			margin-top: 85px;
+			p:last-child{
+				margin-top: 90px;
+			}
+		}
+	}//summary
+
+	.mail_input{
+		span{
+			font-size: 60px;
+			font-weight: bold;
+			color: #ff8431;
+			line-height: 0.88;
+		}
+	  input[type=text]{
+	    width:100%;
+	    border:3px solid #000;
+	    font-size: 50px;
+	    border-radius:4px;
+	    margin:8px 0;
+	    outline:none;
+	    padding:8px;
+	    height: 140px;
+	    box-sizing:border-box;
+	    transition:.3s;
+	  }
+
+	  .inputWithIcon input[type=text]{
+	    padding-left:160px;
+	  }
+	  
+	  .inputWithIcon{
+	    position:relative;
+	    margin-bottom: 90px;
+	    margin-top: 30px;
+	  }
+	  
+	  .inputWithIcon i{
+	    position:absolute;
+	    left:50px;
+	    top:41px;
+	    color:#aaa;
+	    transition:.3s;
+	  }
+	  
+	  .inputWithIcon input[type=text]:focus + i{
+	    color:#ff8431;
+	  }
+	  
+	  .mail{
+	  	font-size: 75px;
+	  }
+
+	  .inputWithIcon.inputIconBg i{
+	    background-color:#aaa;
+	    color:#fff;
+	    padding:9px 4px;
+	    border-radius:4px 0 0 4px;
+	  }
+	}//mail_input
+
+  .btn{
+  	width: 1040px;
+  	margin: 0 auto;
+  	padding-bottom: 500px;
+  	box-sizing: border-box;
+  }
+}//#account_pswd_reset
+
+#member_signup{
+	.inner{
+		.input_box{
+			.pass_note{
+				margin-top: 20px;
+				margin-bottom: 50px;
+				padding: 0;
+				font-size: 45px;
+				font-weight: 60;
+				color: #000;
+				line-height: 1.5;
+				letter-spacing: -0.04em;
+			}
+			.btn{
+				margin-top: 51px;
+			}
+		}
+		.note{
+			margin-bottom: 40px;
+		}	
+	}
+  .checkbox{
+		margin-bottom: 23px;
+		margin-left: 58px;
+		font-size: 50px;
+		font-weight: bold;
+	  	position: relative;
+	  input#check01,input#check02,input#check03{
+	    position: absolute;
+	    top: 0;
+	    opacity: 0;
+			&[type="checkbox"] ~ label {
+		    display: block;
+		    background-image: url(../images/icon/checkbox_off.png);
+		    background-size: 55px;
+		    background-position: left center;
+		    background-repeat: no-repeat;
+		    padding: 4px 0 0 88px;
+		    font-weight: bold;
+		    a,span{
+		    	font-weight: bold;
+		    }
+		    a{
+		    	color: #ff0000;
+		    }
+			}
+			&[type="checkbox"]:checked ~ label {
+		    background-image: url(../images/icon/checkbox_on.png);
+			}
+	  }
+	  &:last-of-type{
+	  	margin-bottom: 50px;
+	  }
+	}//checkbox
+}//member_signup
+
+#account_input_credit{
+	background: #f2f2f2;
+	.inner{
+		width: 1130px;
+		margin: 0 auto;
+		padding: 47px 0 104px;
+		box-sizing: border-box;
+		.alert{
+			padding: 28px 58px 74px 65px;
+			border: 2px solid #ff0000;
+			background-color: #fff;
+			box-sizing: border-box;
+			h2{
+				text-align: center;
+				margin-bottom: 64px;
+				font-size: 45px;
+				font-weight: bold;
+				color: #f20000;
+				&::before{
+					content: url(../../assets/images/icon/icon_alert.png);
+					display: inline-block;
+					vertical-align: middle;
+				}
+			}
+			li{
+				padding: 47px 0 44px;
+				font-size: 45px;
+				border-bottom: 1px solid #a4a4a4;
+				&:first-of-type{
+					padding-top: 0;
+				}
+				&:last-of-type{
+					border-bottom: none;
+					padding-bottom: 0;
+				}
+			}
+		}//alert
+		.title{
+			margin: 65px 0 32px;
+			text-align: center;
+			font-size: 55px;
+			font-weight: bold;
+		}
+		.credit_info_box{
+			padding: 32px 30px 36px;
+			border: 2px solid #000;
+			background-color: #fff;
+			box-sizing: border-box;
+			.input_box{
+				width: 1054px;
+				margin-bottom: 35px; 
+				h3{
+					margin-bottom: 30px;
+					font-size: 45px;
+					line-height: 1;
+					font-weight: bold;
+				}
+				input[type=text], select{
+					width: 1054px;
+					height: 140px;
+					font-size: 45px;
+					background-color: #ffe0e0;
+					border: 2px solid #ff0000;
+					border-radius: 10px;
+					box-sizing: border-box;
+				}
+			}
+			.input_num{
+				.note{
+					margin-bottom: 23px;
+					font-size: 45px;
+					line-height: 50px;
+				}
+				input[type=text]{
+					width: 234px;
+					height: 140px;
+				}
+				ul{
+					li{
+						float: left;
+					}
+				}
+				.num_list{
+					p{
+						margin: 46px 12px 0;
+						font-size: 45px;
+					}
+				}
+				.date_list{
+					p{
+						margin: 52px 41px 0;
+						font-size: 45px;
+					}
+				}
+			}//input_num
+			.check_register{
+				width: 950px;
+				position: relative;
+				display: inline-block;
+				input#check{
+			  	font-size: 50px;
+			    position: absolute;
+			    top: 0;
+			    opacity: 0;
+			    width: 100%;  
+			    height: 100%;
+					&[type="checkbox"] + label {
+				    display: block;
+				    background-image: url(../images/icon/checkbox_off.png);
+				    background-size: 55px;
+				    background-position: left center;
+				    background-repeat: no-repeat;
+				    padding: 4px 0 0 88px;
+					}
+					&[type="checkbox"]:checked + label {
+				    background-image: url(../images/icon/checkbox_on.png);
+					}
+			  }
+		  	label{
+		  		font-size: 45px;
+	  			letter-spacing: -0.04em;
+		  		font-weight: bold;
+		  	}
+			}
+			.card_list{
+				margin: 13px 0 43px;
+				text-align: right;
+				a{
+					font-size: 45px;
+					color: #498af2;
+					text-decoration: none;
+					&::after{
+						padding-left: 36px;
+						content: url(../../assets/images/icon/icon_pull.png);
+						display: inline-block;
+						vertical-align: middle;
+					}
+				}
+			}
+		}//credit_info_box
+	}//inner
+}//account_input_credit クレジットカード情報入力　アカウント入力画面　

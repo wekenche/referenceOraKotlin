@@ -1,0 +1,51 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#ending-yuigon3
+				.page_label
+					h2 私のこと
+				.inner
+					.button_box
+						a href="ending-yuigon4.html"
+							img src="./assets/images/button/btn_about_drug.png" width="1118" height="310" alt="お薬のこと"
+						a href="ending-yuigon5.html"
+							img src="./assets/images/button/btn_about_identification.png" width="1118" height="310" alt="身分証明"
+						a href="ending-yuigon5.html"
+							img src="./assets/images/button/btn_about_collection.png" width="1118" height="310" alt="宝物やコレクションについて"
+						a href="ending-yuigon5.html"
+							img src="./assets/images/button/btn_about_house.png" width="1118" height="310" alt="家のこと"
+						a href="ending-yuigon5.html"
+							img src="./assets/images/button/btn_about_mywork.png" width="1118" height="310" alt="自分の仕事について"
+						a.original href="ending-yuigon5.html"
+							.box
+								.btn_inner
+									img src="./assets/images/icon/icon_add_category.png" width="181" height="181"
+									#original_category オリジナルカテゴリ1
+						a href="ending-yuigon5.html"
+							img src="./assets/images/button/btn_about_livingneeds.png" width="1118" height="310" alt="リビングニーズ"
+						a href="ending-yuigon5.html"
+							img src="./assets/images/button/btn_about_limit.png" width="1118" height="310" alt="期日について"
+						a.original href="ending-yuigon5.html"
+							.box
+								.btn_inner
+									img src="./assets/images/icon/icon_add_category.png" width="181" height="181"
+									#original_category オリジナルカテゴリ1
+						a.original href="ending-yuigon5.html"
+							.box
+								.btn_inner
+									img src="./assets/images/icon/icon_add_category.png" width="181" height="181"
+									#original_category オリジナルカテゴリ2オリジナルカテゴリ2オリジナルカテゴリ2
+					h3 カテゴリーを追加
+					input type="text" value="" placeholder="タイトル入力"
+					a href="ending-yuigon5.html"
+						img.button_add src="./assets/images/button/button_add.jpg" width="371" height="111"
+					
+					== Slim::Template.new('./templates/_banner.slim').render
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

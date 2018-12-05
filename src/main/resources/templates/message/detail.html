@@ -1,0 +1,65 @@
+<!--message_record_article.html-->
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="message_record_confirm">
+            <!--/*@thymesVar id="message" type="ora.leadlife.co.jp.model.Message"*/-->
+            <div class="inner">
+                <div class="inner_video">
+
+                    <!--/*@thymesVar id="messageAttachment" type="List<ora.leadlife.co.jp.model.MessageAttachment>"*/-->
+                    <!--/*@thymesVar id="attachment" type="ora.leadlife.co.jp.model.MessageAttachment"*/-->
+                    <!--/*@thymesVar id="#uploadedImage" type="ora.leadlife.co.jp.helper.UploadedImage"*/-->
+                    <div th:each="attachment : ${messageAttachment}">
+                        <div class="video"  th:if="${attachment.fileType ==T(ora.leadlife.co.jp.config.FileType).MOVIE.name()}">
+                            <video th:src="${#uploadedImage.build(attachment.filePath)}" width="100%" controls="true" autoplay="true" />
+                        </div>
+                        <div class="video"  th:if="${attachment.fileType ==T(ora.leadlife.co.jp.config.FileType).PICTURE.name()}">
+                            <img th:src="${#uploadedImage.build(attachment.filePath)}"
+                                 th:attr="onclick='confirmDeleteImage(\'/message/attachment/delete/' + ${attachment.id} + '\')'"
+                                 width="100%" class="attachment"/>
+                        </div>
+                    </div>
+                    <div class="comment_box">
+                        <div class="comment">
+                            <p th:utext="${#strings.replace( #strings.escapeXml( message.comment ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}" ></p>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                DEV 201803260559
+                if the owner of message, please hide.
+                the button is for change the message.
+                so input1,input2 read the message and set it to input field.
+                 -->
+                <div th:if="${id == message.account.id}">
+                    <div class="btn edit">
+                        <a th:href="@{'~/message/input1?messageId=' + ${message.id}}"><img src="./assets/images/button/button_edit.jpg" width="1045" th:src="@{/images/button/btn_edit.png}"/></a>
+                    </div>
+                    <div class="btn finish">
+                        <a href="javascript:;" th:attr="onclick='confirmAction(\'/message/delete/' + ${message.id} + '\',\'削除をしても宜しいでしょうか。\')'"><img src="./assets/images/button/button_edit.jpg" width="1045" th:src="@{/images/button/btn_delete.png}"/></a>
+                    </div>
+                    <div class="btn finish">
+                        <a th:href="@{'~/message/list'}"><img src="./assets/images/button/button_paid_back.jpg" width="1045" th:src="@{/images/button/btn_back.jpg}"/></a>
+                    </div>
+                </div>
+                <div id="bnr_paying_merit">
+                    <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                         th:src="@{/images/common/banner.png}" width="1040" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

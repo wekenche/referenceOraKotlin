@@ -1,0 +1,22 @@
+doctype html
+html lang="ja"
+	- $pageNo = 3;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "何度か繰り返して下さい", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#fingerprint_registration_start
+	  		.page_label 何度か繰り返してください
+	  		.inner.cf
+	  			p
+	  				|
+	  					指を少しずつ動かして、指紋全体を登録するようにしてください。
+	  			figure
+	  				img src="./assets/images/finger/fingerprint_dummy.png" width="635" height="635"
+	  			.message
+	  				p 指を離してから、もう一度センサーに<br />触れてください
+
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

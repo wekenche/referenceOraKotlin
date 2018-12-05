@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="" src="./assets/images/header/header_paying_membersunt.png" width="712"
+       th:src="@{/images/header/header_paying_membersunt.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="accout_deactivation_procedure">
+        <div class="inner">
+            <div class="title">
+                  Apple ID決済の自動更新登録をオフにする
+            </div>
+            <div class="text__area">
+                <p>
+                    iPhoneアプリよりApple ID決済をご利用のお客様は、下記の手順で自動継続決済の解約（自動更新登録のオフ）ができます。
+                </p>
+                <p>
+                    Apple IDの仕様により「登録の終了日の0:00」の24時間以上前に自動更新をオフにしなければ、継続決済は自動的に更新されます。
+                </p>
+                <p>
+                    更新タイミング・下記手順の詳細についてはAppleへお問い合わせください。
+                </p>
+            </div>
+        <div class="title">
+            会員情報更新タイミング
+        </div>
+        <div class="text__area">
+            <p>
+                Apple ID決済の自動更新登録情報を解約しても、次回更新日までは有料会員プランをご利用になれます。<br />
+                また、更新日が経過しても、Apple社からの決済情報の反映が遅延した場合、更新日が過ぎても、会員情報更新のために最大4日お時間を要する場合がございます。
+            </p>
+            <p>
+                この期間中は会員ステータスが変わらず、猶予期間終了後に自動的に会員ステータスが変更されます。
+            </p>
+        </div>
+        <div class="title">
+            iPhoneからの手順 概要
+        </div>
+        <div class="text__area">
+            <ul>
+                <li>
+                    <div class="procedure">
+                        1.iPhoneで「設定」をタップ
+                    </div>
+                </li>
+                <li>
+                    <div class="procedure">
+                        2.iTunes StoreとApp Store」をタップ
+                    </div>
+                </li>
+                <li>
+                    <div class="procedure">
+                        3.「Apple ID」をタップ
+                    </div>
+                </li>
+                <li>
+                    <div class="procedure">
+                        4.ポップアップ画面で「Apple IDを表示」をタップ
+                    </div>
+                </li>
+                <li>
+                    <div class="procedure">
+                        5.「登録」をタップ
+                    </div>
+                    <p>
+                        ※「登録」メニューが表示されない場合は、Apple ID決済にて自動更新の有料会員への登録はされていません。
+                    </p>
+                </li>
+                <li>
+                    <div class="procedure">
+                        6.「生前整理アプリ」をタップ
+                    </div>
+                    <p>
+                        ※他に登録しているアプリがない場合は直接7へ移動します。
+                    </p>
+                    <p>
+                        ※生前整理アプリの有効な登録がない場合、生前整理アプリの自動更新登録（継続的なご請求）は行われておりません。
+                    </p>
+                    <p>
+                        ※登録内容が表示されないのに決済が発生している場合は、Apple IDを複数お持ちでないかご確認のうえ、決済時にご利用されたApple IDにサインインしているかご確認ください。
+                    </p>
+                </li>
+                <li>
+                    <div class="procedure">
+                        7.「登録をキャンセルする」をタップ、次に「確認」をタップ
+                    </div>
+                    <p class="red">
+                        詳細情報は<a href="https://support.apple.com/ja-jp/HT202039">こちら</a>をご確認ください。
+                    </p>
+                    <p>
+                        ※こちらの手続きを行わない限り、自動決済は停止されません。
+                    </p>
+                    <p>
+                        ※こちらの対応を踏んでいない場合、意図せず自動決済が行われても弊社では一切の責任を負いません事をご了承願います。
+                    </p>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

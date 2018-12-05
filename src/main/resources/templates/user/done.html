@@ -1,0 +1,40 @@
+<!--usrpict_finish.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_userpass.png" width="712"
+         th:src="@{/images/header/header_userpass.png}"/>
+</div>
+<div layout:fragment="main">
+
+    <div id="container">
+        <div id="change_complete">
+            <div class="inner cf">
+                <div class="message">
+                    <div class="status">
+                        変更が完了しました
+                    </div>
+                    <div class="icon">
+                        <img height="212" src="./assets/images/icon/icon_checkbox.png"
+                             width="212"
+                             th:src="@{/images/icon/icon_checkbox.png}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

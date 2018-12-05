@@ -1,0 +1,161 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#accout_admin_input{
+	background: #f2f2f2;
+	.inner{
+		padding-top: 160px;
+		.input{
+			width: 972px;
+			margin: 0 auto;
+		}
+	}//inner
+	.mail_input{
+		span{
+			font-size: 60px;
+			font-weight: bold;
+			color: #ff8431;
+			line-height: 0.88;
+		}
+	  input[type=text],input[type=password]{
+	    width:100%;
+	    border:3px solid #000;
+	    font-size: 50px;
+	    border-radius:4px;
+	    margin:8px 0;
+	    outline:none;
+	    padding:8px;
+	    height: 140px;
+	    box-sizing:border-box;
+	    transition:.3s;
+			margin-top: 45px;
+			margin-bottom: 42px;
+	  }
+
+	  .inputWithIcon input[type=text],input[type=password]{
+	    padding-left:23px;
+	  }
+	 	.inputWithIcon:last-of-type{
+	 		margin-bottom: 150px;
+	 	}
+	}//mail_input
+	.btn{
+		width: 1062px;
+		margin: 0 auto;
+		padding-bottom: 656px;
+		box-sizing: border-box;
+		a{
+			display: block;
+		}
+	}//.btn
+}//##accout_deactivation_procedure_input　無料会員へ移行
+
+#accout_admin_confirm{
+	background: #f2f2f2;
+	.inner{
+		width: 1064px;
+		margin: 0 auto;
+		padding-top: 160px;
+		padding-bottom: 565px;
+		box-sizing: border-box;
+		.input{
+			select{
+				width: 1040px;
+				height: auto;
+				margin: 0 auto;
+				font-size: 45px;
+				border: 7px solid #ff8431;
+				border-radius: 10px;
+				option{
+					text-align: center;
+					padding: 80px 0;
+					border-bottom: 1px solid #a4a4a4;
+					&:last-child{
+						border-bottom: 0;
+					}
+				}
+			}
+			ul{
+				font-size: 45px;
+				width: 1040px;
+				height: auto;
+				background: #fff;
+				border: 7px solid #ff8431;
+				border-radius: 10px;
+				li{
+					padding: 80px 0;
+					box-sizing:border-box;
+					text-align: center;
+					border-bottom: 1px solid #a4a4a4;
+					&:last-child{
+						border-bottom: 0;
+					}
+				}
+			}
+		}//input
+		.user_add,.category_add{
+			margin-top: 70px;
+			.title,.label{
+				font-size: 45px;
+				font-weight: bold;
+			}
+			.title{
+				text-align: center;
+				margin-bottom: 60px;
+			}
+			input{
+				width: 1040px;
+		    border: 7px solid #ff8431;
+		    border-radius: 10px;
+		    font-size: 45px;
+		    padding: 10px;
+		    box-sizing: border-box;
+			}
+			.users{
+				position: relative;
+				select{
+					font-size: 45px;
+					border: 7px solid #ff8431;
+					border-radius: 10px;
+					width: 1040px;
+					padding: 0 30px 0 21px;
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					appearance: none;
+					position: relative;
+					background: #fff;
+				}
+				&:after{
+					display: block;
+					content: " ";
+					position: absolute;
+					top: 45%;
+					right: 61px;
+					width: 41px;
+					height: 27px;
+					margin-top: -8px;
+					background: url(../images/icon/icon_pull.png) 0 0 no-repeat;
+					background-size: 41px;
+					pointer-events: none;
+				}
+			}
+		}
+		.add_delete{
+			margin-top: 100px;
+			a{
+				&:first-of-type{
+					float: left;
+				}
+				&:last-of-type{
+					float: right;
+				}
+			}
+		}//add_delete
+		.btn.decision{
+			margin-top: 40px;
+		}
+	}//inner
+}//#accout_admin_confirm

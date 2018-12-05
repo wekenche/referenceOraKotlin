@@ -1,0 +1,7 @@
+ALTER TABLE forums
+  ADD name VARCHAR(254) NOT NULL DEFAULT ''
+COMMENT '名前';
+
+ALTER TABLE forums
+  ADD comment_count INT NOT NULL DEFAULT 0
+COMMENT 'コメント数';

@@ -1,0 +1,70 @@
+<!--bbs_list.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div id="container">
+    <div layout:fragment="headerImage">
+        <img alt="" src="./assets/images/header/header_bbs.png" width="712"
+             th:src="@{/images/header/header_bbs.png}"/>
+    </div>
+    <div layout:fragment="main">
+        <div id="bbs_list">
+            <div class="page_label">
+                スレッド一覧
+            </div>
+            <div class="inner cf">
+
+                <div class="post_input">
+                    <!--/*@thymesVar id="forumCommentForm" type="ora.leadlife.co.jp.form.ForumCommentForm"*/-->
+                    <form th:action="@{/bbs/writeReply}" method="post" th:object="${forumCommentForm}">
+                        <div class="inner">
+                            <div class="title">
+                                レスを投稿する
+                            </div>
+                            <div class="post_detail">
+                                <!-- DEV 201803260607
+                                  default name is user#name
+                                -->
+                                <div class="name">
+                                    <span>名前</span><input type="text" th:field="*{name}"/>
+                                    <ul th:each="error : ${#fields.errors('name')}" class="error">
+                                        <li th:text="${error}"></li>
+                                    </ul>
+                                </div>
+                                <div class="text">
+                                    <textarea th:field="*{contents}"></textarea>
+                                    <ul th:each="error : ${#fields.errors('contents')}" class="error">
+                                        <li th:text="${error}"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="btn">
+                                <button type="submit">
+                                    <img alt="投稿する" height="147" src="./assets/images/button/btn_post.png" width="1040"
+                                         th:src="@{/images/button/btn_post.png}"/>
+                                </button>
+                            </div>
+                        </div>
+                        <input type="hidden" th:field="*{forumId}" />
+                    </form>
+
+                </div>
+                <div id="bnr_paying_merit">
+                    <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                         th:src="@{/images/common/banner.png}" width="1040" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

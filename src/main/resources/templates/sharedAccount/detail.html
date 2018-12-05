@@ -1,0 +1,127 @@
+<!--user_info_menu.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="main">
+  <!--/*@thymesVar id="account" type="ora.leadlife.co.jp.model.Account"*/-->
+  <div id="container">
+    <div id="user_info_menu">
+      <div class="inner">
+        <ul th:if="${not account.died_confirmed}">
+          <li>
+            <a th:href="@{'/individualNote/view/' + ${account.id} + '?aboutMeViewAccount=' + ${account.id}}">
+              <div class="icon">
+                <img src="./assets/images/icon/icon_user.png" width="160"
+                     th:src="@{/images/icon/icon_user.png}"/>
+              </div>
+              <div class="title">
+                私のこと
+              </div>
+            </a>
+          </li>
+        </ul>
+        <ul th:if="${account.died_confirmed}">
+          <li>
+            <a th:href="@{'/message/list/' + ${account.id}}">
+              <div class="icon">
+                <img src="./assets/images/icon/icon_mail.png" width="160"
+                     th:src="@{/images/icon/icon_mail.png}"/>
+              </div>
+              <div class="title">
+                メッセージの確認
+              </div>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{'/individualNote/view/' + ${account.id} + '?aboutMeViewAccount=' + ${account.id}}">
+              <div class="icon">
+                <img src="./assets/images/icon/icon_user.png" width="160"
+                     th:src="@{/images/icon/icon_user.png}"/>
+              </div>
+              <div class="title">
+                私のこと
+              </div>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{'/aboutMe/propertyAboutTop/'  + '?aboutMeViewAccount=' + ${account.id}}">
+              <div class="icon">
+                <img src="./assets/images/icon/icon_property.png" width="160"
+                     th:src="@{/images/icon/icon_property.png}"/>
+              </div>
+              <div class="title">
+                財産について
+              </div>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{'/aboutMe/funeralAboutTop/?aboutMeViewAccount=' + ${account.id}}">
+              <div class="icon">
+                <img src="./assets/images/icon/icon_grave.png" width="160" th:src="@{/images/icon/icon_grave.png}"/>
+              </div>
+              <div class="title">
+                お墓や葬儀について
+              </div>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{'/testament/add/?aboutMeViewAccount=' + ${account.id}}" href="endingnote_about_property.html">
+              <div class="icon">
+                <img src="./assets/images/icon/icon_testament.png" width="160"
+                     th:src="@{/images/icon/icon_testament.png}"/>
+              </div>
+              <div class="title">
+                遺言内容
+              </div>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{'/digital/?aboutMeViewAccount=' + ${account.id}}">
+              <div class="icon">
+                <img src="./assets/images/icon/icon_mobile.png" width="160" th:src="@{/images/icon/icon_mobile.png}"/>
+              </div>
+              <div class="title">
+                携帯電話や会員サービス
+              </div>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{'/pets/input?aboutMeViewAccount=' + ${account.id}}" href="endingnote_about_property.html">
+              <div class="icon">
+                <img src="./assets/images/icon/icon_others.png" width="160" th:src="@{/images/icon/icon_others.png}"/>
+              </div>
+              <div class="title">
+                その他
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a th:href="@{'/shareAccount/view/' + ${account.id}}">
+              <div class="icon">
+                <img src="./assets/images/icon/icon_users.png" width="160"
+                     th:src="@{/images/icon/icon_users.png}"/>
+              </div>
+              <div class="title">
+                承認者アカウント一覧
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

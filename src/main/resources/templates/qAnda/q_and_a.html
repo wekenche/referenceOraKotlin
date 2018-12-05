@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+  <head>
+
+    <title>Q＆A</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+  </head>
+  <body class="drawer drawer--left">
+  <div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_q_and_a.png" width="712"
+         th:src="@{/images/header/header_q_and_a.png}"/>
+  </div>
+  <div layout:fragment="main">
+    <div id="container">
+      <div id="q_and_a">
+        <div class="qa_box">
+          <div class="question">
+            死亡診断書が手元にないのですが情報の開示はできますか？（他の書類で代用できますか？）
+          </div>
+          <div class="answer">
+            できます。行政書類（住民票除票等）や除籍謄本を<br />ご提示ください。
+          </div>
+        </div>
+        <div class="qa_box">
+          <div class="question">
+            情報の開示の請求はどこに行えばいいのですか？
+          </div>
+          <div class="answer">
+            書類の画像をアプリにアップロードしてご請求ください。<br />リードライフ本部が確認いたします。
+          </div>
+        </div>
+        <div class="qa_box">
+          <div class="question">
+            共有者が全員情報開示の請求を行わないと情報は見られないのですか？（誰か一人が死亡診断書の提出を行えば全員に情報が開示されますか？）
+          </div>
+          <div class="answer">
+            1名が書類提出した後、他の承認者が承認をすれば開示できます。
+          </div>
+        </div>
+        <div class="qa_box">
+          <div class="question">
+            共有者の情報はどこで見られますか？
+          </div>
+          <div class="answer">
+            アプリ内で確認できるようになります。
+          </div>
+        </div>
+        <div class="qa_box">
+          <div class="question">
+            自動的に有料会員登録されることはありませんか？<br />（簡単な操作ミスで有料会員登録が行われることはないですか？）
+          </div>
+          <div class="answer">
+            有料会員になるためには決済画面で決済を行わないとなれません。<br/>
+            不正や操作ミスなどでの有料会員登録はできませんのでご安心ください
+          </div>
+        </div>
+        <div class="qa_box">
+          <div class="question">
+            複数エンディングノートがつくれるということでしたが、アプリ内で何冊つくっても月の支払額は変わらないのですか？<br />（ノートのアカウントに応じて支払額が増えますか？）
+          </div>
+          <div class="answer">
+            1アカウントで980円(税込み)です。<br />2アカウントになれば980円×2＝1960円になります。
+          </div>
+        </div>
+        <div class="qa_box">
+          <div class="question">
+            厳重にセキュリティ管理されているとのことでしたがその根拠はなんですか？
+          </div>
+          <div class="answer">
+            情報は「Microsoft社」のサーバーで厳重に管理されています。ただし情報が漏洩しないことを保障するものではありません。
+          </div>
+        </div>
+        <div class="qa_box">
+          <div class="question">
+            パスワードを忘れてしまいました。<br />どうすればいいですか？
+          </div>
+          <div class="answer">
+            「パスワードを忘れてしまった方はこちら」というボタンをクリックし、登録したメールへご案内します。
+          </div>
+        </div>
+        <div class="qa_box">
+          <div class="question">
+            第三者がが本人に代わって記録することはできますか？
+          </div>
+          <div class="answer">
+            指紋認証等によりユーザー様使用することを想定していますので、第三者が記録することはできません。<br />
+            ユーザー様が依頼するなどして必要な情報を提供したときは、第三者も記録することができますが、ID、パスワード、入力情報はユーザーご本人が管理監督をしてください。
+            当社は、ユーザー様が第三者に記録を依頼したことに関するトラブルについて、一切責任を負いません。
+          </div>
+        </div>
+        <div class="qa_box">
+          <div class="question">
+            パソコンや従来型の携帯電話（フィーチャーフォン）<br />で使用することはできますか？
+          </div>
+          <div class="answer">
+            本アプリは、現時点では、スマートフォンのみにおいて、使用できます。
+          </div>
+        </div>
+        <div class="qa_box">
+          <div class="question">
+            どの項目から始めたらよいでしょうか？<br />すべての項目を埋めなければいけませんか？
+          </div>
+          <div class="answer">
+            わかるところから埋めていきましょう。
+          </div>
+        </div>
+        <div class="qa_box">
+          <div class="question">
+            操作を途中で止めて保存したいときは<br />どうしたらよいでしょうか？
+          </div>
+          <div class="answer">
+            「保存」や「決定」を押してください。
+          </div>
+        </div>
+        <div class="qa_box">
+          <div class="question">
+            情報を開示したい人の設定方法がわかりません。
+          </div>
+          <div class="answer">
+            「アカウント設定･追加」から承認者を登録してください。その後承認アカウント一覧で確認できます。
+          </div>
+          <div id="bnr_paying_merit">
+            <a  th:href="@{'/others/merit'}"><img height="180" src="./images/common/banner.png" width="1040" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

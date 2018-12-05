@@ -1,0 +1,65 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "遺言書 遺言書について", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#testament_about
+				.page_label
+					h2 遺言書
+				.testament
+					h2 遺言書について
+					.input__container
+						.input__box
+							.title 遺言書の有無
+							input#testament__setup__notice.radio type="radio" name="testament__setup_notice" 
+							label.radio for="testament__setup__notice" 有り
+							input#testament__setup__notice2.radio type="radio" name="testament__setup_notice" 
+							label.radio for="testament__setup__notice2" 無し
+						//遺言書の有無
+						.input__box
+							.title 遺言書の種類
+							input#testament__type__notice.radio type="radio" name="testament__type_notice" 
+							label.radio for="testament__type__notice" 自筆
+							input#testament__type__notice2.radio type="radio" name="testament__type_notice" 
+							label.radio for="testament__type__notice2" 公正証書
+						//遺言書の種類
+						.input__box
+							.title 保管場所
+							input type="text"
+						//保管場所
+					h3 相談・依頼した専門家について
+					.input__container			
+						.input__box
+							.title 氏名
+							input type="text"
+						//氏名			
+						.input__box
+							.title 名称
+							input type="text"
+						//名称
+						.input__box
+							.title 郵便番号
+							input.date type="text"
+							span.date -
+							input.date type="text"
+						//郵便番号
+						.input__box
+							.title 住所
+							input type="text"
+						//住所
+						.input__box
+							.title 電話番号
+							input type="text"
+						//電話番号
+						a.add_list href="#" リストを追加
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

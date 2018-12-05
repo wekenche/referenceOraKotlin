@@ -1,0 +1,39 @@
+<!--merit.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div id="container">
+    <div layout:fragment="headerImage">
+        <img alt="" src="./assets/images/header/header_merit.png" width="712"
+             th:src="@{/images/header/header_merit.png}"/>
+    </div>
+    <div layout:fragment="main">
+        <div id="merit_comic">
+            <div class="inner">
+                <div class="inner cf" id="comic" style="padding-top: 150px; box-sizing: border-box;">
+                    <img th:src="@{/images/merit/1.png}" width="100%" />
+                    <img th:src="@{/images/merit/2.png}" width="100%" />
+                    <img th:src="@{/images/merit/3.png}" width="100%" />
+                </div>
+                <div class="btn">
+                    <a href="/paidRegistration">
+                        <img height="147" src="./assets/images/button/btn_registration_accout.png"
+                             width="1040" th:src="@{/images/button/btn_registration_accout.png}"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

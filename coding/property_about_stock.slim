@@ -1,0 +1,52 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "資産について 5.株式 エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_stock
+				.page_label
+					h2 資産について
+				.about_stock
+					h2 5.株式
+					.input__container
+						.input__box
+							.title 証券会社
+							input type="text"
+						//証券会社
+						.input__box
+							.title 銘柄
+							input type="text"
+						//銘柄
+						.input__box
+							.title 証券番号等
+							input type="text"
+						//証券番号等
+						.input__box.input_amount
+							.title 数量
+							input.amount type="text"
+							span.amount_stock 株
+						//数量
+						.input__box
+							.title 管理、保護預かりの有無
+							input name="decision" type="radio" value="1"
+							span.thereOrNone 有り
+							input name="decision" type="radio" value="1"
+							span.thereOrNone 無し
+						//管理、保護預かりの有無
+						.input__box
+							.title 備考
+							textarea
+						//備考
+						a.add_list href="#" リストを追加
+
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

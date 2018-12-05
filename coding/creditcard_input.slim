@@ -1,0 +1,107 @@
+doctype html
+html lang="ja"
+	- $pageNo = 5;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "クレジットカード情報を入力 有料会員登録", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#creditcard_input
+				.page_label クレジットカード情報を入力
+				.inner
+					.input_box
+						.title カード情報
+						.card
+							select name="card"
+								option value="" 選択して下さい。
+								option value="visa" VISA
+								option value="mastercard" マスターカード
+								option value="AMEX" アメリカンエクスプレス
+								option value="paypal" PayPal
+					.input_box
+						.title カード番号
+						.card_info
+							ul.num_list.cf
+								li
+									input type="number"
+								li
+									p -
+								li
+									input type="number"
+								li
+									p -
+								li
+									input type="number"
+								li
+									p -
+								li
+									input type="number"
+					.input_box
+						.title 有効期限
+						.expiration_date
+							select name="month"
+								option value="" 
+									| --
+								option value="1" 1
+								option value="2" 2
+								option value="3" 3
+								option value="4" 4
+								option value="5" 5
+								option value="6" 6
+								option value="7" 7
+								option value="8" 8
+								option value="9" 9
+								option value="10" 10
+								option value="11" 11
+								option value="12" 12
+						span 月
+						.expiration_date
+							select name="month"
+								option value="" 
+									| --
+								option value="1" 1
+								option value="2" 2
+								option value="3" 3
+								option value="4" 4
+								option value="5" 5
+								option value="6" 6
+								option value="7" 7
+								option value="8" 8
+								option value="9" 9
+								option value="10" 10
+								option value="11" 11
+								option value="12" 12
+								option value="13" 13
+								option value="14" 14
+								option value="15" 15
+								option value="16" 16
+								option value="17" 17
+								option value="18" 18
+								option value="19" 19
+								option value="20" 20
+								option value="21" 21
+								option value="22" 22
+								option value="23" 23
+								option value="24" 24
+								option value="25" 25
+								option value="26" 26
+								option value="27" 27
+								option value="28" 28
+								option value="29" 29
+								option value="30" 30
+						span 日
+					.input_box
+						.title 名義人
+						.holder
+							input type="text"
+					.input_box
+						.checkbox
+							input#check type="checkbox"
+							label for="check02" 入力したクレジットカードをアプリの情報として<br />登録する
+					.btn
+						a href="kessan3-3.html"
+							img src="./assets/images/button/btn_next3.png" width="1064"
+
+				
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

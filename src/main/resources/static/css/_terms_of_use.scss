@@ -1,0 +1,16 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+// #modal_content_tos {
+//   width: 100%;
+//   height: 100%;
+//   position: fixed;
+// 	overflow-y: scroll;
+//   top: 0;
+//   left: 0;
+//   background: rgba(0, 0, 0, 0.3);
+//   display: none;
+// }
+

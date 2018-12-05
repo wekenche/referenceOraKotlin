@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+       th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+
+<div layout:fragment="main">
+
+  <div id="container">
+    <div id="funeral_about">
+      <div class="page_label">
+        <h2>
+          お墓や葬儀
+        </h2>
+      </div>
+      <div class="inner">
+        <!--/*@thymesVar id="aboutMeViewAccount" type="java.lang.String"*/-->
+        <a class="btn" th:href="@{'/funeral/add?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img src="./assets/images/button/btn_about_funeral.jpg"
+               th:src="@{/images/button/btn_about_funeral.jpg}"
+               width="100%"/></a>
+        <a class="btn"
+           th:href="@{'/grave/add?aboutMeViewAccount=' + ${aboutMeViewAccount}}">
+          <img
+            th:src="@{/images/button/btn_about_grave.jpg}"
+            src="./assets/images/button/btn_about_grave.jpg" width="100%"/></a>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

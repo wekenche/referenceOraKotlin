@@ -1,0 +1,46 @@
+<!--sharedaccaunt_list2.html-->
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="共有アカウント管理" src="./assets/images/header/header_account_list2.png" width="754"
+       th:src="@{/images/header/header_account_list2.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="sharedaccaunt_list2">
+    <div class="inner">
+      <ul class="accaunt_list">
+        <!--/*@thymesVar id="list" type="java.util.List<ora.leadlife.co.jp.model.Bereave>"*/-->
+        <li th:each="bereave : ${list}" th:classappend="${(!bereave.approval ? 'unapproved' : '')}">
+          <div class="wrapper_list cf">
+            <a href="#">
+              <figure>
+                <img height="213" src="assets/images/icon/icon_account_on.png" width="213"
+                     th:src="@{/images/icon/icon_account_on.png}"/>
+              </figure>
+              <p>
+                <span th:text="${bereave.user.name}"></span>さん
+              </p>
+            </a>
+          </div>
+        </li>
+      </ul>
+      <div class="btn">
+        <a onclick="history.back()"><img alt="戻る" height="147" src="./assets/images/button/btn_back2.png"
+                                                  width="1040" th:src="@{/images/button/btn_back2.png}"/></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

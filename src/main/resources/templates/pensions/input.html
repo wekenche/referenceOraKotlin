@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+
+</head>
+<body class="drawer drawer--left">
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="property_about_pension">
+            <div class="page_label">
+                <h2>
+                    資産について
+                </h2>
+            </div>
+            <div class="about_pension">
+                <h2>
+                    15.年金
+                </h2>
+                <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                <!--/*@thymesVar id="penForm" type="ora.leadlife.co.jp.form.PensionsForm"*/-->
+                <form th:action="@{/pensions/confirm}" th:method="post" th:object="${penForm}">
+                    <div class="input__container">
+                        <div id="formList" th:switch="${#lists.isEmpty(penForm.pensionsWrapper)}">
+                            <div th:case="true" class="formColumn">
+                                <div class="input__box">
+                                    <div class="title">
+                                        公的年金の基礎年金番号
+                                    </div>
+                                    <input class="namePenNo" th:name="pensionsWrapper[0].pensionNo"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        加入したことのある年金の種類<br/>（国民年金、厚生年金、共済年金、その他）
+                                    </div>
+                                    <input class="namePenType" th:name="pensionsWrapper[0].pensionType"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        私的年金の名称
+                                    </div>
+                                    <input class="namePrivatePen" th:name="pensionsWrapper[0].privatePension"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        連絡先
+                                    </div>
+                                    <input class="nameContactAdd" th:name="pensionsWrapper[0].contactAddress"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        備考
+                                    </div>
+                                    <textarea class="nameMemo" th:name="pensionsWrapper[0].memo"></textarea>
+                                </div>
+                                <div class="button_box del_box">
+
+                                </div>
+                                <br/><br/><br/>
+                                <hr/>
+                            </div>
+                            <div th:case="false" class="formColumn">
+                                <div th:each="certificate,is:${penForm.pensionsWrapper}">
+                                    <div class="input__box">
+                                        <div class="title">
+                                            公的年金の基礎年金番号
+                                        </div>
+                                        <input class="namePenNo"
+                                               th:attr="name='pensionsWrapper['+${is.index}+'].pensionNo'"
+                                               th:value="${certificate.pensionNo}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            加入したことのある年金の種類<br/>（国民年金、厚生年金、共済年金、その他）
+                                        </div>
+                                        <input class="namePenType"
+                                               th:attr="name='pensionsWrapper['+${is.index}+'].pensionType'"
+                                               th:value="${certificate.pensionType}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            私的年金の名称
+                                        </div>
+                                        <input class="namePrivatePen"
+                                               th:attr="name='pensionsWrapper['+${is.index}+'].privatePension'"
+                                               th:value="${certificate.privatePension}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            連絡先
+                                        </div>
+                                        <input class="nameContactAdd"
+                                               th:attr="name='pensionsWrapper['+${is.index}+'].contactAddress'"
+                                               th:value="${certificate.contactAddress}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            備考
+                                        </div>
+                                        <textarea class="nameMemo"
+                                                  th:attr="name='pensionsWrapper['+${is.index}+'].memo'"
+                                                 th:inline="text">[[${certificate.memo}]]</textarea>
+                                    </div>
+                                    <div class="button_box del_box" th:if="${aboutMeViewFlag==0}">
+                                        <a th:if="${#lists.size(penForm.pensionsWrapper) > 1}" href="javascript:;"
+                                           class="delete_list right"><img height="131"
+                                                                          th:src="@{/images/button/btn_del_column.jpg}"
+                                                                          width="857"/></a>
+                                    </div>
+                                    <br/><br/><br/>
+                                    <hr/>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" href="javascript:;" class="add_list">リストを追加</a>
+                    </div>
+                    <div class="button_box">
+                        <button th:if="${aboutMeViewFlag==0}" type="submit"><img height="147" th:src="@{/images/button/button_save.jpg}"
+                                                   width="1040"/></button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    /*<![CDATA[*/
+
+    $(document).on("click", ".add_list", function () {
+        var childIndex = $('.namePenNo').length;
+        var newChild = '<div class="formColumn"> <div class="input__box">' +
+            '<div class="title">公的年金の基礎年金番号</div>' +
+            '   <input class="namePenNo" name="pensionsWrapper[' + childIndex + '].pensionNo"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">加入したことのある年金の種類<br/>（国民年金、厚生年金、共済年金、その他）</div>' +
+            '   <input class="namePenType" name="pensionsWrapper[' + childIndex + '].pensionType"/>' +
+            '  </div>' +
+            '<div class="input__box">' +
+            '   <div class="title">私的年金の名称</div>' +
+            '   <input class="namePrivatePen" name="pensionsWrapper[' + childIndex + '].privatePension"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">連絡先</div>' +
+            '   <input class="nameContactAdd" name="pensionsWrapper[' + childIndex + '].contactAddress"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">備考</div>' +
+            '   <textarea class="nameMemo" name="pensionsWrapper[' + childIndex + '].memo"></textarea>' +
+            '</div>' +
+            ' <div class="button_box del_box"><a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a></div>\n' +
+            '         <br /><br /><br />\n' +
+            '         <hr /></div></div>';
+
+
+        if ($(".del_box").length == 1) {
+            $(".del_box:first").append('<a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#formList").append(newChild);
+    })
+    ;
+    $(document).on("click", ".delete_list", function () {
+        $(this).parent('div').parent('div').remove();
+        if ($(".del_box").length == 1) {
+            $(".del_box:first").empty();
+        }
+
+        function updateName(className, fieldName) {
+            $(className).each(function (index) {
+                $(this).attr("name", "pensionsWrapper[" + index + "]." + fieldName);
+            });
+        }
+
+        updateName('.namePenNo', 'pensionNo');
+        updateName('.namePenType', 'pensionType');
+        updateName('.namePrivatePen', 'privatePension');
+        updateName('.nameContactAdd', 'contactAddress');
+        updateName('.nameMemo', 'memo');
+    });
+
+    /*]]>*/
+</script>

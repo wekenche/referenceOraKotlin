@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+@import './_lib';
+@import './_var';
+@import './_common';
+// @import './_index';
+@import './_endingnote';
+@import './_fingerprint_authentication';//指紋認証
+@import './_fingerprint_registration';//指紋登録
+@import './_accountlogin2';//アカウント入力画面
+@import './_kessan';//有料会員登録
+@import './_password_input';//パスワード入力・変更
+@import './_message';//メッセージ
+@import './_sharedaccaunt';//共有アカウント一覧
+@import './_usrpict';//会員名・写真の変更
+@import './_acount';//アカウント
+@import './_free_migration';//無料会員への移行
+@import './_accout_deactivation';//退会手続き
+@import './_accout_admin';//アカウントの管理
+@import './_consultation';//相談機能
+@import './_merit';//有料会員になるメリット
+@import './_bbs';//なんでも掲示板
+@import './_notification';//死亡確認通知
+@import './_user_info';//アカウント情報
+//@import './_terms_of_use';//アカウント情報
+@import './_paid_member';//設定画面
+@import './_paid_member_registration';//設定画面
+@import './_creditcard';//クレジットカード
+@import './_property_about';//財産について
+
+
+

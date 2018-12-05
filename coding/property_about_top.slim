@@ -1,0 +1,23 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "財産について エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_top
+				.page_label
+					h2 財産について
+				.inner
+					a href="property_about_assets.html"	
+						img src="assets/images/button/button_about_assets.jpg" width="1140" height="338" alt="資産について"
+					a href="property_about_collection.html"
+						img src="assets/images/button/button_about_collection.jpg" width="1140" height="338" alt="宝物やコレクションについて" 
+					a href="property_about_virtual_money.html"
+						img src="assets/images/button/button_about_virtual_money.jpg" width="1140" height="338" alt="仮想通貨について" 
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

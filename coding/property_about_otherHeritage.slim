@@ -1,0 +1,40 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "資産について 8.その他の遺産 エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_otherHeritage
+				.page_label
+					h2 資産について
+				.about_otherHeritage
+					h2 8.その他の遺産
+					.input__container
+						.input__box
+							.title 種類・保険会社
+							input type="text"
+						//種類・保険会社
+						.input__box
+							.title 保険証書記号番号等
+							input type="text"
+						//保険証書記号番号等
+						.input__box
+							.title 証券番号等
+							input type="text"
+						//証券番号等
+						.input__box
+							.title 使用・管理状況等
+							textarea
+						//使用・管理状況等
+						a.add_list href="#" リストを追加
+
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

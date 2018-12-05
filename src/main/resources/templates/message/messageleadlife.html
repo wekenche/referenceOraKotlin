@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+  <head>
+
+    <title>メッセージの記録</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+  </head>
+  <body>
+  <div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_message.png" width="712"
+         th:src="@{/images/header/header_message.png}"/>
+  </div>
+  <div layout:fragment="main">
+      <div id="messageleadlife">
+        <div class="inner">
+          <div class="select_box">
+            <img class="button_drug" height="147" src="./assets/images/button/select_category.jpg" width="1041"
+                 th:src="@{/images/button/select_category.jpg}"/><select name="category" size="3">
+              <option value="1">
+                一周忌
+              </option>
+              <option value="2">
+                三周忌
+              </option>
+              <option value="3">
+                思い出
+              </option>
+            </select>
+          </div>
+          <div class="select_box">
+            <img class="button_drug" height="147" src="./assets/images/button/select_record.jpg" width="1041"
+                 th:src="@{/images/button/select_record.jpg}"/><select name="record" size="3">
+              <option value="1">
+                写真
+              </option>
+              <option value="2">
+                ビデオ
+              </option>
+              <option value="3">
+                データ（PDF）
+              </option>
+              <option value="text">
+                テキストのみ
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="button_box cf">
+          <div class="back">
+            <a href="#"><img height="147" src="./assets/images/button/btn_back.jpg" width="495" th:src="@{/images/button/btn_back.jpg}"/></a>
+          </div>
+          <div class="check">
+            <a href="#"><img height="147" src="./assets/images/button/button_check.jpg" width="495" th:src="@{/images/button/button_check.jpg}"/></a>
+          </div>
+        </div>
+        <div id="bnr_paying_merit">
+          <a href="paying_merit.html"><img height="180" src="./assets/images/common/banner.png" width="1040" th:src="@{/images/common/banner.png}"/></a>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

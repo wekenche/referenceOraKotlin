@@ -1,0 +1,55 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="死亡確認通知" src="./assets/images/header/header_notification.png" width="754"
+         th:src="@{/images/header/header_notification.png}"/>
+</div>
+<div layout:fragment="main">
+<div id="container">
+    <div id="notification_document">
+        <div class="page_label">
+            注意事項
+        </div>
+        <div class="inner cf">
+            <div class="document">
+                <img src="./assets/images/notification/document_01.png" width="100%"
+                     th:src="@{/images/notification/document_01.jpg}"/>/>
+                <img src="./assets/images/notification/document_02.png" width="100%"
+                     th:src="@{/images/notification/document_02.jpg}"/>/>
+                <img src="./assets/images/notification/document_03.png" width="100%"
+                     th:src="@{/images/notification/document_03.jpg}"/>/>
+                <img src="./assets/images/notification/document_04.png" width="100%"
+                     th:src="@{/images/notification/document_04.jpg}"/>/>
+            </div>
+            <div class="attention">
+                <ul>
+                    <li>
+                        上記の「死亡診断書・火葬証明書・除籍・除票」のうちいずれか２つの画像が必要となります。
+                    </li>
+                    <li>
+                        書類形式はお住まいの地域によって変わるので、詳しくは各自治体にお尋ねください。
+                    </li>
+                    <li>
+                        死亡確認通知をお送りいただいてから利用者の情報開示までに３日～１週間ほどお時間をいただきます。
+                    </li>
+                    <li>
+                        偽造された場合は保証しかねます。
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

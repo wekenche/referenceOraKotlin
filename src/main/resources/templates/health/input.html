@@ -1,0 +1,511 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title></title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+         th:src="@{/images/header/header_endingnote.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="ending-yuigon4">
+            <!--/*@thymesVar id="healthsForm" type="ora.leadlife.co.jp.form.HealthsForm"*/-->
+            <form th:action="@{/medicine/save}" enctype="multipart/form-data" method="post" th:object="${healthsForm}">
+                <div class="page_label">
+                    <h2>
+                        お薬のこと
+                    </h2>
+                </div>
+                <div class="inner">
+                    <div class="payingmember">
+                        <!--/*@thymesVar id="isPremium" type="java.lang.Boolean"*/-->
+                        <div th:switch="${isPremium or aboutMeViewFlag eq 1}">
+                                <div th:case="true">
+                                <!--/*@thymesVar id="fileList" type="java.util.List<ora.leadlife.co.jp.model.HealthAttachment>"*/-->
+                                <!--/*@thymesVar id="#uploadedImage" type="ora.leadlife.co.jp.helper.UploadedImage"*/-->
+                                <div class="button_drug" th:if="${not #lists.isEmpty(fileList)}">
+                                    <label for="image-input">
+                                        <img height="147" th:src="@{/images/button/button_images_on.jpg}" width="1040"/>
+                                    </label>
+                                    <input style="display: none" id="image-input" type="file" class="form-control" accept="image/*" th:name="file" onchange="previewImage()"/><br/>
+                                    <img id="prevImage" width="1040" src=""/><br/><hr/>
+                                    <p id="image_summary" class="summary">※画像を選んで押すと削除出来ます。</p>
+                                    <th:block  th:if="${not #lists.isEmpty(fileList)}" th:each="list,varStat:${fileList}">
+                                        <th:block th:if="${list.fileType==T(ora.leadlife.co.jp.config.FileType).PICTURE.name()}">
+                                            <img class="attachment" width="1040"
+                                                 id="prevImage"
+                                                 th:src="${#uploadedImage.build(list.filePath)}"
+                                                 th:attr="onclick=${aboutMeViewFlag == 0}?'confirmDeleteFile(\'/medicine/attachment/delete/' + ${list.id} + '\',this)'"
+                                            /><br/>
+                                        </th:block>
+                                    </th:block>
+                                    <label for="video-input">
+                                        <img height="147" th:src="@{/images/button/button_moving_on.jpg}" width="1040"/>
+                                    </label>
+                                    <input style="display: none" id="video-input" type="file" class="form-control" accept="video/mp4,video/x-m4v,video/*" th:name="file" onchange="previewVideo()"/><br/>
+                                    <div id="message"></div>
+                                    <div class="forVideo"></div><br/><hr/>
+                                    <p id="video_summary" class="summary">※動画を選んで押すと削除できます。</p>
+                                    <th:block  th:if="${not #lists.isEmpty(fileList)}" th:each="list,varStat:${fileList}">
+                                        <th:block th:if="${list.fileType==T(ora.leadlife.co.jp.config.FileType).MOVIE.name()}">
+                                            <video id="prevVideo" class="videoAttachment" controls="controls" height="520" width="1040"
+                                                   th:src="${#uploadedImage.build(list.filePath)}"
+                                                   th:attr="onclick=${aboutMeViewFlag == 0}?'confirmDeleteFile(\'/medicine/attachment/delete/' + ${list.id} + '\',this)'"
+                                                   type="video/mp4,video/x-m4v,video/*"><br/>
+                                            </video>
+                                        </th:block>
+                                    </th:block>
+                                </div>
+                                <div class="button_drug" th:if="${#lists.isEmpty(fileList)}">
+                                    <label for="image-input">
+                                        <img height="147" th:src="@{/images/button/button_images_on.jpg}" width="1040"/>
+                                    </label>
+                                    <input style="display: none" id="image-input" type="file" class="form-control"
+                                           accept="image/*" th:name="file" onchange="previewImage()"/><br/>
+                                    <img id="prevImage" src="" width="100%"/><br/>
+
+                                    <label for="video-input">
+                                        <img height="147" th:src="@{/images/button/button_moving_on.jpg}" width="1040"/>
+                                    </label>
+                                    <input type="hidden" th:name="videoType"
+                                           th:value="${T(ora.leadlife.co.jp.config.FileType).MOVIE.getValue()}"/>
+                                    <input style="display: none" id="video-input" type="file" class="form-control"
+                                           accept="video/mp4,video/x-m4v,video/*" th:name="file" onchange="previewVideo()"/><br/>
+                                    <div id="message"></div>
+                                    <div class="forVideo"></div><br/>
+                                </div>
+                            </div>
+                            <div th:case="false">
+                                <div class="data">
+                                    <a th:href="@{'/others/merit'}">
+                                        <img class="select_file" height="147" width="1040"
+                                             src="assets/images/button/button_select_file.jpg"
+                                             th:src="@{/images/button/button_select_file.jpg}"/>
+                                    </a>
+                                </div>
+                                <br/>
+                                <div class="data">
+                                    <a th:href="@{'/others/merit'}">
+                                        <img class="select_file" height="147" width="1040"
+                                             src="assets/images/button/button_select_file.jpg"
+                                             th:src="@{/images/button/button_select_file.jpg}"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/*@thymesVar id="isPremium" type="java.lang.Boolean"*/-->
+                    <div class="banner" th:if="${not isPremium}">
+                        <a th:href="@{/others/merit}">
+                            <img height="180" th:src="@{/images/common/banner.png}" width="1040"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="about_helth">
+                    <h2>
+                        1.健康等について
+                    </h2>
+                    <div class="input__container">
+                        <div class="input__box">
+                            <div class="title">
+                                アレルギー
+                            </div>
+                            <textarea th:field="*{allergy}"></textarea>
+                            <input type="hidden" th:field="*{id}"/>
+                        </div>
+                        <div class="input__box">
+                            <div class="title">
+                                血液
+                            </div>
+                            <input class="blood" type="text" th:field="*{bloodType}"/>
+                        </div>
+                        <div class="input__box">
+                            <div class="title">
+                                病歴・持病
+                            </div>
+                            <textarea th:field="*{medicalHistory}"></textarea>
+                        </div>
+                        <div class="input__box">
+                            <div class="inner__container">
+                                <div id="medicine_list">
+                                    <h3>
+                                        服用中のお薬（お薬手帳）
+                                    </h3>
+                                    <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                                    <!--/*@thymesVar id="medicineList" type="java.util.List<ora.leadlife.co.jp.model.Medicines>"*/-->
+                                    <div th:switch="${not #lists.isEmpty(medicineList)}">
+                                        <th:block th:case="true">
+                                            <div th:each="medicine,iterStat  : ${medicineList}" class="medicine_column">
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        薬の商品名
+                                                    </div>
+                                                    <input class="medicineId" type="hidden"
+                                                           th:attr="name='medicinesWrapper['+${iterStat.index}+'].id'"
+                                                           th:value="${medicine.id}"/>
+                                                    <input class="medicineName" type="text" id="name_"
+                                                           th:attr="name='medicinesWrapper['+${iterStat.index}+'].name'"
+                                                           th:value="${medicine.name}"/>
+                                                </div>
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        処方した日
+                                                    </div>
+                                                    <div class="date">
+                                                        <!--/*@thymesVar id="prescriptionDate" type="ora.leadlife.co.jp.model.Medicines"*/-->
+                                                        <input class="medicineYear" type="text"
+                                                               th:attr="name='medicinesWrapper['+${iterStat.index}+'].year'"
+                                                               th:value="${medicine.prescriptionDate!=null} ? ${#dates.format(medicine.prescriptionDate,'yyyy')}:''"/><span>年</span>
+                                                        <input class="medicineMonth" type="text"
+                                                               th:attr="name='medicinesWrapper['+${iterStat.index}+'].month'"
+                                                               th:value="${medicine.prescriptionDate!=null} ? ${#dates.format(medicine.prescriptionDate,'MM')}:''"/><span>月</span>
+                                                        <input class="medicineDay" type="text"
+                                                               th:attr="name='medicinesWrapper['+${iterStat.index}+'].day'"
+                                                               th:value="${medicine.prescriptionDate!=null} ? ${#dates.format(medicine.prescriptionDate, 'dd')}:''"/><span>日</span>
+                                                    </div>
+                                                </div>
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        処方病院
+                                                    </div>
+                                                    <input class="hospital" type="text"
+                                                           th:attr="name='medicinesWrapper['+${iterStat.index}+'].hospital'"
+                                                           th:value="${medicine.hospital}"/>
+                                                </div>
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        医師名
+                                                    </div>
+                                                    <input class="doctor" type="text"
+                                                           th:attr="name='medicinesWrapper['+${iterStat.index}+'].doctor'"
+                                                           th:value="${medicine.doctor}"/>
+                                                </div>
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        薬の量
+                                                    </div>
+                                                    <input class="medicineAmount" type="text"
+                                                           th:attr="name='medicinesWrapper['+${iterStat.index}+'].medicineAmount'"
+                                                           th:value="${medicine.medicineAmount}"/>
+                                                </div>
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        薬の飲み方と回数
+                                                    </div>
+                                                    <textarea class="drinkHowTo"
+                                                              th:attr="name='medicinesWrapper['+${iterStat.index}+'].drinkHowTo'"
+                                                              th:inline="text">[[${medicine.drinkHowTo}]]</textarea>
+                                                </div>
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        処方日数
+                                                    </div>
+                                                    <input class="prescriptionDays" type="text"
+                                                           th:attr="name='medicinesWrapper['+${iterStat.index}+'].prescriptionDays'"
+                                                           th:value="${medicine.prescriptionDays}"/>
+                                                </div>
+                                                <div class="btn" th:if="${#lists.size(medicineList) > 1}">
+                                                    <a th:if="${aboutMeViewFlag==0}" id="delete__column" class="delete_list" href="javascript:;">
+                                                        <img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857"/>
+                                                    </a>
+                                                </div>
+                                                <hr/>
+                                            </div>
+                                        </th:block>
+                                        <th:block th:case="false">
+                                            <div class ="medicine_column">
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        薬の商品名
+                                                    </div>
+                                                    <input class="medicineId" type="hidden"
+                                                           th:field="*{medicinesWrapper[0].id}"/>
+                                                    <input class="medicineName" type="text"
+                                                           th:field="*{medicinesWrapper[0].name}"/>
+                                                </div>
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        処方した日
+                                                    </div>
+                                                    <div class="date">
+                                                        <input class="medicineYear" type="text"
+                                                               th:field="*{medicinesWrapper[0].year}"/><span>年</span>
+                                                        <input class="medicineMonth" type="text"
+                                                               th:field="*{medicinesWrapper[0].month}"/><span>月</span>
+                                                        <input class="medicineDay" type="text"
+                                                               th:field="*{medicinesWrapper[0].day}"/><span>日</span>
+                                                    </div>
+                                                </div>
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        処方病院
+                                                    </div>
+                                                    <input class="hospital" type="text"
+                                                           th:field="*{medicinesWrapper[0].hospital}"/>
+                                                </div>
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        医師名
+                                                    </div>
+                                                    <input class="doctor" type="text" th:field="*{medicinesWrapper[0].doctor}"/>
+                                                </div>
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        薬の量
+                                                    </div>
+                                                    <input class="medicineAmount" type="text"
+                                                           th:field="*{medicinesWrapper[0].medicineAmount}"/>
+                                                </div>
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        薬の飲み方と回数
+                                                    </div>
+                                                    <textarea class="drinkHowTo" th:field="*{medicinesWrapper[0].drinkHowTo}"></textarea>
+                                                </div>
+                                                <div class="inner__box">
+                                                    <div class="title">
+                                                        処方日数
+                                                    </div>
+                                                    <input class="prescriptionDays" type="text" th:field="*{medicinesWrapper[0].prescriptionDays}"/>
+                                                </div>
+                                            </div>
+                                        </th:block>
+                                    </div>
+                                </div>
+                                <div class="btn">
+                                    <a th:if="${aboutMeViewFlag==0}" id="add__column" class="add_list"
+                                       href="javascript:;">
+                                        <img height="131" th:src="@{/images/button/btn_add_column.jpg}" width="857"/>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="title">
+                                アレルギーのある薬
+                            </div>
+                            <textarea th:field="*{allergicExistsMedicine}"></textarea>
+                        </div>
+                        <div class="input__box">
+                            <div class="title">
+                                かかりつけの病院
+                            </div>
+                            <textarea title="regularHospital" th:field="*{regularHospital}"></textarea>
+                        </div>
+                        <div class="input__box">
+                            <div class="title">
+                                重大な病気の告知をして欲しいか否か
+                            </div>
+                            <input class="radio" id="sick__notice" th:field="*{wantSignificantSickAnnouncement}"
+                                   type="radio" th:value="true"/><label class="radio"
+                                                                        for="sick__notice">希望する</label><input
+                                class="radio" id="sick__notice2" th:field="*{wantSignificantSickAnnouncement}"
+                                type="radio" th:value="false"/><label class="radio" for="sick__notice2">希望しない</label>
+                        </div>
+                        <div class="input__box">
+                            <div class="title">
+                                延命治療を希望するかどうか
+                            </div>
+                            <input class="radio" id="longevity__notice" th:field="*{wantResuscitate}" type="radio"
+                                   th:value="true"/><label class="radio" for="longevity__notice">希望する</label><input
+                                class="radio" id="longevity__notice2" th:field="*{wantResuscitate}" type="radio"
+                                th:value="false"/><label class="radio" for="longevity__notice2">希望しない</label>
+                        </div>
+                        <h3 class="sub">
+                            臓器提供
+                        </h3>
+                        <div class="input__box">
+                            <div class="title">
+                                臓器提供を希望するか
+                            </div>
+                            <input class="radio" id="organ_donation__notice" th:field="*{wantOrganDonation}"
+                                   type="radio" th:value="true"/>
+                            <label class="radio" for="organ_donation__notice">希望する</label>
+                            <input class="radio" id="organ_donation__notice2" th:field="*{wantOrganDonation}"
+                                   type="radio" th:value="false"/>
+                            <label class="radio" for="organ_donation__notice2">希望しない</label>
+                        </div>
+                        <div class="input__box">
+                            <div class="title">
+                                ドナーカードの有無
+                            </div>
+                            <input class="radio" id="donor__notice" th:field="*{hasDonorCard}" type="radio"
+                                   th:value="true"/><label class="radio" for="donor__notice">有り</label><input
+                                class="radio" id="donor__notice2" th:field="*{hasDonorCard}" type="radio"
+                                th:value="false"/><label class="radio" for="donor__notice2">無し</label>
+                        </div>
+                        <div class="input__box">
+                            <div class="have__case">
+                                【ドナーカードを持っている場合】
+                            </div>
+                            <div class="title">
+                                ドナーカードの場所
+                            </div>
+                            <input type="text" th:field="*{donorCardLocation}"/>
+                        </div>
+                    </div>
+                    <div th:if="${aboutMeViewFlag==0}" class="button_box cf">
+                        <div class="right">
+                            <button><img height="147" th:src="@{/images/button/button_decision.jpg}" width="495"/>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    function previewImage() {
+
+        var file = document.querySelector('#image-input').files[0];
+        var reader = new FileReader();
+        var prevImage = document.querySelector('#prevImage');
+        if (file.type.match('image')) {
+            reader.onloadend = function () {
+                prevImage.src = reader.result;
+            }
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                prevImage.src = "";
+            }
+        } else {
+            prevImage.src = "";
+        }
+    }
+
+    function previewVideo() {
+
+        var file = document.querySelector('#video-input').files[0];
+        var reader = new FileReader();
+        document.querySelector('.forVideo').innerHTML = '<video id="prevVideo" type="video/mp4,video/x-m4v,video/*"></video>';
+        var prevVideo = document.querySelector('#prevVideo');
+        if (file.type.match('video')) {
+            reader.onloadend = function () {
+                prevVideo.src = reader.result;
+
+                var displayMessage = function (message, isError) {
+                    var element = document.querySelector('#message')
+                    element.innerHTML = message
+                    element.className = isError ? 'error' : 'info'
+                }
+
+                var message = '※保存後に再生できるようになります';
+                var type = file.type;
+                var videoNode = document.querySelector('video');
+                var canPlay = videoNode.canPlayType(type);
+
+                if (canPlay === '') {
+                    canPlay = 'no';
+                    var isError = canPlay === 'no'
+                }else{
+                    message = ''
+                }
+
+                displayMessage(message, isError)
+
+            }
+            if (file) {
+                prevVideo.width = 1040;
+                prevVideo.height = 520;
+                reader.readAsDataURL(file);
+                prevVideo.controls = true;
+            } else {
+                prevVideo.width = 0;
+                prevVideo.height = 0;
+                prevVideo.src = "";
+            }
+        } else {
+            prevVideo.width = 0;
+            prevVideo.height = 0;
+            prevVideo.src = "";
+        }
+    }
+
+    $(document).on("click", ".add_list", function () {
+        var size = $(".medicine_column").length
+        if (size == 1) {
+            $(".medicine_column:first").append('<div class="btn">\n' +
+                '  <a id="delete__column" class="delete_list" href="javascript:;"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>\n' +
+                '  </div>');
+        }
+        var newMedList = '<div class="medicine_column">\n' +
+            '                                        <div class="inner__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                薬の商品名\n' +
+            '                                            </div>\n' +
+            '                                            <input class="medicineId" type="hidden" name="medicinesWrapper[' + size + '].id"/><input class="medicineName" type="text" name="medicinesWrapper[' + size + '].name"/>\n' +
+            '                                        </div>\n' +
+            '                                        <div class="inner__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                処方した日\n' +
+            '                                            </div>\n' +
+            '                                            <div class="date">\n' +
+            '                                                <input class="medicineYear" type="text" name="medicinesWrapper[' + size + '].year"/><span>年</span><input class="medicineMonth" type="text" name="medicinesWrapper[' + size + '].month"/><span>月</span><input class="medicineDay" type="text" name="medicinesWrapper[' + size + '].day"/><span>日</span>\n' +
+            '                                            </div>\n' +
+            '                                        </div>\n' +
+            '                                        <div class="inner__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                処方病院\n' +
+            '                                            </div>\n' +
+            '                                            <input class="hospital" type="text" name="medicinesWrapper[' + size + '].hospital"/>\n' +
+            '                                        </div>\n' +
+            '                                        <div class="inner__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                医師名\n' +
+            '                                            </div>\n' +
+            '                                            <input class="doctor" type="text" name="medicinesWrapper[' + size + '].doctor"/>\n' +
+            '                                        </div>\n' +
+            '                                        <div class="inner__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                薬の量\n' +
+            '                                            </div>\n' +
+            '                                            <input class="medicineAmount" type="text" name="medicinesWrapper[' + size + '].medicineAmount"/>\n' +
+            '                                        </div>\n' +
+            '                                        <div class="inner__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                薬の飲み方と回数\n' +
+            '                                            </div>\n' +
+            '                                            <textarea class="drinkHowTo" name="medicinesWrapper[' + size + '].drinkHowTo"></textarea>\n' +
+            '                                        </div>\n' +
+            '                                        <div class="inner__box">\n' +
+            '                                            <div class="title">\n' +
+            '                                                処方日数\n' +
+            '                                            </div>\n' +
+            '                                            <input class="prescriptionDays" type="text" name="medicinesWrapper[' + size + '].prescriptionDays"/>\n' +
+            '                                        </div>\n' +
+            '                                       <div class="btn">\n' +
+            '                                           <a id="delete__column" class="delete_list" href="javascript:;"><img height="131" th:src="@{/images/button/btn_del_column.jpg}" width="857" /></a>\n' +
+            '                                       </div>\n' +
+            '                                    <hr/></div> ';
+        $("#medicine_list").append(newMedList);
+
+    });
+    $(document).on("click", ".delete_list", function () {
+        $(this).closest(".medicine_column").remove();
+        if ($(".medicine_column").length == 1) {
+            $(".medicine_column:first").find(".delete_list").parent().remove();
+        }
+        $(".medicine_column").each(function (index) {
+            $(this).find(".medicineId").attr("name", "medicinesWrapper[" + index + "].id");
+            $(this).find(".medicineName").attr("name", "medicinesWrapper[" + index + "].name");
+            $(this).find(".medicineYear").attr("name", "medicinesWrapper[" + index + "].year");
+            $(this).find(".medicineMonth").attr("name", "medicinesWrapper[" + index + "].month");
+            $(this).find(".medicineDay").attr("name", "medicinesWrapper[" + index + "].day");
+            $(this).find(".hospital").attr("name", "medicinesWrapper[" + index + "].hospital");
+            $(this).find(".doctor").attr("name", "medicinesWrapper[" + index + "].doctor");
+            $(this).find(".medicineAmount").attr("name", "medicinesWrapper[" + index + "].medicineAmount");
+            $(this).find(".drinkHowTo").attr("name", "medicinesWrapper[" + index + "].drinkHowTo");
+            $(this).find(".prescriptionDays").attr("name", "medicinesWrapper[" + index + "].prescriptionDays");
+        });
+    });
+</script>

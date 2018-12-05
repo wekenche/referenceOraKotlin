@@ -1,0 +1,22 @@
+doctype html
+html lang="ja"
+	- $pageNo = 18;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "有料会員になるメリット", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	/ #accout_admin_finish
+	  	#merit_comic
+	  		#comic.inner.cf style="padding-top: 150px; box-sizing: border-box;"
+	  			img src="./assets/images/merit/1.png" width="100%"
+	  			img src="./assets/images/merit/2.png" width="100%"
+	  			img src="./assets/images/merit/3.png" width="100%"
+	  		.btn
+	  			a href="paid_member_registration_top.html"
+	  				img src="./assets/images/button/btn_registration_accout.png" width="1040"
+
+
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

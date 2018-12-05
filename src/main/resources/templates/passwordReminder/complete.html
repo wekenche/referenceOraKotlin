@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>パスワードの再設定</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="アカウント入力画面" src="./assets/images/header/header_account_input.png" width="754"
+       th:src="@{/images/header/header_account_input.png}"/>
+</div>
+<div layout:fragment="main">
+  <!--/*@thymesVar id="passwordReminderForm" type="ora.leadlife.co.jp.form.PasswordReminderForm"*/-->
+  <form th:action="@{/passwordReminder}" method="post" th:object="${passwordReminderForm}">
+    <div id="account_pswd_reset">
+      <div class="page_label">
+        パスワードの再設定
+      </div>
+      <div class="inner cf">
+        <div class="summary">
+          <div class="title">
+            メール送信完了
+          </div>
+          <div class="desc">
+            <p>
+              登録済みのメールアドレスにパスワードリセットの<br/>URLが入ったメールを送信しました。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>

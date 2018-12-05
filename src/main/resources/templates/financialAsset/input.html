@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body class="drawer drawer--left">
+<div id="container">
+    <div layout:fragment="headerImage">
+        <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+             th:src="@{/images/header/header_endingnote.png}"/>
+    </div>
+<div layout:fragment="main">
+        <div id="property_about_securitiesBond">
+            <div class="page_label">
+                <h2>
+                    資産について
+                </h2>
+            </div>
+            <div class="about_securitiesBond">
+                <h2>
+                    6.その他金融資産/有価証券
+                </h2>
+                <!--/*@thymesVar id="aboutMeViewFlag" type="java.lang.String"*/-->
+                <!--/*@thymesVar id="financialForm" type="ora.leadlife.co.jp.form.FinancialAssetForm"*/-->
+                <form th:action="@{/financialAsset/confirm}" th:method="post" th:object="${financialForm}">
+                    <div class="input__container">
+                        <div id="formList" th:switch="${#lists.isEmpty(financialForm.financialAssetWrapper)}">
+                            <div th:case="true" class="formColumn">
+                                <div class="input__box">
+                                    <div class="title">
+                                        名称・銘柄・内容<br/>（純金積立、プラチナ積立、ゴルフ会員権など）
+                                    </div>
+                                    <input class="nameName" th:name="financialAssetWrapper[0].name"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        名義人
+                                    </div>
+                                    <input class="nameHolder" th:name="financialAssetWrapper[0].holder"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        証券会社・金融機関・取扱会社
+                                    </div>
+                                    <input class="nameCompany" th:name="financialAssetWrapper[0].company"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        記号番号等
+                                    </div>
+                                    <input class="nameSymbolNo" th:name="financialAssetWrapper[0].symbolNo"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        連絡先
+                                    </div>
+                                    <input class="nameContactAddress"
+                                           th:name="financialAssetWrapper[0].contactAddress"/>
+                                </div>
+                                <div class="input__box">
+                                    <div class="title">
+                                        使用・管理状況等
+                                    </div>
+                                    <textarea class="nameMemo" th:name="financialAssetWrapper[0].memo"></textarea>
+                                </div>
+                                <div class="button_box del_box">
+
+                                </div>
+                                <br/><br/><br/>
+                                <hr/>
+                            </div>
+                            <div th:case="false" class="formColumn">
+                                <div th:each="certificate,is:${financialForm.financialAssetWrapper}">
+                                    <div class="input__box">
+                                        <div class="title">
+                                            名称・銘柄・内容<br/>（純金積立、プラチナ積立、ゴルフ会員権など）
+                                        </div>
+                                        <input class="nameName"
+                                               th:attr="name='financialAssetWrapper['+${is.index}+'].name'"
+                                               th:value="${certificate.name}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            名義人
+                                        </div>
+                                        <input class="nameHolder"
+                                               th:attr="name='financialAssetWrapper['+${is.index}+'].holder'"
+                                               th:value="${certificate.holder}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            証券会社・金融機関・取扱会社
+                                        </div>
+                                        <input class="nameCompany"
+                                               th:attr="name='financialAssetWrapper['+${is.index}+'].company'"
+                                               th:value="${certificate.company}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            記号番号等
+                                        </div>
+                                        <input class="nameSymbolNo"
+                                               th:attr="name='financialAssetWrapper['+${is.index}+'].symbolNo'"
+                                               th:value="${certificate.symbolNo}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            連絡先
+                                        </div>
+                                        <input class="nameContactAddress"
+                                               th:attr="name='financialAssetWrapper['+${is.index}+'].contactAddress'"
+                                               th:value="${certificate.contactAddress}"/>
+                                    </div>
+                                    <div class="input__box">
+                                        <div class="title">
+                                            使用・管理状況等
+                                        </div>
+                                        <textarea class="nameMemo"
+                                                  th:attr="name='financialAssetWrapper['+${is.index}+'].memo'"
+                                                  th:inline="text">[[${certificate.memo}]]</textarea>
+                                    </div>
+                                    <div class="button_box del_box" th:if="${aboutMeViewFlag==0}">
+                                        <a th:if="${#lists.size(financialForm.financialAssetWrapper) > 1}"
+                                           href="javascript:;"
+                                           class="delete_list right"><img height="131"
+                                                                          th:src="@{/images/button/btn_del_column.jpg}"
+                                                                          width="857"/></a>
+                                    </div>
+                                    <br/><br/><br/>
+                                    <hr/>
+                                </div>
+                            </div>
+                        </div>
+                        <a th:if="${aboutMeViewFlag==0}" href="javascript:;" class="add_list">リストを追加</a>
+                    </div>
+                    <div class="button_box">
+                        <button th:if="${aboutMeViewFlag==0}" type="submit"><img height="147" th:src="@{/images/button/button_save.jpg}"
+                                                                                 width="1040"/></button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    /*<![CDATA[*/
+    var childIndex = 1;
+
+    $(document).on("click", ".add_list", function () {
+        var childIndex = $('.nameName').length;
+        var newChild = '<div class="formColumn"> <div class="input__box">' +
+            '<div class="title"> 名称・銘柄・内容<br/>（純金積立、プラチナ積立、ゴルフ会員権など）</div>' +
+            '   <input class="nameName" name="financialAssetWrapper[' + childIndex + '].name"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">名義人</div>' +
+            '   <input class="nameHolder" name="financialAssetWrapper[' + childIndex + '].holder"/>' +
+            '  </div>' +
+            '<div class="input__box">' +
+            '   <div class="title"> 証券会社・金融機関・取扱会社</div>' +
+            '   <input class="nameCompany" name="financialAssetWrapper[' + childIndex + '].company"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">記号番号等</div>' +
+            '   <input class="nameSymbolNo" name="financialAssetWrapper[' + childIndex + '].symbolNo"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">連絡先</div>' +
+            '   <input class="nameContactAddress" name="financialAssetWrapper[' + childIndex + '].contactAddress"/>' +
+            '</div>' +
+            '<div class="input__box">' +
+            '   <div class="title">使用・管理状況等</div>' +
+            '   <textarea class="nameMemo" name="financialAssetWrapper[' + childIndex + '].memo"></textarea>' +
+            '</div>';
+
+
+        if ($(".del_box").length == 1) {
+            $(".del_box:first").append('<a href="javascript:;" class="delete_list right"><img height="131" src="/images/button/btn_del_column.jpg" width="857" /></a>');
+        }
+        $("#formList").append(newChild);
+    })
+    ;
+    $(document).on("click", ".delete_list", function () {
+        $(this).parent('div').parent('div').remove();
+        if ($(".del_box").length == 1) {
+            $(".del_box:first").empty();
+        }
+
+        function updateName(className, fieldName) {
+            $(className).each(function (index) {
+                $(this).attr("name", "financialAssetWrapper[" + index + "]." + fieldName);
+            });
+        }
+
+        updateName('.nameName', 'name');
+        updateName('.nameHolder', 'holder');
+        updateName('.nameCompany', 'company');
+        updateName('.nameSymbolNo', 'symbolNo');
+        updateName('.nameContactAddress', 'contactAddress');
+        updateName('.nameMemo', 'memo');
+    });
+
+    /*]]>*/
+</script>

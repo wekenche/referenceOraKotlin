@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  layout:decorator="layout">
+<head>
+  <title>無料会員登録 アカウント入力画面</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+
+<div layout:fragment="headerImage">
+  <img alt="アカウント入力画面" src="./assets/images/header/header_account_input.png" width="754"
+       th:src="@{/images/header/header_account_input.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="change_complete">
+    <div class="inner cf">
+      <div class="message">
+        <div class="status">
+
+          メールを送信しました。メール記載のURLをクリックしてください。
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

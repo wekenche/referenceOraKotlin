@@ -1,0 +1,71 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "資産について 3.預貯金 エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_savings
+				.page_label
+					h2 資産について
+				.about_savings
+					h2 3.預貯金
+					.input__container
+						.input__box
+							.title 金融機関名
+							input type="text"
+						//金融機関名
+						.input__box
+							.title 支店名
+							input type="text"
+						//支店名
+						.input__box
+							.title 預貯金の種類
+							input type="text"
+						//預貯金の種類
+						.input__box
+							.title 口座番号/記号番号
+							input type="text"
+						//口座番号/記号番号
+						.input__box
+							.title 名義人
+							input type="text"
+						//名義人
+						.input__box
+							.title （ネットバンク用）ウェブ用ID
+							input type="text"
+						//（ネットバンク用）ウェブ用ID
+						.input__box
+							.title 口座の使用用途
+							textarea
+						//口座の使用用途
+
+						.list_inner
+							h3 その口座から自動引き落としにされているもの
+							.input__container
+								.input__box
+									.title 費目
+									input type="text"
+									//費目
+								.input__box
+									.title 引き落とし日
+									input type="text"
+								//引き落とし日
+								.input__box
+									.title 備考
+									textarea
+								//備考
+								.button_add_item
+									a href="#"
+										img src="./assets/images/button/btn_add_column.jpg" width="857" height="131"
+
+						a.add_list href="#" リストを追加
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

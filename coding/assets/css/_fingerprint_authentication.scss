@@ -1,0 +1,32 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#fingerprint_authentication{
+	background: #f2f2f2;
+	img{
+		display: inline-block;
+	}
+	.inner{
+		ul{
+			width: 1096px;
+			margin: 0 auto;
+			margin-top: 86px;
+			padding-left: 102px;
+			box-sizing: border-box;
+			li{
+				font-size: 50px;
+				font-weight: bold;
+				line-height: 1.5;
+			}
+		}
+		figure{
+			text-align: center;
+			padding-top: 18px;
+			padding-bottom: 440px;
+			box-sizing: border-box;
+		}
+	}//inner
+}//#fingerprint_authentication 指紋認証

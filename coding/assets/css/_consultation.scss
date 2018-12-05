@@ -1,0 +1,63 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#consultation_index{
+	background: #f2f2f2;
+	padding-bottom: 105px;
+	.main{
+		padding-top: 83px;
+		box-sizing: border-box;
+	}
+	.inner{
+		width: 1180px;
+		margin: 0 auto;background: #fff;
+		margin-top: 82px;
+		// padding-bottom: 85px;
+		box-sizing: border-box;
+		.box{
+			.title{
+				font-size: 51px;
+				font-weight: bold;
+				border: 2px solid #000;
+				padding: 30px 55px;
+				box-sizing: border-box;
+			}//title
+			.btn{
+				width: 1075px;
+				margin: 0 auto;
+				padding-top: 47px;
+				padding-bottom: 83px;
+				box-sizing: border-box;
+				a{
+					float: left;
+					&:first-of-type{
+						padding-right: 36px;
+						box-sizing: border-box;
+					}
+				}
+			}//btn
+		}//box
+	}//inner
+}//#accout_admin_confirm
+
+#consultation_column{
+	background: #f2f2f2;
+	padding-bottom: 105px;
+
+	article{
+		.user_head{
+			.user_pic{
+				float: left;
+			}
+			.user_box{
+				float: left;
+				span,img,.arrow{
+					display: inline-block;
+				}
+			}//user_box
+		}//user_head	
+	}//article
+}//#accout_admin_confirm

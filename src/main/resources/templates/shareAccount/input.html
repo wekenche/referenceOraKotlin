@@ -1,0 +1,61 @@
+<!--sharedaccaunt_add_setting.html-->
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_about_sharedaccaunt.png" width="712"
+         th:src="@{/images/header/header_about_sharedaccaunt.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="sharedaccaunt_add_setting">
+            <div class="inner">
+                <div class="input_box">
+                    <h3>
+                        1.
+                    </h3>
+                    <input placeholder="Aさん" type="text"/><input placeholder="xxx1@xxx.com" type="text"/>
+                </div>
+                <div class="input_box">
+                    <h3>
+                        2.
+                    </h3>
+                    <input placeholder="Bさん" type="text"/><input placeholder="xxx2@xxx.com" type="text"/>
+                </div>
+                <div class="input_box">
+                    <h3>
+                        3.
+                    </h3>
+                    <input placeholder="Cさん" type="text"/><input placeholder="xxx3@xxx.com" type="text"/>
+                </div>
+                <a href="sharedaccaunt_list.html"><img height="119"
+                                                       src="assets/images/button/button_add_sharedaccount.jpg"
+                                                       width="1061"
+                                                       th:src="@{/images/button/button_add_sharedaccount.jpg}"/></a>
+                <div class="btn cf">
+                    <div class="back">
+                        <a href="sharedaccaunt_unset.html"><img height="147" src="./assets/images/button/btn_back.jpg"
+                                                                width="495"
+                                                                th:src="@{/images/button/btn_back.jpg}"/></a>
+                    </div>
+                    <div class="check">
+                        <a href="#"><img height="147" src="./assets/images/button/button_check.jpg" width="495"
+                                         th:src="@{/images/button/button_check.jpg}"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

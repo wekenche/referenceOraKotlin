@@ -1,0 +1,175 @@
+<!--notification_settings.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+  <script th:inline="javascript">
+      /*<![CDATA[*/
+
+      function previewFile1() {
+
+          var file = document.querySelector('#file1-input').files[0];
+          var reader = new FileReader();
+          var prevImage = document.querySelector('#prevImage1');
+          if (file.type.match('image')) {
+              reader.onloadend = function () {
+                  prevImage.src = reader.result;
+              }
+              if (file) {
+                  reader.readAsDataURL(file);
+              } else {
+                  prevImage.src = "";
+              }
+          } else {
+              prevImage.src = "";
+          }
+      }
+      function previewFile2() {
+
+          var file = document.querySelector('#file2-input').files[0];
+          var reader = new FileReader();
+          var prevImage = document.querySelector('#prevImage2');
+          if (file.type.match('image')) {
+              reader.onloadend = function () {
+                  prevImage.src = reader.result;
+              }
+              if (file) {
+                  reader.readAsDataURL(file);
+              } else {
+                  prevImage.src = "";
+              }
+          } else {
+              prevImage.src = "";
+          }
+      }
+
+      /*]]>*/
+  </script>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="死亡確認通知" src="./assets/images/header/header_notification.png" width="754"
+       th:src="@{/images/header/header_notification.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="container">
+    <div id="notification_settings">
+      <div class="inner">
+        <div class="notice">
+          <p>
+            <!--/*@thymesVar id="bereave" type="ora.leadlife.co.jp.model.Bereave"*/-->
+            <span th:text="${bereave.account.user.name}"></span> さんが<br/>
+            亡くなったことを確認する<br/>
+            通知が送信されます。
+          </p>
+          <div class="icon">
+            <img height="212" src="./assets/images/icon/icon_bell.png" width="212"
+                 th:src="@{/images/icon/icon_bell.png}"/>
+          </div>
+          <div class="bg_balloon">
+            <img height="57" src="assets/images/bg/balloon_bottom.png" width="111"
+                 th:src="@{/images/bg/balloon_bottom.png}"/>
+          </div>
+        </div>
+        <!--/*@thymesVar id="diedConfirmationForm" type="ora.leadlife.co.jp.form.DiedConfirmationForm"*/-->
+        <form th:action="@{/diedConfirmation/register}" enctype="multipart/form-data" method="post" th:object="${diedConfirmationForm}">
+          <!--/*@thymesVar id="bereave" type="ora.leadlife.co.jp.model.Bereave"*/-->
+          <input type="hidden" name="id" th:value="${bereave.id}"/>
+          <div class="data">
+            <input placeholder="亡くなった日付を入力" type="text" th:name="date" id="datepicker"/>
+            <ul th:each="error : ${#fields.errors('date')}" class="error">
+              <li th:text="${error}"></li>
+            </ul>
+          </div>
+          <div class="upload">
+            <a class="cf" href="#">
+              <div class="icon">
+                <img height="216" th:src="@{/images/icon/icon_pdf.png}" width="217" />
+              </div>
+              <div class="desc">
+                <div class="label">
+                  <p>
+                    死亡診断書、火葬証明、<br />除籍、除票のうちいずれか2つをアップロード
+                  </p>
+                </div>
+              </div>
+            </a>
+            <div class="upload_date cf">
+              <div class="del_btn">
+                <a href="#"><img height="54" th:src="@{/images/icon/icon_cross.png}" width="54" /></a>
+              </div>
+              <div class="file_name">
+                xxx.jpg
+              </div>
+            </div>
+            <div class="upload_date cf">
+              <div class="del_btn">
+                <a href="#"><img height="54" th:src="@{/images/icon/icon_cross.png}" width="54" /></a>
+              </div>
+              <div class="file_name">
+                ●●●●●.jpg
+              </div>
+            </div>
+          </div>
+          <!--/*@thymesVar id="isPremium" type="java.lang.Boolean"*/-->
+          <div th:switch="${isPremium}">
+            <div th:case="true">
+              <div class="data">
+                <label for="file1-input">
+                  <img class="select_file" height="147" width="1040"
+                       th:src="@{/images/button/button_select_file.jpg}"/>
+                </label>
+                <input style="display: none" id="file1-input" type="file" class="form-control" th:name="file1"
+                       onchange="previewFile1()"/>
+                <img id="prevImage1" src="" width="1040"/>
+              </div>
+              <div class="data">
+                <label for="file2-input">
+                  <img class="select_file" height="147" width="1040"
+                       th:src="@{/images/button/button_select_file.jpg}"/>
+                </label>
+                <input style="display: none" id="file2-input" type="file" class="form-control" th:name="file2"
+                       onchange="previewFile2()"/>
+                <img id="prevImage2" src="" width="1040"/>
+              </div>
+            </div>
+            <div th:case="false">
+              <div class="data">
+                <a th:href="@{'/others/merit'}">
+                  <img class="select_file" height="147" width="1040"
+                       src="assets/images/button/button_select_file.jpg"
+                       th:src="@{/images/button/button_select_file.jpg}"/>
+                </a>
+              </div>
+              <div class="data">
+                <a th:href="@{'/others/merit'}">
+                  <img class="select_file" height="147" width="1040"
+                       src="assets/images/button/button_select_file.jpg"
+                       th:src="@{/images/button/button_select_file.jpg}"/>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="attention">
+            <a th:href="@{'/diedConfirmation/diedNotification'}">こちらを必</a><span>ずご確認下さい。</span>
+          </div>
+          <div class="btn cf">
+            <button type="submit">
+              <img alt="決定する" src="./assets/images/button/btn_decision.png"
+                   width="1060" th:src="@{/images/button/btn_decision.png}"/>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "資産について 9.貸金庫／レンタル倉庫／トランクルーム等 エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_trunkroom
+				.page_label
+					h2 資産について
+				.about_trunkroom
+					h2 9.貸金庫／レンタル倉庫／<br>トランクルーム等
+					.input__container
+						.input__box
+							.title 契約会社
+							input type="text"
+						//契約会社
+						.input__box
+							.title 連絡先
+							input type="text"
+						//連絡先
+						.input__box
+							.title 郵便番号
+							ul
+								li
+									input.post type="text"
+								li
+									p -
+								li
+									input.post type="text"
+						//郵便番号
+						.input__box
+							.title 住所
+							input type="text"
+						//住所
+						.input__box
+							.title 保管しているもの
+							textarea
+						//保管しているもの
+						a.add_list href="#" リストを追加
+
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

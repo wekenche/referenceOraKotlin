@@ -1,0 +1,40 @@
+doctype html
+html lang="ja"
+	/ - $pageNo = 8;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "通知", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  / == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#sharedaccaunt_approve
+				.inner
+					.notice
+						p
+							|
+								アカウント3さんより
+							br
+							|
+								アカウント3さんの
+							br
+							|
+								エンディングノートを
+							br
+							|
+								閲覧していただきたいと
+							br
+							|
+								指定がありました。
+
+						p 承認しますか？
+						.bg_balloon
+							img src="assets/images/bg/balloon_bottom.png" width="111" height="57"
+					.btn.cf
+						.approve
+							a href="sharedaccaunt_list.html"
+								img src="./assets/images/button/button_approve.jpg" width="495" height="147"
+						.unapprove
+							a href="sharedaccaunt_list2.html"
+								img src="./assets/images/button/button_unapprove.jpg" width="495" height="147"
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

@@ -1,0 +1,44 @@
+doctype html
+html lang="ja"
+	- $pageNo = 11;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "ログイン画面", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#account_login
+	  		.inner.cf
+					.input
+						.mail_input
+							span メールアドレス
+							.inputWithIcon
+								input type="text" placeholder="PC・携帯どちらでも可"
+							span パスワード
+							.inputWithIcon
+								input#password type="password"
+							.pswd_show
+								input#check type="checkbox"
+								label for="check" パスワードを表示
+					.btn
+						a href="#"
+							img src="./assets/images/button/button_login.jpg" width="1040" height="147"
+						.pswd
+							a href="account_pswd_reset.html" パスワードをお忘れの場合
+
+					.btn_download_box
+						.inner_btn.cf
+							a href="#"
+								img src="./assets/images/button/btn_app_store_badge.png" width="454" height="166"
+							a href="https://play.google.com/store/apps?hl=ja"
+								img src="./assets/images/button/btn_google_play_badge.png" width="564" height="168"
+						p appstore 審査中
+
+					.how_to_add
+						h3 ホーム画面への追加方法（safari）
+						ul
+							li ・iPhoneの画面下部（iPadの場合は画面上部）メニューから<span><img src="./assets/images/icon/icon_add_safari.png" width="75" height="74"></span>を選択
+							li ・「ホーム画面に追加」を選択
+							li ・右上の「追加」を選択する
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

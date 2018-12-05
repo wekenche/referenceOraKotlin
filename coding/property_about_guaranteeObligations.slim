@@ -1,0 +1,60 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "資産について 12.保証債務 エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#property_about_guaranteeObligations
+				.page_label
+					h2 資産について
+				.about_guaranteeObligations
+					h2 12.保証債務
+					.input__container
+						.input__box.input_date
+							.title 保証した日
+							ul
+								li
+									input.date type="text"
+								li
+									p 年
+								li
+									input.date type="text"
+								li
+									p 月
+								li
+									input.date type="text"
+								li
+									p 日
+						//保証した日
+						.input__box
+							.title 保証した金額
+							input type="text"
+						//保証した金額
+						.input__box
+							.title 主債務者（保証した人）
+							input type="text"
+						//主債務者（保証した人）
+						.input__box
+							.title 主債務者の連絡先
+							input type="text"
+						//主債務者の連絡先
+						.input__box
+							.title 債権者の氏名・名称
+							input type="text"
+						//債権者の指名・名称
+						.input__box
+							.title 債権者の連絡先
+							input type="text"
+						//債権者の連絡先
+						a.add_list href="#" リストを追加
+
+					.button_box
+						a href="#"
+							img src="./assets/images/button/button_save.jpg" width="1040" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

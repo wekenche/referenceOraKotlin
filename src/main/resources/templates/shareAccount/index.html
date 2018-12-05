@@ -1,0 +1,87 @@
+<!--sharedaccaunt_list.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="共有アカウント管理" src="./assets/images/header/header_account_list.png" width="754"
+       th:src="@{/images/header/header_account_list.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="container">
+    <div id="sharedaccaunt_list">
+      <div class="inner">
+        <ul class="accaunt_list">
+          <!--/*@thymesVar id="list" type="java.util.List<ora.leadlife.co.jp.model.Bereave>"*/-->
+          <li th:each="bereave : ${list}" th:classappend="${(!bereave.approval ? 'unapproved' : '')}">
+            <a href="javascript:;"
+              th:attr="onclick='confirmDeleteFile(\'/shareAccount/delete/' + ${bereave.id} + '\',this)'">
+              <div class="wrapper_list cf">
+                <figure>
+                  <img height="213" src="assets/images/icon/icon_account_on.png" width="213"
+                       th:src="@{/images/icon/icon_account_on.png}"/>
+                </figure>
+                <p>
+                  <span th:text="${bereave.user.name}"></span><br/>(<span th:if="${bereave.approval}">承認済み</span><span
+                  th:unless="${bereave.approval}">未承認</span>)
+                </p>
+              </div>
+            </a>
+            <div class="close_mark">
+              <img height="69" src="assets/images/close_mark.png" width="69"
+                   th:src="@{/images/close_mark.png}"/>
+            </div>
+          </li>
+        </ul>
+        <!--/*@thymesVar id="shareAccountForm" type="ora.leadlife.co.jp.form.ShareAccountForm"*/-->
+        <div class="user_add">
+          <div class="title">
+            共有アカウントの追加
+          </div>
+        </div>
+        <div class="category_add">
+          <form th:action="@{/shareAccount/saveShareAccount}" method="post" th:object="${shareAccountForm}">
+            <div class="label">
+              メールアドレス
+            </div>
+            <input placeholder="メールアドレス" type="text" th:name="email"/>
+            <ul th:each="error : ${#fields.errors('email')}" class="error">
+              <li th:text="${error}"></li>
+            </ul>
+            <div class="add_delete">
+              <div class="btn cf">
+                <div class="back">
+                  <a href="/account"><img height="147"
+                                          src="./assets/images/button/btn_back.jpg"
+                                          width="495"
+                                          th:src="@{/images/button/btn_back.jpg}"/></a>
+                </div>
+                <div class="add">
+                  <button type="submit"><img height="147" src="./assets/images/button/button_add_account.jpg"
+                                             width="495"
+                                             th:src="@{/images/button/button_add_account.jpg}"/></button>
+                </div>
+              </div>
+                <div id="bnr_paying_merit">
+                    <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                         th:src="@{/images/common/banner.png}" width="1040" /></a>
+                </div>
+                <br/>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="show_dialog" title="ダイアログのタイトル"></div>
+  </div>
+</div>
+</body>
+</html>

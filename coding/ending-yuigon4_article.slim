@@ -1,0 +1,145 @@
+doctype html
+html lang="ja"
+	- $pageNo = 1;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "お薬のこと エンディングノート", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#ending-yuigon4__article
+				.page_label
+					h2 お薬のこと
+				.about_helth
+					#upload_files
+						h3.orange 動画
+						.box
+							.video_content
+								video src="./assets/movie/sample.mp4" controls="controls" poster="./assets/movie/default.png"
+								video src="./assets/movie/sample.mp4" controls="controls" poster="./assets/movie/default.png"
+						h3.orange 画像
+						.box
+							.image_content
+								img src="./assets/images/uploads/user_uploads.jpg" width="100%"
+								img src="./assets/images/uploads/user_uploads.jpg" width="100%"
+
+					h3.orange 健康について
+					.input__container
+						.input__box
+							.title アレルギー
+							.result 卵、牛乳、スギ
+						//アレルギー
+						.input__box
+							.title 血液
+							.result O型
+						//血液
+						.input__box
+							.title 病歴・持病
+							.result
+								|
+									テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+						//病歴・持病
+						.input__box
+							.title 服用中のお薬（お薬手帳）1
+						.input__box
+							.inner__list__title ■ 薬の商品名
+							.result.box_border テキストテキストテキストテキストテキスト
+						//薬の商品名
+						.input__box
+							.inner__list__title ■ 処方した日
+							.result.box_border 2018年3月1日
+						.input__box
+							.inner__list__title ■ 処方病院
+							.result.box_border ○○病院
+						//処方病院
+						.input__box
+							.inner__list__title ■ 医師名
+							.result.box_border テキストテキスト
+						//医師名
+						.input__box
+							.inner__list__title ■ 薬の量
+							.result.box_border テキストテキスト
+						//薬の量
+						.input__box
+							.inner__list__title ■ 薬の飲み方と回数
+							.result.box_border テキストテキストテキストテキストテキスト
+						//薬の飲み方と回数
+						.input__box
+							.inner__list__title ■ 処方日数
+							.result.box_border.last テキストテキスト
+						//処方日数
+						//服用中のお薬（お薬手帳）
+						.input__box
+							.title 服用中のお薬（お薬手帳）2
+						.input__box
+							.inner__list__title ■ 薬の商品名
+							.result.box_border テキストテキストテキストテキストテキスト
+						//薬の商品名
+						.input__box
+							.inner__list__title ■ 処方した日
+							.result.box_border 2018年3月1日
+						.input__box
+							.inner__list__title ■ 処方病院
+							.result.box_border ○○病院
+						//処方病院
+						.input__box
+							.inner__list__title ■ 医師名
+							.result.box_border テキストテキスト
+						//医師名
+						.input__box
+							.inner__list__title ■ 薬の量
+							.result.box_border テキストテキスト
+						//薬の量
+						.input__box
+							.inner__list__title ■ 薬の飲み方と回数
+							.result.box_border テキストテキストテキストテキストテキスト
+						//薬の飲み方と回数
+						.input__box
+							.inner__list__title ■ 処方日数
+							.result.box_border.last テキストテキスト
+						//処方日数
+						//服用中のお薬（お薬手帳）2
+						.input__box
+							.title アレルギーのある薬
+							.result
+								|
+									テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+						//アレルギーのある薬
+						.input__box
+							.title かかりつけの病院
+							.result
+								|
+									テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+						//かかりつけの病院
+						.input__box
+							.title 重大な病気の告知をして欲しいか否か
+							.result 希望する
+						//重大な病気の告知をして欲しいか否か
+						.input__box
+							.title 延命治療を希望するかどうか
+							.result 希望する
+						//延命治療を希望するかどうか
+						.input__box
+							h3.sub 臓器提供
+							.title 臓器提供を希望するか
+							.result 希望する
+						//臓器提供を希望するか
+						.input__box
+							.title ドナーカードの有無
+							.result 有り
+						//延命治療を希望するかどうか
+						.input__box
+							.title ドナーカードの場所
+							.result テキストテキスト
+						//ドナーカードの場所
+					.button_box.cf
+						.left
+							a href="#"
+								img src="./assets/images/button/btn_delete.png" width="495" height="147"
+						.right
+							a href="#"
+								img src="./assets/images/button/button_edit.jpg" width="495" height="147"
+					
+					== Slim::Template.new('./templates/_banner.slim').render
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

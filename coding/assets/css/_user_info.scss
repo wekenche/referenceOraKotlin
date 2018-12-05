@@ -1,0 +1,56 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#user_info_menu{
+	background: #f2f2f2;
+	.inner{
+		padding-top: 120px;
+		padding-bottom: 90px;
+		box-sizing: border-box;
+		ul{
+			border: 7px solid #ff8431;
+			width: 1100px;
+			margin: 0 auto;
+			background: #fff;
+			li{
+				border-bottom: 7px solid #ff8431;
+				background: url(../images/bg/bg_arrow_rb.jpg)no-repeat right bottom;
+				&:last-child{
+					border-bottom: none;
+				}
+				&.dim{
+					background: #fff;
+				}
+				a,.menu_dim{
+					display: table;
+					text-decoration: none;
+					width: 100%;
+					padding: 35px 0 35px 90px;
+					box-sizing: border-box;
+					.icon,.title,.title_dim{
+						display: table-cell;
+						vertical-align: middle;
+					}//common
+					.icon{
+						width: 160px;
+						padding-right: 90px;
+						box-sizing: border-box;
+					}
+					.title{
+						font-size: 60px;
+						color: #ff8431;
+						font-weight: bold;
+					}//title
+					.title_dim{
+						font-size: 60px;
+						font-weight: bold;
+						color: #b7bcc0;
+					}
+				}
+			}//li
+		}//ul		
+	}
+}//#user_info_menu

@@ -1,0 +1,693 @@
+@charset "utf-8";
+$phone: "only screen and (max-width:640px)";
+$tablet: "only screen and (min-width:641px) and (max-width:959px)";
+$pc: "only screen and (min-width:960px)";
+//breakpoint setting: example @media #{$hoge}{css propaty}
+
+#endingnote_index, #endingnote_index_about_me{
+	background: #f2f2f2;
+	.inner{
+		width: 1140px;
+		margin: 0 auto;
+		padding-top: 155px;
+		padding-bottom: 256px;
+		box-sizing: border-box;
+		ul{
+			float: left;
+			&:first-child{
+				margin-right: 32px;
+			}
+			li{
+				margin-bottom: 36px;
+				&:last-child{
+					margin-bottom: 0;
+				}
+				img{
+					display: block;
+					bottom: 0;
+				}
+			}
+		}
+		.attention{
+			color: red;
+			display: inline-block;
+			margin-top: 45px;
+			font-size: 38px;
+		}
+	}//inner
+}//#endingnote_index, #endingnote_index_about_me エンディングノート top
+
+#endingnote_index{
+	.inner{
+		padding-bottom: 0;	
+	}
+	#bnr_paying_merit{
+		padding-bottom: 256px;
+	}
+}
+
+#ending-yuigon3{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.inner{
+		width: 1140px;
+		margin: 0 auto;
+		padding-top: 72px;
+		padding-bottom: 435px;
+		box-sizing: border-box;
+		.button_box{
+			width: 1118px;
+			margin: 0 auto;
+			a{
+				display: inline-block;
+				margin-bottom: 25px;
+				&:nth-of-type(odd){
+					background: #ff9c31;
+				}
+				&:nth-of-type(even){
+					background: #ff8431;
+				}
+			}
+		}
+		h3{
+			margin: 113px 0 26px;
+			font-size: 50px;
+			font-weight: bold;
+			line-height: 87px;
+			letter-spacing: 0.12em;
+			color: #ff8431;
+		}
+		input[type=text]{
+			width: 1035px;
+			padding: 18px 0 15px 32px;
+			border: 7px solid #ff8431;
+			border-radius: 10px;
+			font-size: 45px;
+			font-weight: bold;
+			line-height: 72px;
+			letter-spacing: 0.12em;
+		&::-webkit-input-placeholder{
+				color: #b0b0b0;
+			}	
+		}
+		a.original{
+			width: 1118px;
+			// height: 310px;
+			background: #ff9c31;
+			color: #fff;
+			padding: 67px 0 62px 69px;
+			text-decoration: none;
+			box-sizing: border-box;
+			&:hover{
+				color: #fff;
+				text-decoration: none;
+			}
+			.box{
+				// display: table;
+				background: url(../images/icon/icon_btn_arrow.png)no-repeat bottom right;
+				margin-right: 32px;
+				box-sizing: border-box;
+				.btn_inner{
+					display: table;
+				}
+				img,#original_category{
+					display: table-cell;
+					vertical-align: middle;
+				}
+				#original_category{
+					font-size: 70px;
+					font-weight: bold;
+					padding:0 80px;
+					box-sizing: border-box;
+				}
+			}
+		}
+		.button_add{
+			margin-top: 52px;
+		}
+	}//inner
+}//#ending-yuigon3　わたしのこと
+
+
+#ending-yuigon4,#ending-yuigon4__article{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.inner{
+		width: 1040px;
+		margin: 0 auto;
+		// padding-top: 133px;
+		// padding-bottom: 190px;
+		box-sizing: border-box;
+		.button_box{
+			width: 1118px;
+			margin: 0 auto;
+			img.button_drug{
+				margin-bottom: 59px;
+			}
+		}
+		.text_box{
+			.input_text{
+				width: 1040px;
+				height: 396px;
+				padding: 18px 0 0 32px;
+				border: 7px solid #ff8431;
+				border-top: 0;
+				border-radius: 0 0 10px 10px;
+				font-size: 45px;
+				font-weight: bold;
+				line-height: 72px;
+				letter-spacing: 0.12em;
+				box-sizing: border-box;
+			&::-webkit-input-placeholder{
+				color: #b0b0b0;
+			}
+			&::-webkit-scrollbar{
+				all: unset;
+				width:8px;
+			}
+			&::-webkit-scrollbar-thumb{
+				all: unset;
+				width: 8px;
+				border-radius: 10px;
+				background: #a6a6a6;
+			}
+
+			}
+		}
+		.payingmember{
+			margin: 73px 0 58px;
+			.button_drug{
+					margin-bottom:58px;
+					p{
+						margin-top: 20px;
+						text-align: left;
+						color: red;
+					}
+				}
+			p{
+				text-align: center;
+				margin-top: 70px;
+				font-size: 45px;
+				color: #498af2;
+			}	
+		}		
+	}//inner
+	.about_helth{
+		width: 1188px;
+		margin: 0 auto;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		h3.sub{
+			font-size: 48px;
+			font-weight: bold;
+			color: #fff;
+			background: #747474;
+			padding: 37px 0 37px 50px;
+			box-sizing: border-box;
+			margin: 67px 0 53px 0;
+		}
+		.input__container{
+			width: 100%;
+			padding-bottom: 85px;
+			margin-bottom: 67px;
+			background: #fff;
+			border: 2px solid #000;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				.have__case{
+					font-size: 45px;
+					margin-top: 60px;
+					font-weight: bold;
+					margin-left: -0.5em;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+					&.blood{
+						width: 230px;
+					}
+					&.radio{
+						width: 54px;
+						height: 54px;
+					}
+				}
+				label{
+					font-size: 54px;
+					font-weight: bold;
+					padding-left: 40px;
+					box-sizing: border-box;
+					&:first-of-type{
+						margin-right: 90px;
+					}
+				}
+				.inner__container{
+					border: 2px solid #000;
+					margin-top: 54px;
+					background: #f2f2f2;
+					h3{
+						font-size: 45px;
+						font-weight: bold;
+						background: #d5d5d5;
+						border-bottom: 2px solid #000;
+						padding: 42px 32px;
+						box-sizing: border-box;
+					}
+					.inner__box{
+						width: 972px;
+						margin: 0 auto;
+						.date{
+							display: table;
+							input,span{
+								display: table-cell;
+							}
+							span{
+								font-size: 45px;
+								padding: 0 25px;
+								box-sizing: border-box;
+							}
+						}
+					}
+					.btn{
+						text-align: center;
+						padding: 54px 0 53px 0;
+						box-sizing: border-box;
+						a{
+							display: inline-block;
+						}
+						&.delete{
+							padding-top: 0;
+						}
+					}
+				}//inner__container
+			}//input__box
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			// padding-bottom: 116px;
+			box-sizing: border-box;
+			.left{
+				float: left;
+			}
+			.right{
+				float: right;
+			}
+		}
+	}//about_helth		
+}//#ending-yuigon4 お薬のこと
+
+#ending-yuigon4__article{
+	.about_helth{
+		width: 1188px;
+		h3.orange{
+			font-size: 55px;
+			color: #fff;
+			padding: 40px 0;
+			box-sizing: border-box;
+			text-align: center;
+			background: #ff8431;
+		}
+		#upload_files{
+			background: #fff;
+			margin-top: 125px;
+			.box{
+				border-left: 2px solid #b1b1b1;
+				border-right: 2px solid #b1b1b1;
+			}
+			.video_content,.image_content{
+				width: 1032px;
+				margin: 0 auto;
+				padding: 87px 0 127px 0;
+				box-sizing: border-box;
+				video,img{
+					width: 100%;
+					height: 620px;
+					margin-top: 68px;
+					&:first-of-type{
+						margin-top: 0;
+					}
+				}
+			}
+		}//#upload_files
+		.input__container{
+			border: 2px solid #b1b1b1;
+			padding-top: 75px;
+			box-sizing: border-box;
+			.input__box{
+				.title{
+					font-size: 50px;
+					color: #fff;
+					background: #b1b1b1;
+					padding: 30px 0 30px 28px;
+					box-sizing: border-box;
+					margin-bottom: 0;
+				}
+				.inner__list__title{
+					font-size: 45px;
+					font-weight: bold;
+					margin-top: 47px;
+					margin-bottom: 32px;
+					padding-left: 30px;
+				}
+				.result{
+					font-size: 45px;
+					margin: 45px 0;
+					padding-left: 30px;
+					&.box_border{
+						border-bottom: 3px solid #dcdcdc;
+						padding-bottom: 65px;
+						box-sizing: border-box;
+						&.last{
+							border-bottom: none;
+							padding-bottom: 0;
+						}
+					}
+				}
+			}
+		}//.input__container
+		h3.sub{
+			color: #ff8431;
+			background: url(../images/icon/icon_arrow.png)no-repeat center left;
+			font-size: 55px;
+			padding: 37px 0 49px 70px;
+			margin-bottom: 0;
+		}
+	}
+}//#ending-yuigon4__article
+
+#ending-yuigon5{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.inner{
+		width: 1040px;
+		margin: 0 auto;
+		padding-top: 133px;
+		padding-bottom: 190px;
+		box-sizing: border-box;
+		.button_box{
+			width: 1118px;
+			margin: 0 auto;
+			img.button_drug{
+				margin-bottom: 59px;
+			}
+		}
+		.text_box{
+			.input_text{
+				width: 1040px;
+				height: 396px;
+				padding: 18px 0 0 32px;
+				border: 7px solid #ff8431;
+				border-top: 0;
+				border-radius: 0 0 10px 10px;
+				font-size: 45px;
+				font-weight: bold;
+				line-height: 72px;
+				letter-spacing: 0.12em;
+				box-sizing: border-box;
+			&::-webkit-input-placeholder{
+				color: #b0b0b0;
+			}
+			&::-webkit-scrollbar{
+				all: unset;
+				width:8px;
+			}
+			&::-webkit-scrollbar-thumb{
+				all: unset;
+				width: 8px;
+				border-radius: 10px;
+				background: #a6a6a6;
+			}
+
+			}
+		}
+		.payingmember{
+			margin: 73px 0 58px;
+			img{
+					margin-bottom:58px;
+				}
+			p{
+				text-align: center;
+				margin-top: 70px;
+				font-size: 45px;
+				color: #498af2;
+			}	
+		}		
+		.button_box{
+			width: 1040px;
+			.left{
+				float: left;
+			}
+			.right{
+				float: right;
+			}
+		}
+	}//inner
+}//#ending-yuigon5　ペットのこと
+
+
+#endingnote_about_property{
+	background: #f2f2f2;
+	.inner{
+		// height: 1000px;
+		article{
+			width: 1180px;
+			margin: 0 auto;
+			margin-top: 74px;
+			background: #fff;
+			border: 2px solid #b1b1b1;
+			.article_title{
+				width: 1140px;
+				margin: 0 auto;
+				border-bottom: 2px solid #b1b1b1;
+				padding: 20px 0 45px 53px;
+				box-sizing: border-box;
+				.data{
+					font-size: 33px;
+					line-height: 2.3;
+					color: #6d6d6d;
+				}
+				.title{
+					font-size: 55px;
+					font-weight: bold;
+					color: #0b579d;
+					line-height: 1.3;
+				}
+			}//title
+			.article_content{
+				padding: 43px 75px;
+				height: 700px;
+				overflow: scroll;
+				box-sizing: border-box;
+				p{
+					font-size: 50px;
+					line-height: 1.56;
+					letter-spacing: 0.1em;
+					color: #6d6d6d;
+				}
+			}//.aritcle_content
+		}//article
+		#upload_files{
+			width: 1045px;
+			margin: 0 auto;
+			margin-top: 81px;
+			margin-bottom: 125px;
+			div:first-of-type{
+				margin-bottom: 60px;
+			}
+			.video_content{
+				video{
+					width: 100%;
+				}
+			}///.video_content
+		}//#upload_files
+		.btn{
+			width: 1180px;
+			margin: 0 auto;
+			margin-top: 46px;
+			padding-left: 78px;
+			// padding-bottom: 67px;
+			box-sizing: border-box;
+			a:first-child{
+				margin-right: 46px;
+			}
+			img{
+				display: inline-block;
+			}
+		}
+	}//inner
+}//#endingnote_about_property エンディングノート一覧？
+
+
+#funeral_about,#testament_about,#digital_about,#others_about{
+	background: #f2f2f2;
+	img{
+		display: block;
+		bottom: 0;
+	}
+	.inner{
+		background: #fff;
+		padding-top: 150px;
+		box-sizing: border-box;
+		text-align: center;
+		a.btn{
+			width: 1140px;
+			display: inline-block;
+			margin-bottom: 78px;
+		}
+	}
+	.grave,.fueral,.testament,.digital,.others{
+		width: 1188px;
+		margin: 0 auto;
+		padding: 73px 0 105px;
+		h2{
+			font-size: 72px;
+			font-weight: bold;
+			color: #ff8431;
+			margin-bottom: 35px;
+		}
+		h3{
+			font-size: 48px;
+			color: #fff;
+			background: #747474;
+			padding: 32px 50px;
+			box-sizing: border-box;
+			letter-spacing: 0.05em;
+		}
+		.input__container{
+			width: 100%;
+			background: #fff;
+			border: 2px solid #000;
+			padding-bottom: 75px;
+			box-sizing: border-box;
+			.input__box{
+				width: 1040px;
+				margin: 0 auto;
+				.title{
+					font-size: 45px;
+					padding-top: 52px;
+					margin-bottom: 25px;
+				}
+				textarea{
+					width: 100%;
+					height: 395px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					font-size: 45px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+				input{
+					font-size: 45px;
+					border: 2px solid #000;
+					border-radius: 10px;
+					height: 140px;
+					padding: 20px 20px;
+					box-sizing: border-box;
+					width: 100%;
+					&.blood{
+						width: 230px;
+					}
+					&.radio{
+						width: 54px;
+						height: 54px;
+					}
+					&.date{
+						width: 220px;
+					}
+					&.price{
+						width: 756px;
+					}
+				}
+				label{
+					font-size: 54px;
+					font-weight: bold;
+					padding-left: 40px;
+					box-sizing: border-box;
+					&:first-of-type{
+						margin-right: 90px;
+					}
+				}
+				.have__case{
+					font-size: 45px;
+					margin-top: 60px;
+					font-weight: bold;
+					margin-left: -0.5em;
+				}
+				span{
+					&.date,&.price{
+						font-size: 40px;
+						padding: 0 30px;
+						box-sizing:border-box;
+					}
+				}
+				a.btn{
+					margin-top: 60px;
+					display: inline-block;
+				}
+				&.no__title{
+					margin-top: 75px;
+				}
+			}//input__box
+			a.add_list{
+				display: inline-block;
+				padding-left: 108px;
+				margin: 60px 0 0 770px;
+				color: #000;
+				font-size: 43px;
+				text-decoration: none;
+				background: url(../../assets/images/icon/icon_plus.png)
+										no-repeat left;
+				background-size: contain;
+			}
+		}//input__container
+		.button_box{
+			width: 1040px;
+			margin: 0 auto;
+			margin-top: 67px;
+
+		}
+	}//about_collection	
+}//#funeral_about_grave 1.お墓について

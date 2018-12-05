@@ -1,0 +1,46 @@
+doctype html
+html lang="ja"
+	- $pageNo = 5;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "お支払いについて 有料会員登録", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#paid_member_registration_aboutpay_iOS
+				.page_label 有料会員登録
+				.inner_iOS
+					.title お支払いについて
+					.wrapper
+						p.desc
+							|
+								有料会員登録には「AppleID決済」をご利用いただけます。			
+
+						.appleID
+							h3 AppleIDでの有料会員サービスの登録について
+							p 有料会員月額 ： 972円（税込）
+							p iOS版アプリの有料会員登録ページにある「登録する」より、利用規約に同意のうえ、有料会員手続きを進めてください。
+
+						.about_admission
+							h3 料金について
+							p 有料会員サービスの料金のご請求は、Apple社よりお客さまのApple ID（App Store/iTunesアカウント）に対して行われます。
+
+
+						.about_update
+							h3 更新について
+							p 有料会員サービスの登録期間は、開始日から起算して1ヶ月ごとに自動更新いたします。<br>現在の登録期間が終了する24時間以上前であれば、いつでも自動更新を停止いただけます。
+							p なお、定期購読の更新日やお支払い方法の変更、購読の停止などは、App StoreやiPhoneなどの端末の【設定】よりApple ID設定よりご対応ください。
+
+						.about_cancel
+							h3 解約方法
+							p 
+								|
+									下記よりApple社のページをご参照いただき、App Storeより定期購読のご解約を実施してください。<br>
+								a href="https://support.apple.com/ja-jp/HT202039" target="_blank" >>定期購読内容を表示、変更、または解約する
+							p ※なお、生前整理アプリのサービスそのものから退会された場合も、Apple IDでの定期購読は自動で解除されません。<br>必ずApp Storeより定期購読の解約をお願いいたします。
+
+						.btn
+							a href="paid_member_registration_top.html"
+								img src="assets/images/button/button_paid_back.jpg" width="1064" height="147"
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render

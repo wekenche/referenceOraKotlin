@@ -1,0 +1,76 @@
+doctype html
+html lang="ja"
+	- $pageNo = 6;
+	head
+		== Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "メッセージの記録", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+		== Slim::Template.new('./templates/_header.slim').render
+		#container
+			#message_record_edit
+				.inner
+					.select_box
+						img.button_drug src="./assets/images/button/select_category.jpg" width="1041" height="147"
+						select name="category" size="3" style="display: none;"
+							option value="category1" 一周忌
+							option value="category2" 三周忌
+							option value="category3" 思い出
+
+					.select_box
+						img.button_drug src="./assets/images/button/select_record.jpg" width="1041" height="147"
+						select name="record" size="4" style="display: none;"
+							option value="photo" 写真
+							option value="video" ビデオ
+							option value="date" データ（PDF）
+							option value="text" テキストのみ
+
+					/ .select_box
+					/ 	img.button_drug src="./assets/images/button/select_category.jpg" width="1041" height="147"
+					/ 	ul.checklist
+					/ 		li 一周忌
+					/ 		li 三周忌
+					/ 		li 思い出
+
+					/ .select_box
+					/ 	img.button_drug src="./assets/images/button/select_record.jpg" width="1041" height="147"
+					/ 	ul.checklist2
+					/ 		li 写真
+					/ 		li ビデオ
+					/ 		li データ（PDF）
+					/ 		li テキストのみ
+
+					.btn.cf
+						.back
+							a href="message_record_function.html"
+								img src="./assets/images/button/btn_back.jpg" width="495" height="147"
+						.check
+							a href="message_record_edit_video.html"
+								img src="./assets/images/button/button_check.jpg" width="495" height="147"
+
+					== Slim::Template.new('./templates/_banner.slim').render
+					
+
+		== Slim::Template.new('./templates/_footer.slim').render
+		== Slim::Template.new('./templates/_script.slim').render
+		script src="./assets/js/safarimobile-multiline-select.min.js"
+		javascript:
+			$().ready(function () {
+				$("select").fixForSafariMobile(true);
+			})
+
+			// $(function(){
+			//   $(".checklist li").click(function() {
+			//     $(".checklist li").each(function() {
+			//       $(this).removeClass("select");
+			//     })
+			//     $(this).addClass("select");
+			//   });
+			// });
+
+			// $(function(){
+			//   $(".checklist2 li").click(function() {
+			//     $(".checklist2 li").each(function() {
+			//       $(this).removeClass("select");
+			//     })
+			//     $(this).addClass("select");
+			//   });
+			// });

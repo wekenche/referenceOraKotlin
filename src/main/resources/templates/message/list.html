@@ -1,0 +1,77 @@
+<!--message_list.html-->
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="" src="./assets/images/header/header_message_confirm.png" width="712"
+       th:src="@{/images/header/header_message_confirm.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="container">
+    <!--/*@thymesVar id="viewFlag" type="java.lang.Boolean"*/-->
+    <div id="message_record_list">
+      <div class="inner">
+        <div class="input">
+          <ul class="list_box">
+            <!--/*@thymesVar id="messageList" type="ora.leadlife.model.Message"*/-->
+            <li class="cf" th:each="message : ${messageList}">
+              <a th:href="@{'~/message/detail/' + ${message.id} + '?viewFlag=' + ${viewFlag} }">
+                <th:block th:switch="${message.messageType}">
+                  <figure th:case="PICTURE">
+                    <img height="67" th:src="@{/images/icon/icon_camera.png}" width="87"/>
+                  </figure>
+                  <figure th:case="'MOVIE'">
+                    <img height="78" th:src="@{/images/icon/icon_video.png}" width="93"/>
+                  </figure>
+                  <figure th:case="DATA">
+                    <img height="98" th:src="@{/images/icon/icon_pdf.png}" width="82"/>
+                  </figure>
+                  <figure th:case="NONE">
+                    <img height="78" th:src="@{/images/icon/icon_article.png}" width="93"/>
+                  </figure>
+                </th:block>
+                <div class="text">
+                  <p class="date" th:text="${#dates.format(message.updatedAt, 'yyyy/MM/dd')}"></p>
+                  <div class="title">
+                    <span th:text="[ + ${message.messageCategory.name} + ]"/>
+                    <span th:text="${message.title}"/>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="btn cf">
+          <div class="back">
+            <a th:href="@{/}">
+              <img height="147" width="495"
+                   src="assets/images/button/btn_back.jpg"
+                   th:src="@{/images/button/btn_back.jpg}"/>
+            </a>
+          </div>
+          <div class="check" th:unless="${viewFlag}">
+            <a href="/message/input1">
+              <img height="147" src="assets/images/button/button_check.jpg"
+                   th:src="@{/images/button/button_add_account.jpg}" width="495"/>
+            </a>
+          </div>
+        </div>
+          <div id="bnr_paying_merit">
+              <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                   th:src="@{/images/common/banner.png}" width="1040" /></a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

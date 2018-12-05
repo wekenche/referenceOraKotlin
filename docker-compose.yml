@@ -1,0 +1,20 @@
+version: '2'
+services:
+        db:
+                image: mysql
+                environment:
+                        - MYSQL_ROOT_PASSWORD=secret
+                        - MYSQL_DATABASE=ora
+                        - MYSQL_USER=ora
+                        - MYSQL_PASSWORD=secret
+                ports:
+                        - "3306:3306"
+                volumes:
+                  - "./docker/db/mount/:/var/lib/mysql:cached"
+        postfix:
+                image: catatnight/postfix
+                environment:
+                  - maildomain=my.domain.com
+                  - smtp_user=user:pass
+                ports:
+                  - "25:25"

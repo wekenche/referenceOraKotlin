@@ -1,0 +1,62 @@
+<!--sharedaccaunt_list2.html-->
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>始める前に</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="死亡確認通知" src="./assets/images/header/header_notification.png" width="754"
+       th:src="@{/images/header/header_notification.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="container">
+    <div id="sharedaccaunt_list2">
+      <div class="inner">
+        <ul class="accaunt_list">
+          <!--/*@thymesVar id="list" type="java.util.List<ora.leadlife.co.jp.model.Bereave>"*/-->
+          <li th:each="bereave : ${list}">
+            <div class="wrapper_list cf">
+              <a
+                      th:href="${bereave.account.died_confirmed} ? @{'/sharedAccount/detail/' + ${bereave.account.id}} : @{'/diedConfirmation/' + ${bereave.id}}">
+                <figure>
+                  <img height="213" src="assets/images/icon/icon_account_on.png" width="213"
+                       th:src="@{/images/icon/icon_account_on.png}"/>
+                </figure>
+                <p>
+                  <span th:text="${bereave.account.user.name}"></span>さん<br/>
+                  <span th:unless="${bereave.account.died_confirmed}">
+                    <span th:if="${bereave.diedDate==null}">未入力</span>
+                    <span th:if="${bereave.diedDate!=null}"
+                          th:text="${#dates.format(bereave.diedDate,'yyyy/MM/dd')}"></span>
+                  </span>
+                  <span th:if="${bereave.account.died_confirmed}">承認済み</span>
+                </p>
+              </a>
+            </div>
+          </li>
+        </ul>
+        <div class="btn">
+          <a th:href="@{/}"><img alt="戻る" height="147"
+                                 src="./assets/images/button/btn_back2.png"
+                                 width="1040"
+                                 th:src="@{/images/button/btn_back2.png}"/></a>
+        </div>
+          <div id="bnr_paying_merit">
+              <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                   th:src="@{/images/common/banner.png}" width="1040" /></a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

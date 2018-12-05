@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns="http://www.w3.org/1999/xhtml"
+  layout:decorator="adminLayout">
+<head>
+</head>
+<body>
+<div layout:fragment="main">
+  <div class="card">
+    <div class="card-header">
+      検索
+    </div>
+    <div class="card-body">
+      <form th:action="@{/admin/user/search}" method="get">
+        <div class="form-group">
+          <!-- DEV search name -->
+          <label>名前</label>
+          <!--/*@thymesVar id="sname" type="java.lang.String"*/-->
+          <input class="form-control" type="text" name="name" th:value="${sname}"/>
+        </div>
+        <div class="form-group">
+          <!-- DEV search email -->
+          <label>メールアドレス</label>
+          <!--/*@thymesVar id="semail" type="java.lang.String"*/-->
+          <input class="form-control" type="text" name="email" th:value="${semail}"/>
+        </div>
+        <div class="form-group">
+          <!-- DEV search shop -->
+          <label>店舗コード</label>
+          <!--/*@thymesVar id="sshop" type="java.lang.String"*/-->
+          <input class="form-control" type="text" name="shop" th:value="${sshop}"/>
+        </div>
+        <div class="form-check">
+          <!-- DEV search exists(account where is_premium = true) -->
+          <!--/*@thymesVar id="spaid" type="java.lang.Boolean"*/-->
+          <input class="form-check-input" type="checkbox" name="paid" th:checked="${spaid}"/>
+          <label>有料アカウントあり</label>
+        </div>
+        <div class="form-check">
+          <!-- DEV search exists(account where is_premium = true) -->
+          <input class="form-check-input" type="radio" value="USER" name="user_type" checked="checked"/>
+          <label>一般ユーザー</label>
+          <input class="form-check-input" type="radio" value="ADMIN" name="user_type"/>
+          <label>管理者</label>
+        </div>
+        <div class="form-group">
+          <!-- DEV do search -->
+          <button type="submit" class="btn btn-primary">検索</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card mt-3">
+    <div class="card-header">一覧</div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <tr>
+          <th>ID</th>
+          <th><!-- DEV name -->名前</th>
+          <th><!-- DEV email -->メールアドレス</th>
+          <th><!-- DEV created_at-->作成日</th>
+          <th><!-- DEV updated_at-->更新日</th>
+          <th><!--
+          DEV accounts#name
+          if(account#is_premium == true) { name += '(有)'}
+          if(count(account#bereaves#died_date is not null) > 0) { name += '(死' + count(account#bereaves#died_date is not null) + ')'}
+          example
+          if the account is is_premium and count of died_date is 2 then
+          mike(有)(死2)
+
+           -->アカウント
+          </th>
+          <th>&nbsp;</th>
+        </tr>
+        <!--/*@thymesVar id="user" type="ora.leadlife.co.jp.model.User"*/-->
+        <tr th:each="user:${users}">
+          <td th:text="${user.id}"></td>
+          <td th:text="${user.name}"></td>
+          <td th:text="${user.email}"></td>
+          <td th:text="${user.createdAt}"></td>
+          <td th:text="${user.updatedAt}"></td>
+          <td>
+              <span th:each="account : ${user.accountList}">
+                <a th:href="@{'/admin/account/' + ${account.id} }">
+                  <span th:text="${account.name}"></span>
+                  <span th:if="${account.getIsPremium()}">(有)</span>
+                  <span th:if="${account.getBereaveDiedCount() > 0}">(死 <span th:text="${account.getBereaveDiedCount()}"></span>)</span>
+                </a>
+              </span>
+
+          </td>
+          <td>
+            <!-- DEV
+            changeAdmin change user_type(USER <-> ADMIN)
+            if user#user_type='ADMIN'
+              anchor = '一般ユーザーにする'
+            else
+              anchor = '管理者にする'
+            end
+            -->
+            <!--<a href="/admin/user/changeAdmin/1">管理者にする</a>-->
+            <!--/*@thymesVar id="id" type="ora."*/-->
+            <a href="javascript:;"
+               th:if="${user.userType == T(ora.leadlife.co.jp.config.Role).ADMIN.name()}"
+               th:attr="onclick='confirmChangeType(\'/admin/user/changeType/' + ${user.id} + '\')'">
+              一般ユーザーにする
+            </a>
+            <a href="javascript:;"
+               th:if="${user.userType == T(ora.leadlife.co.jp.config.Role).USER.name()}"
+               th:attr="onclick='confirmChangeType(\'/admin/user/changeType/' + ${user.id} + '\')'">
+              管理者にする
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- DEV paging -->
+  <div class="mt-3">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" th:if="${not page.hasPreviousPage}">
+          <a class="page-link"
+             href="javascript:;"
+             style="color: currentColor; cursor: not-allowed; opacity: 0.7; text-decoration: none;">
+            &laquo;
+          </a>
+        </li>
+        <li class="page-item" th:if="${page.hasPreviousPage}">
+          <a class="page-link"
+             th:href="@{${page.url}(page=${page.number - 2},size=${page.size})}">
+            &laquo;
+          </a>
+        </li>
+        <li th:each="item : ${page.items}" th:class="${item.current}? 'page-item active' : ''">
+          <a id="active"
+             th:if="${item.current}"
+             th:href="@{${page.url}(page=${item.number - 1},size=${page.size})}"
+             class="page-link">
+            <span th:text="${item.number}"></span>
+          </a>
+          <a th:if="${not item.current}"
+             th:href="@{${page.url}(page=${item.number - 1},size=${page.size})}"
+             class="page-link">
+            <span th:text="${item.number}"></span>
+          </a>
+        </li>
+        <li class="page-item" th:if="${not page.hasNextPage}">
+          <a class="page-link"
+             href="javascript:;"
+             style="color: currentColor; cursor: not-allowed; opacity: 0.7; text-decoration: none;">
+            &laquo;
+          </a>
+        </li>
+        <li class="page-item" th:if="${page.hasNextPage}">
+          <a class="page-link"
+             href="#"
+             th:href="@{${page.url}(page=${page.number},size=${page.size})}">
+            &raquo;
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+</body>
+</html>
+
+<script>
+    /*<![CDATA[*/
+    function confirmChangeType(url) {
+        $("#confirmDialog").dialog({
+            modal: true,
+            title: "change user type?",
+            buttons: {
+                "OK": function () {
+                    $.ajax({
+                        type : "PATCH",
+                        url : url,
+                        success: function (result) {
+                            $("#confirmDialog").dialog("close");
+                            location.reload();
+                        },
+                        error: function (e) {
+                            console.log(e);
+                            location.reload();
+                        }
+                    });
+                },
+                "キャンセル": function () {
+                    $(this).dialog("close");
+                }
+            },
+        });
+    }
+    /*]]>*/
+</script>

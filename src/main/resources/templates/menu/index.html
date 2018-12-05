@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+  <head>
+    <title>エンディングノート</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+  </head>
+  <body>
+    <div layout:fragment="headerImage">
+      <img alt="" src="./assets/images/header/header_endingnote.png" width="712"
+           th:src="@{/images/header/header_endingnote.png}"/>
+    </div>
+    <div layout:fragment="main">
+      <div id="container">
+        <div id="endingnote_index_about_me">
+          <div class="inner cf">
+            <ul>
+              <li>
+                <a href="endingnote_about_property.html"><img height="476" th:src="@{/images/button/button_about_me.jpg}" width="554" /></a>
+              </li>
+              <li>
+                <a href="aboutMe/funeralAboutTop"><img height="476" th:src="@{/images/button/button_grave.jpg}" width="554" /></a>
+              </li>
+              <li>
+                <a href="digital"> <img height="476" th:src="@{/images/button/button_member_service.jpg}" width="554" /></a>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <a href="aboutMe/propertyAboutTop"><img height="476" th:src="@{/images/button/button_about_prpperty.jpg}" width="554" /></a>
+              </li>
+              <li>
+                <a href="testament"><img height="476" th:src="@{/images/button/button_testament.jpg}" width="554" /></a>
+              </li>
+              <li>
+                <a href="pet"><img height="476" th:src="@{/images/button/button_others.jpg}" width="554" /></a>
+              </li>
+            </ul>
+            <div class="attention">
+              <p>
+                ※被共有者にこちらの情報が共有されますので、ご注意ください。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <link href="/css/reset.css" th:href="@{/css/reset.css}" rel="stylesheet"></link>
+  <link href="/css/drawer.css" th:href="@{/css/drawer.css}" rel="stylesheet"></link>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"></link>
+  <title>Error</title>
+</head>
+<body class="drawer drawer--left">
+<div id="container">
+  <div id="change_complete">
+    <div class="inner cf">
+      <div class="message">
+        <div class="status">
+          ご迷惑をお掛けし申し訳ございません。<br/>
+          エラーが発生しました。<br/>
+          お時間をおいてから、再度実行お願いします。<br/>
+          <span th:text="${status} + ' ' + ${error}"></span>
+          <p><a th:href="@{/}">トップに戻る</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

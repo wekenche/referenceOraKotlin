@@ -1,0 +1,30 @@
+doctype html
+html lang="ja"
+	- $pageNo = 9;
+	head
+	  == Slim::Template.new('./templates/_meta.slim').render(Object.new, :title => "会員名・写真の変更", :description => "", :keywords => "f, o, o")
+	body.drawer.drawer--left
+	  == Slim::Template.new('./templates/_header.slim').render
+	  #container
+	  	#usrpict_add_change
+				.inner
+					.user_inner.cf
+						a href="#"
+							img src="assets/images/icon/icon_user_picture.png" width="347" height="346"
+						p 
+							|
+								クリックして写真を
+							br
+							|
+								追加/変更して下さい
+					.input_box
+						h3 ユーザー名の変更
+						input type="text" placeholder="ゲストユーザーさん"
+					a href="usrpict_finish.html"
+						img src="assets/images/button/button_change.jpg" width="1064" height="147"
+
+
+					== Slim::Template.new('./templates/_banner.slim').render
+
+	  == Slim::Template.new('./templates/_footer.slim').render
+	  == Slim::Template.new('./templates/_script.slim').render

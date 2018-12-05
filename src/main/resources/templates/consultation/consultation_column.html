@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="consultation_layout" style="width: auto !important;">
+<head>
+    <title>財産について 3.仮想通貨について エンディングノート</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_endingnote.png" width="320"
+         th:src="@{/images/header/header_consultation_column.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="consultation_column">
+        <div style="text-align: center">
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fenmansouzokunotakumi%2F&amp;tabs=timeline&amp;width=500&amp;height=600&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=false&amp;appId=1847049008646930"
+                    width="500" height="600" style="border:none;overflow:hidden;" scrolling="no" frameborder="0"
+                    allowTransparency="true" allow="encrypted-media"></iframe>
+        </div>
+        <!--/*@thymesVar id="isPremium" type="java.lang.Boolean"*/-->
+        <div id="bnr_paying_merit" th:if="${!isPremium}">
+            <a th:href="@{'/others/merit'}"><img height="85" src="./assets/images/common/banner.png"
+                                                 th:src="@{/images/common/banner.png}" width="500" /></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

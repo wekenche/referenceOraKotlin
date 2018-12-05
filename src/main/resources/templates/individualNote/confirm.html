@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<!--<div layout:fragment="headerImage">-->
+<!--<img alt="" src="./assets/images/header/header_endingnote.png" width="712"-->
+<!--th:src="@{/images/header/header_endingnote.png}"/>-->
+<!--</div>-->
+<div layout:fragment="main">
+    <div id="container">
+        <div id="message_record_confirm">
+            <!--/*@thymesVar id="individualNoteForm" type="ora.leadlife.co.jp.form.IndividualNoteForm"*/-->
+            <form th:action="@{/individualNote/done}" method="post" th:object="${individualNoteForm}">
+                <div class="inner">
+                    <div class="mesageform" style="display:none">
+                        <input th:field="*{individualId}"/>
+                        <input th:field="*{individualNoteCategory}"/>
+                        <input th:field="*{messageType}"/>
+                        <input th:field="*{individualTitle}"/>
+                        <textarea th:field="*{individualNoteContents}"/>
+                        <input th:field="*{individualNoteAttachment}"/>
+                    </div>
+                    <div class="inner_video">
+                        <!--/*@thymesVar id="#uploadedImage" type="ora.leadlife.co.jp.helper.UploadedImage"*/-->
+                        <div class="comment_box">
+                            <div class="comment">
+                                <div class="video"
+                                     th:if="${individualNoteForm.messageType==T(ora.leadlife.co.jp.config.FileType).MOVIE.name()}">
+                                    <video th:src="${#uploadedImage.build(individualNoteForm.individualNoteAttachment)}"
+                                           controls="true" autoplay="true" width="1040"/>
+                                </div>
+                                <div class="video"
+                                     th:if="${individualNoteForm.messageType==T(ora.leadlife.co.jp.config.FileType).PICTURE.name()}">
+                                    <img th:src="${#uploadedImage.build(individualNoteForm.individualNoteAttachment)}"
+                                         width="1040"/>
+                                </div>
+                                <br/>
+                                <p>
+                                    <span th:utext="${#strings.replace( #strings.escapeXml( individualNoteForm.individualNoteContents ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}"/>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn cf">
+                        <div class="delete" th:if="*{individualId}">
+                            <a th:href="@{'~/individualNote/delete/'}+*{individualId}">
+                                <img height="147" width="495"
+                                     src="assets/images/button/btn_delete.png"
+                                     th:src="@{/images/button/btn_delete.png}"/>
+                            </a>
+                        </div>
+                        <div class="edit">
+                            <button type="submit" name="action" value="edit">
+                                <img height="147" width="495"
+                                     src="assets/images/button/btn_edit.png"
+                                     th:src="@{/images/button/btn_edit.png}"/>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="btn finish">
+                        <button type="submit" name="action" value="save">
+                            <img height="147" width="1045"
+                                 src="assets/images/button/btn_decision.png"
+                                 th:src="@{/images/button/btn_decision.png}"/>
+                        </button>
+                    </div>
+                    <div id="bnr_paying_merit">
+                        <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                             th:src="@{/images/common/banner.png}" width="1040" /></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

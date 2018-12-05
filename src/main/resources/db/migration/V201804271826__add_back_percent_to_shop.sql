@@ -1,0 +1,2 @@
+ALTER TABLE shops
+  ADD COLUMN back_percent INT DEFAULT 0 NOT NULL;

@@ -1,0 +1,104 @@
+<!--bbs_detail.html-->
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:ex="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_bbs.png" width="712"
+         th:src="@{/images/header/header_bbs.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="bbs_detail">
+            <div class="page_label">
+                &nbsp;
+            </div>
+            <div class="inner cf">
+                <div id="post_box">
+
+                    <div id="post_info">
+                        <div class="cf" id="post_info_top">
+                          <!--
+                            <div id="post_num">
+                                <img height="130" src="./assets/images/icon/bbs_num_002.png" width="132"
+                                     th:src="@{/images/icon/bbs_num_002.png}"/>
+                            </div>
+                          -->
+                            <div id="post_title" th:text="${forum.title}">
+                                みなさんの遺言書の書き方について教えてください
+                            </div>
+                        </div>
+                        <div id="post_content">
+                            <!-- DEV 201803260611
+                            forum#contetns
+                            -->
+                            <p th:utext="${#strings.replace( #strings.escapeXml( forum.contents ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}"></p>
+                        </div>
+                        <div class="cf" id="post_info_bottom" th:inline="text">
+                            <div class="cf" id="prof">
+                                <img height="194" src="./assets/images/common/users.png" width="194"
+                                    th:src="@{/images/common/users.png}"/>
+                                <div class="cf" id="user_info">
+                                    <div id="user_name">
+                                        [[${forum.name}]] <span>さん</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="article_delete" th:if="${user.lastUsedAccount != null and user.lastUsedAccount.id == forum.accountId}">
+                              <!--
+                              DEV 201803260616
+                              please use confirmDialog
+                              -->
+                                <a id='deleteThisForum' href="javascript:;" th:attr="onclick='return confirmDialog(\'deleteThisForum\',\'Delete\',\'/bbs/delete/' + ${forum.id} + '\');'">削除する</a>
+                            </div>
+                            <div id="post_count" th:text="${forum.commentCount}">
+                                143
+                            </div>
+                            <div id="post_data" th:text="${#dates.format(forum.createdAt, 'yyyy.MM.dd')}">
+                                2017.12.5
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cf" id="content" th:inline="text" th:each="forumComment, stat : ${forumComments}">
+                        <div class="cf" id="prof">
+                            <img height="194" src="./assets/images/common/users.png" width="194"
+                                 th:src="@{/images/common/users.png}"/>
+                            <div class="cf" id="user_info">
+                                <div id="user_name">
+                                    [[${forumComment.name}]] <span>さん</span>
+                                </div>
+                                <div id="post_data" th:text="${#dates.format(forumComment.createdAt, 'yyyy.MM.dd')}">
+                                    2017.12.2
+                                </div>
+                            </div>
+                        </div>
+                        <p th:text="${forumComment.contents}" style="word-wrap: break-word">
+                            私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・私はスマートフォンのアプリで全ての記帳をしています。その中でも・・・・
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="post_btn">
+                <a href="#" th:href="@{/bbs/reply/} + ${forum.id}"><img height="126" src="./assets/images/button/btn_post2.png" width="1029"
+                                 th:src="@{/images/button/btn_post2.png}"/></a>
+            </div>
+            <div id="bnr_paying_merit">
+                <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+                                                     th:src="@{/images/common/banner.png}" width="1040" /></a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

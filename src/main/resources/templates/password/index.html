@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+  <title>ログイン方法の選択</title>
+  <meta name="keywords" content="content1"/>
+  <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+  <img alt="パスワード入力" src="./assets/images/header/header_password_input.png" width="712"
+       th:src="@{/images/header/header_password_input.png}"/>
+</div>
+<div layout:fragment="main">
+  <div id="password_input">
+    <div class="page_label">
+      ログイン方法の選択
+    </div>
+    <div class="inner cf">
+      <div class="summary">
+        <p>
+          有料会員ではなくても、共有されたアカウントのエンディングノートや記録を見るため、指紋認証やパスワード<br/>入力が必要です。
+        </p>
+      </div>
+      <div class="candidate">
+        <div class="title">
+          候補(2)
+        </div>
+        <div class="list">
+          <a href="fingerprint_registration_index.html">
+            <div class="icon">
+              <img alt="指紋認証" height="160" src="./assets/images/icon/icon_finger.png" width="160"
+                   th:src="@{/images/icon/icon_finger.png}"/>
+            </div>
+            <div class="content">
+              <span>指紋認証</span><span>指紋でロックを解除する</span>
+            </div>
+          </a>
+        </div>
+        <div class="list">
+          <a href="account_login.html">
+            <div class="icon">
+              <img alt="パスワード入力" height="160" src="./assets/images/icon/icon_lock.png" width="160"
+                   th:src="@{/images/icon/icon_lock.png}"/>
+            </div>
+            <div class="content">
+              <span>パスワード入力</span><span>パスワードでロックを解除する</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

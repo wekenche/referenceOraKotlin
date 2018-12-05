@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+  <head>
+    <title>相談機能</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+  </head>
+  <body class="drawer drawer--left">
+  <div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_consultation.png" width="712"
+         th:src="@{/images/header/header_consultation.png}"/>
+  </div>
+  <div  layout:fragment="main">
+    <div id="container">
+        <!--/*@thymesVar id="setting" type="ora.leadlife.co.jp.form.SettingForm"*/-->
+      <div id="consultation_index" th:object="${setting}">
+        <div class="main">
+          <img src="./images/main_consultation.png" width="100%" />
+        </div>
+        <div class="inner cf">
+          <div class="box">
+            <div class="title">
+              遺品整理士に質問する
+            </div>
+            <div class="btn cf">
+              <a th:href="'mailto:'+*{organizer_email}"><img height="326" src="./assets/images/button/button_consultation_mail.png"
+                               th:src="@{/images/button/button_consultation_mail.png}" width="518" /></a>
+              <a th:href="'tel:'+*{delegate_tel_no}"><img height="326" src="./assets/images/button/button_consultation_tel.png"
+                               th:src="@{/images/button/button_consultation_tel.png}" width="518" /></a>
+            </div>
+          </div>
+          <div class="box">
+            <div class="title">
+              弁護士に質問する
+            </div>
+            <div class="btn cf">
+              <a th:href="'mailto:'+*{lawyer_email}"><img height="326" src="./assets/images/button/button_consultation_mail.png"
+                               th:src="@{/images/button/button_consultation_mail.png}" width="518" /></a>
+              <a th:href="'tel:'+*{lawyer_tel_no}"><img height="326" src="./assets/images/button/button_consultation_tel.png"
+                               th:src="@{/images/button/button_consultation_tel.png}" width="518" /></a>
+            </div>
+          </div>
+          <div class="box">
+            <div class="title">
+              お墓石材メンテナンス技術士に質問する
+            </div>
+            <div class="btn cf">
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_mail.png"
+                               th:src="@{/images/button/button_consultation_mail.png}" width="518" /></a>
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_tel.png"
+                               th:src="@{/images/button/button_consultation_tel.png}" width="518" /></a>
+            </div>
+          </div>
+          <div class="box">
+            <div class="title">
+              お墓相談士に質問する
+            </div>
+            <div class="btn cf">
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_mail.png"
+                               th:src="@{/images/button/button_consultation_mail.png}" width="518" /></a>
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_tel.png"
+                               th:src="@{/images/button/button_consultation_tel.png}" width="518" /></a>
+            </div>
+          </div>
+          <div class="box">
+            <div class="title">
+              ハウスクリーニング士に質問する
+            </div>
+            <div class="btn cf">
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_mail.png"
+                               th:src="@{/images/button/button_consultation_mail.png}" width="518" /></a>
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_tel.png"
+                               th:src="@{/images/button/button_consultation_tel.png}" width="518" /></a>
+            </div>
+          </div>
+          <div class="box">
+            <div class="title">
+              整理収納清掃アドバイザーに質問する
+            </div>
+            <div class="btn cf">
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_mail.png"
+                               th:src="@{/images/button/button_consultation_mail.png}" width="518" /></a>
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_tel.png"
+                               th:src="@{/images/button/button_consultation_tel.png}" width="518" /></a>
+            </div>
+          </div>
+          <div class="box">
+            <div class="title">
+              家事代行アドバイザーに質問する
+            </div>
+            <div class="btn cf">
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_mail.png"
+                               th:src="@{/images/button/button_consultation_mail.png}" width="518" /></a>
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_tel.png"
+                               th:src="@{/images/button/button_consultation_tel.png}" width="518" /></a>
+            </div>
+          </div>
+          <div class="box">
+            <div class="title">
+              終活カウンセラーに質問する
+            </div>
+            <div class="btn cf">
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_mail.png"
+                               th:src="@{/images/button/button_consultation_mail.png}" width="518" /></a>
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_tel.png"
+                               th:src="@{/images/button/button_consultation_tel.png}" width="518" /></a>
+            </div>
+          </div>
+          <div class="box">
+            <div class="title">
+              葬祭ディレクターに質問する
+            </div>
+            <div class="btn cf">
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_mail.png"
+                               th:src="@{/images/button/button_consultation_mail.png}" width="518" /></a>
+              <a href="#"><img height="326" src="./assets/images/button/button_consultation_tel.png"
+                               th:src="@{/images/button/button_consultation_tel.png}" width="518" /></a>
+            </div>
+          </div>
+        </div>
+        <div id="bnr_paying_merit">
+          <a th:href="@{'/others/merit'}"><img height="180" src="./assets/images/common/banner.png"
+             th:src="@{/images/common/banner.png}" width="1040" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </body>
+</html>

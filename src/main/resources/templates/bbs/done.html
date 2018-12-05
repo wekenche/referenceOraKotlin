@@ -1,0 +1,42 @@
+<!--bbs_writing_finish.html-->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>始める前に</title>
+    <meta name="keywords" content="content1"/>
+    <meta name="description" content="content1"/>
+</head>
+<body>
+<div layout:fragment="headerImage">
+    <img alt="" src="./assets/images/header/header_bbs.png" width="712"
+         th:src="@{/images/header/header_bbs.png}"/>
+</div>
+<div layout:fragment="main">
+    <div id="container">
+        <div id="bbs_writing_finish">
+            <div class="inner cf">
+                <div class="message">
+                    <div class="status">
+                        書き込みが完了しました
+                    </div>
+                    <div class="icon">
+                        <img height="212" src="./assets/images/icon/icon_checkbox.png" width="212"
+                             th:src="@{/images/icon/icon_checkbox.png}"/>
+                    </div>
+                </div>
+                <div class="btn">
+                    <a href="bbs_list.html" th:href="@{/bbs}"><img height="147" src="./assets/images/button/btn_return_bbs.png"
+                                                 width="1040"
+                                                 th:src="@{/images/button/btn_return_bbs.png}"/></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
